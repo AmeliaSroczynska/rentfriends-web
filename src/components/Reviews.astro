@@ -1,59 +1,109 @@
 ---
 ---
-
-<section class="relative w-full overflow-x-clip py-20 bg-bg">
-    <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 overflow-hidden mb-12 select-none pointer-events-none">
-        <div class="w-full flex justify-center -rotate-[3deg]">
-            <img src="/people.png" alt="" class="w-full h-auto max-h-[260px] lg:h-[300px] object-contain" />
+<section class="relative w-full overflow-x-clip py-[40px] bg-bg">
+    <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 mt-[15px] mb-[32px] select-none pointer-events-none">
+        <div class="w-full flex justify-center">
+            <img src="/people.png" alt="" class="w-full h-auto max-h-[160px] lg:h-[200px] object-contain scale-145" />
         </div>
     </div>
-
-    <div class="w-full px-6 sm:px-10 mx-auto max-w-4xl text-center relative z-10 my-8">
-        <h2 class="text-[32px] sm:text-[45px] lg:text-[52px] font-extrabold tracking-tight mb-8">
-            <span class="text-black">Co mówią</span> <span class="bg-gradient text-transparent bg-clip-text">użytkownicy?</span>
+    <div class="w-full px-6 sm:px-10 mx-auto max-w-5xl text-center relative z-10">
+        <h2 class="text-[32px] sm:text-[45px] lg:text-[52px] font-extrabold tracking-tight mb-[22px]">
+            <span class="text-black">Co mówią</span> <span class="text-transparent bg-clip-text bg-[image:var(--background-image-gradient)]">użytkownicy?</span>
         </h2>
-
-        <div class="flex justify-center items-center gap-1.5 mb-6 text-amber-400">
+        <div class="flex justify-center items-center gap-1.5 mb-[22px] text-amber-400">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-
-        <div class="relative flex items-center justify-between max-w-3xl mx-auto mb-8 px-4 sm:px-12">
-            <button type="button" aria-label="Previous" class="absolute left-0 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors cursor-pointer z-20">
-                <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
+        <div class="relative flex items-center justify-between max-w-4xl mx-auto mb-[16px] px-2 sm:px-16">
+            <button id="prev-review" type="button" aria-label="Previous" class="absolute left-0 sm:left-2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#D1D1D1] bg-transparent flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer z-20 top-[50px] -translate-y-1/2">
+                <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
             </button>
-
-            <div class="mx-auto text-center px-4">
-                <p class="text-[17px] sm:text-[22px] text-gray-800 font-medium leading-relaxed mb-4">
-                    &quot;Super pomysł, tego właśnie brakowało – nikt nie lubi szukać mieszkania przez olx albo przez Facebooka.&quot;
-                </p>
-                <h3 class="text-[16px] sm:text-[18px] font-bold text-black">
-                    kisiel123
-                </h3>
+            <div class="w-full overflow-hidden mx-auto">
+                <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out will-change-transform"></div>
             </div>
-
-            <button type="button" aria-label="Next" class="absolute right-0 sm:-right-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors cursor-pointer z-20">
-                <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
+            <button id="next-review" type="button" aria-label="Next" class="absolute right-0 sm:right-2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#D1D1D1] bg-transparent flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer z-20 top-[50px] -translate-y-1/2">
+                <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
             </button>
         </div>
-
-        <div class="flex justify-center items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer"></span>
-            <span class="w-6 h-2 rounded-full bg-purple cursor-pointer"></span>
-            <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer"></span>
-        </div>
+        <div class="flex justify-center items-center gap-2" id="review-dots"></div>
     </div>
-
-    <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 overflow-hidden mt-12 select-none pointer-events-none">
-        <div class="w-full flex justify-center rotate-[3deg]">
-            <img src="/people2.png" alt="" class="w-full h-auto max-h-[260px] lg:h-[300px] object-contain" />
+    <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 mt-[40px] mb-[15px] select-none pointer-events-none">
+        <div class="w-full flex justify-center ">
+            <img src="/people2.png" alt="" class="w-full h-auto max-h-[160px] lg:h-[200px] object-contain scale-145" />
         </div>
     </div>
 </section>
+
+<script>
+    const reviews=[{text:`"Super pomysł, tego właśnie brakowało – nikt nie lubi szukać mieszkania przez olx albo przez Facebooka."`,author:"kisiel123"},{text:`"Dzięki aplikacji znalazłam świetną współlokatorkę w 3 dni. Koniec z uciążliwymi castingami i setkami wiadomości!"`,author:"ania_nowak"},{text:`"Niesamowicie intuicyjny interfejs i super dopasowania. Zdecydowanie polecam każdemu szukającemu pokoju i spokoju."`,author:"marcin_xyz"}];
+    const allReviews=[reviews[reviews.length-1],...reviews,reviews[0]];
+    let currentIndex=1;
+    let isTransitioning=false;
+
+    const track = document.getElementById('carousel-track')!;
+    const dotsContainer = document.getElementById('review-dots')!;
+    const prevBtn = document.getElementById('prev-review')!;
+    const nextBtn = document.getElementById('next-review')!;
+
+    function initCarousel(){
+        allReviews.forEach((review)=>{
+            const slide=document.createElement('div');
+            slide.className='w-full shrink-0 flex flex-col items-center justify-start';
+            slide.innerHTML=`<div class="h-[100px] flex items-center justify-center w-full px-4 sm:px-12 mb-[16px]"><p class="text-[16px] sm:text-[20px] text-gray font-sans font-medium leading-[1.4]">${review.text}</p></div><h3 class="text-[28px] font-semibold text-black leading-none">${review.author}</h3>`;
+            track.appendChild(slide);
+        });
+        reviews.forEach((_,index)=>{
+            const dot=document.createElement('button');
+            dot.type='button';
+            dot.setAttribute('aria-label',`Go to review ${index+1}`);
+            dot.className=index===0?'dot w-6 h-2 rounded-full bg-[image:var(--background-image-gradient)] transition-all duration-300 cursor-pointer':'dot w-2 h-2 rounded-full bg-[#D1D1D1] hover:bg-gray/50 transition-all duration-300 cursor-pointer';
+            dot.addEventListener('click',()=>{
+                if(isTransitioning)return;
+                currentIndex=index+1;
+                updateCarousel(true);
+            });
+            dotsContainer.appendChild(dot);
+        });
+        updateCarousel(false);
+    }
+
+    function updateCarousel(smooth=true){
+        track.style.transition=smooth?'transform 0.5s ease-in-out':'none';
+        track.style.transform=`translateX(-${currentIndex*100}%)`;
+        const dots=dotsContainer.querySelectorAll('.dot');
+        const activeDotIndex=currentIndex===0?reviews.length-1:(currentIndex===reviews.length+1?0:currentIndex-1);
+        dots.forEach((dot,i)=>{
+            dot.className=i===activeDotIndex?'dot w-6 h-2 rounded-full bg-[image:var(--background-image-gradient)] transition-all duration-300 cursor-pointer':'dot w-2 h-2 rounded-full bg-[#D1D1D1] hover:bg-gray/50 transition-all duration-300 cursor-pointer';
+        });
+    }
+
+    track.addEventListener('transitionend',()=>{
+        isTransitioning=false;
+        if(currentIndex===0){
+            currentIndex=reviews.length;
+            updateCarousel(false);
+        }else if(currentIndex===reviews.length+1){
+            currentIndex=1;
+            updateCarousel(false);
+        }
+    });
+
+    prevBtn.addEventListener('click',()=>{
+        if(isTransitioning)return;
+        isTransitioning=true;
+        currentIndex--;
+        updateCarousel(true);
+    });
+
+    nextBtn.addEventListener('click',()=>{
+        if(isTransitioning)return;
+        isTransitioning=true;
+        currentIndex++;
+        updateCarousel(true);
+    });
+
+    initCarousel();
+</script>
