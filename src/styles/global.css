@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+    --color-black: #0F0F0F;
+    --color-bg: #F4F2EE;
+    --color-blue: #234CE0;
+    --color-purple: #A247E3;
+    --color-pink: #E95BD2;
+    --background-image-gradient: linear-gradient(to right, var(--color-blue), var(--color-purple), var(--color-pink));
+
+    --font-sans: "Plus Jakarta Sans", sans-serif;
+}
