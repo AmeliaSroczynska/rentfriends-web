@@ -1,24 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
 ---
 
-<Layout>
-	<main class="flex flex-col items-center justify-center min-h-screen p-8 gap-12">
+<Layout title="RentFriends">
+	<Navbar />
 
-		<h1 class="text-5xl font-bold bg-gradient bg-clip-text text-transparent text-center max-w-2xl leading-tight">
-			Znajdź współlokatora, z którym mieszkanie będzie przyjemnością!
+	<main class="flex flex-col items-center justify-center min-h-[calc(100vh-72px)] px-6 py-12 text-center">
+		<h1 class="max-w-4xl text-5xl md:text-[64px] font-bold tracking-tight leading-tight mb-16">
+            <span class="bg-gradient text-transparent bg-clip-text">
+                Znajdź współlokatora, z<br class="hidden md:block" />
+                którym mieszkanie będzie<br class="hidden md:block" />
+                przyjemnością!
+            </span>
 		</h1>
 
-		<div class="flex gap-6">
-			<div class="w-24 h-24 bg-purple flex items-center justify-center text-white font-bold rounded-xl shadow-md">Purple</div>
-			<div class="w-24 h-24 bg-blue flex items-center justify-center text-white font-bold rounded-xl shadow-md">Blue</div>
-			<div class="w-24 h-24 bg-pink flex items-center justify-center text-white font-bold rounded-xl shadow-md">Pink</div>
-			<div class="w-24 h-24 bg-black flex items-center justify-center text-white font-bold rounded-xl shadow-md">Black</div>
+		<div class="flex flex-wrap justify-center gap-6 mb-16">
+			<div class="w-32 h-32 bg-purple rounded-[24px] flex items-center justify-center text-white font-semibold text-lg shadow-sm">
+				Purple
+			</div>
+			<div class="w-32 h-32 bg-blue rounded-[24px] flex items-center justify-center text-white font-semibold text-lg shadow-sm">
+				Blue
+			</div>
+			<div class="w-32 h-32 bg-pink rounded-[24px] flex items-center justify-center text-white font-semibold text-lg shadow-sm">
+				Pink
+			</div>
+			<div class="w-32 h-32 bg-black rounded-[24px] flex items-center justify-center text-white font-semibold text-lg shadow-sm">
+				Black
+			</div>
 		</div>
 
-		<button class="px-10 py-4 bg-gradient text-white font-bold rounded-full shadow-lg hover:opacity-90 transition-opacity">
+		<a href="#download" class="px-10 py-4 bg-gradient text-white font-bold rounded-full shadow-lg hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all duration-300 ease-out text-lg">
 			Download App
-		</button>
-
+		</a>
 	</main>
 </Layout>

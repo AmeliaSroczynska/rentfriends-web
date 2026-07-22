@@ -6,6 +6,7 @@
     --color-blue: #234CE0;
     --color-purple: #A247E3;
     --color-pink: #E95BD2;
+    --color-gray: #595959;
     --background-image-gradient: linear-gradient(to right, var(--color-blue), var(--color-purple), var(--color-pink));
 
     --font-sans: "Plus Jakarta Sans", sans-serif;
