@@ -14,10 +14,23 @@ import Footer from "../components/Footer.astro";
 
 	<main class="min-h-[calc(100vh-72px)] flex flex-col">
 		<Hero />
-		<Reviews />
-		<Award />
-		<FAQ />
-		<CTA />
+
+		<div id="reviews" class="scroll-mt-[72px]">
+			<Reviews />
+		</div>
+
+		<div id="features" class="scroll-mt-[72px]">
+			<Award />
+		</div>
+
+		<div id="faq" class="scroll-mt-[72px]">
+			<FAQ />
+		</div>
+
+		<div id="download" class="scroll-mt-[72px]">
+			<CTA />
+		</div>
+
 		<Footer />
 	</main>
 </Layout>
