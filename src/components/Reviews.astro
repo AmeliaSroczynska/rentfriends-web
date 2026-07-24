@@ -22,13 +22,13 @@
         </div>
 
         <div class="relative flex items-center justify-between max-w-4xl mx-auto mb-[16px] px-2 sm:px-16">
-            <button id="prev-review" type="button" aria-label="Previous" class="absolute left-0 sm:left-2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#D1D1D1] bg-transparent flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer z-20 top-[50px] -translate-y-1/2">
+            <button id="prev-review" type="button" aria-label="Previous" class="absolute left-0 sm:left-2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#D1D1D1] bg-transparent flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer z-20 top-[75px] sm:top-[65px] -translate-y-1/2">
                 <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
             </button>
             <div class="w-full overflow-hidden mx-auto">
                 <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out will-change-transform"></div>
             </div>
-            <button id="next-review" type="button" aria-label="Next" class="absolute right-0 sm:right-2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#D1D1D1] bg-transparent flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer z-20 top-[50px] -translate-y-1/2">
+            <button id="next-review" type="button" aria-label="Next" class="absolute right-0 sm:right-2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#D1D1D1] bg-transparent flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer z-20 top-[75px] sm:top-[65px] -translate-y-1/2">
                 <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
             </button>
         </div>
@@ -46,8 +46,8 @@
 <script>
     const reviews=[
         {text:`"Super pomysł, tego właśnie brakowało – nikt nie lubi szukać mieszkania przez olx albo przez Facebooka."`,author:"kisiel123"},
-        {text:`"Dzięki aplikacji znalazłam świetną współlokatorkę w 3 dni. Koniec z uciążliwymi castingami i setkami wiadomości!"`,author:"ania_nowak"},
-        {text:`"Niesamowicie intuicyjny interfejs i super dopasowania. Zdecydowanie polecam każdemu szukającemu pokoju i spokoju."`,author:"marcin_xyz"}
+        {text:`"Prowadzę kilka mieszkań na pokoje dla studentów i ta apka uratowała mi sporo telefonów typu „zmywarka nie działa”. Dodałam zadania w stylu „Wyczyszczenie filtra zmywarki” i... nagle działa 😉 Prosta, czytelna, szybkie checklisty. Naprawdę polecam."`,author:"Małgorzata 12"},
+        {text:`"Świetny sposób na szybkie dzielenie obowiązków w mieszkaniu"`,author:"VitQ 9"}
     ];
     const allReviews=[reviews[reviews.length-1],...reviews,reviews[0]];
     let currentIndex=1;
@@ -62,7 +62,7 @@
         allReviews.forEach((review)=>{
             const slide=document.createElement('div');
             slide.className='w-full shrink-0 flex flex-col items-center justify-start';
-            slide.innerHTML=`<div class="h-[100px] flex items-center justify-center w-full px-4 sm:px-12 mb-[16px]"><p class="text-[16px] sm:text-[20px] text-gray font-sans font-medium leading-[1.4]">${review.text}</p></div><h3 class="text-[28px] font-semibold text-black leading-none">${review.author}</h3>`;
+            slide.innerHTML=`<div class="h-[150px] sm:h-[130px] flex items-center justify-center w-full px-4 sm:px-12 mb-[16px]"><p class="text-[16px] sm:text-[20px] text-gray font-sans font-medium leading-[1.4]">${review.text}</p></div><h3 class="text-[28px] font-semibold text-black leading-none pb-2">${review.author}</h3>`;
             track.appendChild(slide);
         });
         reviews.forEach((_,index)=>{
