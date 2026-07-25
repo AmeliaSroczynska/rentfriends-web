@@ -1,10 +1,11 @@
 <footer class="w-full mt-0 bg-[linear-gradient(90deg,#4242FF_0%,#DB38DA_100%)] text-white font-sans relative">
     <div class="absolute top-0 left-0 w-full h-[50px] bg-bg rounded-b-[35px]"></div>
 
-    <div class="w-full px-[100px] pt-[100px]">
+    <div class="w-full px-8 lg:px-[100px] pt-16 lg:pt-[100px]">
 
-        <div class="flex flex-row w-full items-start">
-            <div class="flex-shrink-0 w-[680px] flex flex-col">
+        <div class="flex flex-wrap w-full items-start gap-x-10 gap-y-12">
+
+            <div class="flex-shrink-0 flex flex-col w-full lg:w-auto lg:flex-1 lg:max-w-[550px] min-w-[280px]">
                 <div class="flex items-center gap-3">
                     <div class="w-[35px] h-[35px] bg-white rounded-[10px] shadow-sm flex items-center justify-center p-1">
                         <img src="/logo.svg" alt="RentFriends" class="w-full h-full object-contain" />
@@ -31,33 +32,36 @@
                 </div>
             </div>
 
-            <div class="flex-shrink-0 w-[350px] flex flex-col">
-                <h3 class="text-[14px] font-extrabold mb-[18px] tracking-wide leading-none">Aplikacja</h3>
-                <ul class="flex flex-col gap-[18px]">
-                    <li class="leading-none"><a href="/" class="text-[14px] font-normal transition-opacity hover:underline">Strona główna</a></li>
-                    <li class="leading-none"><a href="/#features" class="text-[14px] font-normal transition-opacity hover:underline">Funkcje</a></li>
-                    <li class="leading-none"><a href="/#reviews" class="text-[14px] font-normal transition-opacity hover:underline">Opinie</a></li>
-                    <li class="leading-none"><a href="/#faq" class="text-[14px] font-normal transition-opacity hover:underline">FAQ</a></li>
-                </ul>
-            </div>
+            <div class="flex flex-row gap-x-[80px] sm:gap-x-[120px] lg:gap-x-[250px] flex-shrink-0 lg:ml-[100px]">
+                <div class="flex flex-col">
+                    <h3 class="text-[14px] font-extrabold mb-[18px] tracking-wide leading-none">Aplikacja</h3>
+                    <ul class="flex flex-col gap-[18px]">
+                        <li class="leading-none"><a href="/" class="text-[14px] font-normal transition-opacity hover:underline">Strona główna</a></li>
+                        <li class="leading-none"><a href="/#features" class="text-[14px] font-normal transition-opacity hover:underline">Funkcje</a></li>
+                        <li class="leading-none"><a href="/#reviews" class="text-[14px] font-normal transition-opacity hover:underline">Opinie</a></li>
+                        <li class="leading-none"><a href="/#faq" class="text-[14px] font-normal transition-opacity hover:underline">FAQ</a></li>
+                    </ul>
+                </div>
 
-            <div class="flex-shrink-0 flex flex-col">
-                <h3 class="text-[14px] font-extrabold mb-[18px] tracking-wide leading-none">Prawne</h3>
-                <ul class="flex flex-col gap-[18px]">
-                    <li class="leading-none"><a href="/privacy-policy" class="text-[14px] font-normal transition-opacity hover:underline">Polityka prywatności</a></li>
-                    <li class="leading-none"><a href="/terms-of-service" class="text-[14px] font-normal transition-opacity hover:underline">Regulamin</a></li>
-                </ul>
+                <div class="flex flex-col">
+                    <h3 class="text-[14px] font-extrabold mb-[18px] tracking-wide leading-none">Prawne</h3>
+                    <ul class="flex flex-col gap-[18px]">
+                        <li class="leading-none"><a href="/privacy-policy" class="text-[14px] font-normal transition-opacity hover:underline">Polityka prywatności</a></li>
+                        <li class="leading-none"><a href="/terms-of-service" class="text-[14px] font-normal transition-opacity hover:underline">Regulamin</a></li>
+                    </ul>
+                </div>
+
             </div>
         </div>
 
-        <div class="mt-[30px] w-full">
+        <div class="mt-[40px] lg:mt-[50px] w-full">
             <div class="w-full h-px bg-white/30"></div>
-            <div class="pt-[30px] pb-[40px] flex justify-center items-center text-[14px] font-normal leading-none">
+            <div class="pt-[30px] pb-[40px] flex justify-center items-center text-[14px] font-normal leading-none text-center flex-wrap gap-1">
                 Made with
-                <svg class="w-3.5 h-3.5 mx-1" viewBox="0 0 24 24" fill="currentColor">
+                <svg class="w-3.5 h-3.5 mx-0.5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                 </svg>
-                by <a href="https://github.com/AmeliaSroczynska/rentfriends-web" target="_blank" rel="noopener noreferrer" class="hover:underline ml-1">RentFriends Team</a>
+                by <a href="https://github.com/AmeliaSroczynska/rentfriends-web" target="_blank" rel="noopener noreferrer" class="hover:underline">RentFriends Team</a>
             </div>
         </div>
 
