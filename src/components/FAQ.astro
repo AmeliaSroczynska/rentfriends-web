@@ -1,5 +1,20 @@
 ---
 import { faqsCol1, faqsCol2 } from '../data/faq';
+
+const allFaqs = [...faqsCol1, ...faqsCol2];
+
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": allFaqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.a
+        }
+    }))
+};
 ---
 
 <section class="w-full pt-[120px] pb-[80px] bg-bg relative overflow-hidden font-sans">
@@ -63,6 +78,8 @@ import { faqsCol1, faqsCol2 } from '../data/faq';
         </div>
     </div>
 </section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
