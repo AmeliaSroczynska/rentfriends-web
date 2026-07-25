@@ -39,7 +39,7 @@ const allReviews = [reviews[reviews.length - 1], ...reviews, reviews[0]];
             <div class="w-full overflow-hidden mx-auto">
                 <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out will-change-transform" style="transform: translateX(-100%);">
                     {allReviews.map((review) => (
-                            <div class="w-full shrink-0 flex flex-col items-center justify-start">
+                            <div class="w-full shrink-0 flex flex-col items-center justify-start select-none">
                                 <div class="h-[150px] sm:h-[130px] flex items-center justify-center w-full px-4 sm:px-12 mb-[16px]">
                                     <p class="text-[16px] sm:text-[20px] text-gray font-sans font-medium leading-[1.4]">{review.text}</p>
                                 </div>
@@ -73,62 +73,98 @@ const allReviews = [reviews[reviews.length - 1], ...reviews, reviews[0]];
 </section>
 
 <script>
-    let currentIndex = 1;
-    let isTransitioning = false;
+    function initCarousel() {
+        const track = document.getElementById('carousel-track') as HTMLElement;
+        const dotsContainer = document.getElementById('review-dots') as HTMLElement;
+        const prevBtn = document.getElementById('prev-review') as HTMLButtonElement;
+        const nextBtn = document.getElementById('next-review') as HTMLButtonElement;
 
-    const track = document.getElementById('carousel-track')!;
-    const dotsContainer = document.getElementById('review-dots')!;
-    const prevBtn = document.getElementById('prev-review')!;
-    const nextBtn = document.getElementById('next-review')!;
+        if (!track || !dotsContainer || !prevBtn || !nextBtn) return;
 
-    const dots = dotsContainer.querySelectorAll('.dot');
-    const totalReviews = dots.length;
+        let currentIndex = 1;
+        let isTransitioning = false;
 
-    function updateCarousel(smooth = true) {
-        track.style.transition = smooth ? 'transform 0.5s ease-in-out' : 'none';
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        let touchStartX = 0;
+        let touchEndX = 0;
 
-        const activeDotIndex = currentIndex === 0
-            ? totalReviews - 1
-            : (currentIndex === totalReviews + 1 ? 0 : currentIndex - 1);
+        const dots = dotsContainer.querySelectorAll('.dot');
+        const totalReviews = dots.length;
 
-        dots.forEach((dot, i) => {
-            dot.className = i === activeDotIndex
-                ? 'dot w-6 h-2 rounded-full bg-[image:var(--background-image-gradient)] transition-all duration-300 cursor-pointer'
-                : 'dot w-2 h-2 rounded-full bg-gray/30 hover:bg-gray/50 transition-all duration-300 cursor-pointer';
+        function updateCarousel(smooth = true) {
+            track.style.transition = smooth ? 'transform 0.5s ease-in-out' : 'none';
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            const activeDotIndex = currentIndex === 0
+                ? totalReviews - 1
+                : (currentIndex === totalReviews + 1 ? 0 : currentIndex - 1);
+
+            dots.forEach((dot, i) => {
+                dot.className = i === activeDotIndex
+                    ? 'dot w-6 h-2 rounded-full bg-[image:var(--background-image-gradient)] transition-all duration-300 cursor-pointer'
+                    : 'dot w-2 h-2 rounded-full bg-gray/30 hover:bg-gray/50 transition-all duration-300 cursor-pointer';
+            });
+        }
+
+        track.addEventListener('transitionend', () => {
+            isTransitioning = false;
+            if (currentIndex === 0) {
+                currentIndex = totalReviews;
+                updateCarousel(false);
+            } else if (currentIndex === totalReviews + 1) {
+                currentIndex = 1;
+                updateCarousel(false);
+            }
         });
+
+        function goPrev() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex--;
+            updateCarousel(true);
+        }
+
+        function goNext() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex++;
+            updateCarousel(true);
+        }
+
+        prevBtn.addEventListener('click', goPrev);
+        nextBtn.addEventListener('click', goNext);
+
+        dots.forEach((dot) => {
+            dot.addEventListener('click', (e) => {
+                if (isTransitioning) return;
+                const target = e.currentTarget as HTMLButtonElement;
+                if (target.dataset.index) {
+                    currentIndex = parseInt(target.dataset.index);
+                    updateCarousel(true);
+                }
+            });
+        });
+
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+
+            if (touchEndX < touchStartX - swipeThreshold) {
+                goNext();
+            } else if (touchEndX > touchStartX + swipeThreshold) {
+                goPrev();
+            }
+        }
     }
 
-    track.addEventListener('transitionend', () => {
-        isTransitioning = false;
-        if (currentIndex === 0) {
-            currentIndex = totalReviews;
-            updateCarousel(false);
-        } else if (currentIndex === totalReviews + 1) {
-            currentIndex = 1;
-            updateCarousel(false);
-        }
-    });
+    initCarousel();
 
-    prevBtn.addEventListener('click', () => {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        currentIndex--;
-        updateCarousel(true);
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        currentIndex++;
-        updateCarousel(true);
-    });
-
-    dots.forEach((dot) => {
-        dot.addEventListener('click', (e) => {
-            if (isTransitioning) return;
-            currentIndex = parseInt((e.currentTarget as HTMLButtonElement).dataset.index!);
-            updateCarousel(true);
-        });
-    });
+    document.addEventListener('astro:page-load', initCarousel);
 </script>
