@@ -22,13 +22,13 @@
         </div>
 
         <div class="relative flex items-center justify-between max-w-4xl mx-auto mb-[16px] px-2 sm:px-16">
-            <button id="prev-review" type="button" aria-label="Previous" class="absolute left-0 sm:left-2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#D1D1D1] bg-transparent flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer z-20 top-[75px] sm:top-[65px] -translate-y-1/2">
+            <button id="prev-review" type="button" aria-label="Previous" class="absolute left-0 sm:left-2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray/30 bg-transparent flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer z-20 top-[75px] sm:top-[65px] -translate-y-1/2">
                 <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
             </button>
             <div class="w-full overflow-hidden mx-auto">
                 <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out will-change-transform"></div>
             </div>
-            <button id="next-review" type="button" aria-label="Next" class="absolute right-0 sm:right-2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#D1D1D1] bg-transparent flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer z-20 top-[75px] sm:top-[65px] -translate-y-1/2">
+            <button id="next-review" type="button" aria-label="Next" class="absolute right-0 sm:right-2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray/30 bg-transparent flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer z-20 top-[75px] sm:top-[65px] -translate-y-1/2">
                 <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
             </button>
         </div>
@@ -69,7 +69,7 @@
             const dot=document.createElement('button');
             dot.type='button';
             dot.setAttribute('aria-label',`Go to review ${index+1}`);
-            dot.className=index===0?'dot w-6 h-2 rounded-full bg-[image:var(--background-image-gradient)] transition-all duration-300 cursor-pointer':'dot w-2 h-2 rounded-full bg-[#D1D1D1] hover:bg-gray/50 transition-all duration-300 cursor-pointer';
+            dot.className=index===0?'dot w-6 h-2 rounded-full bg-[image:var(--background-image-gradient)] transition-all duration-300 cursor-pointer':'dot w-2 h-2 rounded-full bg-gray/30 hover:bg-gray/50 transition-all duration-300 cursor-pointer';
             dot.addEventListener('click',()=>{
                 if(isTransitioning)return;
                 currentIndex=index+1;
@@ -86,7 +86,7 @@
         const dots=dotsContainer.querySelectorAll('.dot');
         const activeDotIndex=currentIndex===0?reviews.length-1:(currentIndex===reviews.length+1?0:currentIndex-1);
         dots.forEach((dot,i)=>{
-            dot.className=i===activeDotIndex?'dot w-6 h-2 rounded-full bg-[image:var(--background-image-gradient)] transition-all duration-300 cursor-pointer':'dot w-2 h-2 rounded-full bg-[#D1D1D1] hover:bg-gray/50 transition-all duration-300 cursor-pointer';
+            dot.className=i===activeDotIndex?'dot w-6 h-2 rounded-full bg-[image:var(--background-image-gradient)] transition-all duration-300 cursor-pointer':'dot w-2 h-2 rounded-full bg-gray/30 hover:bg-gray/50 transition-all duration-300 cursor-pointer';
         });
     }
 
