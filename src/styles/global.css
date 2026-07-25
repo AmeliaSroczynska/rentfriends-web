@@ -11,3 +11,13 @@
 
     --font-sans: "Plus Jakarta Sans", sans-serif;
 }
+
+*:focus-visible {
+    outline: 3px solid var(--color-pink);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+*:focus:not(:focus-visible) {
+    outline: none;
+}
