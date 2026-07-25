@@ -1,5 +1,41 @@
 @import "tailwindcss";
 
+@font-face {
+    font-display: swap;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/plus-jakarta-sans-v12-latin_latin-ext-regular.woff2') format('woff2');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/fonts/plus-jakarta-sans-v12-latin_latin-ext-500.woff2') format('woff2');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('/fonts/plus-jakarta-sans-v12-latin_latin-ext-600.woff2') format('woff2');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/plus-jakarta-sans-v12-latin_latin-ext-700.woff2') format('woff2');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 800;
+    src: url('/fonts/plus-jakarta-sans-v12-latin_latin-ext-800.woff2') format('woff2');
+}
+
 @theme {
     --color-black: #0F0F0F;
     --color-bg: #F4F2EE;
