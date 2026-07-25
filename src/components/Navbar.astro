@@ -1,3 +1,6 @@
+---
+---
+
 <header class="sticky top-0 z-50 w-full bg-bg/90 backdrop-blur-md border-b border-gray/15 transition-all">
     <div class="w-full px-6 md:px-10 h-[72px] flex items-center justify-between">
 
@@ -13,9 +16,68 @@
             <a href="#faq" class="text-sm text-gray hover:text-black font-regular transition-colors">FAQ</a>
         </nav>
 
-        <a href="#download" class="text-sm px-4 sm:px-6 py-2.5 bg-gradient text-white font-semibold rounded-full hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all duration-300 ease-out">
-            Pobierz aplikację
-        </a>
+        <div class="flex items-center gap-2 sm:gap-4">
+
+            <a href="#download" class="max-[386px]:hidden text-sm px-4 sm:px-6 py-2.5 bg-gradient text-white font-semibold rounded-full hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all duration-300 ease-out">
+                Pobierz aplikację
+            </a>
+
+            <button id="mobile-menu-btn" type="button" aria-label="Menu" class="md:hidden flex items-center justify-center p-2 text-black hover:bg-black/5 rounded-lg transition-colors cursor-pointer">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
 
     </div>
+
+    <div id="mobile-menu" class="hidden absolute top-[72px] left-0 w-full bg-bg/95 backdrop-blur-md border-b border-gray/15 flex-col items-center py-8 gap-6 shadow-xl md:hidden">
+        <a href="/" class="mobile-link text-[17px] text-black font-semibold tracking-tight hover:text-purple transition-colors">Strona główna</a>
+        <a href="#features" class="mobile-link text-[17px] text-black font-semibold tracking-tight hover:text-purple transition-colors">Funkcje</a>
+        <a href="#reviews" class="mobile-link text-[17px] text-black font-semibold tracking-tight hover:text-purple transition-colors">Opinie</a>
+        <a href="#faq" class="mobile-link text-[17px] text-black font-semibold tracking-tight hover:text-purple transition-colors">FAQ</a>
+    </div>
 </header>
+
+<script>
+    function initNavbar() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const links = document.querySelectorAll('.mobile-link');
+
+        if (!btn || !menu || !menuIcon || !closeIcon) return;
+
+        btn.addEventListener('click', () => {
+            const isHidden = menu.classList.contains('hidden');
+
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+    }
+
+    initNavbar();
+    document.addEventListener('astro:page-load', initNavbar);
+</script>
