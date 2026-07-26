@@ -1,13 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 import step1Img from '../assets/step-1.png';
+import step1DarkImg from '../assets/step-1-dark.png';
 import step2Img from '../assets/step-2.png';
 import step3Img from '../assets/step-3.png';
 import step4Img from '../assets/step-4.png';
 import step5Img from '../assets/step-5.png';
 ---
 
-<section id="features" class="w-full bg-bg font-sans pt-16 pb-32 overflow-hidden">
+<section id="features" class="w-full bg-bg dark:bg-black font-sans pt-16 pb-32 overflow-hidden transition-colors">
     <div class="max-w-[1200px] mx-auto px-6 sm:px-10 relative">
 
         <div class="relative w-full">
@@ -15,19 +16,19 @@ import step5Img from '../assets/step-5.png';
             <div class="hidden lg:block absolute top-0 bottom-0 pointer-events-none z-0 w-full">
 
                 <svg class="absolute top-[10px]" style="left: calc(-50vw + 50% + 130px);" xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 67 67" fill="none">
-                    <path d="M34 56V67H1.39876e-06L1.04907e-06 56H34Z" class="fill-black"/>
-                    <path d="M0 32H10.0561V64H1.39876e-06L0 32Z" class="fill-black"/>
-                    <path d="M33.4941 0C51.9957 0 66.9941 14.9985 66.9941 33.5C66.9941 51.8346 52.2651 66.7258 33.9941 66.9932L34 56C47.5 56 57 47 57 33.5C57 20 47 11 33.5 11C19.5 11 10.2655 21.9092 10 33H1.39876e-06C0.267335 14.729 15.1596 0 33.4941 0Z" class="fill-black"/>
+                    <path d="M34 56V67H1.39876e-06L1.04907e-06 56H34Z" class="fill-black dark:fill-white transition-colors"/>
+                    <path d="M0 32H10.0561V64H1.39876e-06L0 32Z" class="fill-black dark:fill-white transition-colors"/>
+                    <path d="M33.4941 0C51.9957 0 66.9941 14.9985 66.9941 33.5C66.9941 51.8346 52.2651 66.7258 33.9941 66.9932L34 56C47.5 56 57 47 57 33.5C57 20 47 11 33.5 11C19.5 11 10.2655 21.9092 10 33H1.39876e-06C0.267335 14.729 15.1596 0 33.4941 0Z" class="fill-black dark:fill-white transition-colors"/>
                 </svg>
 
-                <div class="absolute top-[77px] bottom-[261px] w-[10px] bg-black" style="left: calc(-50vw + 50% + 130px);"></div>
+                <div class="absolute top-[77px] bottom-[261px] w-[10px] bg-black dark:bg-white transition-colors" style="left: calc(-50vw + 50% + 130px);"></div>
 
-                <div class="absolute bottom-[221px] w-[40px] h-[40px] border-l-[10px] border-b-[10px] border-black rounded-bl-[40px]" style="left: calc(-50vw + 50% + 130px);"></div>
+                <div class="absolute bottom-[221px] w-[40px] h-[40px] border-l-[10px] border-b-[10px] border-black dark:border-white rounded-bl-[40px] transition-colors" style="left: calc(-50vw + 50% + 130px);"></div>
 
-                <div class="absolute bottom-[221px] h-[10px] bg-black" style="left: calc(-50vw + 50% + 170px); right: calc(100% - 680px);"></div>
+                <div class="absolute bottom-[221px] h-[10px] bg-black dark:bg-white transition-colors" style="left: calc(-50vw + 50% + 170px); right: calc(100% - 680px);"></div>
 
                 <svg class="absolute bottom-[210px] left-[679px] w-[26px] h-[32px]" viewBox="0 0 26 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M26 16L0 32V0L26 16Z" class="fill-black"/>
+                    <path d="M26 16L0 32V0L26 16Z" class="fill-black dark:fill-white transition-colors"/>
                 </svg>
 
             </div>
@@ -35,10 +36,10 @@ import step5Img from '../assets/step-5.png';
             <div class="relative z-10 w-full">
 
                 <header class="text-left mb-12 -mt-4 relative pl-[20px] lg:pl-[max(20px,calc(-50vw_+_50%_+_220px))]">
-                    <h2 class="text-black text-[48px] font-[800] leading-normal tracking-[-1.44px]">
+                    <h2 class="text-black dark:text-white text-[48px] font-[800] leading-normal tracking-[-1.44px] transition-colors">
                         Jak działa RentFriends?
                     </h2>
-                    <p class="text-gray text-[24px] font-[500] mt-1">
+                    <p class="text-gray dark:text-white/80 text-[24px] font-[500] mt-1 transition-colors">
                         Zobacz jakie to proste!
                     </p>
                 </header>
@@ -46,86 +47,91 @@ import step5Img from '../assets/step-5.png';
                 <div class="flex flex-col gap-12 lg:gap-16 w-full mt-[100px]">
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 items-center w-full relative">
-                        <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black bg-bg z-20" style="left: calc(-50vw + 50% + 114px);"></div>
+                        <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
-                            <Image src={step1Img} alt="Załóż konto" class="w-1/2 h-auto object-contain" />
+                            <div class="w-1/2 block dark:hidden">
+                                <Image src={step1Img} alt="Załóż konto" class="w-full h-auto object-contain" />
+                            </div>
+                            <div class="w-1/2 hidden dark:block">
+                                <Image src={step1DarkImg} alt="Załóż konto" class="w-full h-auto object-contain" />
+                            </div>
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
-                            <h3 class="text-black text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4">
+                            <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors">
                                 Załóż konto
                             </h3>
-                            <p class="text-gray text-[20px] font-[500] leading-snug lg:pr-10">
+                            <p class="text-gray dark:text-white/80 text-[20px] font-[500] leading-snug lg:pr-10 transition-colors">
                                 Szukasz pokoju czy masz wolne łóżko? Opisz swoje nawyki, rutynę i stwórz profil, który przyciągnie ludzi podobnych do Ciebie.
                             </p>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 items-center w-full relative">
-                        <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black bg-bg z-20" style="left: calc(-50vw + 50% + 114px);"></div>
+                        <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
                             <Image src={step2Img} alt="Swipe'uj profile" class="w-1/2 h-auto object-contain drop-shadow-xl" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
-                            <h3 class="text-black text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4">
+                            <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors">
                                 Swipe'uj profile
                             </h3>
-                            <p class="text-gray text-[20px] font-[500] leading-snug lg:pr-10">
+                            <p class="text-gray dark:text-white/80 text-[20px] font-[500] leading-snug lg:pr-10 transition-colors">
                                 Szybka ocena na interaktywnych kartach. Przesuwaj w prawo oferty, które spełniają Twoje kryteria.
                             </p>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 items-center w-full relative">
-                        <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black bg-bg z-20" style="left: calc(-50vw + 50% + 114px);"></div>
+                        <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
                             <Image src={step3Img} alt="Znajdź idealnego matcha" class="w-1/2 h-auto object-contain drop-shadow-xl scale-120" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
-                            <h3 class="text-black text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4">
+                            <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors">
                                 Znajdź idealnego matcha
                             </h3>
-                            <p class="text-gray text-[20px] font-[500] leading-snug lg:pr-10">
+                            <p class="text-gray dark:text-white/80 text-[20px] font-[500] leading-snug lg:pr-10 transition-colors">
                                 Nasz algorytm łączy osoby o podobnym stylu życia, gwarantując mniej konfliktów w przyszłości.
                             </p>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 items-center w-full relative">
-                        <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black bg-bg z-20" style="left: calc(-50vw + 50% + 114px);"></div>
+                        <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
                             <Image src={step4Img} alt="Czatuj" class="w-1/2 h-auto object-contain drop-shadow-xl" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
-                            <h3 class="text-black text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4">
+                            <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors">
                                 Czatuj
                             </h3>
-                            <p class="text-gray text-[20px] font-[500] leading-snug lg:pr-10">
+                            <p class="text-gray dark:text-white/80 text-[20px] font-[500] leading-snug lg:pr-10 transition-colors">
                                 Zanim podpiszecie umowę, poznajcie się bliżej w naszym bezpiecznym, wbudowanym czacie.
                             </p>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 items-center w-full relative">
-                        <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black bg-bg z-20" style="left: calc(-50vw + 50% + 114px);"></div>
+                        <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
                             <Image src={step5Img} alt="Zamieszkaj razem" class="w-1/2 h-auto object-contain drop-shadow-xl" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
-                            <h3 class="text-black text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4">
+                            <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors">
                                 Zamieszkaj razem:<br />
                                 rozdziel dyżury i podziel wydatki
                             </h3>
-                            <p class="text-gray text-[20px] font-[500] leading-snug lg:pr-10">
+                            <p class="text-gray dark:text-white/80 text-[20px] font-[500] leading-snug lg:pr-10 transition-colors">
                                 Rachunki, grafik sprzątania i zakupy w jednej aplikacji. Przejrzysty podział obowiązków to gwarancja spokoju w mieszkaniu.
                             </p>
                         </div>
@@ -136,52 +142,52 @@ import step5Img from '../assets/step-5.png';
 
             <div class="mt-24 lg:mt-[150px] pb-12 lg:pb-[20px] flex flex-col lg:flex-row items-center justify-between lg:pl-[120px] relative z-10">
 
-                <div class="mb-12 lg:mb-0 text-center lg:text-left relative bg-bg pr-4 lg:top-[-120px]">
-                    <h3 class="text-black text-[32px] sm:text-[40px] font-[800] tracking-tight">
+                <div class="mb-12 lg:mb-0 text-center lg:text-left relative bg-bg dark:bg-black pr-4 lg:top-[-120px] transition-colors">
+                    <h3 class="text-black dark:text-white text-[32px] sm:text-[40px] font-[800] tracking-tight transition-colors">
                         Dołącz do naszej społeczności
                     </h3>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 lg:gap-6 bg-bg lg:translate-x-[60px]">
-                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg rounded-[50px] rounded-br-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] flex p-[19px]">
+                <div class="grid grid-cols-2 gap-4 lg:gap-6 bg-bg dark:bg-black lg:translate-x-[60px] transition-colors">
+                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg dark:bg-white/[0.03] border border-transparent dark:border-white/10 rounded-[50px] rounded-br-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] dark:shadow-[0_0_33.5px_0_rgba(255,255,255,0.03)] flex p-[19px] transition-colors">
                         <div class="flex flex-col items-end justify-start w-full h-full text-right">
                             <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
                                 3k
                             </span>
-                            <span class="text-gray text-[12px] sm:text-[14px] font-[500] leading-tight mt-2">
+                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors">
                                 zadowolonych<br />użytkowników
                             </span>
                         </div>
                     </div>
 
-                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg rounded-[50px] rounded-bl-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] flex p-[19px]">
+                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg dark:bg-white/[0.03] border border-transparent dark:border-white/10 rounded-[50px] rounded-bl-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] dark:shadow-[0_0_33.5px_0_rgba(255,255,255,0.03)] flex p-[19px] transition-colors">
                         <div class="flex flex-col items-start justify-start w-full h-full text-left">
                             <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
                                 3
                             </span>
-                            <span class="text-gray text-[12px] sm:text-[14px] font-[500] leading-tight mt-2">
+                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors">
                                 miesiące<br />funkcjonowania<br />aplikacji
                             </span>
                         </div>
                     </div>
 
-                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg rounded-[50px] rounded-tr-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] flex p-[19px]">
+                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg dark:bg-white/[0.03] border border-transparent dark:border-white/10 rounded-[50px] rounded-tr-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] dark:shadow-[0_0_33.5px_0_rgba(255,255,255,0.03)] flex p-[19px] transition-colors">
                         <div class="flex flex-col items-end justify-start w-full h-full text-right">
                             <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
                                 4.6
                             </span>
-                            <span class="text-gray text-[12px] sm:text-[14px] font-[500] leading-tight mt-2">
+                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors">
                                 średnia ocen<br />na App Store
                             </span>
                         </div>
                     </div>
 
-                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg rounded-[50px] rounded-tl-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] flex p-[19px]">
+                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg dark:bg-white/[0.03] border border-transparent dark:border-white/10 rounded-[50px] rounded-tl-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] dark:shadow-[0_0_33.5px_0_rgba(255,255,255,0.03)] flex p-[19px] transition-colors">
                         <div class="flex flex-col items-start justify-start w-full h-full text-left">
                             <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
                                 0zł
                             </span>
-                            <span class="text-gray text-[12px] sm:text-[14px] font-[500] leading-tight mt-2">
+                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors">
                                 opłat za<br />użytkowanie
                             </span>
                         </div>

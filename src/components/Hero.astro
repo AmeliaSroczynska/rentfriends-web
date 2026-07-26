@@ -25,16 +25,15 @@ const softwareSchema = {
 <section class="relative w-full overflow-x-clip flex flex-col">
     <div class="w-full px-6 sm:px-10 mx-auto max-w-7xl pt-[70px] sm:min-h-[550px] md:min-h-[650px] lg:min-h-[823px] relative flex flex-col lg:flex-row items-start">
 
-        <Image src={purpleGradientImg} loading="eager" fetchpriority="high" alt="" aria-hidden="true" class="absolute -top-[50px] left-[-80px] lg:-top-[70px] lg:-left-[300px] w-[550px] lg:w-[764px] h-auto lg:h-[556px] -z-10 max-w-none pointer-events-none opacity-90 lg:opacity-100" />
-
+        <Image src={purpleGradientImg} loading="eager" fetchpriority="high" alt="" aria-hidden="true" class="absolute -top-[50px] left-[-80px] lg:-top-[70px] lg:-left-[300px] w-[550px] lg:w-[764px] h-auto lg:h-[556px] -z-10 max-w-none pointer-events-none opacity-90 lg:opacity-100 dark:hidden" />
         <div class="w-full sm:w-[70%] md:w-[65%] lg:w-[60%] flex flex-col items-start text-left z-10 relative">
             <div class="flex items-center gap-2 mb-6">
                 <div class="w-2 h-2 rounded-full bg-purple"></div>
-                <span class="text-purple font-medium text-[14px]">Wynajem bez niespodzianek</span>
+                <span class="text-purple dark:text-pink font-medium text-[14px] transition-colors">Wynajem bez niespodzianek</span>
             </div>
 
             <h1 class="text-[34px] min-[375px]:text-[38px] sm:text-[42px] lg:text-[69px] font-extrabold leading-[1.1] sm:leading-[1.05] tracking-tight mb-4">
-                <span class="text-black">
+                <span class="text-black dark:text-bg transition-colors">
                     Znajdź<br />
                     współlokatora,<br />
                     z<span class="hidden sm:inline">&nbsp;</span><span class="sm:hidden"> </span>którym
@@ -45,7 +44,7 @@ const softwareSchema = {
                 </span>
             </h1>
 
-            <p class="text-[15px] sm:text-[17.5px] text-gray max-w-[210px] min-[375px]:max-w-[220px] sm:max-w-[550px] mb-8 sm:mb-10 leading-relaxed font-normal">
+            <p class="text-[15px] sm:text-[17.5px] text-gray dark:text-bg/80 max-w-[210px] min-[375px]:max-w-[220px] sm:max-w-[550px] mb-8 sm:mb-10 leading-relaxed font-normal transition-colors">
                 Inteligentne dopasowanie, zarządzanie mieszkaniem i spokój ducha – wszystko w jednej aplikacji.
             </p>
 
@@ -53,7 +52,7 @@ const softwareSchema = {
                 <div class="w-[50%] min-[375px]:w-[55%] sm:w-full flex flex-col z-10 relative">
 
                     <div class="flex flex-row sm:w-auto items-center gap-1 sm:gap-4 mb-6 sm:mb-12">
-                        <a href="https://play.google.com/store/apps/details?id=app.dyzury&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" class="flex flex-1 sm:flex-none items-center justify-center sm:justify-start gap-1 sm:gap-3 bg-black text-white px-1 sm:px-5 py-1 sm:py-2.5 rounded-[6px] sm:rounded-[12px] border border-white/20 hover:opacity-90 hover:scale-[1.02] transition-all cursor-pointer h-[30px] sm:h-[60px] sm:min-w-[190px]">
+                        <a href="https://play.google.com/store/apps/details?id=app.dyzury&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" class="flex flex-1 sm:flex-none items-center justify-center sm:justify-start gap-1 sm:gap-3 bg-black dark:bg-white/5 text-white px-1 sm:px-5 py-1 sm:py-2.5 rounded-[6px] sm:rounded-[12px] border border-white/20 hover:opacity-90 hover:scale-[1.02] transition-all cursor-pointer h-[30px] sm:h-[60px] sm:min-w-[190px]">
                             <svg class="w-[14px] h-[14px] sm:w-8 sm:h-8 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.373 1.306C2.128 1.564 2 1.954 2 2.454v19.09c0 .5.128.89.373 1.148l.056.054 10.74-10.74v-.004L2.43 1.252l-.057.054z" fill="#4285F4"/>
                                 <path d="M17.435 15.656l-4.266-4.266v-.004L2.43 1.252A1.666 1.666 0 0 1 3.5.75c.427 0 .85.148 1.228.406l12.707 7.228z" fill="#34A853"/>
@@ -66,7 +65,7 @@ const softwareSchema = {
                             </div>
                         </a>
 
-                        <a href="https://apps.apple.com/gr/app/rentfriends-rent-rooms/id6502833411" target="_blank" rel="noopener noreferrer" class="flex flex-1 sm:flex-none items-center justify-center sm:justify-start gap-1 sm:gap-3 bg-black text-white px-1 sm:px-5 py-1 sm:py-2.5 rounded-[6px] sm:rounded-[12px] border border-white/20 hover:opacity-90 hover:scale-[1.02] transition-all cursor-pointer h-[30px] sm:h-[60px] sm:min-w-[190px]">
+                        <a href="https://apps.apple.com/gr/app/rentfriends-rent-rooms/id6502833411" target="_blank" rel="noopener noreferrer" class="flex flex-1 sm:flex-none items-center justify-center sm:justify-start gap-1 sm:gap-3 bg-black dark:bg-white/5 text-white px-1 sm:px-5 py-1 sm:py-2.5 rounded-[6px] sm:rounded-[12px] border border-white/20 hover:opacity-90 hover:scale-[1.02] transition-all cursor-pointer h-[30px] sm:h-[60px] sm:min-w-[190px]">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-[10px] sm:w-[26px] h-auto flex-shrink-0" viewBox="0 0 14 17" fill="none">
                                 <path d="M12.3713 14.5833C11.6797 15.6167 10.9463 16.625 9.82966 16.6417C8.71299 16.6667 8.35466 15.9833 7.08799 15.9833C5.81299 15.9833 5.42133 16.625 4.36299 16.6667C3.27133 16.7083 2.44633 15.5667 1.74633 14.5583C0.321325 12.5 -0.770342 8.70833 0.696325 6.15833C1.42132 4.89167 2.72132 4.09167 4.12966 4.06667C5.19632 4.05 6.21299 4.79167 6.87133 4.79167C7.52133 4.79167 8.75466 3.9 10.038 4.03333C10.5797 4.05833 12.0963 4.25 13.0713 5.68333C12.9963 5.73333 11.263 6.75 11.2797 8.85833C11.3047 11.375 13.488 12.2167 13.513 12.225C13.488 12.2833 13.163 13.425 12.363 14.5833M7.61299 1.25C8.22132 0.558333 9.22966 0.0333333 10.063 0C10.1713 0.975 9.77966 1.95833 9.19633 2.65833C8.62132 3.36667 7.67133 3.91667 6.73799 3.84167C6.61299 2.88333 7.07966 1.88333 7.61299 1.25Z" fill="white"/>
                             </svg>
@@ -77,12 +76,12 @@ const softwareSchema = {
                         </a>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-x-8 gap-y-1.5 sm:gap-y-3 text-[12px] sm:text-[14px] font-normal text-gray pb-6 sm:pb-0">
-                        <span><strong class="font-bold text-black text-[16px] sm:text-[20px] mr-1.5 sm:mr-2">3000+</strong>użytkowników</span>
-                        <span class="hidden sm:block w-[1px] h-4 bg-gray/30"></span>
-                        <span><strong class="font-bold text-black text-[16px] sm:text-[20px] mr-1.5 sm:mr-2">4.6★</strong>ocena</span>
-                        <span class="hidden sm:block w-[1px] h-4 bg-gray/30"></span>
-                        <span><strong class="font-bold text-black text-[16px] sm:text-[20px] mr-1.5 sm:mr-2">Bezpłatna</strong>aplikacja</span>
+                    <div class="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-x-8 gap-y-1.5 sm:gap-y-3 text-[12px] sm:text-[14px] font-normal text-gray dark:text-bg/80 pb-6 sm:pb-0 transition-colors">
+                        <span><strong class="font-bold text-black dark:text-bg text-[16px] sm:text-[20px] mr-1.5 sm:mr-2">3000+</strong>użytkowników</span>
+                        <span class="hidden sm:block w-[1px] h-4 bg-gray/30 dark:bg-white/20 transition-colors"></span>
+                        <span><strong class="font-bold text-black dark:text-bg text-[16px] sm:text-[20px] mr-1.5 sm:mr-2">4.6★</strong>ocena</span>
+                        <span class="hidden sm:block w-[1px] h-4 bg-gray/30 dark:bg-white/20 transition-colors"></span>
+                        <span><strong class="font-bold text-black dark:text-bg text-[16px] sm:text-[20px] mr-1.5 sm:mr-2">Bezpłatna</strong>aplikacja</span>
                     </div>
                 </div>
 
@@ -105,7 +104,7 @@ const softwareSchema = {
         </div>
     </div>
 
-    <div class="w-full h-[0.3px] bg-gray/30 relative z-30"></div>
+    <div class="w-full h-[0.3px] bg-gray/30 dark:bg-white/20 relative z-30 transition-colors"></div>
 
     <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 </section>

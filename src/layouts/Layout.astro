@@ -46,8 +46,31 @@ const socialImageURL = new URL(image, Astro.site ?? Astro.url);
 	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
 	<meta name="apple-itunes-app" content="app-id=6502833411">
+
+	<script is:inline>
+		const setDarkMode = () => {
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+
+			if (theme === 'dark') {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		};
+
+		setDarkMode();
+		document.addEventListener('astro:after-swap', setDarkMode);
+	</script>
 </head>
-<body class="bg-bg text-black font-sans antialiased min-h-screen">
+<body class="bg-bg text-black dark:bg-black dark:text-bg font-sans antialiased min-h-screen transition-colors duration-300">
 <slot />
 </body>
 </html>

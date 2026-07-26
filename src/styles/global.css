@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
     --color-black: #0F0F0F;
     --color-bg: #F4F2EE;
