@@ -8,13 +8,47 @@ export interface Props {
 }
 
 const {
-	title = "RentFriends - Inteligentna platforma dopasowywania współlokatorów",
-	description = "Znajdź idealnego współlokatora i zarządzaj domowymi obowiązkami bez stresu. Inteligentne dopasowanie, checklisty i spokój ducha – wszystko w jednej aplikacji.",
+	title = "RentFriends (Rent Friends) - Inteligentna platforma dopasowywania współlokatorów",
+	description = "RentFriends, występujące również jako Rent Friends, pomaga znaleźć idealnego współlokatora i opanować domowe obowiązki bez stresu. Sprawdź naszą aplikację!",
 	image = "/og-image.jpg"
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const socialImageURL = new URL(image, Astro.site ?? Astro.url);
+
+const brandSchema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "WebSite",
+			"@id": `${canonicalURL}#website`,
+			"url": canonicalURL.toString(),
+			"name": "RentFriends",
+			"alternateName": [
+				"Rent Friends",
+				"RentFriends.app"
+			]
+		},
+		{
+			"@type": "Organization",
+			"@id": `${canonicalURL}#organization`,
+			"name": "RentFriends",
+			"alternateName": [
+				"Rent Friends",
+				"RentFriends.app"
+			],
+			"url": canonicalURL.toString(),
+			"logo": new URL("/logo.svg", Astro.site ?? Astro.url).toString(),
+			"sameAs": [
+				"https://www.facebook.com/rentfriendsapp",
+				"https://www.instagram.com/rentfriends.app",
+				"https://www.tiktok.com/@rentfriends.app",
+				"https://play.google.com/store/apps/details?id=app.dyzury",
+				"https://apps.apple.com/gr/app/rentfriends-rent-rooms/id6502833411"
+			]
+		}
+	]
+};
 ---
 
 <!doctype html>
@@ -29,6 +63,7 @@ const socialImageURL = new URL(image, Astro.site ?? Astro.url);
 	<meta name="description" content={description} />
 	<link rel="canonical" href={canonicalURL} />
 
+	<meta property="og:site_name" content="RentFriends" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={canonicalURL} />
 	<meta property="og:title" content={title} />
@@ -46,6 +81,8 @@ const socialImageURL = new URL(image, Astro.site ?? Astro.url);
 	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
 	<meta name="apple-itunes-app" content="app-id=6502833411">
+
+	<script type="application/ld+json" set:html={JSON.stringify(brandSchema)} />
 
 	<script is:inline>
 		const setDarkMode = () => {

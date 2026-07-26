@@ -14,5 +14,6 @@ export const faqsCol2 = [
     { q: "Czy mogę ustawić różne zadania dla różnych dyżurów?", a: "Tak, aplikacja pozwala na przydzielanie różnych zadań do różnych dyżurów. Możesz ustawić, że w jednym tygodniu jeden współlokator sprząta kuchnię, a drugi łazienkę." },
     { q: "Czy mogę ustawić, żeby dyżury były co dwa tygodnie?", a: "Dyżury przypisują się automatycznie co tydzień, ale można ustawić na poszczególnych zadaniach, żeby były wykonywane co dwa tygodnie." },
     { q: "Czy mogę usunąć współlokatora z dyżuru?", a: "Tak, można usunąć współlokatora z dyżuru w dowolnym momencie." },
+    { q: "Czy Rent Friends i RentFriends to ta sama aplikacja?", a: "Tak, RentFriends (często zapisywane lub wyszukiwane ze spacją jako Rent Friends) to ta sama aplikacja do szukania współlokatorów, pokoi i mieszkań oraz wspólnego zarządzania domem."},
     { q: "Czy mogę zmienić przypisane zadanie w trakcie tygodnia?", a: "Tak, zadania można edytować w każdej chwili, dostosowując harmonogram do bieżących potrzeb. Zadania zostaną zaktualizowane w obecnie trwającym dyżurze oraz w przyszłych." }
 ];
