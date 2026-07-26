@@ -69,6 +69,13 @@ const socialImageURL = new URL(image, Astro.site ?? Astro.url);
 		setDarkMode();
 		document.addEventListener('astro:after-swap', setDarkMode);
 	</script>
+
+	<script
+		is:inline
+		src="https://cdn.counter.dev/script.js"
+		data-id="e8ae0803-d06f-4542-bab6-fec00026bafa"
+		data-utcoffset="2">
+	</script>
 </head>
 <body class="bg-bg text-black dark:bg-black dark:text-bg font-sans antialiased min-h-screen transition-colors duration-300">
 <slot />
