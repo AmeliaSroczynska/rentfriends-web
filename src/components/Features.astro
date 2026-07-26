@@ -6,6 +6,10 @@ import step2Img from '../assets/step-2.png';
 import step3Img from '../assets/step-3.png';
 import step4Img from '../assets/step-4.png';
 import step5Img from '../assets/step-5.png';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="features" class="w-full bg-bg dark:bg-black font-sans pt-16 pb-32 overflow-hidden transition-colors">
@@ -37,10 +41,10 @@ import step5Img from '../assets/step-5.png';
 
                 <header class="text-left mb-12 -mt-4 relative pl-[20px] lg:pl-[max(20px,calc(-50vw_+_50%_+_220px))]">
                     <h2 class="text-black dark:text-white text-[48px] font-[800] leading-normal tracking-[-1.44px] transition-colors">
-                        Jak działa RentFriends?
+                        {t('features.title')}
                     </h2>
                     <p class="text-gray dark:text-white/80 text-[24px] font-[500] mt-1 transition-colors">
-                        Zobacz jakie to proste!
+                        {t('features.subtitle')}
                     </p>
                 </header>
 
@@ -51,19 +55,19 @@ import step5Img from '../assets/step-5.png';
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
                             <div class="w-1/2 block dark:hidden">
-                                <Image src={step1Img} alt="Załóż konto" class="w-full h-auto object-contain" />
+                                <Image src={step1Img} alt={t('features.step1.title')} class="w-full h-auto object-contain" />
                             </div>
                             <div class="w-1/2 hidden dark:block">
-                                <Image src={step1DarkImg} alt="Załóż konto" class="w-full h-auto object-contain" />
+                                <Image src={step1DarkImg} alt={t('features.step1.title')} class="w-full h-auto object-contain" />
                             </div>
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
                             <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors">
-                                Załóż konto
+                                {t('features.step1.title')}
                             </h3>
                             <p class="text-gray dark:text-white/80 text-[20px] font-[500] leading-snug lg:pr-10 transition-colors">
-                                Szukasz pokoju czy masz wolne łóżko? Opisz swoje nawyki, rutynę i stwórz profil, który przyciągnie ludzi podobnych do Ciebie.
+                                {t('features.step1.desc')}
                             </p>
                         </div>
                     </div>
@@ -72,15 +76,15 @@ import step5Img from '../assets/step-5.png';
                         <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
-                            <Image src={step2Img} alt="Swipe'uj profile" class="w-1/2 h-auto object-contain drop-shadow-xl" />
+                            <Image src={step2Img} alt={t('features.step2.title')} class="w-1/2 h-auto object-contain drop-shadow-xl" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
                             <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors">
-                                Swipe'uj profile
+                                {t('features.step2.title')}
                             </h3>
                             <p class="text-gray dark:text-white/80 text-[20px] font-[500] leading-snug lg:pr-10 transition-colors">
-                                Szybka ocena na interaktywnych kartach. Przesuwaj w prawo oferty, które spełniają Twoje kryteria.
+                                {t('features.step2.desc')}
                             </p>
                         </div>
                     </div>
@@ -89,15 +93,15 @@ import step5Img from '../assets/step-5.png';
                         <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
-                            <Image src={step3Img} alt="Znajdź idealnego matcha" class="w-1/2 h-auto object-contain drop-shadow-xl scale-120" />
+                            <Image src={step3Img} alt={t('features.step3.title')} class="w-1/2 h-auto object-contain drop-shadow-xl scale-120" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
                             <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors">
-                                Znajdź idealnego matcha
+                                {t('features.step3.title')}
                             </h3>
                             <p class="text-gray dark:text-white/80 text-[20px] font-[500] leading-snug lg:pr-10 transition-colors">
-                                Nasz algorytm łączy osoby o podobnym stylu życia, gwarantując mniej konfliktów w przyszłości.
+                                {t('features.step3.desc')}
                             </p>
                         </div>
                     </div>
@@ -106,15 +110,15 @@ import step5Img from '../assets/step-5.png';
                         <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
-                            <Image src={step4Img} alt="Czatuj" class="w-1/2 h-auto object-contain drop-shadow-xl" />
+                            <Image src={step4Img} alt={t('features.step4.title')} class="w-1/2 h-auto object-contain drop-shadow-xl" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
                             <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors">
-                                Czatuj
+                                {t('features.step4.title')}
                             </h3>
                             <p class="text-gray dark:text-white/80 text-[20px] font-[500] leading-snug lg:pr-10 transition-colors">
-                                Zanim podpiszecie umowę, poznajcie się bliżej w naszym bezpiecznym, wbudowanym czacie.
+                                {t('features.step4.desc')}
                             </p>
                         </div>
                     </div>
@@ -123,16 +127,14 @@ import step5Img from '../assets/step-5.png';
                         <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
-                            <Image src={step5Img} alt="Zamieszkaj razem" class="w-1/2 h-auto object-contain drop-shadow-xl" />
+                            <Image src={step5Img} alt={t('features.step5.title')} class="w-1/2 h-auto object-contain drop-shadow-xl" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
-                            <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors">
-                                Zamieszkaj razem:<br />
-                                rozdziel dyżury i podziel wydatki
+                            <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors" set:html={t('features.step5.title')}>
                             </h3>
                             <p class="text-gray dark:text-white/80 text-[20px] font-[500] leading-snug lg:pr-10 transition-colors">
-                                Rachunki, grafik sprzątania i zakupy w jednej aplikacji. Przejrzysty podział obowiązków to gwarancja spokoju w mieszkaniu.
+                                {t('features.step5.desc')}
                             </p>
                         </div>
                     </div>
@@ -142,9 +144,10 @@ import step5Img from '../assets/step-5.png';
 
             <div class="mt-24 lg:mt-[150px] pb-12 lg:pb-[20px] flex flex-col lg:flex-row items-center justify-between lg:pl-[120px] relative z-10">
 
-                <div class="mb-12 lg:mb-0 text-center lg:text-left relative bg-bg dark:bg-black pr-4 lg:top-[-120px] transition-colors">
+                <!-- Dodano lg:whitespace-nowrap, aby zapobiec łamaniu tekstu na 2 linie -->
+                <div class="mb-12 lg:mb-0 w-full lg:flex-1 text-center lg:text-right relative bg-bg dark:bg-black pr-4 lg:pr-12 lg:top-[-120px] transition-colors lg:whitespace-nowrap">
                     <h3 class="text-black dark:text-white text-[32px] sm:text-[40px] font-[800] tracking-tight transition-colors">
-                        Dołącz do naszej społeczności
+                        {t('features.community.title')}
                     </h3>
                 </div>
 
@@ -154,8 +157,7 @@ import step5Img from '../assets/step-5.png';
                             <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
                                 3k
                             </span>
-                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors">
-                                zadowolonych<br />użytkowników
+                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors" set:html={t('features.stats.users')}>
                             </span>
                         </div>
                     </div>
@@ -165,8 +167,7 @@ import step5Img from '../assets/step-5.png';
                             <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
                                 3
                             </span>
-                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors">
-                                miesiące<br />funkcjonowania<br />aplikacji
+                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors" set:html={t('features.stats.months')}>
                             </span>
                         </div>
                     </div>
@@ -176,8 +177,7 @@ import step5Img from '../assets/step-5.png';
                             <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
                                 4.6
                             </span>
-                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors">
-                                średnia ocen<br />na App Store
+                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors" set:html={t('features.stats.rating')}>
                             </span>
                         </div>
                     </div>
@@ -187,8 +187,7 @@ import step5Img from '../assets/step-5.png';
                             <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
                                 0zł
                             </span>
-                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors">
-                                opłat za<br />użytkowanie
+                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors" set:html={t('features.stats.fees')}>
                             </span>
                         </div>
                     </div>

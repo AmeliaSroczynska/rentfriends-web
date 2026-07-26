@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="w-full py-12 px-6 lg:px-[100px]">
@@ -13,13 +17,13 @@
 
         <div class="text-center sm:text-left flex flex-col justify-center">
             <p class="text-[13px] font-semibold uppercase tracking-[0.08em] mb-1 text-white/70">
-                NAGRODA BRANŻOWA
+                {t('award.label')}
             </p>
             <h2 class="text-[26px] sm:text-[34px] leading-tight font-bold mb-1.5">
-                Mieszkanicznik Roku 2023 - Innowacja Roku
+                {t('award.title')}
             </h2>
             <p class="text-[15px] sm:text-base text-white/70 font-normal">
-                Najwięcej głosów w kategorii Innowacja Roku
+                {t('award.desc')}
             </p>
         </div>
 

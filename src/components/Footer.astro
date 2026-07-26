@@ -1,3 +1,11 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const isEn = lang === 'en';
+---
+
 <footer class="w-full mt-0 bg-[image:var(--background-image-gradient)] text-white font-sans relative transition-colors duration-300">
     <div class="absolute top-0 left-0 w-full h-[50px] bg-bg dark:bg-black rounded-b-[35px] transition-colors duration-300"></div>
 
@@ -13,11 +21,7 @@
                     <span class="text-[16px] font-bold tracking-tight leading-none">RentFriends</span>
                 </div>
 
-                <p class="mt-[20px] text-[14px] font-normal leading-[1.5] max-w-[300px]">
-                    Inteligentna platforma dopasowywania<br />
-                    współlokatorów i zarządzania życiem<br />
-                    w mieszkaniu.
-                </p>
+                <p class="mt-[20px] text-[14px] font-normal leading-[1.5] max-w-[300px]" set:html={t('footer.description')}></p>
 
                 <div class="mt-[27px] flex items-center gap-3">
                     <a href="https://www.facebook.com/rentfriendsapp" target="_blank" rel="noopener noreferrer" class="w-[36px] h-[36px] bg-white rounded-full flex items-center justify-center hover:opacity-90 transition-opacity">
@@ -34,20 +38,20 @@
 
             <div class="flex flex-row gap-x-[80px] sm:gap-x-[120px] lg:gap-x-[250px] flex-shrink-0 lg:ml-[100px]">
                 <div class="flex flex-col">
-                    <h3 class="text-[14px] font-extrabold mb-[18px] tracking-wide leading-none">Aplikacja</h3>
+                    <h3 class="text-[14px] font-extrabold mb-[18px] tracking-wide leading-none">{t('footer.app')}</h3>
                     <ul class="flex flex-col gap-[18px]">
-                        <li class="leading-none"><a href="/" class="text-[14px] font-normal transition-opacity hover:underline">Strona główna</a></li>
-                        <li class="leading-none"><a href="/#features" class="text-[14px] font-normal transition-opacity hover:underline">Funkcje</a></li>
-                        <li class="leading-none"><a href="/#reviews" class="text-[14px] font-normal transition-opacity hover:underline">Opinie</a></li>
-                        <li class="leading-none"><a href="/#faq" class="text-[14px] font-normal transition-opacity hover:underline">FAQ</a></li>
+                        <li class="leading-none"><a href={isEn ? '/en/' : '/'} class="text-[14px] font-normal transition-opacity hover:underline">{t('nav.home')}</a></li>
+                        <li class="leading-none"><a href={isEn ? '/en/#features' : '/#features'} class="text-[14px] font-normal transition-opacity hover:underline">{t('nav.features')}</a></li>
+                        <li class="leading-none"><a href={isEn ? '/en/#reviews' : '/#reviews'} class="text-[14px] font-normal transition-opacity hover:underline">{t('nav.reviews')}</a></li>
+                        <li class="leading-none"><a href={isEn ? '/en/#faq' : '/#faq'} class="text-[14px] font-normal transition-opacity hover:underline">{t('nav.faq')}</a></li>
                     </ul>
                 </div>
 
                 <div class="flex flex-col">
-                    <h3 class="text-[14px] font-extrabold mb-[18px] tracking-wide leading-none">Prawne</h3>
+                    <h3 class="text-[14px] font-extrabold mb-[18px] tracking-wide leading-none">{t('footer.legal')}</h3>
                     <ul class="flex flex-col gap-[18px]">
-                        <li class="leading-none"><a href="/privacy-policy" class="text-[14px] font-normal transition-opacity hover:underline">Polityka prywatności</a></li>
-                        <li class="leading-none"><a href="/terms-of-service" class="text-[14px] font-normal transition-opacity hover:underline">Regulamin</a></li>
+                        <li class="leading-none"><a href={isEn ? '/en/privacy-policy' : '/privacy-policy'} class="text-[14px] font-normal transition-opacity hover:underline">{t('footer.privacy')}</a></li>
+                        <li class="leading-none"><a href={isEn ? '/en/terms-of-service' : '/terms-of-service'} class="text-[14px] font-normal transition-opacity hover:underline">{t('footer.terms')}</a></li>
                     </ul>
                 </div>
 

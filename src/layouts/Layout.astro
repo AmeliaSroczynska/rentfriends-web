@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { getLangFromUrl } from '../i18n/utils';
 
 export interface Props {
 	title?: string;
@@ -12,6 +13,8 @@ const {
 	description = "RentFriends, występujące również jako Rent Friends, pomaga znaleźć idealnego współlokatora i opanować domowe obowiązki bez stresu. Sprawdź naszą aplikację!",
 	image = "/og-image.jpg"
 } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const socialImageURL = new URL(image, Astro.site ?? Astro.url);
@@ -52,7 +55,7 @@ const brandSchema = {
 ---
 
 <!doctype html>
-<html lang="pl" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
