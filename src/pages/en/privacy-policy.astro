@@ -11,7 +11,7 @@ const t = useTranslations(lang);
 <Layout title={t('privacy.title')}>
     <Navbar />
 
-    <main class="w-full bg-bg font-sans pt-[120px] pb-[100px] px-6 lg:px-[100px]">
+    <main class="w-full bg-bg dark:bg-black font-sans pt-[120px] pb-[100px] px-6 lg:px-[100px] transition-colors duration-300">
 
         <div class="max-w-4xl mx-auto">
 
@@ -19,50 +19,50 @@ const t = useTranslations(lang);
                 <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-transparent bg-clip-text bg-[image:var(--background-image-gradient)] pb-1 leading-tight">
                     {t('privacy.title')}
                 </h1>
-                <p class="text-base text-gray font-medium">
-                    {t('privacy.effective')} <span class="text-black font-bold">{t('privacy.date')}</span>
+                <p class="text-base text-gray dark:text-white/80 font-medium transition-colors">
+                    {t('privacy.effective')} <span class="text-black dark:text-white font-bold">{t('privacy.date')}</span>
                 </p>
             </header>
 
-            <hr class="border-gray/30 mb-10" />
+            <hr class="border-gray/30 dark:border-white/15 mb-10 transition-colors" />
 
             <div class="space-y-12">
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s1.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s1.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed transition-colors">
                         <p class="mb-3">{t('privacy.s1.p1')}</p>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-4" set:html={t('privacy.s1.l1')}></ul>
                         <p class="mb-3">{t('privacy.s1.p2')}</p>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-4" set:html={t('privacy.s1.l2')}></ul>
                         <p>{t('privacy.s1.p3')}</p>
-                        <p class="mt-4 p-3 bg-white/50 rounded-xl inline-block border border-gray/20 text-sm md:text-base" set:html={t('privacy.s1.contact')}></p>
+                        <p class="mt-4 p-3 bg-white/50 dark:bg-white/5 rounded-xl inline-block border border-gray/20 dark:border-white/15 text-sm md:text-base transition-colors" set:html={t('privacy.s1.contact')}></p>
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s2.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s2.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed transition-colors">
                         <p class="mb-5">{t('privacy.s2.p1')}</p>
 
-                        <h3 class="text-lg md:text-xl font-bold text-black mt-6 mb-3 tracking-tight">{t('privacy.s2.h1')}</h3>
+                        <h3 class="text-lg md:text-xl font-bold text-black dark:text-white mt-6 mb-3 tracking-tight transition-colors">{t('privacy.s2.h1')}</h3>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-5" set:html={t('privacy.s2.l1')}></ul>
 
-                        <h3 class="text-lg md:text-xl font-bold text-black mt-6 mb-3 tracking-tight">{t('privacy.s2.h2')}</h3>
+                        <h3 class="text-lg md:text-xl font-bold text-black dark:text-white mt-6 mb-3 tracking-tight transition-colors">{t('privacy.s2.h2')}</h3>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-5" set:html={t('privacy.s2.l2')}></ul>
 
-                        <h3 class="text-lg md:text-xl font-bold text-black mt-6 mb-3 tracking-tight">{t('privacy.s2.h3')}</h3>
+                        <h3 class="text-lg md:text-xl font-bold text-black dark:text-white mt-6 mb-3 tracking-tight transition-colors">{t('privacy.s2.h3')}</h3>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5" set:html={t('privacy.s2.l3')}></ul>
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s3.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s3.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed transition-colors">
                         <p class="mb-3">{t('privacy.s3.p1')}</p>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-5" set:html={t('privacy.s3.l1')}></ul>
                         <p class="mb-3">{t('privacy.s3.p2')}</p>
@@ -70,33 +70,33 @@ const t = useTranslations(lang);
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s4.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed space-y-3">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s4.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed space-y-3 transition-colors">
                         <p>{t('privacy.s4.p1')}</p>
                         <p>{t('privacy.s4.p2')}</p>
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s5.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s5.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed transition-colors">
                         <p class="mb-3">{t('privacy.s5.p1')}</p>
-                        <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-4 font-medium text-black" set:html={t('privacy.s5.l1')}></ul>
+                        <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-4 font-medium text-black dark:text-white transition-colors" set:html={t('privacy.s5.l1')}></ul>
                         <p class="mb-2">{t('privacy.s5.p2')}</p>
                         <p>{t('privacy.s5.p3')}</p>
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s6.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed space-y-3">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s6.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed space-y-3 transition-colors">
                         <p>{t('privacy.s6.p1')}</p>
                         <p>{t('privacy.s6.p2')}</p>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-3" set:html={t('privacy.s6.l1')}></ul>
@@ -107,84 +107,84 @@ const t = useTranslations(lang);
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s7.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s7.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed transition-colors">
                         <p class="mb-3">{t('privacy.s7.p1')}</p>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-3" set:html={t('privacy.s7.l1')}></ul>
                         <p>{t('privacy.s7.p2')}</p>
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s8.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s8.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed transition-colors">
                         <p class="mb-3">{t('privacy.s8.p1')}</p>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-4" set:html={t('privacy.s8.l1')}></ul>
-                        <p class="p-3 bg-white/50 rounded-xl inline-block border border-gray/20 text-sm md:text-base" set:html={t('privacy.s8.contact')}></p>
+                        <p class="p-3 bg-white/50 dark:bg-white/5 rounded-xl inline-block border border-gray/20 dark:border-white/15 text-sm md:text-base transition-colors" set:html={t('privacy.s8.contact')}></p>
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s9.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s9.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed transition-colors">
                         <p>{t('privacy.s9.p1')}</p>
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s10.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s10.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed transition-colors">
                         <p class="mb-3">{t('privacy.s10.p1')}</p>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5" set:html={t('privacy.s10.l1')}></ul>
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s11.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s11.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed transition-colors">
                         <p class="mb-3">{t('privacy.s11.p1')}</p>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-3" set:html={t('privacy.s11.l1')}></ul>
                         <p>{t('privacy.s11.p2')}</p>
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s12.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed space-y-2">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s12.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed space-y-2 transition-colors">
                         <p set:html={t('privacy.s12.p1')}></p>
                         <p>{t('privacy.s12.p2')}</p>
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s13.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s13.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed transition-colors">
                         <p class="mb-3">{t('privacy.s13.p1')}</p>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5 mb-3" set:html={t('privacy.s13.l1')}></ul>
                         <p set:html={t('privacy.s13.p2')}></p>
                     </div>
                 </section>
 
-                <hr class="border-gray/20" />
+                <hr class="border-gray/20 dark:border-white/15 transition-colors" />
 
                 <section>
-                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black mb-4">{t('privacy.s14.title')}</h2>
-                    <div class="pl-4 md:pl-6 text-base text-gray leading-relaxed">
+                    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white mb-4 transition-colors">{t('privacy.s14.title')}</h2>
+                    <div class="pl-4 md:pl-6 text-base text-gray dark:text-white/80 leading-relaxed transition-colors">
                         <p class="mb-3">{t('privacy.s14.p1')}</p>
                         <p class="mb-3">{t('privacy.s14.p2')}</p>
                         <ul class="list-disc marker:text-blue pl-6 space-y-1.5" set:html={t('privacy.s14.l1')}></ul>
@@ -197,3 +197,11 @@ const t = useTranslations(lang);
 
     <Footer />
 </Layout>
+
+<style is:global>
+    html.dark main strong.text-black,
+    html.dark main span.text-black,
+    html.dark main a.text-black {
+        color: var(--color-bg) !important;
+    }
+</style>

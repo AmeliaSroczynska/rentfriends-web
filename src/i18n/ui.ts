@@ -76,7 +76,7 @@ export const ui = {
 
         'privacy.s1.title': '§1. Postanowienia ogólne',
         'privacy.s1.p1': 'Niniejsza Polityka Prywatności określa zasady przetwarzania danych osobowych użytkowników korzystających z:',
-        'privacy.s1.l1': '<li>strony internetowej <strong class="text-black font-semibold">rentfriends.app</strong>,</li><li>aplikacji mobilnej RentFriends,</li><li>formularzy rejestracyjnych oraz waiting listy,</li><li>usług powiązanych z platformą RentFriends.</li>',
+        'privacy.s1.l1': '<li>strony internetowej<strong class="text-black dark:text-white font-semibold"> rentfriends.app</strong>,</li><li>aplikacji mobilnej RentFriends,</li><li>formularzy rejestracyjnych oraz waiting listy,</li><li>usług powiązanych z platformą RentFriends.</li>',
         'privacy.s1.p2': 'Administratorami danych osobowych są:',
         'privacy.s1.l2': '<li>Aleksandra Kaziniec,</li><li>Marvin Ruciński,</li>',
         'privacy.s1.p3': 'prowadzący platformę RentFriends, zwani dalej „Administratorami”.',
@@ -158,7 +158,7 @@ export const ui = {
 
         'terms.s1.title': '§1. Postanowienia ogólne',
         'terms.s1.p1': 'Regulamin określa zasady korzystania z:',
-        'terms.s1.l1': '<li>strony internetowej <strong class="text-black font-semibold">rentfriends.app</strong>,</li><li>aplikacji mobilnej RentFriends,</li><li>formularzy rejestracyjnych oraz waiting listy,</li><li>usług powiązanych z platformą RentFriends.</li>',
+        'terms.s1.l1': '<li>strony internetowej <strong class="text-black dark:text-white font-semibold"> rentfriends.app</strong>,</li><li>aplikacji mobilnej RentFriends,</li><li>formularzy rejestracyjnych oraz waiting listy,</li><li>usług powiązanych z platformą RentFriends.</li>',
         'terms.s1.p2': 'Korzystanie z usług aplikacji oraz platformy oznacza akceptację niniejszego Regulaminu.',
         'terms.s1.contact': 'Kontakt z Administratorami: <a href="mailto:kontakt@rentfriends.app" class="font-bold text-blue hover:underline">kontakt@rentfriends.app</a>',
 
@@ -281,7 +281,7 @@ export const ui = {
 
         'privacy.s1.title': '§1. General provisions',
         'privacy.s1.p1': 'This Privacy Policy sets out the rules for processing the personal data of users using:',
-        'privacy.s1.l1': '<li>the <strong class="text-black font-semibold">rentfriends.app</strong> website,</li><li>the RentFriends mobile application,</li><li>registration forms and waitlists,</li><li>services related to the RentFriends platform.</li>',
+        'privacy.s1.l1': '<li>the <strong class="text-black dark:text-white font-semibold"> rentfriends.app</strong> website,</li><li>the RentFriends mobile application,</li><li>registration forms and waitlists,</li><li>services related to the RentFriends platform.</li>',
         'privacy.s1.p2': 'The Data Controllers are:',
         'privacy.s1.l2': '<li>Aleksandra Kaziniec,</li><li>Marvin Ruciński,</li>',
         'privacy.s1.p3': 'operating the RentFriends platform, hereinafter referred to as the "Controllers".',
@@ -363,7 +363,7 @@ export const ui = {
 
         'terms.s1.title': '§1. General provisions',
         'terms.s1.p1': 'These Terms set out the rules for using:',
-        'terms.s1.l1': '<li>the <strong class="text-black font-semibold">rentfriends.app</strong> website,</li><li>the RentFriends mobile application,</li><li>registration forms and waitlists,</li><li>services related to the RentFriends platform.</li>',
+        'terms.s1.l1': '<li>the <strong class="text-black dark:text-white font-semibold"> rentfriends.app</strong> website,</li><li>the RentFriends mobile application,</li><li>registration forms and waitlists,</li><li>services related to the RentFriends platform.</li>',
         'terms.s1.p2': 'Using the application and platform services constitutes acceptance of these Terms.',
         'terms.s1.contact': 'Contact the Controllers: <a href="mailto:kontakt@rentfriends.app" class="font-bold text-blue hover:underline">kontakt@rentfriends.app</a>',
 
