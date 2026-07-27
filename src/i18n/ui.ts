@@ -16,8 +16,8 @@ export const ui = {
         'nav.menu': 'Menu',
 
         'hero.subtitle': 'Wynajem bez niespodzianek',
-        'hero.title.part1': 'Znajdź<br />współlokatora,<br />z<span class="hidden sm:inline">&nbsp;</span><span class="sm:hidden"> </span>którym',
-        'hero.title.part2': 'mieszkanie<span class="hidden sm:inline">&nbsp;</span><br class="block sm:hidden" />będzie<br />przyjemnością!',
+        'hero.title.part1': 'Znajdź<br class="block lg:hidden xl:block" /><span class="hidden lg:inline xl:hidden"> </span>współlokatora,<br />z którym',
+        'hero.title.part2': 'mieszkanie<br class="hidden lg:block xl:hidden" /><span class="inline lg:hidden xl:inline"> </span>będzie<br />przyjemnością!',
         'hero.description': 'Inteligentne dopasowanie, zarządzanie mieszkaniem i spokój ducha – wszystko w jednej aplikacji.',
         'hero.download.google': 'Pobierz z',
         'hero.download.apple': 'Pobierz w',
@@ -80,8 +80,8 @@ export const ui = {
         'nav.menu': 'Menu',
 
         'hero.subtitle': 'Renting without surprises',
-        'hero.title.part1': 'Find a<br />roommate<br />you\'ll<span class="hidden sm:inline">&nbsp;</span><span class="sm:hidden"> </span>actually',
-        'hero.title.part2': 'enjoy<span class="hidden sm:inline">&nbsp;</span><br class="block sm:hidden" />living<br />with!',
+        'hero.title.part1': 'Find a<br class="block lg:hidden xl:block" /><span class="hidden lg:inline xl:hidden"> </span>roommate<br />you\'ll actually',
+        'hero.title.part2': 'enjoy<br class="hidden lg:block xl:hidden" /><span class="inline lg:hidden xl:inline"> </span>living<br />with!',
         'hero.description': 'Smart matching, apartment management, and peace of mind – all in one app.',
         'hero.download.google': 'Get it on',
         'hero.download.apple': 'Download on the',
