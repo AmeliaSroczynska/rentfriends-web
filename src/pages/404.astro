@@ -4,12 +4,16 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import purpleGradientImg from '../assets/purple-gradient.png';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Layout title="404 - Strona nie znaleziona | RentFriends" description="Strona, której szukasz, nie istnieje lub została przeniesiona.">
+<Layout title={t('page404.title')} description={t('page404.description')}>
     <Navbar />
 
-    <main class="w-full flex flex-col overflow-x-hidden">
+    <main class="w-full flex flex-col overflow-x-hidden bg-bg dark:bg-black transition-colors duration-300">
 
         <section class="relative w-full min-h-screen flex items-center justify-center overflow-x-clip -mt-[72px] pt-[72px]">
 
@@ -24,19 +28,19 @@ import purpleGradientImg from '../assets/purple-gradient.png';
 
             <div class="w-full px-6 sm:px-10 mx-auto max-w-3xl flex flex-col items-center text-center z-10">
 
-                <h1 class="text-[34px] min-[375px]:text-[38px] sm:text-[42px] lg:text-[56px] font-extrabold leading-[1.1] tracking-tight mb-6">
-                    <span class="text-black">Ups! </span><span class="bg-gradient text-transparent bg-clip-text pb-2 box-decoration-clone">Coś poszło nie tak</span>
+                <h1 class="text-[34px] min-[375px]:text-[38px] sm:text-[42px] lg:text-[56px] font-extrabold leading-[1.1] tracking-tight mb-6 transition-colors">
+                    <span class="text-black dark:text-white">{t('page404.heading.part1')}</span><span class="bg-[linear-gradient(100deg,#234CE0_6.17%,#A247E3_50%,#E95BD2_93.83%)] text-transparent bg-clip-text pb-2 box-decoration-clone">{t('page404.heading.part2')}</span>
                 </h1>
 
-                <p class="text-[15px] sm:text-[17.5px] text-gray max-w-[550px] mb-8 sm:mb-10 leading-relaxed font-normal">
-                    Możliwe, że link jest błędny, ogłoszenie wygasło lub Twój wymarzony współlokator już kogoś znalazł 😉
+                <p class="text-[15px] sm:text-[17.5px] text-gray dark:text-white/80 max-w-[550px] mb-8 sm:mb-10 leading-relaxed font-normal transition-colors">
+                    {t('page404.paragraph')}
                 </p>
 
                 <a
-                        href="/"
+                        href={lang === 'en' ? '/en' : '/'}
                         class="inline-flex items-center justify-center px-8 sm:px-32 py-2.5 sm:py-3 bg-purple text-white text-[16px] font-semibold rounded-full hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all duration-300 ease-out"
                 >
-                    Wróć na stronę główną
+                    {t('page404.button')}
                 </a>
 
             </div>

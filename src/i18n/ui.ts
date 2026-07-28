@@ -210,6 +210,13 @@ export const ui = {
         'terms.s11.p1': 'Regulamin może zostać zmieniony wraz z rozwojem RentFriends.',
         'terms.s11.p2': 'O istotnych zmianach użytkownicy zostaną poinformowani za pośrednictwem:',
         'terms.s11.l1': '<li>maila,</li><li>strony internetowej,</li><li>aplikacji.</li>',
+
+        "page404.title": "404 - Strona nie znaleziona | RentFriends",
+        "page404.description": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+        "page404.heading.part1": "Ups! ",
+        "page404.heading.part2": "Coś poszło nie tak",
+        "page404.paragraph": "Możliwe, że link jest błędny, ogłoszenie wygasło lub Twój wymarzony współlokator już kogoś znalazł 😉",
+        "page404.button": "Wróć na stronę główną"
     },
     en: {
         'nav.home': 'Home',
@@ -415,5 +422,12 @@ export const ui = {
         'terms.s11.p1': 'The Terms may be modified as RentFriends evolves.',
         'terms.s11.p2': 'Users will be informed of significant changes via:',
         'terms.s11.l1': '<li>email,</li><li>the website,</li><li>the application.</li>',
+
+        "page404.title": "404 - Page Not Found | RentFriends",
+        "page404.description": "The page you are looking for does not exist or has been moved.",
+        "page404.heading.part1": "Oops! ",
+        "page404.heading.part2": "Something went wrong",
+        "page404.paragraph": "The link might be broken, the listing expired, or your dream roommate has already found someone 😉",
+        "page404.button": "Back to homepage"
     },
 } as const;
