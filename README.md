@@ -1,46 +1,81 @@
-# Astro Starter Kit: Basics
+# RentFriends Web
 
-```sh
-npm create astro@latest -- --template basics
-```
+The official landing page for the RentFriends mobile application. This project is built using Astro, Tailwind CSS, and TypeScript. It features a fully responsive design, internationalization (Polish and English), and robust support for both light and dark modes.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Tech Stack
 
-## 🚀 Project Structure
+* **Framework:** [Astro](https://astro.build/)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Language:** [TypeScript](https://www.typescriptlang.org/)
 
-Inside of your Astro project, you'll see the following folders and files:
+
+## Project Structure
+
+The repository follows standard Astro architecture:
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+rentfriends-web/
+├── public/                 # Static assets (favicons, SVGs, robots.txt, Open Graph images)
+├── src/
+│   ├── assets/             # Optimized images imported into components (PNGs)
+│   ├── components/         # Reusable Astro components (Hero, Features, Navbar, FAQ, etc.)
+│   ├── i18n/               # Translation dictionaries and utility functions (ui.ts, utils.ts)
+│   ├── layouts/            # Global page wrappers (Layout.astro)
+│   ├── pages/              # File-based routing
+│   │   ├── en/             # English localized pages
+│   │   ├── 404.astro       # Custom error page
+│   │   ├── index.astro     # Polish (default) homepage
+│   │   ├── privacy-policy.astro
+│   │   └── terms-of-service.astro
+│   └── styles/             # Global CSS files (global.css)
+├── astro.config.mjs        # Astro configuration
+├── package.json            # Project dependencies and scripts
+├── tailwind.config.mjs     # Tailwind CSS configuration (inferred)
+└── tsconfig.json           # TypeScript configuration
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Getting Started
 
-## 🧞 Commands
+### Prerequisites
+Ensure you have [Node.js](https://nodejs.org/) (v18 or higher) installed.
 
-All commands are run from the root of the project, from a terminal:
+### Installation
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. Clone the repository and navigate into the project directory.
+2. Install the dependencies:
 
-## 👀 Want to learn more?
+```bash
+npm install
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Development Server
+
+To start the local development server with Hot Module Replacement (HMR):
+
+```bash
+npm run dev
+```
+The application will be available at `http://localhost:4321/`.
+
+### Build for Production
+
+To generate a static production build:
+
+```bash
+npm run build
+```
+The compiled files will be output to the `dist/` directory, ready to be deployed to your hosting provider.
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Localization (i18n)
+
+Translations are managed in `src/i18n/ui.ts`.
+* The default language is Polish (`/`).
+* The English language routes are placed in the `src/pages/en/` directory.
+
+To add new strings, update the `ui` object in `ui.ts` and fetch them using the `useTranslations` utility in your `.astro` components.
