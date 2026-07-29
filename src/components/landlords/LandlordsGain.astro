@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import phoneImg from '../../assets/phone.png';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const leftCards = [
+    { icon: '📉', title: t('landlords.gain.card1.title'), text: t('landlords.gain.card1.text'), shift: 'lg:ml-[110px]' },
+    { icon: '📣', title: t('landlords.gain.card2.title'), text: t('landlords.gain.card2.text'), shift: 'lg:-ml-[16px]' },
+    { icon: '⏱️', title: t('landlords.gain.card3.title'), text: t('landlords.gain.card3.text'), shift: 'lg:ml-[175px]' },
+];
+
+---
+
+<section class="w-full bg-bg dark:bg-black transition-colors duration-300 py-16 sm:py-20 lg:py-[100px] px-6 lg:px-[100px] overflow-hidden">
+    <div class="mx-auto max-w-[1240px]">
+
+        <header>
+            <h2 class="font-sans font-[800] text-[28px] sm:text-[36px] lg:text-[44px] tracking-[-0.8px] lg:tracking-[-1.3px] text-black dark:text-bg transition-colors">
+                {t('landlords.gain.title')}
+            </h2>
+            <p class="mt-2 font-sans font-medium text-[16px] sm:text-[18px] lg:text-[21px] text-gray dark:text-bg/70 transition-colors">
+                {t('landlords.gain.subtitle')}
+            </p>
+        </header>
+
+        <div class="mt-12 lg:mt-[56px] grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-center gap-10 lg:gap-6">
+
+            <div class="order-2 lg:order-1 flex flex-col gap-10 lg:gap-[70px]">
+                {leftCards.map((card) => (
+                    <article class:list={['w-full max-w-[400px] lg:max-w-[340px]', card.shift]}>
+                        <span class="flex size-[50px] items-center justify-center rounded-[16px] bg-purple/12 dark:bg-purple/20 text-[21px] transition-colors" aria-hidden="true">{card.icon}</span>
+                        <h3 class="mt-[18px] font-sans font-[800] text-[17px] lg:text-[19px] leading-[1.3] text-black dark:text-bg transition-colors">{card.title}</h3>
+                        <p class="mt-2.5 font-sans text-[14px] leading-[1.58] text-gray dark:text-bg/70 transition-colors">{card.text}</p>
+                    </article>
+                ))}
+            </div>
+
+            <div class="order-1 lg:order-2 relative mx-auto flex items-center justify-center py-6 lg:py-0">
+                <div class="pointer-events-none absolute size-[290px] lg:size-[326px] rounded-full bg-[linear-gradient(135deg,#234CE0_0%,#A247E3_50%,#E95BD2_100%)] opacity-90 dark:opacity-70"></div>
+                <div class="pointer-events-none absolute size-[325px] lg:size-[362px] rounded-full border-[1.5px] border-dashed border-blue/60 dark:border-purple/60"></div>
+
+                <div class="relative z-10 w-[215px] lg:w-[236px] drop-shadow-[0_24px_48px_rgba(9,20,50,0.22)]">
+                    <Image src={phoneImg} alt={t('landlords.gain.phone.alt')} class="block w-full h-auto" />
+                </div>
+            </div>
+
+            <div class="order-3 flex flex-col gap-10 lg:gap-[150px]">
+                <article class="w-full max-w-[400px] lg:ml-[90px]">
+                    <span class="flex size-[50px] items-center justify-center rounded-[16px] bg-purple/12 dark:bg-purple/20 text-[21px] transition-colors" aria-hidden="true">👤</span>
+                    <h3 class="mt-[18px] font-sans font-[800] text-[17px] lg:text-[19px] leading-[1.3] text-black dark:text-bg transition-colors">{t('landlords.gain.card4.title')}</h3>
+                    <p class="mt-2.5 font-sans text-[14px] leading-[1.58] text-gray dark:text-bg/70 transition-colors">{t('landlords.gain.card4.text')}</p>
+                    <div class="mt-[22px] flex items-center gap-2.5">
+                        <span class="rounded-full bg-black/5 dark:bg-white/10 px-3 py-2 font-sans text-[12.5px] font-bold text-gray dark:text-bg/70 transition-colors">{t('landlords.gain.card4.before')}</span>
+                        <span aria-hidden="true" class="font-sans text-[15px] font-bold text-gray dark:text-bg/70">→</span>
+                        <span class="rounded-full bg-[image:var(--background-image-gradient)] px-3 py-2 font-sans text-[12.5px] font-bold text-bg">{t('landlords.gain.card4.after')}</span>
+                    </div>
+                </article>
+
+                <article class="w-full max-w-[400px] lg:ml-[60px]">
+                    <span class="flex size-[50px] items-center justify-center rounded-[16px] bg-purple/12 dark:bg-purple/20 text-[21px] transition-colors" aria-hidden="true">💬</span>
+                    <h3 class="mt-[18px] font-sans font-[800] text-[17px] lg:text-[19px] leading-[1.3] text-black dark:text-bg transition-colors">{t('landlords.gain.card5.title')}</h3>
+                    <p class="mt-2.5 font-sans text-[14px] leading-[1.58] text-gray dark:text-bg/70 transition-colors">{t('landlords.gain.card5.text')}</p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
