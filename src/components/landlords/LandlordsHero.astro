@@ -13,7 +13,7 @@ const slides = [phone1, phone2, phone3];
 
 <section class="relative w-full overflow-hidden bg-bg dark:bg-black border-b-2 border-gray/25 dark:border-white/20 transition-colors duration-300 pt-12 sm:pt-16 lg:pt-[73px]">
 
-    <div class="pointer-events-none absolute -top-[341px] right-0 lg:right-[-100px] w-[700px] h-[600px] lg:w-[1070px] lg:h-[893px] rounded-full opacity-20 dark:hidden blur-[120px] lg:blur-[160px] bg-[radial-gradient(circle,#7C3AED_0%,rgba(124,58,237,0.5)_35%,rgba(0,0,0,0)_70%)] z-0"></div>
+    <div class="pointer-events-none absolute -top-[341px] right-0 lg:right-[-100px] w-[700px] h-[600px] lg:w-[1070px] lg:h-[893px] rounded-full opacity-20 dark:hidden blur-[120px] lg:blur-[160px] bg-[radial-gradient(circle,var(--color-purple)_0%,color-mix(in_srgb,var(--color-purple)_50%,transparent)_35%,rgba(0,0,0,0)_70%)] z-0"></div>
 
     <div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-[100px]">
 
@@ -22,7 +22,7 @@ const slides = [phone1, phone2, phone3];
         </div>
 
         <h1 class="mx-auto max-w-[1240px] text-center font-sans font-[800] leading-[1.06] tracking-[-1.2px] sm:tracking-[-1.8px] lg:tracking-[-2.4px] text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] xl:text-[72px]">
-            <span class="bg-[linear-gradient(160deg,#234CE0_6.11%,#A247E3_39.08%,#E95BD2_72.05%)] bg-clip-text text-transparent">{t('landlords.hero.title.part1')}</span>
+            <span class="bg-[linear-gradient(160deg,var(--color-blue)_6.11%,var(--color-purple)_39.08%,var(--color-pink)_72.05%)] bg-clip-text text-transparent">{t('landlords.hero.title.part1')}</span>
             <br />
             <span class="text-black dark:text-bg transition-colors">{t('landlords.hero.title.part2')}</span>
         </h1>
@@ -66,7 +66,7 @@ const slides = [phone1, phone2, phone3];
         <div class="relative mt-6 sm:mt-7 flex items-center justify-center gap-1 sm:gap-4 lg:gap-8">
 
             <button type="button" id="hero-carousel-prev" aria-label={t('landlords.hero.carousel.prev')}
-                    class="relative z-30 shrink-0 self-center flex size-11 lg:size-[55px] items-center justify-center rounded-full border border-black/8 dark:border-white/15 bg-[#EDEAE4] dark:bg-white/10 text-black dark:text-bg transition-all hover:scale-105 active:scale-95 cursor-pointer">
+                    class="relative z-30 shrink-0 self-center flex size-11 lg:size-[55px] items-center justify-center rounded-full border border-black/8 dark:border-white/15 bg-black/6 dark:bg-white/10 text-black dark:text-bg transition-all hover:scale-105 active:scale-95 cursor-pointer">
                 <svg class="size-5 lg:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M15 18l-6-6 6-6" />
                 </svg>
@@ -90,7 +90,7 @@ const slides = [phone1, phone2, phone3];
             </div>
 
             <button type="button" id="hero-carousel-next" aria-label={t('landlords.hero.carousel.next')}
-                    class="relative z-30 shrink-0 self-center flex size-11 lg:size-[55px] items-center justify-center rounded-full border border-black/8 dark:border-white/15 bg-[#EDEAE4] dark:bg-white/10 text-black dark:text-bg transition-all hover:scale-105 active:scale-95 cursor-pointer">
+                    class="relative z-30 shrink-0 self-center flex size-11 lg:size-[55px] items-center justify-center rounded-full border border-black/8 dark:border-white/15 bg-black/6 dark:bg-white/10 text-black dark:text-bg transition-all hover:scale-105 active:scale-95 cursor-pointer">
                 <svg class="size-5 lg:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 18l6-6-6-6" />
                 </svg>

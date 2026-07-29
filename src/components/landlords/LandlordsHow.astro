@@ -1,0 +1,305 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const steps = [
+    { title: t('landlords.how.step1.title'), text: t('landlords.how.step1.text') },
+    { title: t('landlords.how.step2.title'), text: t('landlords.how.step2.text') },
+    { title: t('landlords.how.step3.title'), text: t('landlords.how.step3.text') },
+    { title: t('landlords.how.step4.title'), text: t('landlords.how.step4.text') },
+];
+
+const RING_R = 34;
+const RING_C = 2 * Math.PI * RING_R;
+const RING_VALUE = 0.92;
+---
+
+<section class="w-full bg-bg dark:bg-black transition-colors duration-300 py-16 sm:py-20 lg:py-[100px] px-6 lg:px-[115px]">
+    <div class="mx-auto max-w-[1240px]">
+
+        <header>
+            <h2 class="font-sans font-[800] text-[28px] sm:text-[36px] lg:text-[44px] tracking-[-0.8px] lg:tracking-[-1.3px] text-black dark:text-bg transition-colors">
+                {t('landlords.how.title')}
+            </h2>
+            <p class="mt-2 font-sans font-medium text-[16px] sm:text-[18px] lg:text-[21px] text-gray dark:text-bg/70 transition-colors">
+                {t('landlords.how.subtitle')}
+            </p>
+        </header>
+
+        <div class="mt-12 lg:mt-[56px] flex flex-col lg:flex-row lg:items-center gap-14 lg:gap-[80px] xl:gap-[134px]">
+
+            <ol class="w-full lg:max-w-[700px] shrink-0">
+                {steps.map((step, i) => (
+                    <li class="flex gap-5 lg:gap-[26px]">
+                        <div class="flex w-[46px] lg:w-[56px] shrink-0 flex-col items-center">
+                            <span class="flex size-[46px] lg:size-[56px] items-center justify-center rounded-full bg-[image:var(--background-image-gradient)] font-sans text-[17px] lg:text-[20px] font-[800] text-bg shadow-[0_6px_16px_0_rgba(0,0,0,0.18)]">
+                                {i + 1}
+                            </span>
+                            {i < steps.length - 1 && (
+                                <span class="w-[3px] flex-1 min-h-[60px] lg:min-h-[78px] rounded-full bg-purple/35"></span>
+                            )}
+                        </div>
+
+                        <div class:list={['min-w-0', i < steps.length - 1 ? 'pb-9 lg:pb-[42px]' : '']}>
+                            <h3 class="font-sans font-[800] text-[18px] lg:text-[22px] leading-[1.3] tracking-[-0.4px] text-black dark:text-bg transition-colors">{step.title}</h3>
+                            <p class="mt-2 font-sans text-[14px] lg:text-[15.5px] leading-[1.62] text-gray dark:text-bg/70 transition-colors">{step.text}</p>
+                        </div>
+                    </li>
+                ))}
+            </ol>
+
+            <div class="hw-collage mx-auto w-full max-w-[389px] shrink-0" aria-hidden="true">
+                <div class="hw-blob"></div>
+
+                <div class="hw-card hw-card-views">
+                    <div class="hw-views-head">
+                        <span class="hw-views-label">{t('landlords.how.card.viewsLabel')}</span>
+                        <span class="hw-views-badge">{t('landlords.how.card.viewsBadge')}</span>
+                    </div>
+                    <p class="hw-views-number">24</p>
+                    <p class="hw-views-text">{t('landlords.how.card.viewsText')}</p>
+                    <svg class="hw-chart" viewBox="0 0 201 76" fill="none" preserveAspectRatio="none">
+                        <path d="M0 63 L20 58 L40 61 L60 47 L80 50 L100 36 L120 40 L140 26 L160 22 L180 12 L201 6"
+                              stroke="var(--color-purple)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M0 63 L20 58 L40 61 L60 47 L80 50 L100 36 L120 40 L140 26 L160 22 L180 12 L201 6 L201 76 L0 76 Z"
+                              fill="var(--color-purple)" fill-opacity="0.1" />
+                    </svg>
+                </div>
+
+                <div class="hw-card hw-card-match">
+                    <p class="hw-match-label">{t('landlords.how.card.matchLabel')}</p>
+                    <div class="hw-ring">
+                        <svg viewBox="0 0 78 78">
+                            <circle cx="39" cy="39" r={RING_R} fill="none" stroke="var(--color-purple)" stroke-opacity="0.18" stroke-width="9" />
+                            <circle cx="39" cy="39" r={RING_R} fill="none" stroke="var(--color-purple)" stroke-width="9" stroke-linecap="round"
+                                    stroke-dasharray={`${RING_C * RING_VALUE} ${RING_C}`} transform="rotate(-90 39 39)" />
+                        </svg>
+                        <span class="hw-ring-value">92%</span>
+                    </div>
+                </div>
+
+                <div class="hw-card hw-card-olx">
+                    <div class="hw-olx-text">
+                        <p class="hw-olx-title">{t('landlords.how.card.olxTitle')}</p>
+                        <p class="hw-olx-meta">{t('landlords.how.card.olxMeta')}</p>
+                    </div>
+                    <span class="hw-olx-check">✓</span>
+                </div>
+
+                <div class="hw-bee">
+                    <img src="/bee.svg" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    .hw-collage {
+        position: relative;
+        aspect-ratio: 389 / 447;
+        container-type: inline-size;
+        font-family: var(--font-sans);
+    }
+
+    .hw-blob {
+        position: absolute;
+        left: 9.37%;
+        top: 15.76%;
+        width: 81.2%;
+        aspect-ratio: 1;
+        border-radius: 999px;
+        background: radial-gradient(circle, color-mix(in srgb, var(--color-purple) 28%, transparent) 0%, color-mix(in srgb, var(--color-purple) 10%, transparent) 55%, transparent 72%);
+    }
+
+    .hw-card {
+        position: absolute;
+        background: var(--color-bg);
+        border: 0.8px solid color-mix(in srgb, var(--color-black) 8%, transparent);
+        box-shadow: 0 11px 29px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    :is(.dark) .hw-card {
+        background: color-mix(in srgb, var(--color-bg) 6%, transparent);
+        border-color: color-mix(in srgb, var(--color-bg) 12%, transparent);
+    }
+
+    .hw-card-views {
+        left: 0;
+        top: 10.33%;
+        width: 62.47%;
+        aspect-ratio: 1;
+        border-radius: 5.4cqw;
+        padding: 4.8cqw 5.2cqw;
+    }
+
+    .hw-views-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2cqw;
+    }
+
+    .hw-views-label {
+        font-size: 2.6cqw;
+        font-weight: 600;
+        color: var(--color-gray);
+        white-space: nowrap;
+    }
+
+    .hw-views-badge {
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--color-purple) 18%, var(--color-bg));
+        padding: 0.8cqw 1.9cqw;
+        font-size: 2.2cqw;
+        font-weight: 700;
+        color: var(--color-purple);
+        white-space: nowrap;
+    }
+
+    .hw-views-number {
+        margin-top: 2cqw;
+        font-size: 11.2cqw;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        color: var(--color-purple);
+    }
+
+    .hw-views-text {
+        margin-top: 1.4cqw;
+        font-size: 2.6cqw;
+        line-height: 1.5;
+        color: var(--color-gray);
+    }
+
+    .hw-chart {
+        margin-top: 3.4cqw;
+        display: block;
+        width: 100%;
+        height: 19.6cqw;
+    }
+
+    .hw-card-match {
+        left: 51.13%;
+        top: 45.1%;
+        width: 45.11%;
+        height: 34.63%;
+        border-radius: 4.6cqw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.4cqw;
+    }
+
+    .hw-match-label {
+        font-size: 2.5cqw;
+        font-weight: 600;
+        color: var(--color-gray);
+    }
+
+    .hw-ring {
+        position: relative;
+        width: 20cqw;
+        aspect-ratio: 1;
+    }
+
+    .hw-ring svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hw-ring-value {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4.2cqw;
+        font-weight: 800;
+        color: var(--color-black);
+    }
+
+    :is(.dark) .hw-ring-value {
+        color: var(--color-bg);
+    }
+
+    .hw-card-olx {
+        left: 11.66%;
+        top: 75.93%;
+        width: 57.89%;
+        height: 12.32%;
+        border-radius: 3.7cqw;
+        display: flex;
+        align-items: center;
+        gap: 2.5cqw;
+        padding: 0 4.4cqw;
+    }
+
+    .hw-olx-text {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .hw-olx-title {
+        font-size: 2.6cqw;
+        font-weight: 800;
+        line-height: 1.2;
+        color: var(--color-black);
+        white-space: nowrap;
+    }
+
+    :is(.dark) .hw-olx-title {
+        color: var(--color-bg);
+    }
+
+    .hw-olx-meta {
+        margin-top: 0.6cqw;
+        font-size: 2.2cqw;
+        line-height: 1.2;
+        color: var(--color-gray);
+        white-space: nowrap;
+    }
+
+    .hw-olx-check {
+        display: flex;
+        width: 5.4cqw;
+        height: 5.4cqw;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: var(--color-purple);
+        font-size: 2.3cqw;
+        font-weight: 700;
+        color: var(--color-bg);
+    }
+
+    .hw-bee {
+        position: absolute;
+        left: 68.71%;
+        top: 16.49%;
+        width: 23.32%;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: var(--color-bg);
+        border: 1.2px solid color-mix(in srgb, var(--color-purple) 30%, transparent);
+        box-shadow: 0 9px 11px rgba(0, 0, 0, 0.16);
+    }
+
+    :is(.dark) .hw-bee {
+        background: color-mix(in srgb, var(--color-bg) 6%, transparent);
+    }
+
+    .hw-bee img {
+        width: 71%;
+        height: 71%;
+    }
+</style>
