@@ -33,13 +33,13 @@ const slides = [phone1, phone2, phone3];
             {t('landlords.hero.description')}
         </p>
 
-        <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-[12px]">
+        <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-2">
             <a href="#add-listing"
-               class="w-full sm:w-auto text-center whitespace-nowrap rounded-full bg-[image:var(--background-image-gradient)] px-7 py-4 font-sans text-[15.5px] font-bold text-bg transition-all duration-300 ease-out hover:opacity-90 hover:scale-[1.02] active:scale-95">
+               class="w-full sm:w-auto text-center whitespace-nowrap rounded-full bg-[image:var(--background-image-gradient)] px-6 py-4 font-sans text-[15.5px] font-bold text-bg transition-all duration-300 ease-out hover:opacity-90 hover:scale-[1.02] active:scale-95">
                 {t('landlords.hero.cta.primary')}
             </a>
             <a href="#how-it-works"
-               class="w-full sm:w-auto text-center whitespace-nowrap rounded-full border-[1.5px] border-black/22 dark:border-white/25 px-7 py-4 font-sans text-[15.5px] font-semibold text-black dark:text-bg transition-all duration-300 ease-out hover:border-black/40 dark:hover:border-white/40 hover:scale-[1.02] active:scale-95">
+               class="w-full sm:w-auto text-center whitespace-nowrap rounded-full border-[1.5px] border-black/22 dark:border-white/25 px-6 py-4 font-sans text-[15.5px] font-semibold text-black dark:text-bg transition-all duration-300 ease-out hover:border-black/40 dark:hover:border-white/40 hover:scale-[1.02] active:scale-95">
                 {t('landlords.hero.cta.secondary')}
             </a>
         </div>
@@ -72,7 +72,7 @@ const slides = [phone1, phone2, phone3];
                 </svg>
             </button>
 
-            <div id="hero-carousel" class="relative flex-1 min-w-0 h-[170px] sm:h-[225px] lg:h-[280px]">
+            <div id="hero-carousel" class="relative flex-1 min-w-0 max-w-[290px] sm:max-w-[390px] lg:max-w-[490px] h-[170px] sm:h-[225px] lg:h-[280px]">
                 {slides.map((src, i) => (
                     <div
                         class="hero-slide"
