@@ -14,6 +14,8 @@ export const ui = {
         'nav.download': 'Pobierz aplikację',
         'nav.theme': 'Zmień motyw',
         'nav.menu': 'Menu',
+        'nav.landlords': 'Dla właścicieli mieszkań',
+        'nav.addListing': 'Dodaj ogłoszenie',
 
         'hero.subtitle': 'Wynajem bez niespodzianek',
         'hero.title.part1': 'Znajdź<br class="block lg:hidden xl:block" /><span class="hidden lg:inline xl:hidden"> </span>współlokatora,<br />z którym',
@@ -226,6 +228,8 @@ export const ui = {
         'nav.download': 'Download app',
         'nav.theme': 'Toggle theme',
         'nav.menu': 'Menu',
+        'nav.landlords': 'For landlords',
+        'nav.addListing': 'Add a listing',
 
         'hero.subtitle': 'Renting without surprises',
         'hero.title.part1': 'Find a<br class="block lg:hidden xl:block" /><span class="hidden lg:inline xl:hidden"> </span>roommate<br />you\'ll actually',
