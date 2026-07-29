@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+import avatarImg from '../../assets/avatar.png';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const questions = [
+    { q: t('landlords.why.q1'), a: t('landlords.why.a1') },
+    { q: t('landlords.why.q2'), a: t('landlords.why.a2') },
+    { q: t('landlords.why.q3'), a: t('landlords.why.a3') },
+];
+
+const tags = [
+    { emoji: '🧹', label: t('landlords.why.new.tag1') },
+    { emoji: '🐶', label: t('landlords.why.new.tag2') },
+    { emoji: '🍻', label: t('landlords.why.new.tag3') },
+];
+---
+
+<section class="w-full bg-bg dark:bg-black transition-colors duration-300 py-16 sm:py-20 lg:py-[100px] px-6 lg:px-[115px]">
+    <div class="mx-auto max-w-[1240px]">
+
+        <h2 class="font-sans font-[800] text-[28px] sm:text-[36px] lg:text-[44px] tracking-[-0.8px] lg:tracking-[-1.3px] text-black dark:text-bg transition-colors">
+            {t('landlords.why.title.part1')}<span class="bg-[linear-gradient(166deg,#234CE0_6.17%,#A247E3_50%,#E95BD2_93.83%)] bg-clip-text text-transparent">{t('landlords.why.title.brand')}</span>{t('landlords.why.title.part2')}
+        </h2>
+
+        <p class="mt-2.5 font-sans font-medium text-[16px] sm:text-[18px] lg:text-[21px] text-gray dark:text-bg/70 transition-colors">
+            {t('landlords.why.subtitle')}
+        </p>
+
+        <div class="mt-10 lg:mt-[52px] grid grid-cols-1 lg:grid-cols-2 items-end gap-8 lg:gap-4">
+
+            <article class="rounded-[26px] border border-gray/40 dark:border-white/15 bg-gray/5 dark:bg-white/5 p-6 sm:p-8 lg:p-[34px] transition-colors">
+                <div class="flex items-center gap-4">
+                    <img src="/bee.svg" alt="" aria-hidden="true" class="size-[60px] lg:size-[72px] shrink-0 grayscale opacity-60" />
+                    <div class="min-w-0">
+                        <h3 class="font-sans font-[800] text-[16px] lg:text-[18px] text-gray dark:text-bg/70 transition-colors">{t('landlords.why.old.title')}</h3>
+                        <p class="mt-1 font-sans text-[12.5px] leading-[1.5] text-gray dark:text-bg/60 transition-colors">{t('landlords.why.old.lead')}</p>
+                    </div>
+                </div>
+
+                <p class="mt-6 font-sans text-[14px] lg:text-[14.7px] leading-[1.6] text-gray dark:text-bg/70 transition-colors">
+                    {t('landlords.why.old.intro')}
+                </p>
+
+                <div class="mt-3.5 w-full max-w-[440px] rounded-[15px] rounded-bl-[5px] border border-gray/40 dark:border-white/15 bg-black/6 dark:bg-white/5 px-4 py-3.5 transition-colors">
+                    <p class="font-sans font-medium text-[13.5px] leading-[1.5] text-gray dark:text-bg/70 transition-colors">{t('landlords.why.old.message')}</p>
+                    <p class="mt-1.5 font-sans text-[10.5px] text-[#8B8882] dark:text-bg/40 transition-colors">{t('landlords.why.old.messageMeta')}</p>
+                </div>
+
+                <ul class="mt-5 flex flex-col gap-2">
+                    {[t('landlords.why.q1'), t('landlords.why.q2'), t('landlords.why.q3')].map((q) => (
+                        <li class="flex items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 py-2 transition-colors">
+                            <span class="font-sans text-[13px] text-gray dark:text-bg/70 transition-colors">{q}</span>
+                            <span class="flex size-[25px] shrink-0 items-center justify-center rounded-full bg-black/5 dark:bg-white/10 transition-colors" aria-hidden="true">
+                                <svg class="size-3 text-gray dark:text-bg/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                                    <path d="M6 6l12 12M18 6L6 18" />
+                                </svg>
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+
+                <p class="mt-5 font-sans font-bold text-[14px] leading-[1.5] text-gray dark:text-bg/70 transition-colors">
+                    {t('landlords.why.old.footer')}
+                </p>
+            </article>
+
+            <article class="rounded-[28px] border border-purple bg-bg dark:bg-white/5 p-6 sm:p-8 lg:px-9 lg:py-10 shadow-[0_20px_52px_0_rgba(0,0,0,0.14)] dark:shadow-[0_20px_52px_0_rgba(162,71,227,0.18)] transition-colors">
+                <div class="flex items-center gap-4">
+                    <img src="/bee.svg" alt="" aria-hidden="true" class="size-[64px] lg:size-[76px] shrink-0" />
+                    <div class="min-w-0">
+                        <h3 class="font-sans font-[800] text-[17px] lg:text-[19px] text-black dark:text-bg transition-colors">{t('landlords.why.new.title')}</h3>
+                        <p class="mt-1 font-sans text-[13.5px] leading-[1.5] text-gray dark:text-bg/70 transition-colors">{t('landlords.why.new.lead')}</p>
+                    </div>
+                </div>
+
+                <p class="mt-6 font-sans text-[15px] lg:text-[15.5px] leading-[1.6] text-gray dark:text-bg/70 transition-colors">
+                    {t('landlords.why.new.intro')}
+                </p>
+
+                <div class="mt-3.5 rounded-[20px] bg-purple/10 dark:bg-purple/20 p-4 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <Image src={avatarImg} alt="" aria-hidden="true" class="size-10 shrink-0 rounded-full object-cover" />
+                        <div class="min-w-0">
+                            <p class="font-sans font-[800] text-[14.5px] text-black dark:text-bg transition-colors">{t('landlords.why.new.profileName')}</p>
+                            <p class="mt-0.5 font-sans text-[11.5px] text-gray dark:text-bg/70 transition-colors">{t('landlords.why.new.profileMeta')}</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 flex flex-wrap gap-[7px]">
+                        {tags.map((tag) => (
+                            <span class="flex items-center gap-1.5 rounded-full bg-bg dark:bg-black/40 pl-2.5 pr-[11px] py-1.5 font-sans text-[11px] font-semibold text-black dark:text-bg transition-colors">
+                                <span aria-hidden="true" class="font-normal">{tag.emoji}</span>{tag.label}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+
+                <ul class="mt-5 flex flex-col gap-2.5">
+                    {questions.map((row) => (
+                        <li class="flex items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 py-2.5 transition-colors">
+                            <span class="font-sans text-[14px] text-gray dark:text-bg/70 transition-colors">{row.q}</span>
+                            <span class="flex shrink-0 items-center gap-2.5">
+                                <span class="font-sans font-semibold text-[13.5px] whitespace-nowrap text-black dark:text-bg transition-colors">{row.a}</span>
+                                <span class="flex size-[26px] shrink-0 items-center justify-center rounded-full bg-[image:var(--background-image-gradient)]" aria-hidden="true">
+                                    <svg class="size-[13px] text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </span>
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+
+                <p class="mt-5 font-sans font-bold text-[15px] leading-[1.5] text-black dark:text-bg transition-colors">
+                    {t('landlords.why.new.footer')}
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
