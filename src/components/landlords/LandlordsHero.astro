@@ -1,0 +1,230 @@
+---
+import { Image } from 'astro:assets';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import phone1 from '../../assets/phone1.png';
+import phone2 from '../../assets/phone2.png';
+import phone3 from '../../assets/phone3.png';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const slides = [phone1, phone2, phone3];
+---
+
+<section class="relative w-full overflow-hidden bg-bg dark:bg-black border-b-2 border-gray/25 dark:border-white/20 transition-colors duration-300 pt-12 sm:pt-16 lg:pt-[73px]">
+
+    <div class="pointer-events-none absolute -top-[341px] right-0 lg:right-[-100px] w-[700px] h-[600px] lg:w-[1070px] lg:h-[893px] rounded-full opacity-20 dark:hidden blur-[120px] lg:blur-[160px] bg-[radial-gradient(circle,#7C3AED_0%,rgba(124,58,237,0.5)_35%,rgba(0,0,0,0)_70%)] z-0"></div>
+
+    <div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-[100px]">
+
+        <div class="pointer-events-none select-none hidden xl:flex absolute left-[59px] top-[349px] size-[100.8px] items-center justify-center">
+            <img src="/bee.svg" alt="" aria-hidden="true" class="size-[72px]" />
+        </div>
+
+        <h1 class="mx-auto max-w-[1240px] text-center font-sans font-[800] leading-[1.06] tracking-[-1.2px] sm:tracking-[-1.8px] lg:tracking-[-2.4px] text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] xl:text-[72px]">
+            <span class="bg-[linear-gradient(160deg,#234CE0_6.11%,#A247E3_39.08%,#E95BD2_72.05%)] bg-clip-text text-transparent">{t('landlords.hero.title.part1')}</span>
+            <br />
+            <span class="text-black dark:text-bg transition-colors">{t('landlords.hero.title.part2')}</span>
+        </h1>
+
+        <hr class="mt-8 sm:mt-10 lg:mt-[38px] border-0 h-px bg-black/12 dark:bg-white/15 transition-colors" />
+
+        <p class="mx-auto mt-6 sm:mt-7 max-w-[846px] text-center font-sans font-normal text-[14px] sm:text-[15px] lg:text-[16px] leading-[1.68] text-gray dark:text-bg/80 transition-colors">
+            {t('landlords.hero.description')}
+        </p>
+
+        <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-[12px]">
+            <a href="#add-listing"
+               class="w-full sm:w-auto text-center whitespace-nowrap rounded-full bg-[image:var(--background-image-gradient)] px-7 py-4 font-sans text-[15.5px] font-bold text-bg transition-all duration-300 ease-out hover:opacity-90 hover:scale-[1.02] active:scale-95">
+                {t('landlords.hero.cta.primary')}
+            </a>
+            <a href="#how-it-works"
+               class="w-full sm:w-auto text-center whitespace-nowrap rounded-full border-[1.5px] border-black/22 dark:border-white/25 px-7 py-4 font-sans text-[15.5px] font-semibold text-black dark:text-bg transition-all duration-300 ease-out hover:border-black/40 dark:hover:border-white/40 hover:scale-[1.02] active:scale-95">
+                {t('landlords.hero.cta.secondary')}
+            </a>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-x-[14px] gap-y-2 font-sans text-[12.5px] font-medium text-gray dark:text-bg/70 transition-colors">
+            <span class="flex items-center gap-1.5"><span aria-hidden="true" class="text-[12px]">🆓</span>{t('landlords.hero.meta.free')}</span>
+            <span aria-hidden="true" class="hidden sm:block h-3 w-px bg-black/18 dark:bg-white/20"></span>
+            <span class="flex items-center gap-1.5"><span aria-hidden="true" class="text-[12px]">📍</span>{t('landlords.hero.meta.city')}</span>
+            <span aria-hidden="true" class="hidden sm:block h-3 w-px bg-black/18 dark:bg-white/20"></span>
+            <span class="flex items-center gap-1.5"><span aria-hidden="true" class="text-[12px]">🇵🇱</span>{t('landlords.hero.meta.startup')}</span>
+        </div>
+
+        <div class="mt-8 sm:mt-10 flex items-center justify-center gap-2">
+            {slides.map((_, i) => (
+                <button
+                    type="button"
+                    class:list={['hero-dot h-2 rounded-full transition-all duration-300 cursor-pointer', i === 0 ? 'w-6 bg-purple' : 'w-2 bg-black/20 dark:bg-white/25']}
+                    data-index={i}
+                    aria-label={`${t('landlords.hero.carousel.alt')} ${i + 1}`}
+                ></button>
+            ))}
+        </div>
+
+        <div class="relative mt-6 sm:mt-7 flex items-center justify-center gap-1 sm:gap-4 lg:gap-8">
+
+            <button type="button" id="hero-carousel-prev" aria-label={t('landlords.hero.carousel.prev')}
+                    class="relative z-30 shrink-0 self-center flex size-11 lg:size-[55px] items-center justify-center rounded-full border border-black/8 dark:border-white/15 bg-[#EDEAE4] dark:bg-white/10 text-black dark:text-bg transition-all hover:scale-105 active:scale-95 cursor-pointer">
+                <svg class="size-5 lg:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+
+            <div id="hero-carousel" class="relative flex-1 min-w-0 h-[170px] sm:h-[225px] lg:h-[280px]">
+                {slides.map((src, i) => (
+                    <div
+                        class="hero-slide"
+                        data-index={i}
+                        data-pos={i === 0 ? 'center' : i === 1 ? 'right' : 'left'}
+                    >
+                        <Image
+                            src={src}
+                            alt={`${t('landlords.hero.carousel.alt')} ${i + 1}`}
+                            loading={i === 0 ? 'eager' : 'lazy'}
+                            class="block w-full h-auto"
+                        />
+                    </div>
+                ))}
+            </div>
+
+            <button type="button" id="hero-carousel-next" aria-label={t('landlords.hero.carousel.next')}
+                    class="relative z-30 shrink-0 self-center flex size-11 lg:size-[55px] items-center justify-center rounded-full border border-black/8 dark:border-white/15 bg-[#EDEAE4] dark:bg-white/10 text-black dark:text-bg transition-all hover:scale-105 active:scale-95 cursor-pointer">
+                <svg class="size-5 lg:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 18l6-6-6-6" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-slide {
+        --w: 145px;
+        --scale: 0.64;
+        --drop: 8px;
+        --gap: calc(var(--w) * 0.6);
+
+
+        --ratio: 1.09;
+
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: var(--w);
+        height: calc(var(--w) * var(--ratio));
+        overflow: hidden;
+        transform-origin: bottom center;
+        transform: translate(-50%, var(--drop)) scale(1);
+        filter: drop-shadow(0 26px 66px rgba(9, 20, 50, 0.15));
+        transition: transform 650ms cubic-bezier(0.33, 1, 0.68, 1), opacity 650ms ease-out;
+        will-change: transform;
+    }
+
+    .hero-slide[data-pos='center'] {
+        transform: translate(-50%, var(--drop)) scale(1);
+        z-index: 20;
+        opacity: 1;
+    }
+
+    .hero-slide[data-pos='left'] {
+        transform: translate(calc(-50% - var(--gap)), var(--drop)) scale(var(--scale));
+        z-index: 10;
+        opacity: 0.95;
+    }
+
+    .hero-slide[data-pos='right'] {
+        transform: translate(calc(-50% + var(--gap)), var(--drop)) scale(var(--scale));
+        z-index: 10;
+        opacity: 0.95;
+    }
+
+    @media (min-width: 640px) {
+        .hero-slide {
+            --w: 195px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .hero-slide {
+            --w: 245px;
+            --drop: 12px;
+        }
+    }
+
+    .hero-slide.is-teleporting {
+        transition: none;
+        opacity: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-slide {
+            transition: none;
+        }
+    }
+</style>
+
+<script>
+    function initLandlordsHeroCarousel() {
+        const root = document.getElementById('hero-carousel');
+        if (!root) return;
+
+        const slides = Array.from(document.querySelectorAll<HTMLElement>('.hero-slide'));
+        const dots = Array.from(document.querySelectorAll<HTMLElement>('.hero-dot'));
+        const prev = document.getElementById('hero-carousel-prev');
+        const next = document.getElementById('hero-carousel-next');
+        if (!slides.length) return;
+
+        const total = slides.length;
+        let current = 0;
+
+        const render = () => {
+            slides.forEach((slide, i) => {
+                const offset = (i - current + total) % total;
+                const pos = offset === 0 ? 'center' : offset === 1 ? 'right' : 'left';
+                const from = slide.dataset.pos;
+
+                if ((from === 'left' && pos === 'right') || (from === 'right' && pos === 'left')) {
+                    slide.classList.add('is-teleporting');
+                    slide.dataset.pos = pos;
+                    void slide.offsetWidth;
+                    requestAnimationFrame(() => slide.classList.remove('is-teleporting'));
+                } else {
+                    slide.dataset.pos = pos;
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                const active = i === current;
+                dot.classList.toggle('w-6', active);
+                dot.classList.toggle('bg-purple', active);
+                dot.classList.toggle('w-2', !active);
+                dot.classList.toggle('bg-black/20', !active);
+                dot.classList.toggle('dark:bg-white/25', !active);
+                dot.setAttribute('aria-current', active ? 'true' : 'false');
+            });
+        };
+
+        const go = (step: number) => {
+            current = (current + step + slides.length) % slides.length;
+            render();
+        };
+
+        prev?.addEventListener('click', () => go(-1));
+        next?.addEventListener('click', () => go(1));
+        dots.forEach((dot, i) => dot.addEventListener('click', () => { current = i; render(); }));
+
+        let startX = 0;
+        root.addEventListener('touchstart', (e) => { startX = e.changedTouches[0].screenX; }, { passive: true });
+        root.addEventListener('touchend', (e) => {
+            const delta = e.changedTouches[0].screenX - startX;
+            if (Math.abs(delta) > 40) go(delta < 0 ? 1 : -1);
+        }, { passive: true });
+
+        render();
+    }
+
+    initLandlordsHeroCarousel();
+    document.addEventListener('astro:page-load', initLandlordsHeroCarousel);
+</script>
