@@ -4,6 +4,17 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const isEn = lang === 'en';
+
+const landlordsBase = isEn ? '/en/landlords' : '/landlords';
+const landlordLinks = [
+    { href: landlordsBase, label: t('footer.landlords.overview') },
+    { href: `${landlordsBase}#why`, label: t('footer.landlords.why') },
+    { href: `${landlordsBase}#benefits`, label: t('footer.landlords.benefits') },
+    { href: `${landlordsBase}#how-it-works`, label: t('footer.landlords.how') },
+    { href: `${landlordsBase}#who-its-for`, label: t('footer.landlords.who') },
+    { href: `${landlordsBase}#comparison`, label: t('footer.landlords.comparison') },
+    { href: `${landlordsBase}#faq`, label: t('footer.landlords.faq') },
+];
 ---
 
 <footer class="w-full mt-0 bg-[image:var(--background-image-gradient)] text-white font-sans relative transition-colors duration-300">
@@ -36,7 +47,7 @@ const isEn = lang === 'en';
                 </div>
             </div>
 
-            <div class="flex flex-row gap-x-[80px] sm:gap-x-[120px] lg:gap-x-[250px] flex-shrink-0 lg:ml-[100px]">
+            <div class="flex flex-row flex-wrap gap-x-[60px] sm:gap-x-[90px] lg:gap-x-[130px] gap-y-10 flex-shrink-0 lg:ml-auto lg:mr-[45px] xl:mr-[75px]">
                 <div class="flex flex-col">
                     <h3 class="text-[14px] font-extrabold mb-[18px] tracking-wide leading-none">{t('footer.app')}</h3>
                     <ul class="flex flex-col gap-[18px]">
@@ -44,6 +55,17 @@ const isEn = lang === 'en';
                         <li class="leading-none"><a href={isEn ? '/en/#features' : '/#features'} class="text-[14px] font-normal transition-opacity hover:underline">{t('nav.features')}</a></li>
                         <li class="leading-none"><a href={isEn ? '/en/#reviews' : '/#reviews'} class="text-[14px] font-normal transition-opacity hover:underline">{t('nav.reviews')}</a></li>
                         <li class="leading-none"><a href={isEn ? '/en/#faq' : '/#faq'} class="text-[14px] font-normal transition-opacity hover:underline">{t('nav.faq')}</a></li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col">
+                    <h3 class="text-[14px] font-extrabold mb-[18px] tracking-wide leading-none">{t('footer.landlords')}</h3>
+                    <ul class="flex flex-col gap-[18px]">
+                        {landlordLinks.map((link) => (
+                            <li class="leading-none">
+                                <a href={link.href} class="text-[14px] font-normal transition-opacity hover:underline">{link.label}</a>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 
