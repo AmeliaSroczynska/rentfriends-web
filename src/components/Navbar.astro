@@ -24,7 +24,10 @@ const navLinks = [
     { href: `${base}/landlords`, label: t('nav.landlords') },
 ];
 
-const ctaHref = isLandlords ? '#add-listing' : (isEn ? '/en/#download' : '#download');
+const ADD_LISTING_URL = 'https://ogloszenia.rentfriends.app/';
+
+const ctaHref = isLandlords ? ADD_LISTING_URL : (isEn ? '/en/#download' : '#download');
+const ctaExternal = isLandlords;
 const ctaLabel = isLandlords ? t('nav.addListing') : t('nav.download');
 ---
 
@@ -57,7 +60,7 @@ const ctaLabel = isLandlords ? t('nav.addListing') : t('nav.download');
                 </svg>
             </button>
 
-            <a href={ctaHref} class="hidden md:inline-flex whitespace-nowrap text-sm px-4 lg:px-6 py-2.5 bg-[image:var(--background-image-gradient)] text-bg font-semibold rounded-full hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all duration-300 ease-out">
+            <a href={ctaHref} target={ctaExternal ? '_blank' : undefined} rel={ctaExternal ? 'noopener noreferrer' : undefined} class="hidden md:inline-flex whitespace-nowrap text-sm px-4 lg:px-6 py-2.5 bg-[image:var(--background-image-gradient)] text-bg font-semibold rounded-full hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all duration-300 ease-out">
                 {ctaLabel}
             </a>
 
@@ -78,7 +81,7 @@ const ctaLabel = isLandlords ? t('nav.addListing') : t('nav.download');
             <a href={link.href} class="mobile-link text-[17px] text-black dark:text-white font-semibold tracking-tight hover:text-purple transition-colors">{link.label}</a>
         ))}
 
-        <a href={ctaHref} class="mobile-link mt-4 text-[17px] px-8 py-3 bg-[image:var(--background-image-gradient)] text-bg font-semibold rounded-full hover:opacity-90 transition-all duration-300 ease-out whitespace-nowrap">
+        <a href={ctaHref} target={ctaExternal ? '_blank' : undefined} rel={ctaExternal ? 'noopener noreferrer' : undefined} class="mobile-link mt-4 text-[17px] px-8 py-3 bg-[image:var(--background-image-gradient)] text-bg font-semibold rounded-full hover:opacity-90 transition-all duration-300 ease-out whitespace-nowrap">
             {ctaLabel}
         </a>
     </div>
