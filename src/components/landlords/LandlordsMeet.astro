@@ -1,0 +1,79 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const rows = [
+    {
+        indent: 'lg:pl-[18px]',
+        tags: [
+            { emoji: '👤', label: t('landlords.meet.tag1'), accent: false },
+            { emoji: '🎓', label: t('landlords.meet.tag2'), accent: true },
+        ],
+    },
+    {
+        indent: 'lg:pl-[49px]',
+        tags: [
+            { emoji: '💰', label: t('landlords.meet.tag3'), accent: false },
+            { emoji: '📅', label: t('landlords.meet.tag4'), accent: false },
+            { emoji: '🧹', label: t('landlords.meet.tag5'), accent: true },
+        ],
+    },
+    {
+        indent: 'lg:pl-[5px]',
+        tags: [
+            { emoji: '🌙', label: t('landlords.meet.tag6'), accent: false },
+            { emoji: '💻', label: t('landlords.meet.tag7'), accent: true },
+            { emoji: '🚭', label: t('landlords.meet.tag8'), accent: false },
+        ],
+    },
+    {
+        indent: 'lg:pl-[21px]',
+        tags: [
+            { emoji: '🍻', label: t('landlords.meet.tag9'), accent: false },
+            { emoji: '🐶', label: t('landlords.meet.tag10'), accent: false },
+            { emoji: '❤️', label: t('landlords.meet.tag11'), accent: true },
+            { emoji: '📝', label: t('landlords.meet.tag12'), accent: false },
+        ],
+    },
+];
+---
+
+<section class="w-full bg-bg dark:bg-black transition-colors duration-300 py-14 sm:py-16 lg:py-[37px] px-6 lg:px-[100px]">
+    <div class="mx-auto max-w-[1240px] flex flex-col-reverse lg:flex-row lg:items-center gap-10 lg:gap-4">
+
+        <div class="lg:w-[587px] lg:shrink-0 flex flex-col gap-2.5">
+            {rows.map((row) => (
+                <div class:list={['flex flex-wrap justify-center lg:justify-start gap-2.5', row.indent]}>
+                    {row.tags.map((tag) => (
+                        <span
+                            class:list={[
+                                'flex items-center gap-2 whitespace-nowrap rounded-full pl-3.5 pr-4 py-2.5 font-sans text-[12.5px] lg:text-[13.5px] font-medium text-black dark:text-bg transition-colors',
+                                tag.accent
+                                    ? 'bg-purple/12 dark:bg-purple/25'
+                                    : 'bg-bg dark:bg-white/5 border border-black/10 dark:border-white/12 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)]',
+                            ]}
+                        >
+                            <span aria-hidden="true" class="text-[14px] font-normal">{tag.emoji}</span>{tag.label}
+                        </span>
+                    ))}
+                </div>
+            ))}
+        </div>
+
+        <div class="text-center lg:text-right lg:flex-1">
+            <h2 class="font-sans font-[800] text-[28px] sm:text-[34px] lg:text-[40px] leading-[1.18] tracking-[-0.8px] lg:tracking-[-1.1px] text-black dark:text-bg transition-colors">
+                {t('landlords.meet.title.part1')}
+                <br />
+                <span class="bg-[linear-gradient(to_right,var(--color-blue),var(--color-purple),var(--color-pink))] bg-clip-text text-transparent">
+                    {t('landlords.meet.title.part2')}
+                </span>
+            </h2>
+
+            <p class="mt-6 lg:mt-[38px] font-sans text-[14px] lg:text-[15px] text-black dark:text-bg/80 transition-colors">
+                {t('landlords.meet.text')}
+            </p>
+        </div>
+    </div>
+</section>
