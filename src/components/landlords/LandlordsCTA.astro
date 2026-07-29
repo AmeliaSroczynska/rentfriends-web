@@ -1,0 +1,35 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="add-listing" class="w-full bg-bg dark:bg-black transition-colors duration-300 scroll-mt-[72px] pt-5 pb-16 sm:pb-20 lg:pb-[110px] px-6 lg:px-[100px]">
+    <div class="mx-auto max-w-[1240px]">
+
+        <div class="rounded-tl-[48px] rounded-br-[48px] rounded-tr-[8px] rounded-bl-[8px] border-[3px] border-purple px-7 py-10 sm:px-10 sm:py-12 lg:px-[56px] lg:py-[54px] transition-colors">
+            <div class="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-[60px] xl:gap-[151px]">
+
+                <div class="lg:max-w-[660px]">
+                    <h2 class="font-sans font-[800] text-[26px] sm:text-[32px] lg:text-[38px] leading-[1.18] tracking-[-0.7px] lg:tracking-[-1px] text-black dark:text-bg transition-colors">
+                        {t('landlords.cta.title1')}
+                        <br />
+                        <span class="bg-[linear-gradient(to_right,var(--color-blue),var(--color-purple),var(--color-pink))] bg-clip-text text-transparent">
+                            {t('landlords.cta.title2')}
+                        </span>
+                    </h2>
+
+                    <p class="mt-[18px] font-sans text-[15px] lg:text-[16px] leading-[1.65] text-gray dark:text-bg/70 transition-colors">
+                        {t('landlords.cta.text')}
+                    </p>
+                </div>
+
+                <a href="#"
+                   class="w-full sm:w-auto lg:shrink-0 text-center whitespace-nowrap rounded-full bg-[image:var(--background-image-gradient)] px-8 py-[17px] font-sans text-[15px] lg:text-[16px] font-bold text-bg transition-all duration-300 ease-out hover:opacity-90 hover:scale-[1.02] active:scale-95">
+                    {t('landlords.cta.button')}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

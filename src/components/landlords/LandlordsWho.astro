@@ -1,0 +1,98 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const ownerBullets = [t('landlords.who.owners.b1'), t('landlords.who.owners.b2'), t('landlords.who.owners.b3')];
+const firmBullets = [t('landlords.who.firms.b1'), t('landlords.who.firms.b2'), t('landlords.who.firms.b3')];
+
+const firmRows = [
+    { emoji: '🏢', label: t('landlords.who.firms.r1'), badge: t('landlords.who.firms.r1badge') },
+    { emoji: '🏘', label: t('landlords.who.firms.r2'), badge: t('landlords.who.firms.r2badge') },
+    { emoji: '🏬', label: t('landlords.who.firms.r3'), badge: t('landlords.who.firms.r3badge') },
+];
+---
+
+<section class="w-full bg-bg dark:bg-black transition-colors duration-300 pt-14 sm:pt-16 lg:pt-[100px] pb-16 sm:pb-20 lg:pb-[100px] px-6 lg:px-[100px]">
+    <div class="mx-auto max-w-[1240px]">
+
+        <div class="rounded-[25px] bg-[linear-gradient(130deg,var(--color-blue)_6.17%,var(--color-purple)_50%,var(--color-pink)_93.83%)] px-7 py-10 sm:px-10 sm:py-12 lg:px-[60px] lg:pt-[34px] lg:pb-[130px]">
+            <h2 class="font-sans font-[800] text-[28px] sm:text-[36px] lg:text-[44px] tracking-[-0.8px] lg:tracking-[-1.3px] text-bg">
+                {t('landlords.who.title')}
+            </h2>
+            <p class="mt-2.5 max-w-[820px] font-sans font-medium text-[15px] sm:text-[17px] lg:text-[19px] text-bg/90">
+                {t('landlords.who.subtitle')}
+            </p>
+        </div>
+
+        <div class="-mt-8 lg:-mt-[115px] flex flex-col lg:flex-row lg:items-start lg:justify-end gap-6 lg:gap-[27px] px-0 lg:pr-[66px]">
+
+            <article class="w-full lg:w-[404px] shrink-0 rounded-[27px] border-4 border-purple bg-bg dark:bg-white/5 p-6 sm:p-8 lg:p-[33px] shadow-[0_13px_38px_0_rgba(0,0,0,0.09)] transition-colors">
+                <h3 class="font-sans font-[800] text-[20px] lg:text-[23px] leading-[1.26] text-black dark:text-bg transition-colors">
+                    {t('landlords.who.owners.title')}
+                </h3>
+                <p class="mt-2 font-sans text-[14px] lg:text-[15.5px] leading-[1.6] text-gray dark:text-bg/70 transition-colors">
+                    {t('landlords.who.owners.lead')}
+                </p>
+
+                <ul class="mt-5 flex flex-col gap-2">
+                    {ownerBullets.map((item) => (
+                        <li class="flex items-center gap-2.5 font-sans text-[13px] lg:text-[13.5px] text-gray dark:text-bg/70 transition-colors">
+                            <span aria-hidden="true" class="size-[6px] shrink-0 rounded-full bg-purple"></span>{item}
+                        </li>
+                    ))}
+                </ul>
+
+                <div class="mt-6 rounded-[19px] bg-purple/10 dark:bg-purple/20 p-4 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <span aria-hidden="true" class="flex size-[44px] shrink-0 items-center justify-center rounded-[11px] bg-purple/16 dark:bg-purple/30 text-[18px]">🛏</span>
+                        <div class="min-w-0 flex-1">
+                            <p class="font-sans font-[800] text-[13px] text-black dark:text-bg transition-colors">{t('landlords.who.owners.roomTitle')}</p>
+                            <p class="mt-0.5 font-sans text-[10.5px] text-gray dark:text-bg/70 transition-colors">{t('landlords.who.owners.roomMeta')}</p>
+                        </div>
+                        <span class="shrink-0 rounded-full bg-bg dark:bg-black/40 px-2.5 py-1.5 font-sans text-[10px] font-bold text-purple transition-colors">
+                            {t('landlords.who.owners.roomBadge')}
+                        </span>
+                    </div>
+
+                    <div class="mt-3.5 flex items-center gap-2.5">
+                        <span aria-hidden="true" class="flex shrink-0 -space-x-2">
+                            <span class="size-[25px] rounded-full bg-blue ring-2 ring-bg dark:ring-black"></span>
+                            <span class="size-[25px] rounded-full bg-purple ring-2 ring-bg dark:ring-black"></span>
+                            <span class="size-[25px] rounded-full bg-pink ring-2 ring-bg dark:ring-black"></span>
+                        </span>
+                        <p class="font-sans text-[11.5px] font-semibold text-gray dark:text-bg/70 transition-colors">{t('landlords.who.owners.waiting')}</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="w-full lg:w-[360px] shrink-0 rounded-[22px] border-4 border-[color-mix(in_srgb,var(--color-purple)_45%,var(--color-pink))] bg-bg dark:bg-white/5 p-6 sm:p-8 lg:p-[27px] shadow-[0_14px_38px_0_rgba(0,0,0,0.1)] transition-colors">
+                <h3 class="font-sans font-[800] text-[18px] lg:text-[19px] leading-[1.26] text-black dark:text-bg transition-colors">
+                    {t('landlords.who.firms.title')}
+                </h3>
+                <p class="mt-1.5 font-sans text-[12.5px] lg:text-[12.8px] leading-[1.6] text-gray dark:text-bg/70 transition-colors">
+                    {t('landlords.who.firms.lead')}
+                </p>
+
+                <ul class="mt-4 flex flex-col gap-1.5">
+                    {firmBullets.map((item) => (
+                        <li class="flex items-center gap-2 font-sans text-[11.2px] text-gray dark:text-bg/70 transition-colors">
+                            <span aria-hidden="true" class="size-[5px] shrink-0 rounded-full bg-purple"></span>{item}
+                        </li>
+                    ))}
+                </ul>
+
+                <div class="mt-5 rounded-[16px] bg-black/4 dark:bg-white/5 p-3 transition-colors">
+                    {firmRows.map((row, i) => (
+                        <div class:list={['flex items-center gap-2.5 py-[7px]', i < firmRows.length - 1 ? 'border-b border-black/8 dark:border-white/10' : '']}>
+                            <span aria-hidden="true" class="flex size-[30px] shrink-0 items-center justify-center rounded-[9px] bg-purple/16 dark:bg-purple/30 text-[13px]">{row.emoji}</span>
+                            <p class="min-w-0 flex-1 font-sans text-[10.4px] font-semibold text-black dark:text-bg transition-colors">{row.label}</p>
+                            <span class="shrink-0 rounded-full bg-purple/14 dark:bg-purple/30 px-2 py-1 font-sans text-[8.8px] font-bold text-purple transition-colors">{row.badge}</span>
+                        </div>
+                    ))}
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
