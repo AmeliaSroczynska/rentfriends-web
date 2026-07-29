@@ -81,7 +81,15 @@ const brandSchema = {
 
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link
+		rel="preload"
+		as="style"
+		href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+		onload="this.onload=null;this.rel='stylesheet'"
+	/>
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	</noscript>
 
 	<meta name="apple-itunes-app" content="app-id=6502833411">
 
@@ -112,6 +120,7 @@ const brandSchema = {
 
 	<script
 		is:inline
+		defer
 		src="https://cdn.counter.dev/script.js"
 		data-id="e8ae0803-d06f-4542-bab6-fec00026bafa"
 		data-utcoffset="2">

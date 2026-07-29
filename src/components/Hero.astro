@@ -93,6 +93,10 @@ const softwareSchema = {
             <Image
                     src={heroPhoneImg}
                     alt={t('hero.alt.phone') || 'Aplikacja RentFriends'}
+                    widths={[380, 472, 944]}
+                    sizes="(min-width: 1024px) 472px, (min-width: 640px) 380px, 45vw"
+                    loading="eager"
+                    fetchpriority="high"
                     class="w-[45vw] sm:w-[380px] lg:w-full h-auto object-contain object-right-bottom drop-shadow-2xl origin-bottom-right"
             />
         </div>
