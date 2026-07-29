@@ -6,12 +6,19 @@ import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const leftCards = [
-    { icon: '📉', title: t('landlords.gain.card1.title'), text: t('landlords.gain.card1.text'), shift: 'lg:ml-[110px]' },
-    { icon: '📣', title: t('landlords.gain.card2.title'), text: t('landlords.gain.card2.text'), shift: 'lg:ml-[40px]' },
-    { icon: '⏱️', title: t('landlords.gain.card3.title'), text: t('landlords.gain.card3.text'), shift: 'lg:ml-[175px]' },
-];
+const icons = {
+    turnover: '<path d="M21 17.5 13.8 10.3l-3.6 3.6L3 6.7" /><path d="M15.5 17.5H21v-5.5" />',
+    reach: '<path d="M3.5 10.6v2.8a1 1 0 0 0 .75.97l3.25.81v3.32a1 1 0 0 0 1.24.97l1.52-.38a1 1 0 0 0 .74-1.14l-.5-2.77" /><path d="M7.5 14.68V9.32l10.4-4.16a1 1 0 0 1 1.37.93v11.82a1 1 0 0 1-1.37.93L7.5 14.68z" />',
+    time: '<circle cx="12" cy="12" r="8.5" /><path d="M12 7.2V12l3.1 2" />',
+    profile: '<circle cx="12" cy="8" r="3.6" /><path d="M4.8 20.2a7.4 7.4 0 0 1 14.4 0" />',
+    chat: '<path d="M20.5 11.7a7.7 7.7 0 0 1-8.3 7.7c-.9 0-1.8-.15-2.6-.44L4.5 20.5l1.6-4.9A7.7 7.7 0 1 1 20.5 11.7z" /><path d="M9 11.2h6M9 14.4h3.8" />',
+};
 
+const leftCards = [
+    { icon: icons.turnover, title: t('landlords.gain.card1.title'), text: t('landlords.gain.card1.text'), shift: 'lg:ml-[110px]' },
+    { icon: icons.reach, title: t('landlords.gain.card2.title'), text: t('landlords.gain.card2.text'), shift: 'lg:ml-[40px]' },
+    { icon: icons.time, title: t('landlords.gain.card3.title'), text: t('landlords.gain.card3.text'), shift: 'lg:ml-[175px]' },
+];
 ---
 
 <section class="w-full bg-bg dark:bg-black transition-colors duration-300 py-16 sm:py-20 lg:py-[100px] px-6 lg:px-[100px] overflow-hidden">
@@ -31,7 +38,9 @@ const leftCards = [
             <div class="order-2 lg:order-1 flex flex-col gap-10 lg:gap-[70px]">
                 {leftCards.map((card) => (
                     <article class:list={['w-full max-w-[400px] lg:max-w-[340px]', card.shift]}>
-                        <span class="flex size-[50px] items-center justify-center rounded-[16px] bg-purple/12 dark:bg-purple/20 text-[21px] transition-colors" aria-hidden="true">{card.icon}</span>
+                        <span class="flex size-[50px] items-center justify-center rounded-[16px] bg-purple/12 dark:bg-purple/20 text-purple transition-colors" aria-hidden="true">
+                            <svg class="size-[24px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={card.icon} />
+                        </span>
                         <h3 class="mt-[18px] font-sans font-[800] text-[17px] lg:text-[19px] leading-[1.3] text-black dark:text-bg transition-colors">{card.title}</h3>
                         <p class="mt-2.5 font-sans text-[14px] leading-[1.58] text-gray dark:text-bg/70 transition-colors">{card.text}</p>
                     </article>
@@ -40,7 +49,16 @@ const leftCards = [
 
             <div class="order-1 lg:order-2 relative mx-auto flex items-center justify-center py-6 lg:py-0">
                 <div class="pointer-events-none absolute size-[290px] lg:size-[326px] rounded-full bg-[linear-gradient(135deg,var(--color-blue)_0%,var(--color-purple)_50%,var(--color-pink)_100%)] opacity-90 dark:opacity-70"></div>
-                <div class="pointer-events-none absolute size-[325px] lg:size-[362px] rounded-full border-[1.5px] border-dashed border-blue/60 dark:border-purple/60"></div>
+                <svg class="pointer-events-none absolute size-[325px] lg:size-[362px]" viewBox="0 0 362 362" fill="none" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="gain-ring-gradient" x1="0" y1="0" x2="362" y2="362" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" stop-color="var(--color-blue)" />
+                            <stop offset="0.5" stop-color="var(--color-purple)" />
+                            <stop offset="1" stop-color="var(--color-pink)" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="181" cy="181" r="179.5" stroke="url(#gain-ring-gradient)" stroke-width="3" stroke-dasharray="9 7" />
+                </svg>
 
                 <div class="relative z-10 w-[215px] lg:w-[236px] drop-shadow-[0_24px_48px_rgba(9,20,50,0.22)]">
                     <Image src={phoneImg} alt={t('landlords.gain.phone.alt')} class="block w-full h-auto" />
@@ -49,18 +67,24 @@ const leftCards = [
 
             <div class="order-3 flex flex-col gap-10 lg:gap-[150px]">
                 <article class="w-full max-w-[400px] lg:ml-[90px]">
-                    <span class="flex size-[50px] items-center justify-center rounded-[16px] bg-purple/12 dark:bg-purple/20 text-[21px] transition-colors" aria-hidden="true">👤</span>
+                    <span class="flex size-[50px] items-center justify-center rounded-[16px] bg-purple/12 dark:bg-purple/20 text-purple transition-colors" aria-hidden="true">
+                        <svg class="size-[24px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={icons.profile} />
+                    </span>
                     <h3 class="mt-[18px] font-sans font-[800] text-[17px] lg:text-[19px] leading-[1.3] text-black dark:text-bg transition-colors">{t('landlords.gain.card4.title')}</h3>
                     <p class="mt-2.5 font-sans text-[14px] leading-[1.58] text-gray dark:text-bg/70 transition-colors">{t('landlords.gain.card4.text')}</p>
                     <div class="mt-[22px] flex items-center gap-2.5">
                         <span class="rounded-full bg-black/5 dark:bg-white/10 px-3 py-2 font-sans text-[12.5px] font-bold text-gray dark:text-bg/70 transition-colors">{t('landlords.gain.card4.before')}</span>
-                        <span aria-hidden="true" class="font-sans text-[15px] font-bold text-gray dark:text-bg/70">→</span>
+                        <svg aria-hidden="true" class="size-[18px] shrink-0 text-gray dark:text-bg/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 12h15M13.5 6.5 19.5 12l-6 5.5" />
+                        </svg>
                         <span class="rounded-full bg-[image:var(--background-image-gradient)] px-3 py-2 font-sans text-[12.5px] font-bold text-bg">{t('landlords.gain.card4.after')}</span>
                     </div>
                 </article>
 
                 <article class="w-full max-w-[400px] lg:ml-[60px]">
-                    <span class="flex size-[50px] items-center justify-center rounded-[16px] bg-purple/12 dark:bg-purple/20 text-[21px] transition-colors" aria-hidden="true">💬</span>
+                    <span class="flex size-[50px] items-center justify-center rounded-[16px] bg-purple/12 dark:bg-purple/20 text-purple transition-colors" aria-hidden="true">
+                        <svg class="size-[24px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={icons.chat} />
+                    </span>
                     <h3 class="mt-[18px] font-sans font-[800] text-[17px] lg:text-[19px] leading-[1.3] text-black dark:text-bg transition-colors">{t('landlords.gain.card5.title')}</h3>
                     <p class="mt-2.5 font-sans text-[14px] leading-[1.58] text-gray dark:text-bg/70 transition-colors">{t('landlords.gain.card5.text')}</p>
                 </article>
