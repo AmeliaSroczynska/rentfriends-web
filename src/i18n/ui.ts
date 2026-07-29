@@ -100,6 +100,13 @@ export const ui = {
         'landlords.how.card.olxTitle': 'ogłoszenie z OLX',
         'landlords.how.card.olxMeta': 'zaimportowano',
 
+        'landlords.olx.eyebrow': 'Import ogłoszenia z OLX',
+        'landlords.olx.title': 'Dodaj ogłoszenie w kilkadziesiąt sekund',
+        'landlords.olx.text': 'Masz już ogłoszenie na OLX? Nie musisz tworzyć go od nowa. Wklej link, a RentFriends automatycznie uzupełni dane.',
+        'landlords.olx.placeholder': 'olx.pl/d/oferta/...',
+        'landlords.olx.button': 'Importuj',
+        'landlords.olx.hint': 'Tytuł, opis, cena i zdjęcia uzupełnią się automatycznie',
+
         'hero.subtitle': 'Wynajem bez niespodzianek',
         'hero.title.part1': 'Znajdź<br class="block lg:hidden xl:block" /><span class="hidden lg:inline xl:hidden"> </span>współlokatora,<br />z którym',
         'hero.title.part2': 'mieszkanie<br class="hidden lg:block xl:hidden" /><span class="inline lg:hidden xl:inline"> </span>będzie<br />przyjemnością!',
@@ -396,6 +403,13 @@ export const ui = {
         'landlords.how.card.matchLabel': 'Match',
         'landlords.how.card.olxTitle': 'listing from OLX',
         'landlords.how.card.olxMeta': 'imported',
+
+        'landlords.olx.eyebrow': 'Import a listing from OLX',
+        'landlords.olx.title': 'Add a listing in under a minute',
+        'landlords.olx.text': 'Already have a listing on OLX? You do not need to create it again. Paste the link and RentFriends fills in the details automatically.',
+        'landlords.olx.placeholder': 'olx.pl/d/oferta/...',
+        'landlords.olx.button': 'Import',
+        'landlords.olx.hint': 'Title, description, price and photos are filled in automatically',
 
         'hero.subtitle': 'Renting without surprises',
         'hero.title.part1': 'Find a<br class="block lg:hidden xl:block" /><span class="hidden lg:inline xl:hidden"> </span>roommate<br />you\'ll actually',
