@@ -35,7 +35,10 @@ const ctaLabel = isLandlords ? t('nav.addListing') : t('nav.download');
     <div class="relative w-full px-4 md:px-6 lg:px-10 h-[72px] flex items-center justify-between">
 
         <a href={isEn ? '/en/' : '/'} class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-            <img src="/logo.svg" alt="RentFriends Logo" class="w-9 h-9 sm:w-10 sm:h-10" />
+            <picture>
+                <source srcset="/logo.webp" type="image/webp" />
+                <img src="/logo.png" alt="RentFriends" width="40" height="40" decoding="async" class="w-9 h-9 sm:w-10 sm:h-10" />
+            </picture>
             <span class="text-sm font-bold text-black dark:text-bg tracking-tight transition-colors">RentFriends</span>
         </a>
 
