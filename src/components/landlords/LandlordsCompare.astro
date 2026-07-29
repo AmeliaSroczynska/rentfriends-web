@@ -24,36 +24,36 @@ const rows = [
             {t('landlords.compare.subtitle')}
         </p>
 
-        <div class="mt-9 lg:mt-11 relative grid grid-cols-[1fr_auto_auto] sm:grid-cols-[1fr_280px_320px]">
+        <div class="mt-9 lg:mt-11 relative grid grid-cols-[minmax(0,1fr)_clamp(52px,16vw,90px)_clamp(78px,24vw,130px)] sm:grid-cols-[minmax(0,1fr)_180px_240px] lg:grid-cols-[minmax(0,1fr)_280px_320px]">
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 w-[128px] sm:w-[320px] rounded-[28px] border-[1.5px] border-purple" aria-hidden="true"></div>
+            <div class="pointer-events-none absolute inset-y-0 right-0 w-[clamp(78px,24vw,130px)] sm:w-[240px] lg:w-[320px] rounded-[20px] sm:rounded-[28px] border-[1.5px] border-purple" aria-hidden="true"></div>
 
             <div class="col-start-1 flex h-[56px] lg:h-[62px] items-center pl-1 pt-[26px] box-content">
                 <span class="font-sans font-[800] text-[12px] lg:text-[13px] tracking-[0.4px] text-gray dark:text-bg/70 transition-colors">{t('landlords.compare.colFeature')}</span>
             </div>
-            <div class="col-start-2 flex h-[56px] lg:h-[62px] items-center justify-center px-3 pt-[26px] box-content">
+            <div class="col-start-2 flex h-[56px] lg:h-[62px] items-center justify-center px-1 sm:px-3 pt-[26px] box-content">
                 <span class="text-center font-sans font-bold text-[12px] lg:text-[14px] text-gray dark:text-bg/70 transition-colors">{t('landlords.compare.colOther')}</span>
             </div>
-            <div class="col-start-3 flex h-[88px] w-[128px] sm:w-[320px] items-center justify-center rounded-t-[26px] bg-purple">
+            <div class="col-start-3 flex h-[72px] sm:h-[88px] w-full items-center justify-center rounded-t-[20px] sm:rounded-t-[26px] bg-purple">
                 <span class="text-center font-sans font-[800] text-[13px] lg:text-[16px] text-bg">{t('landlords.compare.colRf')}</span>
             </div>
 
             {rows.map((row, i) => (
                 <>
-                    <div class:list={['col-start-1 flex min-h-[56px] lg:min-h-[62px] items-center py-3 pr-3 pl-1 border-t border-black/8 dark:border-white/10 transition-colors', i === 0 ? '' : '']}>
+                    <div class:list={['col-start-1 flex min-h-[56px] lg:min-h-[62px] items-center py-3 pr-2 sm:pr-3 pl-1 border-t border-black/8 dark:border-white/10 transition-colors', i === 0 ? '' : '']}>
                         <span class="font-sans font-medium text-[13px] lg:text-[15px] text-black dark:text-bg transition-colors">{row.label}</span>
                     </div>
 
-                    <div class="col-start-2 flex min-h-[56px] lg:min-h-[62px] items-center justify-center px-3 border-t border-black/8 dark:border-white/10 transition-colors">
+                    <div class="col-start-2 flex min-h-[56px] lg:min-h-[62px] items-center justify-center px-1 sm:px-3 border-t border-black/8 dark:border-white/10 transition-colors">
                         {row.other ? (
-                            <span class="flex size-[30px] items-center justify-center rounded-full bg-black/7 dark:bg-white/12 transition-colors" title={t('landlords.compare.yes')}>
+                            <span class="flex size-[26px] sm:size-[30px] items-center justify-center rounded-full bg-black/7 dark:bg-white/12 transition-colors" title={t('landlords.compare.yes')}>
                                 <svg class="size-[14px] text-gray dark:text-bg/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path d="M5 13l4 4L19 7" />
                                 </svg>
                                 <span class="sr-only">{t('landlords.compare.yes')}</span>
                             </span>
                         ) : (
-                            <span class="flex size-[30px] items-center justify-center rounded-full bg-black/5 dark:bg-white/8 transition-colors">
+                            <span class="flex size-[26px] sm:size-[30px] items-center justify-center rounded-full bg-black/5 dark:bg-white/8 transition-colors">
                                 <span aria-hidden="true" class="h-[2px] w-[11px] rounded-full bg-black/30 dark:bg-white/40"></span>
                                 <span class="sr-only">{t('landlords.compare.no')}</span>
                             </span>
@@ -61,10 +61,10 @@ const rows = [
                     </div>
 
                     <div class:list={[
-                        'col-start-3 flex min-h-[56px] lg:min-h-[62px] w-[128px] sm:w-[320px] items-center justify-center bg-purple/5 dark:bg-purple/12 border-t border-black/8 dark:border-white/10 transition-colors',
-                        i === rows.length - 1 ? 'rounded-b-[26px]' : '',
+                        'col-start-3 flex min-h-[56px] lg:min-h-[62px] w-full items-center justify-center bg-purple/5 border-t border-black/8 dark:border-white/10 transition-colors',
+                        i === rows.length - 1 ? 'rounded-b-[20px] sm:rounded-b-[26px]' : '',
                     ]}>
-                        <span class="flex size-[30px] items-center justify-center rounded-full bg-purple">
+                        <span class="flex size-[26px] sm:size-[30px] items-center justify-center rounded-full bg-purple">
                             <svg class="size-[14px] text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M5 13l4 4L19 7" />
                             </svg>

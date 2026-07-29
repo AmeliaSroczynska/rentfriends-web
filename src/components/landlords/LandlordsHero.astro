@@ -11,18 +11,14 @@ const t = useTranslations(lang);
 const slides = [phone1, phone2, phone3];
 ---
 
-<section class="relative w-full overflow-hidden bg-bg dark:bg-black border-b-2 border-gray/25 dark:border-white/20 transition-colors duration-300 pt-12 sm:pt-16 lg:pt-[73px]">
+<section class="relative w-full overflow-hidden bg-bg dark:bg-black border-b-2 border-gray/25 dark:border-white/20 transition-colors duration-300 pt-8 sm:pt-10 lg:pt-[44px]">
 
     <div class="pointer-events-none absolute -top-[341px] right-0 lg:right-[-100px] w-[500px] h-[500px] lg:w-[800px] lg:h-[800px] rounded-full bg-[#7C3AED] opacity-15 dark:hidden blur-[100px] lg:blur-[150px] z-0"></div>
 
     <div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-[100px]">
 
-        <div class="pointer-events-none select-none hidden xl:flex absolute left-[59px] top-[349px] size-[100.8px] items-center justify-center">
-            <img src="/bee.svg" alt="" aria-hidden="true" class="size-[72px]" />
-        </div>
-
         <h1 class="mx-auto max-w-[1240px] text-center font-sans font-[800] leading-[1.06] tracking-[-1.2px] sm:tracking-[-1.8px] lg:tracking-[-2.4px] text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] xl:text-[72px]">
-            <span class="bg-[linear-gradient(100deg,var(--color-blue)_6.17%,var(--color-purple)_50%,var(--color-pink)_93.83%)] bg-clip-text text-transparent">{t('landlords.hero.title.part1')}</span>
+            <span class="inline-block pb-1 sm:pb-2 bg-[linear-gradient(100deg,var(--color-blue)_6.17%,var(--color-purple)_50%,var(--color-pink)_93.83%)] bg-clip-text text-transparent">{t('landlords.hero.title.part1')}</span>
             <br />
             <span class="text-black dark:text-bg transition-colors">{t('landlords.hero.title.part2')}</span>
         </h1>
@@ -35,11 +31,11 @@ const slides = [phone1, phone2, phone3];
 
         <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-2">
             <a href="https://ogloszenia.rentfriends.app/" target="_blank" rel="noopener noreferrer"
-               class="w-full sm:w-auto text-center whitespace-nowrap rounded-full bg-[image:var(--background-image-gradient)] px-6 py-4 font-sans text-[15.5px] font-bold text-bg transition-all duration-300 ease-out hover:opacity-90 hover:scale-[1.02] active:scale-95">
+               class="w-full sm:w-auto text-center text-balance sm:whitespace-nowrap rounded-full bg-[image:var(--background-image-gradient)] px-5 sm:px-6 py-4 font-sans text-[15.5px] font-bold text-bg transition-all duration-300 ease-out hover:opacity-90 hover:scale-[1.02] active:scale-95">
                 {t('landlords.hero.cta.primary')}
             </a>
             <a href="#how-it-works"
-               class="w-full sm:w-auto text-center whitespace-nowrap rounded-full border-[1.5px] border-black/22 dark:border-white/25 px-6 py-4 font-sans text-[15.5px] font-semibold text-black dark:text-bg transition-all duration-300 ease-out hover:border-black/40 dark:hover:border-white/40 hover:scale-[1.02] active:scale-95">
+               class="w-full sm:w-auto text-center text-balance sm:whitespace-nowrap rounded-full border-[1.5px] border-black/22 dark:border-white/25 px-5 sm:px-6 py-4 font-sans text-[15.5px] font-semibold text-black dark:text-bg transition-all duration-300 ease-out hover:border-black/40 dark:hover:border-white/40 hover:scale-[1.02] active:scale-95">
                 {t('landlords.hero.cta.secondary')}
             </a>
         </div>
@@ -52,7 +48,7 @@ const slides = [phone1, phone2, phone3];
             <span class="flex items-center gap-1.5"><span aria-hidden="true" class="text-[12px]">🇵🇱</span>{t('landlords.hero.meta.startup')}</span>
         </div>
 
-        <div class="mt-8 sm:mt-10 flex items-center justify-center gap-2">
+        <div class="mt-10 sm:mt-[52px] flex items-center justify-center gap-2">
             {slides.map((_, i) => (
                 <button
                     type="button"
@@ -63,10 +59,10 @@ const slides = [phone1, phone2, phone3];
             ))}
         </div>
 
-        <div class="relative mt-6 sm:mt-7 flex items-center justify-center gap-1 sm:gap-4 lg:gap-8">
+        <div class="relative mt-2 sm:mt-1 flex items-center justify-center gap-2 sm:gap-4 lg:gap-8">
 
             <button type="button" id="hero-carousel-prev" aria-label={t('landlords.hero.carousel.prev')}
-                    class="relative z-30 shrink-0 self-center flex size-11 lg:size-[55px] items-center justify-center rounded-full border border-black/8 dark:border-white/15 bg-black/6 dark:bg-white/10 text-black dark:text-bg transition-all hover:scale-105 active:scale-95 cursor-pointer">
+                    class="relative z-30 shrink-0 self-start mt-1 sm:self-center sm:mt-0 flex size-11 lg:size-[55px] items-center justify-center rounded-full border border-black/8 dark:border-white/15 bg-black/6 dark:bg-white/10 text-black dark:text-bg transition-all hover:scale-105 active:scale-95 cursor-pointer">
                 <svg class="size-5 lg:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M15 18l-6-6 6-6" />
                 </svg>
@@ -90,7 +86,7 @@ const slides = [phone1, phone2, phone3];
             </div>
 
             <button type="button" id="hero-carousel-next" aria-label={t('landlords.hero.carousel.next')}
-                    class="relative z-30 shrink-0 self-center flex size-11 lg:size-[55px] items-center justify-center rounded-full border border-black/8 dark:border-white/15 bg-black/6 dark:bg-white/10 text-black dark:text-bg transition-all hover:scale-105 active:scale-95 cursor-pointer">
+                    class="relative z-30 shrink-0 self-start mt-1 sm:self-center sm:mt-0 flex size-11 lg:size-[55px] items-center justify-center rounded-full border border-black/8 dark:border-white/15 bg-black/6 dark:bg-white/10 text-black dark:text-bg transition-all hover:scale-105 active:scale-95 cursor-pointer">
                 <svg class="size-5 lg:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 18l6-6-6-6" />
                 </svg>

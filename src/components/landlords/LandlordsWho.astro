@@ -28,7 +28,7 @@ const firmRows = [
 
         <div class="-mt-8 lg:-mt-[115px] flex flex-col lg:flex-row lg:items-start lg:justify-end gap-6 lg:gap-[27px] px-0 lg:pr-[66px]">
 
-            <article class="w-full lg:w-[404px] shrink-0 rounded-[27px] border-4 border-purple bg-bg dark:bg-white/5 p-6 sm:p-8 lg:p-[33px] shadow-[0_13px_38px_0_rgba(0,0,0,0.09)] transition-colors">
+            <article class="w-full lg:w-[404px] shrink-0 rounded-[27px] border-4 border-purple bg-bg dark:bg-black p-6 sm:p-8 lg:p-[33px] shadow-[0_13px_38px_0_rgba(0,0,0,0.09)] transition-colors">
                 <h3 class="font-sans font-[800] text-[20px] lg:text-[23px] leading-[1.26] text-black dark:text-bg transition-colors">
                     {t('landlords.who.owners.title')}
                 </h3>
@@ -44,9 +44,9 @@ const firmRows = [
                     ))}
                 </ul>
 
-                <div class="mt-6 rounded-[19px] bg-purple/10 dark:bg-purple/20 p-4 transition-colors">
+                <div class="mt-6 rounded-[19px] bg-purple/10 p-4 transition-colors">
                     <div class="flex items-center gap-3">
-                        <span aria-hidden="true" class="flex size-[44px] shrink-0 items-center justify-center rounded-[11px] bg-purple/16 dark:bg-purple/30 text-[18px]">🛏</span>
+                        <span aria-hidden="true" class="flex size-[44px] shrink-0 items-center justify-center rounded-[11px] bg-purple/16 text-[18px]">🛏</span>
                         <div class="min-w-0 flex-1">
                             <p class="font-sans font-[800] text-[13px] text-black dark:text-bg transition-colors">{t('landlords.who.owners.roomTitle')}</p>
                             <p class="mt-0.5 font-sans text-[10.5px] text-gray dark:text-bg/70 transition-colors">{t('landlords.who.owners.roomMeta')}</p>
@@ -67,7 +67,7 @@ const firmRows = [
                 </div>
             </article>
 
-            <article class="w-full lg:w-[360px] shrink-0 rounded-[22px] border-4 border-[color-mix(in_srgb,var(--color-purple)_45%,var(--color-pink))] bg-bg dark:bg-white/5 p-6 sm:p-8 lg:p-[27px] shadow-[0_14px_38px_0_rgba(0,0,0,0.1)] transition-colors">
+            <article class="w-full lg:w-[360px] shrink-0 rounded-[22px] border-4 border-[color-mix(in_srgb,var(--color-purple)_45%,var(--color-pink))] bg-bg dark:bg-black p-6 sm:p-8 lg:p-[27px] shadow-[0_14px_38px_0_rgba(0,0,0,0.1)] transition-colors">
                 <h3 class="font-sans font-[800] text-[18px] lg:text-[19px] leading-[1.26] text-black dark:text-bg transition-colors">
                     {t('landlords.who.firms.title')}
                 </h3>
@@ -86,9 +86,9 @@ const firmRows = [
                 <div class="mt-5 rounded-[16px] bg-black/4 dark:bg-white/5 p-3 transition-colors">
                     {firmRows.map((row, i) => (
                         <div class:list={['flex items-center gap-2.5 py-[7px]', i < firmRows.length - 1 ? 'border-b border-black/8 dark:border-white/10' : '']}>
-                            <span aria-hidden="true" class="flex size-[30px] shrink-0 items-center justify-center rounded-[9px] bg-purple/16 dark:bg-purple/30 text-[13px]">{row.emoji}</span>
+                            <span aria-hidden="true" class="flex size-[30px] shrink-0 items-center justify-center rounded-[9px] bg-purple/16 text-[13px]">{row.emoji}</span>
                             <p class="min-w-0 flex-1 font-sans text-[10.4px] font-semibold text-black dark:text-bg transition-colors">{row.label}</p>
-                            <span class="shrink-0 rounded-full bg-purple/14 dark:bg-purple/30 px-2 py-1 font-sans text-[8.8px] font-bold text-purple transition-colors">{row.badge}</span>
+                            <span class="shrink-0 rounded-full bg-purple/14 px-2 py-1 font-sans text-[8.8px] font-bold text-purple transition-colors">{row.badge}</span>
                         </div>
                     ))}
                 </div>

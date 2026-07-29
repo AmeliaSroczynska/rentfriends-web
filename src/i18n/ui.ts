@@ -18,7 +18,7 @@ export const ui = {
         'nav.addListing': 'Dodaj ogłoszenie',
 
         'landlords.hero.title.part1': 'Znajdź odpowiedniego najemcę,',
-        'landlords.hero.title.part2': 'nie tylko pierwszego chętnego.',
+        'landlords.hero.title.part2': 'nie tylko pierwszego chętnego',
         'landlords.hero.description': 'RentFriends to nowoczesna platforma do wynajmu pokoi i mieszkań, która pomaga właścicielom szybciej znaleźć odpowiednich lokatorów oraz lepiej dopasować ich do mieszkania i współlokatorów.',
         'landlords.hero.cta.primary': 'Dodaj ogłoszenie za darmo',
         'landlords.hero.cta.secondary': 'Zobacz jak to działa',
@@ -418,7 +418,7 @@ export const ui = {
         'nav.addListing': 'Add a listing',
 
         'landlords.hero.title.part1': 'Find the right tenant,',
-        'landlords.hero.title.part2': 'not just the first one to reply.',
+        'landlords.hero.title.part2': 'not just the first one to reply',
         'landlords.hero.description': 'RentFriends is a modern platform for renting rooms and flats that helps landlords find suitable tenants faster and match them better to the flat and their future flatmates.',
         'landlords.hero.cta.primary': 'Add a listing for free',
         'landlords.hero.cta.secondary': 'See how it works',

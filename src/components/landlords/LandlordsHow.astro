@@ -122,7 +122,7 @@ const RING_VALUE = 0.92;
     }
 
     :is(.dark) .hw-card {
-        background: color-mix(in srgb, var(--color-bg) 6%, transparent);
+        background: var(--color-black);
         border-color: color-mix(in srgb, var(--color-bg) 12%, transparent);
     }
 
@@ -166,6 +166,15 @@ const RING_VALUE = 0.92;
         line-height: 1;
         letter-spacing: -0.04em;
         color: var(--color-purple);
+    }
+
+    :is(.dark) .hw-views-number,
+    :is(.dark) .hw-views-badge {
+        color: var(--color-purple);
+    }
+
+    :is(.dark) .hw-olx-check {
+        background: var(--color-purple);
     }
 
     .hw-views-text {
@@ -295,7 +304,7 @@ const RING_VALUE = 0.92;
     }
 
     :is(.dark) .hw-bee {
-        background: color-mix(in srgb, var(--color-bg) 6%, transparent);
+        background: var(--color-black);
     }
 
     .hw-bee img {
