@@ -1,6 +1,6 @@
 # RentFriends
 
-> RentFriends (also written Rent Friends) is a Polish mobile app and platform for finding flatmates, rooms and flats, and for managing shared-flat life. It matches people by lifestyle, budget and habits, and helps landlords find suitable tenants. Free to use, currently launching in Wrocław, Poland.
+> RentFriends is a Polish mobile app and platform for finding flatmates, rooms and flats, and for managing shared-flat life. It matches people by lifestyle, budget and habits, and helps landlords find suitable tenants. Free to use, currently launching in Wrocław, Poland.
 
 RentFriends has two parts: Matcher, for finding flatmates and places to live, and Manager, for running a shared flat (cleaning schedules, task assignment, reminders).
 
