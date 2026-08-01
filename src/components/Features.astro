@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import step1Img from '../assets/step-1.png';
 import step1DarkImg from '../assets/step-1-dark.png';
@@ -17,6 +17,14 @@ const step3Sizes = '(min-width: 1024px) 280px, calc(60vw - 24px)';
 
 const stepWidths = (img: ImageMetadata) =>
     [...new Set([200, 300, 450, 600].filter((w) => w < img.width).concat(img.width))];
+
+const stepPicture = {
+    formats: ['avif'] as const,
+    fallbackFormat: 'webp' as const,
+    loading: 'lazy' as const,
+    decoding: 'async' as const,
+    pictureAttributes: { class: 'contents' }
+};
 ---
 
 <section id="features" class="w-full bg-bg dark:bg-black font-sans pt-16 pb-32 overflow-hidden transition-colors">
@@ -62,10 +70,10 @@ const stepWidths = (img: ImageMetadata) =>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
                             <div class="w-1/2 block dark:hidden">
-                                <Image src={step1Img} widths={stepWidths(step1Img)} sizes={stepSizes} alt={t('features.step1.title')} class="w-full h-auto object-contain" />
+                                <Picture src={step1Img} {...stepPicture} widths={stepWidths(step1Img)} sizes={stepSizes} alt={t('features.step1.title')} class="w-full h-auto object-contain" />
                             </div>
                             <div class="w-1/2 hidden dark:block">
-                                <Image src={step1DarkImg} widths={stepWidths(step1DarkImg)} sizes={stepSizes} alt={t('features.step1.title')} class="w-full h-auto object-contain" />
+                                <Picture src={step1DarkImg} {...stepPicture} widths={stepWidths(step1DarkImg)} sizes={stepSizes} alt={t('features.step1.title')} class="w-full h-auto object-contain" />
                             </div>
                         </div>
 
@@ -83,7 +91,7 @@ const stepWidths = (img: ImageMetadata) =>
                         <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
-                            <Image src={step2Img} widths={stepWidths(step2Img)} sizes={stepSizes} alt={t('features.step2.title')} class="w-1/2 h-auto object-contain drop-shadow-xl" />
+                            <Picture src={step2Img} {...stepPicture} widths={stepWidths(step2Img)} sizes={stepSizes} alt={t('features.step2.title')} class="w-1/2 h-auto object-contain drop-shadow-xl" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
@@ -100,7 +108,7 @@ const stepWidths = (img: ImageMetadata) =>
                         <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
-                            <Image src={step3Img} widths={stepWidths(step3Img)} sizes={step3Sizes} alt={t('features.step3.title')} class="w-1/2 h-auto object-contain drop-shadow-xl scale-120" />
+                            <Picture src={step3Img} {...stepPicture} widths={stepWidths(step3Img)} sizes={step3Sizes} alt={t('features.step3.title')} class="w-1/2 h-auto object-contain drop-shadow-xl scale-120" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
@@ -117,7 +125,7 @@ const stepWidths = (img: ImageMetadata) =>
                         <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
-                            <Image src={step4Img} widths={stepWidths(step4Img)} sizes={stepSizes} alt={t('features.step4.title')} class="w-1/2 h-auto object-contain drop-shadow-xl" />
+                            <Picture src={step4Img} {...stepPicture} widths={stepWidths(step4Img)} sizes={stepSizes} alt={t('features.step4.title')} class="w-1/2 h-auto object-contain drop-shadow-xl" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">
@@ -134,7 +142,7 @@ const stepWidths = (img: ImageMetadata) =>
                         <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
 
                         <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
-                            <Image src={step5Img} widths={stepWidths(step5Img)} sizes={stepSizes} alt={t('features.step5.title')} class="w-1/2 h-auto object-contain drop-shadow-xl" />
+                            <Picture src={step5Img} {...stepPicture} widths={stepWidths(step5Img)} sizes={stepSizes} alt={t('features.step5.title')} class="w-1/2 h-auto object-contain drop-shadow-xl" />
                         </div>
 
                         <div class="w-full mt-6 lg:mt-0">

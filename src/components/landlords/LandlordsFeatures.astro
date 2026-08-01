@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import phoneImg from '../../assets/phone.png';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
@@ -56,7 +56,7 @@ const tags = [
                     </div>
 
                     <div class="relative z-10 shrink-0 self-center lg:-my-[26px] lg:-mr-[86px] xl:-mr-[100px]">
-                        <Image src={phoneImg} alt="" aria-hidden="true" class="w-[150px] lg:w-[190px] h-auto rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
+                        <Picture src={phoneImg} formats={['avif']} fallbackFormat="webp" loading="lazy" decoding="async" alt="" aria-hidden="true" pictureAttributes={{ class: 'contents' }} class="w-[150px] lg:w-[190px] h-auto rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
                     </div>
                 </div>
             </article>
@@ -85,7 +85,7 @@ const tags = [
                     </div>
 
                     <div class="relative z-10 shrink-0 self-center lg:-my-[26px] lg:-ml-[86px] xl:-ml-[100px]">
-                        <Image src={phoneImg} alt="" aria-hidden="true" class="w-[150px] lg:w-[190px] h-auto -rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
+                        <Picture src={phoneImg} formats={['avif']} fallbackFormat="webp" loading="lazy" decoding="async" alt="" aria-hidden="true" pictureAttributes={{ class: 'contents' }} class="w-[150px] lg:w-[190px] h-auto -rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
                     </div>
                 </div>
             </article>
@@ -113,7 +113,7 @@ const tags = [
                     </div>
 
                     <div class="relative z-10 shrink-0 self-center lg:-my-[26px] lg:-mr-[86px] xl:-mr-[100px]">
-                        <Image src={phoneImg} alt="" aria-hidden="true" class="w-[150px] lg:w-[190px] h-auto rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
+                        <Picture src={phoneImg} formats={['avif']} fallbackFormat="webp" loading="lazy" decoding="async" alt="" aria-hidden="true" pictureAttributes={{ class: 'contents' }} class="w-[150px] lg:w-[190px] h-auto rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
                     </div>
                 </div>
             </article>

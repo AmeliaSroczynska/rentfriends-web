@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import phone1 from '../../assets/phone1.png';
 import phone2 from '../../assets/phone2.png';
@@ -75,10 +75,14 @@ const slides = [phone1, phone2, phone3];
                         data-index={i}
                         data-pos={i === 0 ? 'center' : i === 1 ? 'right' : 'left'}
                     >
-                        <Image
+                        <Picture
                             src={src}
+                            formats={['avif']}
+                            fallbackFormat="webp"
                             alt={`${t('landlords.hero.carousel.alt')} ${i + 1}`}
                             loading={i === 0 ? 'eager' : 'lazy'}
+                            decoding={i === 0 ? 'sync' : 'async'}
+                            pictureAttributes={{ class: 'contents' }}
                             class="block w-full h-auto"
                         />
                     </div>
