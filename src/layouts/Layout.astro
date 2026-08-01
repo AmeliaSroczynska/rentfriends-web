@@ -1,23 +1,27 @@
 ---
 import '../styles/global.css';
-import { getLangFromUrl } from '../i18n/utils';
+import { getLangFromUrl, getAlternateLinks } from '../i18n/utils';
 
 export interface Props {
 	title?: string;
 	description?: string;
 	image?: string;
+	noindex?: boolean;
 }
 
 const {
 	title = "RentFriends (Rent Friends) - Inteligentna platforma dopasowywania współlokatorów",
 	description = "RentFriends pomaga znaleźć idealnego współlokatora i opanować domowe obowiązki bez stresu. Sprawdź naszą aplikację!",
-	image = "/og-image.jpg"
+	image = "/og-image.jpg",
+	noindex = false
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
-const socialImageURL = new URL(image, Astro.site ?? Astro.url);
+const siteURL = Astro.site ?? Astro.url;
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+const socialImageURL = new URL(image, siteURL);
+const alternateLinks = noindex ? [] : getAlternateLinks(Astro.url, siteURL);
 
 const brandSchema = {
 	"@context": "https://schema.org",
@@ -66,6 +70,11 @@ const brandSchema = {
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={canonicalURL} />
+	{noindex && <meta name="robots" content="noindex, follow" />}
+
+	{alternateLinks.map((alt) => (
+		<link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+	))}
 
 	<meta property="og:site_name" content="RentFriends" />
 	<meta property="og:type" content="website" />
@@ -77,6 +86,7 @@ const brandSchema = {
 	<meta property="og:image:height" content="630" />
 	<meta property="og:image:type" content="image/jpeg" />
 	<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'pl_PL'} />
+	{!noindex && <meta property="og:locale:alternate" content={lang === 'en' ? 'pl_PL' : 'en_US'} />}
 
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content={canonicalURL} />

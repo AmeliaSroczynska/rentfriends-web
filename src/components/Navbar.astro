@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, stripLocale, localizePath } from '../i18n/utils';
 
 export interface Props {
     variant?: 'default' | 'landlords';
@@ -12,9 +12,7 @@ const t = useTranslations(lang);
 
 const { pathname } = Astro.url;
 const isEn = lang === 'en';
-const toggleUrl = isEn
-    ? pathname.replace(/^\/en/, '') || '/'
-    : `/en${pathname.replace(/\/$/, '')}`;
+const toggleUrl = localizePath(stripLocale(pathname), isEn ? 'pl' : 'en');
 
 const base = isEn ? '/en' : '';
 const isLandlords = variant === 'landlords';

@@ -10,7 +10,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={t('page404.title')} description={t('page404.description')}>
+<Layout title={t('page404.title')} description={t('page404.description')} noindex>
     <Navbar />
 
     <main class="w-full flex flex-col overflow-x-hidden bg-bg dark:bg-black transition-colors duration-300">

@@ -7,7 +7,15 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://rentfriends-web.vercel.app',
   integrations: [
-    sitemap()
+    sitemap({
+      i18n: {
+        defaultLocale: 'pl',
+        locales: {
+          pl: 'pl',
+          en: 'en'
+        }
+      }
+    })
   ],
   vite: {
     plugins: [tailwindcss()]
