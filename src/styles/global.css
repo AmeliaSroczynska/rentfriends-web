@@ -11,7 +11,7 @@
     --color-gray: #595959;
     --background-image-gradient: linear-gradient(to right, var(--color-blue), var(--color-purple), var(--color-pink));
 
-    --font-sans: "Plus Jakarta Sans", sans-serif;
+    --font-sans: var(--font-plus-jakarta, system-ui, sans-serif);
 }
 
 .glow-purple {

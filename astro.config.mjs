@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
@@ -25,6 +25,19 @@ export default defineConfig({
     layout: 'constrained',
     responsiveStyles: true
   },
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: 'Plus Jakarta Sans',
+      cssVariable: '--font-plus-jakarta',
+      weights: [400, 500, 600, 700, 800],
+      styles: ['normal'],
+      subsets: ['latin', 'latin-ext'],
+      display: 'swap',
+      fallbacks: ['system-ui', 'sans-serif'],
+      optimizedFallbacks: true
+    }
+  ],
   vite: {
     plugins: [tailwindcss()]
   },
