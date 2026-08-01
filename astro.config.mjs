@@ -21,6 +21,9 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'hover'
   },
+  build: {
+    inlineStylesheets: 'always'
+  },
   image: {
     layout: 'constrained',
     responsiveStyles: true

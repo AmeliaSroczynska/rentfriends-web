@@ -134,12 +134,20 @@ const brandSchema = {
 		document.addEventListener('astro:after-swap', setDarkMode);
 	</script>
 
-	<script
-		is:inline
-		defer
-		src="https://cdn.counter.dev/script.js"
-		data-id="e8ae0803-d06f-4542-bab6-fec00026bafa"
-		data-utcoffset="2">
+	<script is:inline>
+		const loadCounter = () => {
+			const s = document.createElement('script');
+			s.src = 'https://cdn.counter.dev/script.js';
+			s.dataset.id = 'e8ae0803-d06f-4542-bab6-fec00026bafa';
+			s.dataset.utcoffset = '2';
+			document.head.appendChild(s);
+		};
+
+		if (document.readyState === 'complete') {
+			loadCounter();
+		} else {
+			window.addEventListener('load', loadCounter, { once: true });
+		}
 	</script>
 </head>
 <body class="bg-bg text-black dark:bg-black dark:text-bg font-sans antialiased min-h-screen transition-colors duration-300">
