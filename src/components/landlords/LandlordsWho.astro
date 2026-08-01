@@ -51,7 +51,7 @@ const firmRows = [
                             <p class="font-sans font-[800] text-[13px] text-black dark:text-bg transition-colors">{t('landlords.who.owners.roomTitle')}</p>
                             <p class="mt-0.5 font-sans text-[10.5px] text-gray dark:text-bg/70 transition-colors">{t('landlords.who.owners.roomMeta')}</p>
                         </div>
-                        <span class="shrink-0 rounded-full bg-bg dark:bg-black/40 px-2.5 py-1.5 font-sans text-[10px] font-bold text-purple transition-colors">
+                        <span class="shrink-0 rounded-full bg-bg dark:bg-black/40 px-2.5 py-1.5 font-sans text-[10px] font-bold text-purple-ink dark:text-purple-ink-dark transition-colors">
                             {t('landlords.who.owners.roomBadge')}
                         </span>
                     </div>
@@ -88,7 +88,7 @@ const firmRows = [
                         <div class:list={['flex items-center gap-2.5 py-[7px]', i < firmRows.length - 1 ? 'border-b border-black/8 dark:border-white/10' : '']}>
                             <span aria-hidden="true" class="flex size-[30px] shrink-0 items-center justify-center rounded-[9px] bg-purple/16 text-[13px]">{row.emoji}</span>
                             <p class="min-w-0 flex-1 font-sans text-[10.4px] font-semibold text-black dark:text-bg transition-colors">{row.label}</p>
-                            <span class="shrink-0 rounded-full bg-purple/14 px-2 py-1 font-sans text-[8.8px] font-bold text-purple transition-colors">{row.badge}</span>
+                            <span class="shrink-0 rounded-full bg-purple/14 px-2 py-1 font-sans text-[8.8px] font-bold text-purple-ink dark:text-purple-ink-dark transition-colors">{row.badge}</span>
                         </div>
                     ))}
                 </div>
