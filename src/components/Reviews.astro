@@ -61,14 +61,16 @@ const allReviews = [reviews[reviews.length - 1], ...reviews, reviews[0]];
             </button>
         </div>
 
-        <div class="flex justify-center items-center gap-2" id="review-dots">
+        <div class="flex justify-center items-center" id="review-dots">
             {reviews.map((_, index) => (
                     <button
                             type="button"
                             aria-label={`Go to review ${index + 1}`}
                             data-index={index + 1}
-                            class={`dot h-2 rounded-full transition-all duration-300 cursor-pointer ${index === 0 ? 'w-6 bg-[image:var(--background-image-gradient)]' : 'w-2 bg-gray/30 dark:bg-white/20 hover:bg-gray/50 dark:hover:bg-white/40'}`}
-                    ></button>
+                            class="dot group flex size-7 items-center justify-center cursor-pointer"
+                    >
+                        <span class={`indicator h-2 rounded-full transition-all duration-300 ${index === 0 ? 'w-6 bg-[image:var(--background-image-gradient)]' : 'w-2 bg-gray/30 dark:bg-white/20 group-hover:bg-gray/50 dark:group-hover:bg-white/40'}`}></span>
+                    </button>
             ))}
         </div>
     </div>
@@ -107,9 +109,11 @@ const allReviews = [reviews[reviews.length - 1], ...reviews, reviews[0]];
                 : (currentIndex === totalReviews + 1 ? 0 : currentIndex - 1);
 
             dots.forEach((dot, i) => {
-                dot.className = i === activeDotIndex
-                    ? 'dot w-6 h-2 rounded-full bg-[image:var(--background-image-gradient)] transition-all duration-300 cursor-pointer'
-                    : 'dot w-2 h-2 rounded-full bg-gray/30 dark:bg-white/20 hover:bg-gray/50 dark:hover:bg-white/40 transition-all duration-300 cursor-pointer';
+                const indicator = dot.querySelector('.indicator');
+                if (!indicator) return;
+                indicator.className = i === activeDotIndex
+                    ? 'indicator w-6 h-2 rounded-full bg-[image:var(--background-image-gradient)] transition-all duration-300'
+                    : 'indicator w-2 h-2 rounded-full bg-gray/30 dark:bg-white/20 group-hover:bg-gray/50 dark:group-hover:bg-white/40 transition-all duration-300';
             });
         }
 
