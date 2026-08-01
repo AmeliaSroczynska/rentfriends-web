@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/logo.png';
 import { getLangFromUrl, useTranslations, stripLocale, localizePath } from '../i18n/utils';
 
 export interface Props {
@@ -34,7 +36,7 @@ const ctaLabel = isLandlords ? t('nav.addListing') : t('nav.download');
 
         <a href={isEn ? '/en/' : '/'} class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <div class="w-9 h-9 sm:w-10 sm:h-10 bg-white rounded-[10px] sm:rounded-[12px] shadow-sm flex items-center justify-center p-1 sm:p-1.5">
-                <img src="/logo.svg" alt="RentFriends" width="40" height="40" decoding="async" class="w-full h-full object-contain" />
+                <Image src={logoImg} alt="RentFriends" width={48} densities={[1, 2]} loading="eager" class="w-full h-full object-contain" />
             </div>
             <span class="text-sm font-bold text-black dark:text-bg tracking-tight transition-colors">RentFriends</span>
         </a>

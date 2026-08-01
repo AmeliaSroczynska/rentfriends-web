@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/logo.png';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -27,7 +29,7 @@ const landlordLinks = [
             <div class="flex-shrink-0 flex flex-col w-full lg:w-auto lg:flex-1 lg:max-w-[550px] min-w-[280px]">
                 <div class="flex items-center gap-3">
                     <div class="w-[35px] h-[35px] bg-white rounded-[10px] shadow-sm flex items-center justify-center p-1">
-                        <img src="/logo.svg" alt="RentFriends" width="35" height="35" decoding="async" loading="lazy" class="w-full h-full object-contain" />
+                        <Image src={logoImg} alt="RentFriends" width={48} densities={[1, 2]} class="w-full h-full object-contain" />
                     </div>
                     <span class="text-[16px] font-bold tracking-tight leading-none">RentFriends</span>
                 </div>
