@@ -1,21 +1,35 @@
 ---
 import '../styles/global.css';
-import { Font } from 'astro:assets';
+import { Font, getImage } from 'astro:assets';
 import { getLangFromUrl, getAlternateLinks } from '../i18n/utils';
+import { heroImage, heroWidths, heroSizes, heroFormat } from '../data/heroImage';
 
 export interface Props {
 	title?: string;
 	description?: string;
 	image?: string;
 	noindex?: boolean;
+	preloadHero?: boolean;
 }
 
 const {
 	title = "RentFriends (Rent Friends) - Inteligentna platforma dopasowywania współlokatorów",
 	description = "RentFriends pomaga znaleźć idealnego współlokatora i opanować domowe obowiązki bez stresu. Sprawdź naszą aplikację!",
 	image = "/og-image.jpg",
-	noindex = false
+	noindex = false,
+	preloadHero = false
 } = Astro.props;
+
+const heroPreload = preloadHero
+	? await getImage({
+		src: heroImage,
+		widths: heroWidths,
+		format: heroFormat,
+		layout: 'constrained',
+		fit: 'cover',
+		position: 'center'
+	})
+	: null;
 
 const lang = getLangFromUrl(Astro.url);
 
@@ -64,6 +78,17 @@ const brandSchema = {
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	{heroPreload && (
+		<link
+			rel="preload"
+			as="image"
+			type={`image/${heroFormat}`}
+			imagesrcset={heroPreload.srcSet.attribute}
+			imagesizes={heroSizes}
+			fetchpriority="high"
+		/>
+	)}
 	<link rel="icon" href="/favicon.ico" sizes="32x32" />
 	<link rel="icon" type="image/png" href="/favicon-96.png" sizes="96x96" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />

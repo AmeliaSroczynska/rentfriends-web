@@ -1,7 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { Picture } from 'astro:assets';
-import heroPhoneImg from '../assets/hero-phone.png';
+import { Image } from 'astro:assets';
+import { heroImage, heroWidths, heroSizes, heroFormat } from '../data/heroImage';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -90,17 +90,16 @@ const softwareSchema = {
         </div>
 
         <div class="absolute -right-[20px] bottom-0 sm:-right-[40px] sm:-bottom-[116px] lg:relative lg:right-0 lg:-bottom-[20px] lg:flex lg:justify-end lg:items-end lg:self-end lg:flex-1 lg:max-w-[472px] pointer-events-none select-none z-10 w-auto">
-            <Picture
-                    src={heroPhoneImg}
-                    formats={['avif']}
-                    fallbackFormat="webp"
+            <Image
+                    src={heroImage}
+                    format={heroFormat}
                     alt={t('hero.alt.phone') || 'Aplikacja RentFriends'}
-                    widths={[380, 472, 944]}
-                    sizes="(min-width: 1024px) 472px, (min-width: 640px) 380px, 45vw"
+                    widths={heroWidths}
+                    sizes={heroSizes}
                     loading="eager"
                     fetchpriority="high"
-                    pictureAttributes={{ class: 'contents' }}
-                    class="w-[45vw] sm:w-[380px] lg:w-full h-auto object-contain object-right-bottom drop-shadow-2xl origin-bottom-right"
+                    decoding="sync"
+                    class="w-[45vw] sm:w-[380px] lg:w-full h-auto object-contain object-right-bottom origin-bottom-right"
             />
         </div>
 
