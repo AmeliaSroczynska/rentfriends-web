@@ -404,7 +404,25 @@ export const ui = {
         "page404.heading.part1": "Ups! ",
         "page404.heading.part2": "Coś poszło nie tak",
         "page404.paragraph": "Możliwe, że link jest błędny, ogłoszenie wygasło lub Twój wymarzony współlokator już kogoś znalazł 😉",
-        "page404.button": "Wróć na stronę główną"
+        "page404.button": "Wróć na stronę główną",
+
+        'cookies.banner.title': 'Szanujemy Twoją prywatność',
+        'cookies.banner.description': 'Używamy plików cookies, aby strona działała poprawnie oraz aby lepiej rozumieć, jak z niej korzystasz. Możesz zaakceptować wszystkie, odrzucić opcjonalne lub wybrać własne ustawienia.',
+        'cookies.banner.more': 'Więcej w polityce prywatności',
+        'cookies.acceptAll': 'Akceptuję wszystkie',
+        'cookies.rejectAll': 'Tylko niezbędne',
+        'cookies.settings': 'Ustawienia',
+        'cookies.save': 'Zapisz wybór',
+        'cookies.back': 'Wróć',
+        'cookies.close': 'Zamknij',
+        'cookies.panel.title': 'Ustawienia plików cookies',
+        'cookies.panel.description': 'Wybierz, na które kategorie plików cookies wyrażasz zgodę. Zgodę możesz zmienić w każdej chwili.',
+        'cookies.necessary.title': 'Niezbędne',
+        'cookies.necessary.description': 'Konieczne do prawidłowego działania strony, zapamiętania motywu i Twoich preferencji cookies. Nie można ich wyłączyć.',
+        'cookies.necessary.always': 'Zawsze aktywne',
+        'cookies.analytics.title': 'Analityczne',
+        'cookies.analytics.description': 'Pomagają nam zrozumieć, jak korzystasz ze strony i które treści są dla Ciebie przydatne. Dane są anonimowe i zbiorcze.',
+        'cookies.manage': 'Ustawienia cookies'
     },
     en: {
         'nav.home': 'Home',
@@ -804,6 +822,24 @@ export const ui = {
         "page404.heading.part1": "Oops! ",
         "page404.heading.part2": "Something went wrong",
         "page404.paragraph": "The link might be broken, the listing expired, or your dream roommate has already found someone 😉",
-        "page404.button": "Back to homepage"
+        "page404.button": "Back to homepage",
+
+        'cookies.banner.title': 'We respect your privacy',
+        'cookies.banner.description': 'We use cookies to keep the site working properly and to better understand how you use it. You can accept all, reject the optional ones or choose your own settings.',
+        'cookies.banner.more': 'More in our privacy policy',
+        'cookies.acceptAll': 'Accept all',
+        'cookies.rejectAll': 'Necessary only',
+        'cookies.settings': 'Settings',
+        'cookies.save': 'Save choice',
+        'cookies.back': 'Back',
+        'cookies.close': 'Close',
+        'cookies.panel.title': 'Cookie settings',
+        'cookies.panel.description': 'Choose which cookie categories you consent to. You can change your consent at any time.',
+        'cookies.necessary.title': 'Necessary',
+        'cookies.necessary.description': 'Required for the site to work properly and to remember your theme and cookie preferences. These cannot be disabled.',
+        'cookies.necessary.always': 'Always active',
+        'cookies.analytics.title': 'Analytics',
+        'cookies.analytics.description': 'Help us understand how you use the site and which content is useful to you. The data is anonymous and aggregated.',
+        'cookies.manage': 'Cookie settings'
     },
 } as const;

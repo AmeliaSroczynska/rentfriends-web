@@ -1,0 +1,249 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const isEn = lang === 'en';
+const privacyHref = isEn ? '/en/privacy-policy#cookies' : '/privacy-policy#cookies';
+
+const categories = [
+    { id: 'necessary', title: t('cookies.necessary.title'), description: t('cookies.necessary.description'), locked: true },
+    { id: 'analytics', title: t('cookies.analytics.title'), description: t('cookies.analytics.description'), locked: false },
+];
+---
+
+<div
+    id="cookie-consent"
+    class="hidden fixed inset-x-0 bottom-0 z-[100] px-4 pb-4 sm:px-6 sm:pb-6 font-sans"
+    role="dialog"
+    aria-modal="false"
+    aria-labelledby="cookie-consent-title"
+>
+    <div class="mx-auto w-full max-w-[880px] overflow-hidden rounded-[28px] border border-black/10 bg-white shadow-[0_24px_70px_-20px_rgba(0,0,0,0.45)] dark:border-white/15 dark:bg-[#151515] transition-colors duration-300">
+        <div class="h-[4px] w-full bg-[image:var(--background-image-gradient)]"></div>
+
+        <div data-cookie-view="banner" class="p-6 sm:p-8">
+            <h2 id="cookie-consent-title" class="text-black dark:text-bg text-[20px] sm:text-[22px] font-extrabold tracking-[-0.5px] leading-tight transition-colors">
+                {t('cookies.banner.title')}
+            </h2>
+            <p class="mt-3 text-[14px] leading-[1.6] text-gray dark:text-bg/70 transition-colors">
+                {t('cookies.banner.description')}
+            </p>
+            <a href={privacyHref} class="mt-2 inline-block text-[14px] font-bold text-blue dark:text-purple-ink-dark hover:underline transition-colors">
+                {t('cookies.banner.more')}
+            </a>
+
+            <div class="mt-6 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+                <button
+                    type="button"
+                    data-cookie-action="accept-all"
+                    class="order-1 h-[48px] px-6 rounded-[12px] bg-[image:var(--background-image-gradient)] text-white text-[15px] font-bold hover:opacity-90 hover:scale-[1.02] transition-all cursor-pointer"
+                >
+                    {t('cookies.acceptAll')}
+                </button>
+                <button
+                    type="button"
+                    data-cookie-action="reject-all"
+                    class="order-2 h-[48px] px-6 rounded-[12px] border border-black/15 dark:border-white/25 text-black dark:text-bg text-[15px] font-bold hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                >
+                    {t('cookies.rejectAll')}
+                </button>
+                <button
+                    type="button"
+                    data-cookie-action="open-settings"
+                    class="order-3 h-[48px] px-6 rounded-[12px] text-gray dark:text-bg/70 text-[15px] font-bold underline underline-offset-4 hover:text-black dark:hover:text-bg transition-colors cursor-pointer sm:ml-auto"
+                >
+                    {t('cookies.settings')}
+                </button>
+            </div>
+        </div>
+
+        <div data-cookie-view="settings" class="hidden p-6 sm:p-8 max-h-[80vh] overflow-y-auto">
+            <h2 class="text-black dark:text-bg text-[20px] sm:text-[22px] font-extrabold tracking-[-0.5px] leading-tight transition-colors">
+                {t('cookies.panel.title')}
+            </h2>
+            <p class="mt-3 text-[14px] leading-[1.6] text-gray dark:text-bg/70 transition-colors">
+                {t('cookies.panel.description')}
+            </p>
+
+            <div class="mt-6 flex flex-col gap-3">
+                {categories.map((category) => (
+                    <div class="rounded-[16px] border border-black/10 dark:border-white/15 p-4 sm:p-5 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <h3 class="text-black dark:text-bg text-[15px] font-extrabold transition-colors">{category.title}</h3>
+                            {category.locked ? (
+                                <span class="shrink-0 rounded-full bg-purple/15 dark:bg-purple/30 px-3 py-1 text-[12px] font-bold text-purple-ink dark:text-purple-ink-dark transition-colors">
+                                    {t('cookies.necessary.always')}
+                                </span>
+                            ) : (
+                                <label class="relative inline-flex shrink-0 cursor-pointer items-center">
+                                    <span class="sr-only">{category.title}</span>
+                                    <input type="checkbox" data-cookie-toggle={category.id} class="peer sr-only" />
+                                    <span class="block h-[26px] w-[46px] rounded-full bg-black/20 dark:bg-white/25 transition-colors peer-checked:bg-purple peer-focus-visible:outline-[3px] peer-focus-visible:outline-pink peer-focus-visible:outline-offset-[3px]"></span>
+                                    <span class="pointer-events-none absolute left-[3px] top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-[20px]"></span>
+                                </label>
+                            )}
+                        </div>
+                        <p class="mt-2 text-[13px] leading-[1.6] text-gray dark:text-bg/70 transition-colors">{category.description}</p>
+                    </div>
+                ))}
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+                <button
+                    type="button"
+                    data-cookie-action="save"
+                    class="order-1 h-[48px] px-6 rounded-[12px] bg-[image:var(--background-image-gradient)] text-white text-[15px] font-bold hover:opacity-90 hover:scale-[1.02] transition-all cursor-pointer"
+                >
+                    {t('cookies.save')}
+                </button>
+                <button
+                    type="button"
+                    data-cookie-action="accept-all"
+                    class="order-2 h-[48px] px-6 rounded-[12px] border border-black/15 dark:border-white/25 text-black dark:text-bg text-[15px] font-bold hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                >
+                    {t('cookies.acceptAll')}
+                </button>
+                <button
+                    type="button"
+                    data-cookie-action="close-settings"
+                    class="order-3 h-[48px] px-6 rounded-[12px] text-gray dark:text-bg/70 text-[15px] font-bold underline underline-offset-4 hover:text-black dark:hover:text-bg transition-colors cursor-pointer sm:ml-auto"
+                >
+                    {t('cookies.back')}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script is:inline>
+    (() => {
+        const STORAGE_KEY = 'rf-cookie-consent';
+        const CONSENT_VERSION = 1;
+
+        const readConsent = () => {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+                const parsed = JSON.parse(raw);
+                if (!parsed || parsed.version !== CONSENT_VERSION) return null;
+                return parsed;
+            } catch (error) {
+                return null;
+            }
+        };
+
+        const broadcast = (consent) => {
+            document.dispatchEvent(new CustomEvent('rf:cookie-consent', { detail: consent }));
+        };
+
+        const setupBanner = () => {
+            const root = document.getElementById('cookie-consent');
+            if (!root || root.dataset.cookieReady === 'true') return;
+            root.dataset.cookieReady = 'true';
+
+            const bannerView = root.querySelector('[data-cookie-view="banner"]');
+            const settingsView = root.querySelector('[data-cookie-view="settings"]');
+            const toggles = Array.from(root.querySelectorAll('[data-cookie-toggle]'));
+
+            let lastFocused = null;
+
+            const setView = (view) => {
+                const showSettings = view === 'settings';
+                bannerView.classList.toggle('hidden', showSettings);
+                settingsView.classList.toggle('hidden', !showSettings);
+            };
+
+            const syncToggles = (consent) => {
+                toggles.forEach((toggle) => {
+                    toggle.checked = Boolean(consent && consent[toggle.dataset.cookieToggle]);
+                });
+            };
+
+            const open = (view) => {
+                lastFocused = document.activeElement;
+                syncToggles(readConsent());
+                setView(view || 'banner');
+                root.classList.remove('hidden');
+                const focusTarget = root.querySelector('[data-cookie-view]:not(.hidden) button');
+                if (focusTarget) focusTarget.focus();
+            };
+
+            const close = () => {
+                root.classList.add('hidden');
+                setView('banner');
+                if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+                lastFocused = null;
+            };
+
+            const persist = (analytics) => {
+                const consent = {
+                    version: CONSENT_VERSION,
+                    date: new Date().toISOString(),
+                    necessary: true,
+                    analytics: Boolean(analytics)
+                };
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
+                } catch (error) {
+                    return;
+                }
+                broadcast(consent);
+                close();
+            };
+
+            root.addEventListener('click', (event) => {
+                const target = event.target instanceof Element ? event.target : null;
+                const trigger = target ? target.closest('[data-cookie-action]') : null;
+                if (!trigger) return;
+                const action = trigger.dataset.cookieAction;
+
+                if (action === 'accept-all') persist(true);
+                if (action === 'reject-all') persist(false);
+                if (action === 'open-settings') {
+                    syncToggles(readConsent());
+                    setView('settings');
+                }
+                if (action === 'close-settings') setView('banner');
+                if (action === 'save') {
+                    const analytics = toggles.some((toggle) => toggle.dataset.cookieToggle === 'analytics' && toggle.checked);
+                    persist(analytics);
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key !== 'Escape' || root.classList.contains('hidden')) return;
+                if (!readConsent()) return;
+                close();
+            });
+
+            window.rfCookieConsent = {
+                open: () => open('settings'),
+                get: readConsent
+            };
+
+            const stored = readConsent();
+            if (stored) {
+                broadcast(stored);
+            } else {
+                open('banner');
+            }
+        };
+
+        if (!window.rfCookieConsentBound) {
+            window.rfCookieConsentBound = true;
+
+            document.addEventListener('click', (event) => {
+                const target = event.target instanceof Element ? event.target : null;
+                const trigger = target ? target.closest('[data-cookie-settings]') : null;
+                if (!trigger || !window.rfCookieConsent) return;
+                event.preventDefault();
+                window.rfCookieConsent.open();
+            });
+
+            document.addEventListener('astro:after-swap', setupBanner);
+        }
+
+        setupBanner();
+    })();
+</script>

@@ -1,0 +1,547 @@
+---
+import beeRaw from '../../public/bee.svg?raw';
+
+const beeSvg = beeRaw
+    .replace(/\swidth="[^"]*"/, ' width="100%"')
+    .replace(/\sheight="[^"]*"/, ' height="100%"');
+---
+
+<div id="bee-companion" class="bee-companion" aria-hidden="true" data-bee-ignore>
+    <div class="bee-tilt">
+        <div class="bee-drift">
+            <div class="bee-bob">
+                <div class="bee-art" set:html={beeSvg}></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bee-companion {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 40;
+        width: 30px;
+        height: 30px;
+        pointer-events: none;
+        opacity: 0;
+        will-change: transform, opacity;
+        transform: translate3d(-300px, -300px, 0);
+    }
+
+    @media (min-width: 640px) {
+        .bee-companion {
+            width: 52px;
+            height: 52px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .bee-companion {
+            width: 64px;
+            height: 64px;
+        }
+    }
+
+    .bee-tilt,
+    .bee-drift,
+    .bee-bob,
+    .bee-art {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bee-drift {
+        animation: bee-drift 5400ms ease-in-out infinite;
+    }
+
+    .bee-bob {
+        animation: bee-bob 2200ms ease-in-out infinite;
+    }
+
+    .bee-art :global(svg) {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: visible;
+        transform: scale(0.94);
+    }
+
+    .bee-art :global(svg > path:nth-of-type(1)) {
+        transform-box: fill-box;
+        transform-origin: 0% 100%;
+        animation: bee-wing-right 250ms ease-in-out infinite alternate;
+    }
+
+    .bee-art :global(svg > path:nth-of-type(2)) {
+        transform-box: fill-box;
+        transform-origin: 100% 100%;
+        animation: bee-wing-left 250ms ease-in-out infinite alternate;
+    }
+
+    @keyframes bee-bob {
+        0% {
+            transform: translateY(-2.5px);
+        }
+        50% {
+            transform: translateY(2.5px);
+        }
+        100% {
+            transform: translateY(-2.5px);
+        }
+    }
+
+    @keyframes bee-drift {
+        0% {
+            transform: translateX(-3px) rotate(-3deg);
+        }
+        50% {
+            transform: translateX(3px) rotate(3deg);
+        }
+        100% {
+            transform: translateX(-3px) rotate(-3deg);
+        }
+    }
+
+    @keyframes bee-wing-right {
+        from {
+            transform: rotate(9deg) scaleY(0.94);
+        }
+        to {
+            transform: rotate(-11deg) scaleY(1.05);
+        }
+    }
+
+    @keyframes bee-wing-left {
+        from {
+            transform: rotate(-9deg) scaleY(0.94);
+        }
+        to {
+            transform: rotate(11deg) scaleY(1.05);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .bee-companion {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    const root = document.getElementById('bee-companion');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const debug = new URLSearchParams(window.location.search).has('bee');
+
+    if (root && (!reduced || debug)) {
+        const tilt = root.querySelector('.bee-tilt') as HTMLElement | null;
+
+        if (debug) {
+            root.style.display = 'block';
+            root.style.outline = '2px solid #E95BD2';
+        }
+
+        const SKIP_TAGS = new Set([
+            'SCRIPT', 'STYLE', 'NOSCRIPT', 'TEMPLATE', 'BR', 'SOURCE', 'META', 'LINK', 'TITLE'
+        ]);
+
+        const SOLID_TAGS = new Set([
+            'IMG', 'PICTURE', 'SVG', 'VIDEO', 'CANVAS', 'IFRAME', 'INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'HR'
+        ]);
+
+        const ANCHORS = [
+            [0.07, 0.24],
+            [0.93, 0.3],
+            [0.9, 0.76],
+            [0.1, 0.7],
+            [0.94, 0.5],
+            [0.06, 0.44]
+        ];
+
+        const HALO = 12;
+        const MAX_TILT = 7;
+        const FAST_SCROLL = 115;
+
+        type Box = { l: number; t: number; r: number; b: number };
+
+        let vw = window.innerWidth;
+        let vh = window.innerHeight;
+        let size = 30;
+        let obstacles: Box[] = [];
+        let stickies: Element[] = [];
+        let posX = -300;
+        let posY = -300;
+        let targetX = -300;
+        let targetY = -300;
+        let rot = 0;
+        let anchorIndex = -1;
+        let lastEval = -9999;
+        let lastScroll = window.scrollY;
+        let vel = 0;
+        let placed = false;
+        let shown = false;
+        let alpha = 0;
+        let clearStreak = 0;
+        let measureTimer = 0;
+
+        const hasDirectText = (el: Element) => {
+            for (let n = el.firstChild; n; n = n.nextSibling) {
+                if (n.nodeType === 3 && n.nodeValue && n.nodeValue.trim().length > 0) return true;
+            }
+            return false;
+        };
+
+        const hasSurface = (cs: CSSStyleDeclaration) => {
+            const bg = cs.backgroundColor;
+            if (bg && bg !== 'transparent') {
+                const m = bg.match(/rgba?\(([^)]+)\)/);
+                if (m) {
+                    const parts = m[1].split(',');
+                    const a = parts.length > 3 ? parseFloat(parts[3]) : 1;
+                    if (a > 0.06) return true;
+                }
+            }
+            if (cs.backgroundImage && cs.backgroundImage !== 'none') return true;
+            if (cs.boxShadow && cs.boxShadow !== 'none') return true;
+            const bw =
+                parseFloat(cs.borderTopWidth) +
+                parseFloat(cs.borderRightWidth) +
+                parseFloat(cs.borderBottomWidth) +
+                parseFloat(cs.borderLeftWidth);
+            return bw > 0.5;
+        };
+
+        const clips = (cs: CSSStyleDeclaration) => {
+            const x = cs.overflowX;
+            const y = cs.overflowY;
+            return x === 'hidden' || x === 'clip' || x === 'auto' || y === 'hidden' || y === 'clip' || y === 'auto';
+        };
+
+        const pushText = (el: Element, out: Box[], rect: DOMRect, sx: number, sy: number) => {
+            let lines: DOMRectList | null = null;
+            try {
+                const range = document.createRange();
+                range.selectNodeContents(el);
+                lines = range.getClientRects();
+                range.detach();
+            } catch (e) {
+                lines = null;
+            }
+
+            if (!lines || lines.length === 0 || lines.length > 40) {
+                out.push({ l: rect.left + sx, t: rect.top + sy, r: rect.right + sx, b: rect.bottom + sy });
+                return;
+            }
+
+            for (let i = 0; i < lines.length; i++) {
+                const lr = lines[i];
+                if (lr.width < 1 || lr.height < 1) continue;
+                out.push({ l: lr.left + sx, t: lr.top + sy, r: lr.right + sx, b: lr.bottom + sy });
+            }
+        };
+
+        const walkFixed = (parent: Element, sticky: Element[], depth: number) => {
+            if (depth > 6 || sticky.length > 40) return;
+
+            for (let child = parent.firstElementChild; child; child = child.nextElementSibling) {
+                const tag = child.tagName.toUpperCase();
+                if (SKIP_TAGS.has(tag)) continue;
+                if (child.hasAttribute('data-bee-ignore')) continue;
+
+                const rect = child.getBoundingClientRect();
+                const cs = getComputedStyle(child);
+
+                if (cs.display === 'none' || cs.visibility === 'hidden') continue;
+                if (parseFloat(cs.opacity) < 0.06) continue;
+
+                const huge = rect.width > vw * 0.9 && rect.height > vh * 0.9;
+                const solid =
+                    (SOLID_TAGS.has(tag) && rect.width >= 5 && rect.height >= 5) ||
+                    hasDirectText(child) ||
+                    hasSurface(cs);
+
+                if (!huge && solid && rect.width >= 2 && rect.height >= 2) {
+                    sticky.push(child);
+                    continue;
+                }
+
+                walkFixed(child, sticky, depth + 1);
+            }
+        };
+
+        const walk = (
+            parent: Element,
+            out: Box[],
+            sticky: Element[],
+            sx: number,
+            sy: number,
+            budget: { n: number }
+        ) => {
+            for (let child = parent.firstElementChild; child; child = child.nextElementSibling) {
+                if (budget.n <= 0) return;
+                if (child === root) continue;
+                const tag = child.tagName.toUpperCase();
+                if (SKIP_TAGS.has(tag)) continue;
+                if (child.hasAttribute('data-bee-ignore')) continue;
+
+                budget.n--;
+
+                const rect = child.getBoundingClientRect();
+                const cs = getComputedStyle(child);
+
+                if (cs.display === 'none' || cs.visibility === 'hidden') continue;
+                if (parseFloat(cs.opacity) < 0.06) continue;
+
+                if (cs.position === 'fixed' || cs.position === 'sticky') {
+                    const huge = rect.width > vw * 0.9 && rect.height > vh * 0.9;
+                    const solid =
+                        (SOLID_TAGS.has(tag) && rect.width >= 5 && rect.height >= 5) ||
+                        hasDirectText(child) ||
+                        hasSurface(cs);
+
+                    if (!huge && solid && rect.width >= 2 && rect.height >= 2) sticky.push(child);
+                    else walkFixed(child, sticky, 0);
+                    continue;
+                }
+
+                if (rect.width < 2 || rect.height < 2) {
+                    walk(child, out, sticky, sx, sy, budget);
+                    continue;
+                }
+
+                const decorative =
+                    cs.pointerEvents === 'none' && (rect.width > vw * 0.5 || rect.height > vh * 0.5);
+                const fullBleed = rect.width >= vw - 8;
+                const fits = rect.width <= vw * 0.92 && rect.height <= vh * 0.92;
+                const overflows =
+                    child.scrollWidth > child.clientWidth + 2 || child.scrollHeight > child.clientHeight + 2;
+
+                if (hasDirectText(child)) {
+                    pushText(child, out, rect, sx, sy);
+                    continue;
+                }
+
+                let block = false;
+                if (SOLID_TAGS.has(tag) && rect.width >= 5 && rect.height >= 5) block = true;
+                else if (fits && overflows && clips(cs)) block = true;
+                else if (!decorative && !fullBleed && hasSurface(cs)) block = true;
+
+                if (block) {
+                    out.push({
+                        l: rect.left + sx,
+                        t: rect.top + sy,
+                        r: rect.right + sx,
+                        b: rect.bottom + sy
+                    });
+                    continue;
+                }
+
+                walk(child, out, sticky, sx, sy, budget);
+            }
+        };
+
+        const measure = () => {
+            vw = window.innerWidth;
+            vh = window.innerHeight;
+            size = root.offsetWidth || 30;
+            const sx = window.scrollX;
+            const sy = window.scrollY;
+            const out: Box[] = [];
+            const sticky: Element[] = [];
+            walk(document.body, out, sticky, sx, sy, { n: 9000 });
+            obstacles = out;
+            stickies = sticky;
+        };
+
+        const scheduleMeasure = (delay: number) => {
+            if (measureTimer) return;
+            measureTimer = window.setTimeout(() => {
+                measureTimer = 0;
+                measure();
+            }, delay);
+        };
+
+        const hits = (x: number, y: number, pad: number, sy: number, sweep: number, lead: boolean) => {
+            const grow = pad + HALO;
+            const dx = lead ? (targetX - posX) * 0.45 : 0;
+            const dy = lead ? (targetY - posY) * 0.45 : 0;
+            const l = Math.min(x, x + dx) - grow;
+            const r = Math.max(x, x + dx) + size + grow;
+            const t = Math.min(y, y + dy) - grow + Math.min(0, sweep);
+            const b = Math.max(y, y + dy) + size + grow + Math.max(0, sweep);
+
+            for (let i = 0; i < obstacles.length; i++) {
+                const o = obstacles[i];
+                if (o.t - sy > b) continue;
+                if (o.b - sy < t) continue;
+                if (o.r < l || o.l > r) continue;
+                return true;
+            }
+
+            for (let i = 0; i < stickies.length; i++) {
+                const sr = stickies[i].getBoundingClientRect();
+                if (sr.width < 2 || sr.height < 2) continue;
+                if (sr.bottom < t || sr.top > b) continue;
+                if (sr.right < l || sr.left > r) continue;
+                return true;
+            }
+
+            return false;
+        };
+
+        const clamp = (v: number, limit: number) => Math.max(-limit, Math.min(limit, v));
+
+        const blocked = (x: number, y: number, pad: number, sy: number) =>
+            hits(x, y, pad, sy, clamp(vel * 5, 180), false);
+
+        const unsafe = (x: number, y: number, pad: number, sy: number) =>
+            hits(x, y, pad, sy, clamp(vel * 5, 220), true);
+
+        const touching = (sy: number) => hits(posX, posY, 0, sy, 0, false);
+
+        const findSpot = (ax: number, ay: number, sy: number) => {
+            const m = 10;
+            const maxX = vw - size - m;
+            const maxY = vh - size - m;
+            if (maxX <= m || maxY <= m) return null;
+
+            const cols = 14;
+            const rows = 16;
+            const pads = [22, 12, 4, 0];
+
+            for (let p = 0; p < pads.length; p++) {
+                let bestX = 0;
+                let bestY = 0;
+                let bestD = Infinity;
+
+                for (let i = 0; i <= cols; i++) {
+                    const x = m + ((maxX - m) * i) / cols;
+                    const dx = x - ax;
+                    for (let j = 0; j <= rows; j++) {
+                        const y = m + ((maxY - m) * j) / rows;
+                        const dy = y - ay;
+                        const d = dx * dx + dy * dy;
+                        if (d >= bestD) continue;
+                        if (blocked(x, y, pads[p], sy)) continue;
+                        bestD = d;
+                        bestX = x;
+                        bestY = y;
+                    }
+                }
+
+                if (bestD < Infinity) return { x: bestX, y: bestY };
+            }
+
+            return null;
+        };
+
+        const frame = (now: number) => {
+            requestAnimationFrame(frame);
+            if (document.hidden) return;
+
+            const sy = window.scrollY;
+            vel = vel * 0.6 + (sy - lastScroll) * 0.4;
+            lastScroll = sy;
+
+            const step = Math.max(320, vh * 0.6);
+            const idx = Math.abs(Math.floor(sy / step)) % ANCHORS.length;
+            const stale = !placed || idx !== anchorIndex || blocked(targetX, targetY, 10, sy);
+
+            if (stale && now - lastEval > 120) {
+                lastEval = now;
+                anchorIndex = idx;
+                const spot = findSpot(ANCHORS[idx][0] * vw - size / 2, ANCHORS[idx][1] * vh - size / 2, sy);
+                if (spot) {
+                    targetX = spot.x;
+                    targetY = spot.y;
+                    if (!placed) {
+                        placed = true;
+                        posX = spot.x;
+                        posY = spot.y + 60;
+                    }
+                }
+            }
+
+            if (!placed) return;
+
+            const prevX = posX;
+            posX += (targetX - posX) * 0.085;
+            posY += (targetY - posY) * 0.085;
+
+            const wanted = Math.max(-MAX_TILT, Math.min(MAX_TILT, (posX - prevX) * 1.8));
+            rot += (wanted - rot) * 0.08;
+
+            root.style.transform = 'translate3d(' + posX.toFixed(2) + 'px, ' + posY.toFixed(2) + 'px, 0)';
+            if (tilt) tilt.style.transform = 'rotate(' + rot.toFixed(2) + 'deg)';
+
+            if (debug) {
+                root.style.opacity = '1';
+                return;
+            }
+
+            if (touching(sy)) {
+                shown = false;
+                clearStreak = 0;
+                alpha = 0;
+            } else {
+                const fast = Math.abs(vel) > FAST_SCROLL;
+                const clean = !fast && !unsafe(posX, posY, shown ? 4 : 12, sy);
+
+                if (clean) {
+                    clearStreak++;
+                    if (clearStreak > (shown ? 0 : 3)) shown = true;
+                } else {
+                    clearStreak = 0;
+                    shown = false;
+                }
+
+                const want = shown ? 1 : 0;
+                alpha += (want - alpha) * (want > alpha ? 0.18 : 0.34);
+                if (alpha < 0.005) alpha = 0;
+                if (alpha > 0.995) alpha = 1;
+            }
+
+            root.style.opacity = alpha.toFixed(3);
+        };
+
+        const observer = new MutationObserver((records) => {
+            for (let i = 0; i < records.length; i++) {
+                const t = records[i].target as Node;
+                if (t === root || (t.nodeType === 1 && root.contains(t))) continue;
+                scheduleMeasure(240);
+                return;
+            }
+        });
+
+        measure();
+        requestAnimationFrame(frame);
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['class', 'style', 'hidden', 'open']
+        });
+
+        window.addEventListener('resize', () => {
+            placed = false;
+            shown = false;
+            alpha = 0;
+            root.style.opacity = '0';
+            scheduleMeasure(200);
+        });
+        window.addEventListener('orientationchange', () => scheduleMeasure(300));
+        window.addEventListener('load', () => scheduleMeasure(120));
+        document.addEventListener('transitionend', () => scheduleMeasure(140), true);
+        document.addEventListener('animationend', () => scheduleMeasure(200), true);
+        document.addEventListener('click', () => scheduleMeasure(320), true);
+
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => scheduleMeasure(80));
+        }
+
+        window.setTimeout(measure, 900);
+        window.setTimeout(measure, 2400);
+    }
+</script>

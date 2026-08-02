@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { Font, getImage } from 'astro:assets';
 import { getLangFromUrl, getAlternateLinks } from '../i18n/utils';
+import CookieBanner from '../components/CookieBanner.astro';
 import { heroImage, heroWidths, heroSizes, heroFormat } from '../data/heroImage';
 
 export interface Props {
@@ -160,22 +161,46 @@ const brandSchema = {
 	</script>
 
 	<script is:inline>
-		const loadCounter = () => {
-			const s = document.createElement('script');
-			s.src = 'https://cdn.counter.dev/script.js';
-			s.dataset.id = 'e8ae0803-d06f-4542-bab6-fec00026bafa';
-			s.dataset.utcoffset = '2';
-			document.head.appendChild(s);
-		};
+		(() => {
+			let counterLoaded = false;
 
-		if (document.readyState === 'complete') {
-			loadCounter();
-		} else {
-			window.addEventListener('load', loadCounter, { once: true });
-		}
+			const loadCounter = () => {
+				if (counterLoaded) return;
+				counterLoaded = true;
+				const s = document.createElement('script');
+				s.src = 'https://cdn.counter.dev/script.js';
+				s.dataset.id = 'e8ae0803-d06f-4542-bab6-fec00026bafa';
+				s.dataset.utcoffset = '2';
+				document.head.appendChild(s);
+			};
+
+			const hasAnalyticsConsent = () => {
+				try {
+					const raw = localStorage.getItem('rf-cookie-consent');
+					if (!raw) return false;
+					const parsed = JSON.parse(raw);
+					return Boolean(parsed && parsed.version === 1 && parsed.analytics);
+				} catch (error) {
+					return false;
+				}
+			};
+
+			const maybeLoadCounter = () => {
+				if (hasAnalyticsConsent()) loadCounter();
+			};
+
+			document.addEventListener('rf:cookie-consent', maybeLoadCounter);
+
+			if (document.readyState === 'complete') {
+				maybeLoadCounter();
+			} else {
+				window.addEventListener('load', maybeLoadCounter, { once: true });
+			}
+		})();
 	</script>
 </head>
 <body class="bg-bg text-black dark:bg-black dark:text-bg font-sans antialiased min-h-screen transition-colors duration-300">
 <slot />
+<CookieBanner />
 </body>
 </html>
