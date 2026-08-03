@@ -1,6 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
-import phoneImg from '../../assets/phone.png';
+import gainImg from '../../assets/gain1.png';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -61,7 +61,7 @@ const leftCards = [
                 </svg>
 
                 <div class="relative z-10 w-[215px] lg:w-[236px] drop-shadow-[0_24px_48px_rgba(9,20,50,0.22)]">
-                    <Picture src={phoneImg} formats={['avif']} fallbackFormat="webp" loading="lazy" decoding="async" alt={t('landlords.gain.phone.alt')} pictureAttributes={{ class: 'contents' }} class="block w-full h-auto" />
+                    <Picture src={gainImg} widths={[215, 236, 472]} sizes="(min-width: 1024px) 236px, 215px" formats={['avif']} fallbackFormat="webp" loading="lazy" decoding="async" alt={t('landlords.gain.phone.alt')} pictureAttributes={{ class: 'contents' }} class="block w-full h-auto" />
                 </div>
             </div>
 

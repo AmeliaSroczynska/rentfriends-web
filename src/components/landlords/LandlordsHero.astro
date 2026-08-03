@@ -11,7 +11,7 @@ const t = useTranslations(lang);
 const slides = [phone1, phone2, phone3];
 ---
 
-<section class="relative w-full overflow-hidden bg-bg dark:bg-black border-b-2 border-gray/25 dark:border-white/20 transition-colors duration-300 pt-8 sm:pt-10 lg:pt-[44px]">
+<section class="relative w-full overflow-hidden bg-bg dark:bg-black border-b-2 border-gray/25 dark:border-white/20 transition-colors duration-300 pt-8 sm:pt-10 lg:pt-[44px] pb-2 lg:pb-3">
 
     <div class="glow-purple pointer-events-none absolute -top-[551px] lg:-top-[661px] right-[-210px] lg:right-[-420px] w-[920px] h-[920px] lg:w-[1440px] lg:h-[1440px] rounded-full opacity-15 dark:hidden z-0"></div>
 
@@ -68,7 +68,7 @@ const slides = [phone1, phone2, phone3];
                 </svg>
             </button>
 
-            <div id="hero-carousel" class="relative flex-1 min-w-0 max-w-[290px] sm:max-w-[390px] lg:max-w-[490px] h-[170px] sm:h-[225px] lg:h-[280px]">
+            <div id="hero-carousel" class="relative flex-1 min-w-0 max-w-[290px] sm:max-w-[390px] lg:max-w-[490px]">
                 {slides.map((src, i) => (
                     <div
                         class="hero-slide"
@@ -100,21 +100,21 @@ const slides = [phone1, phone2, phone3];
 </section>
 
 <style>
-    .hero-slide {
+    #hero-carousel {
         --w: 145px;
         --scale: 0.64;
         --drop: 8px;
         --gap: calc(var(--w) * 0.6);
+        --tallest: 1.4;
 
+        height: calc(var(--w) * var(--tallest));
+    }
 
-        --ratio: 1.09;
-
+    .hero-slide {
         position: absolute;
         bottom: 0;
         left: 50%;
         width: var(--w);
-        height: calc(var(--w) * var(--ratio));
-        overflow: hidden;
         transform-origin: bottom center;
         transform: translate(-50%, var(--drop)) scale(1);
         filter: drop-shadow(0 26px 66px rgba(9, 20, 50, 0.15));
@@ -141,13 +141,13 @@ const slides = [phone1, phone2, phone3];
     }
 
     @media (min-width: 640px) {
-        .hero-slide {
+        #hero-carousel {
             --w: 195px;
         }
     }
 
     @media (min-width: 1024px) {
-        .hero-slide {
+        #hero-carousel {
             --w: 245px;
             --drop: 12px;
         }
