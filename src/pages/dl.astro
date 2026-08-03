@@ -1,0 +1,100 @@
+---
+const title = 'RentFriends';
+const description = 'Znajdź współlokatora, z którym mieszkanie będzie przyjemnością!';
+---
+
+<!doctype html>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="robots" content="noindex, nofollow" />
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content="https://rentfriends.app/og-image.jpg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<link rel="icon" href="/favicon.ico" sizes="32x32" />
+	<script is:inline>
+		(function () {
+			const url = new URL(window.location.href);
+			const p = url.searchParams;
+
+			if (
+				p.size === 3 &&
+				p.get('utm_source') === 'ulotka' &&
+				p.get('utm_medium') === 'ulotka' &&
+				p.get('utm_campaign') === 'ulotka1'
+			) {
+				window.location.replace('https://links.rentfriends.app' + url.search);
+				return;
+			}
+
+			const toTok = (s) => (s || '').replace(/\s+/g, '_').replace(/[^A-Za-z0-9_\-.\-]/g, '').slice(0, 30);
+			const ctParts = [toTok(p.get('utm_source') || 'direct'), toTok(p.get('utm_campaign') || 'default')];
+			if (p.get('utm_content')) ctParts.push(toTok(p.get('utm_content')));
+			const ct = encodeURIComponent(ctParts.join('.'));
+
+			const PT = '119347609';
+
+			function iosUrl() {
+				const base = 'https://apps.apple.com/pl/app/dy%C5%BCury-app/id6502833411';
+				return `${base}?pt=${PT}&ct=${ct}&mt=8`;
+			}
+
+			const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+			if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+				window.location.replace(iosUrl());
+			} else if (/android/i.test(ua)) {
+				const qsNoQ = url.search ? url.search.slice(1) : '';
+				const ref = qsNoQ ? `&referrer=${encodeURIComponent(qsNoQ)}` : '';
+				window.location.replace(`https://play.google.com/store/apps/details?id=app.dyzury${ref}`);
+			} else {
+				window.location.replace('https://rentfriends.app' + (url.search || ''));
+			}
+
+			setTimeout(() => {
+				window.location.replace('https://rentfriends.app' + (url.search || ''));
+			}, 3000);
+		})();
+	</script>
+	<style>
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+			background: #fff;
+			color: #1a1a1a;
+			text-align: center;
+			padding: 24px;
+		}
+
+		p {
+			font-size: 15px;
+			line-height: 1.6;
+		}
+
+		a {
+			color: #6c4df6;
+			font-weight: 600;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<p>
+			Przekierowujemy Cię do RentFriends...<br />
+			<noscript>Włącz JavaScript lub </noscript>
+			<a href="https://apps.apple.com/pl/app/dy%C5%BCury-app/id6502833411">App Store</a>
+			&nbsp;·&nbsp;
+			<a href="https://play.google.com/store/apps/details?id=app.dyzury">Google Play</a>
+		</p>
+	</main>
+</body>
+</html>

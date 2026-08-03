@@ -1,6 +1,8 @@
 ---
 import { Picture } from 'astro:assets';
-import phoneImg from '../../assets/phone.png';
+import feature1Img from '../../assets/features1.png';
+import feature2Img from '../../assets/features2.png';
+import feature3Img from '../../assets/features3.png';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -56,7 +58,7 @@ const tags = [
                     </div>
 
                     <div class="relative z-10 shrink-0 self-center lg:-my-[26px] lg:-mr-[86px] xl:-mr-[100px]">
-                        <Picture src={phoneImg} formats={['avif']} fallbackFormat="webp" loading="lazy" decoding="async" alt="" aria-hidden="true" pictureAttributes={{ class: 'contents' }} class="w-[150px] lg:w-[190px] h-auto rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
+                        <Picture src={feature1Img} widths={[150, 190, 380]} sizes="(min-width: 1024px) 190px, 150px" formats={['avif']} fallbackFormat="webp" loading="lazy" decoding="async" alt={t('landlords.alt.s1.img')} pictureAttributes={{ class: 'contents' }} class="w-[150px] lg:w-[190px] h-auto rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
                     </div>
                 </div>
             </article>
@@ -85,7 +87,7 @@ const tags = [
                     </div>
 
                     <div class="relative z-10 shrink-0 self-center lg:-my-[26px] lg:-ml-[86px] xl:-ml-[100px]">
-                        <Picture src={phoneImg} formats={['avif']} fallbackFormat="webp" loading="lazy" decoding="async" alt="" aria-hidden="true" pictureAttributes={{ class: 'contents' }} class="w-[150px] lg:w-[190px] h-auto -rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
+                        <Picture src={feature2Img} widths={[150, 190, 380]} sizes="(min-width: 1024px) 190px, 150px" formats={['avif']} fallbackFormat="webp" loading="lazy" decoding="async" alt={t('landlords.alt.s2.img')} pictureAttributes={{ class: 'contents' }} class="w-[150px] lg:w-[190px] h-auto -rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
                     </div>
                 </div>
             </article>
@@ -113,7 +115,7 @@ const tags = [
                     </div>
 
                     <div class="relative z-10 shrink-0 self-center lg:-my-[26px] lg:-mr-[86px] xl:-mr-[100px]">
-                        <Picture src={phoneImg} formats={['avif']} fallbackFormat="webp" loading="lazy" decoding="async" alt="" aria-hidden="true" pictureAttributes={{ class: 'contents' }} class="w-[150px] lg:w-[190px] h-auto rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
+                        <Picture src={feature3Img} widths={[150, 190, 380]} sizes="(min-width: 1024px) 190px, 150px" formats={['avif']} fallbackFormat="webp" loading="lazy" decoding="async" alt={t('landlords.alt.s3.img')} pictureAttributes={{ class: 'contents' }} class="w-[150px] lg:w-[190px] h-auto rotate-[5deg] drop-shadow-[0_26px_52px_rgba(9,20,50,0.22)]" />
                     </div>
                 </div>
             </article>

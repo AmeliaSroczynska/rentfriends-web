@@ -81,7 +81,7 @@ export const ui = {
         'landlords.gain.phone.p2.meta': 'Praca zdalna · od sierpnia',
         'landlords.gain.phone.p3.name': 'Ola, 21',
         'landlords.gain.phone.p3.meta': 'Studentka · od października',
-        'landlords.gain.phone.alt': 'Podgląd aplikacji RentFriends z listą kandydatów',
+        'landlords.gain.phone.alt': 'Ekran „Moje ogłoszenia” w aplikacji RentFriends',
 
         'landlords.how.title': 'Jak to działa?',
         'landlords.how.subtitle': 'Cztery kroki od ogłoszenia do właściwego lokatora.',
@@ -194,6 +194,9 @@ export const ui = {
         'landlords.alt.s3.text1': 'Dobry najem to nie tylko terminowe płatności.',
         'landlords.alt.s3.text2': 'To również spokojna atmosfera w mieszkaniu i lokatorzy, którzy dobrze się ze sobą dogadują.',
         'landlords.alt.s3.text3': 'RentFriends pomaga lepiej dopasować mieszkańców do siebie, co może zmniejszyć rotację i liczbę problemów podczas najmu.',
+        'landlords.alt.s1.img': 'Ekran aplikacji RentFriends z preferencjami stylu życia najemcy',
+        'landlords.alt.s2.img': 'Ekran czatu w aplikacji RentFriends z rozmową z kandydatem na najemcę',
+        'landlords.alt.s3.img': 'Profil kandydata na współlokatora w aplikacji RentFriends',
 
         'hero.subtitle': 'Wynajem bez niespodzianek',
         'hero.title.part1': 'Znajdź<br class="block lg:hidden xl:block" /><span class="hidden lg:inline xl:hidden"> </span>współlokatora,<br />z którym',
@@ -217,6 +220,7 @@ export const ui = {
 
         'footer.description': 'Inteligentna platforma dopasowywania<br />współlokatorów i zarządzania życiem<br />w mieszkaniu.',
         'footer.app': 'Aplikacja',
+        'footer.contact': 'Kontakt:',
         'footer.legal': 'Prawne',
         'footer.landlords': 'Mieszkania',
         'footer.landlords.overview': 'Dla właścicieli mieszkań',
@@ -243,7 +247,7 @@ export const ui = {
         'features.step5.desc': 'Rachunki, grafik sprzątania i zakupy w jednej aplikacji. Przejrzysty podział obowiązków to gwarancja spokoju w mieszkaniu.',
         'features.community.title': 'Dołącz do naszej społeczności',
         'features.stats.users': 'zadowolonych<br />użytkowników',
-        'features.stats.months': 'miesiące<br />funkcjonowania<br />aplikacji',
+        'features.stats.cities': 'miast<br />akademickich',
         'features.stats.rating': 'średnia ocen<br />na App Store',
         'features.stats.fees': 'opłat za<br />użytkowanie',
 
@@ -499,7 +503,7 @@ export const ui = {
         'landlords.gain.phone.p2.meta': 'Remote work · from August',
         'landlords.gain.phone.p3.name': 'Ola, 21',
         'landlords.gain.phone.p3.meta': 'Student · from October',
-        'landlords.gain.phone.alt': 'Preview of the RentFriends app with a list of candidates',
+        'landlords.gain.phone.alt': 'The "My listings" screen in the RentFriends app',
 
         'landlords.how.title': 'How does it work?',
         'landlords.how.subtitle': 'Four steps from a listing to the right tenant.',
@@ -612,6 +616,9 @@ export const ui = {
         'landlords.alt.s3.text1': 'A good tenancy is not only about payments on time.',
         'landlords.alt.s3.text2': 'It is also a calm atmosphere at home and tenants who genuinely get along.',
         'landlords.alt.s3.text3': 'RentFriends helps match residents better, which can reduce turnover and the number of problems during the tenancy.',
+        'landlords.alt.s1.img': 'RentFriends app screen with a tenant\'s lifestyle preferences',
+        'landlords.alt.s2.img': 'RentFriends chat screen with a conversation with a tenant candidate',
+        'landlords.alt.s3.img': 'A roommate candidate profile in the RentFriends app',
 
         'hero.subtitle': 'Renting without surprises',
         'hero.title.part1': 'Find a<br class="block lg:hidden xl:block" /><span class="hidden lg:inline xl:hidden"> </span>roommate<br />you\'ll actually',
@@ -635,6 +642,7 @@ export const ui = {
 
         'footer.description': 'A smart platform for matching<br />roommates and managing life<br />in the apartment.',
         'footer.app': 'App',
+        'footer.contact': 'Contact:',
         'footer.legal': 'Legal',
         'footer.landlords': 'Rentals',
         'footer.landlords.overview': 'For flat owners',
@@ -661,7 +669,7 @@ export const ui = {
         'features.step5.desc': 'Bills, cleaning schedules, and shopping in one app. A clear division of duties guarantees peace in the apartment.',
         'features.community.title': 'Join our community',
         'features.stats.users': 'happy<br />users',
-        'features.stats.months': 'months of<br />app<br />operation',
+        'features.stats.cities': 'university<br />cities',
         'features.stats.rating': 'average rating<br />on App Store',
         'features.stats.fees': 'usage<br />fees',
 
