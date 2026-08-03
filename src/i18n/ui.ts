@@ -243,7 +243,7 @@ export const ui = {
         'features.step5.desc': 'Rachunki, grafik sprzątania i zakupy w jednej aplikacji. Przejrzysty podział obowiązków to gwarancja spokoju w mieszkaniu.',
         'features.community.title': 'Dołącz do naszej społeczności',
         'features.stats.users': 'zadowolonych<br />użytkowników',
-        'features.stats.months': 'miesiące<br />funkcjonowania<br />aplikacji',
+        'features.stats.cities': 'miast<br />akademickich',
         'features.stats.rating': 'średnia ocen<br />na App Store',
         'features.stats.fees': 'opłat za<br />użytkowanie',
 
@@ -661,7 +661,7 @@ export const ui = {
         'features.step5.desc': 'Bills, cleaning schedules, and shopping in one app. A clear division of duties guarantees peace in the apartment.',
         'features.community.title': 'Join our community',
         'features.stats.users': 'happy<br />users',
-        'features.stats.months': 'months of<br />app<br />operation',
+        'features.stats.cities': 'university<br />cities',
         'features.stats.rating': 'average rating<br />on App Store',
         'features.stats.fees': 'usage<br />fees',
 
