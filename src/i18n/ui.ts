@@ -217,6 +217,7 @@ export const ui = {
 
         'footer.description': 'Inteligentna platforma dopasowywania<br />współlokatorów i zarządzania życiem<br />w mieszkaniu.',
         'footer.app': 'Aplikacja',
+        'footer.contact': 'Kontakt:',
         'footer.legal': 'Prawne',
         'footer.landlords': 'Mieszkania',
         'footer.landlords.overview': 'Dla właścicieli mieszkań',
@@ -635,6 +636,7 @@ export const ui = {
 
         'footer.description': 'A smart platform for matching<br />roommates and managing life<br />in the apartment.',
         'footer.app': 'App',
+        'footer.contact': 'Contact:',
         'footer.legal': 'Legal',
         'footer.landlords': 'Rentals',
         'footer.landlords.overview': 'For flat owners',
