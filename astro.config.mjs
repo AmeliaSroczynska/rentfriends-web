@@ -8,6 +8,7 @@ export default defineConfig({
   site: 'https://rentfriends-web.vercel.app',
   integrations: [
     sitemap({
+      filter: (page) => !/\/dl\/?$/.test(new URL(page).pathname),
       i18n: {
         defaultLocale: 'pl',
         locales: {
