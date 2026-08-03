@@ -1,9 +1,9 @@
 export const faqs = {
     pl: {
         col1: [
-            { q: "Jak działa RentFriends.app?", a: "RentFriends.app to dwa moduły w jednej aplikacji. Matcher pozwala szukać współlokatorów i mieszkań - swipe’ujesz profile dopasowane do twojego stylu życia, budżetu i preferencji. Manager (dawniej Dyżury.app) pomaga zarządzać wspólnym mieszkaniem - tworzy harmonogramy sprzątania, przydziela zadania i wysyła powiadomienia o dyżurach." },
+            { q: "Jak działa RentFriends?", a: "RentFriends to dwa moduły w jednej aplikacji. Matcher pozwala szukać współlokatorów i mieszkań - swipe’ujesz profile dopasowane do twojego stylu życia, budżetu i preferencji. Manager (dawniej Dyżury.app) pomaga zarządzać wspólnym mieszkaniem - tworzy harmonogramy sprzątania, przydziela zadania i wysyła powiadomienia o dyżurach." },
             { q: "Czy aplikacja jest bezpłatna?", a: "Tak, aplikacja jest bezpłatna." },
-            { q: "Czy RentFriends.app jest dostępna na Androida i iOS?", a: "Aplikacja jest dostępna zarówno na Androida, jak i iOS." },
+            { q: "Czy RentFriends jest dostępna na Androida i iOS?", a: "Aplikacja jest dostępna zarówno na Androida, jak i iOS." },
             { q: "Jak długo moje dane są przechowywane w aplikacji?", a: "Dane są przechowywane tak długo, jak korzystasz z aplikacji. Możesz je także usunąć w dowolnym momencie. Jeżeli chcesz, aby Twoje dane zostały usunięte z naszej bazy danych, skontaktuj się z nami poprzez email: kontakt@rentfriends.app." },
             { q: "Czy mogę korzystać z aplikacji bez połączenia z internetem?", a: "Nie, aplikacja wymaga połączenia z internetem, aby działać poprawnie." },
             { q: "Czy mogę korzystać z aplikacji na kilku urządzeniach?", a: "Tak, aplikację można zainstalować na kilku urządzeniach i korzystać z niej na każdym z nich. Dane są synchronizowane między urządzeniami." },
@@ -21,9 +21,9 @@ export const faqs = {
     },
     en: {
         col1: [
-            { q: "How does RentFriends.app work?", a: "RentFriends.app consists of two modules in one application. The Matcher allows you to search for roommates and apartments - you swipe through profiles tailored to your lifestyle, budget, and preferences. The Manager (formerly Dyżury.app) helps you manage a shared apartment - it creates cleaning schedules, assigns tasks, and sends notifications about duties." },
+            { q: "How does RentFriends work?", a: "RentFriends consists of two modules in one application. The Matcher allows you to search for roommates and apartments - you swipe through profiles tailored to your lifestyle, budget, and preferences. The Manager (formerly Dyżury.app) helps you manage a shared apartment - it creates cleaning schedules, assigns tasks, and sends notifications about duties." },
             { q: "Is the app free?", a: "Yes, the application is completely free." },
-            { q: "Is RentFriends.app available on Android and iOS?", a: "The app is available for both Android and iOS devices." },
+            { q: "Is RentFriends available on Android and iOS?", a: "The app is available for both Android and iOS devices." },
             { q: "How long is my data stored in the app?", a: "Your data is stored for as long as you use the app. You can also delete it at any time. If you want your data to be removed from our database, please contact us via email at: kontakt@rentfriends.app." },
             { q: "Can I use the app without an internet connection?", a: "No, the application requires an active internet connection to function properly." },
             { q: "Can I use the app on multiple devices?", a: "Yes, you can install the app on multiple devices and use it on each of them. Your data is synced automatically across all devices." },
