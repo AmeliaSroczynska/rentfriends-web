@@ -22,12 +22,12 @@ const beeSvg = beeRaw
         top: 0;
         left: 0;
         z-index: 40;
-        width: 30px;
-        height: 30px;
         pointer-events: none;
         opacity: 0;
         will-change: transform, opacity;
         transform: translate3d(-300px, -300px, 0);
+        width: 44px;
+        height: 44px;
     }
 
     @media (min-width: 640px) {
@@ -181,6 +181,7 @@ const beeSvg = beeRaw
         let vel = 0;
         let placed = false;
         let shown = false;
+        let revealed = false;
         let alpha = 0;
         let clearStreak = 0;
         let measureTimer = 0;
@@ -458,7 +459,7 @@ const beeSvg = beeRaw
                     if (!placed) {
                         placed = true;
                         posX = spot.x;
-                        posY = spot.y + 60;
+                        posY = vw < 640 ? spot.y : spot.y + 60;
                     }
                 }
             }
@@ -488,16 +489,25 @@ const beeSvg = beeRaw
                 const fast = Math.abs(vel) > FAST_SCROLL;
                 const clean = !fast && !unsafe(posX, posY, shown ? 4 : 12, sy);
 
+                const instant = vw < 640;
+
                 if (clean) {
                     clearStreak++;
-                    if (clearStreak > (shown ? 0 : 3)) shown = true;
+                    if (clearStreak > (shown || instant ? 0 : 3)) shown = true;
                 } else {
                     clearStreak = 0;
                     shown = false;
                 }
 
                 const want = shown ? 1 : 0;
-                alpha += (want - alpha) * (want > alpha ? 0.18 : 0.34);
+
+                if (instant && !revealed && want === 1) {
+                    alpha = 1;
+                    revealed = true;
+                } else {
+                    alpha += (want - alpha) * (want > alpha ? 0.18 : 0.34);
+                }
+
                 if (alpha < 0.005) alpha = 0;
                 if (alpha > 0.995) alpha = 1;
             }
@@ -527,6 +537,7 @@ const beeSvg = beeRaw
         window.addEventListener('resize', () => {
             placed = false;
             shown = false;
+            revealed = false;
             alpha = 0;
             root.style.opacity = '0';
             scheduleMeasure(200);
