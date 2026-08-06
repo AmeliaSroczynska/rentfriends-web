@@ -7,9 +7,9 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const peopleWidths = [480, 720, 1100, 1500, 1933];
-const peopleSizes = '(min-width: 1280px) 1740px, 145vw';
-const peopleQuality = 40;
+const peopleWidths = [480, 800, 1200, 1740, 2400, 3480];
+const peopleSizes = '(min-width: 1280px) 1740px, (min-width: 640px) calc(145vw - 116px), calc(145vw - 70px)';
+const peopleQuality = 52;
 
 const reviews = [
     { text: `"${t('reviews.1.text')}"`, author: "kisiel123" },
