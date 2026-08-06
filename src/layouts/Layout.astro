@@ -80,14 +80,6 @@ const brandSchema = {
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<!-- Google Tag Manager -->
-	<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-W39KGBF4');</script>
-	<!-- End Google Tag Manager -->
-
 	{heroPreload && (
 		<link
 			rel="preload"
@@ -170,7 +162,17 @@ const brandSchema = {
 
 	<script is:inline>
 		(() => {
+			const gtmId = 'GTM-W39KGBF4';
 			let counterLoaded = false;
+			let gtmLoaded = false;
+
+			const whenIdle = (fn) => {
+				if (typeof window.requestIdleCallback === 'function') {
+					window.requestIdleCallback(fn, { timeout: 2500 });
+				} else {
+					window.setTimeout(fn, 400);
+				}
+			};
 
 			const loadCounter = () => {
 				if (counterLoaded) return;
@@ -179,6 +181,17 @@ const brandSchema = {
 				s.src = 'https://cdn.counter.dev/script.js';
 				s.dataset.id = 'e8ae0803-d06f-4542-bab6-fec00026bafa';
 				s.dataset.utcoffset = '2';
+				document.head.appendChild(s);
+			};
+
+			const loadGtm = () => {
+				if (gtmLoaded) return;
+				gtmLoaded = true;
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+				const s = document.createElement('script');
+				s.async = true;
+				s.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
 				document.head.appendChild(s);
 			};
 
@@ -193,25 +206,25 @@ const brandSchema = {
 				}
 			};
 
-			const maybeLoadCounter = () => {
-				if (hasAnalyticsConsent()) loadCounter();
+			const maybeLoadAnalytics = () => {
+				if (!hasAnalyticsConsent()) return;
+				whenIdle(() => {
+					loadGtm();
+					loadCounter();
+				});
 			};
 
-			document.addEventListener('rf:cookie-consent', maybeLoadCounter);
+			document.addEventListener('rf:cookie-consent', maybeLoadAnalytics);
 
 			if (document.readyState === 'complete') {
-				maybeLoadCounter();
+				maybeLoadAnalytics();
 			} else {
-				window.addEventListener('load', maybeLoadCounter, { once: true });
+				window.addEventListener('load', maybeLoadAnalytics, { once: true });
 			}
 		})();
 	</script>
 </head>
 <body class="bg-bg text-black dark:bg-black dark:text-bg font-sans antialiased min-h-screen transition-colors duration-300">
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W39KGBF4"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
 <slot />
 <CookieBanner />
 </body>

@@ -7,8 +7,8 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const peopleWidths = [480, 800, 1200, 1740, 2400, 3480];
-const peopleSizes = '(min-width: 1280px) 1740px, (min-width: 640px) calc(145vw - 116px), calc(145vw - 70px)';
+const peopleWidths = [480, 800, 1200, 1600, 2200, 3200];
+const peopleSizes = '(min-width: 1180px) 1595px, (min-width: 640px) calc(145vw - 116px), calc(145vw - 70px)';
 const peopleQuality = 52;
 
 const reviews = [
