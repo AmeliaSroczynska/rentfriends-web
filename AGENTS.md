@@ -47,7 +47,7 @@ user data in this repo. Everything is rendered at build time to static HTML.
 | Language | TypeScript, `astro/tsconfigs/strict` |
 | Integrations | `@astrojs/sitemap`, Astro Fonts API (Google, Plus Jakarta Sans) |
 | Client JS | Plain `<script>` blocks in `.astro` files - no React/Vue/Svelte islands |
-| Analytics | Google Tag Manager (`GTM-W39KGBF4`) + counter.dev, gated by cookie consent |
+| Analytics | Google Tag Manager (`GTM-W39KGBF4`) behind Consent Mode v2 + counter.dev, both gated by cookie consent |
 | Hosting | Vercel, auto-deploy from `main` |
 | Node | >= 22.12.0 (see `engines` in package.json) |
 
@@ -130,6 +130,22 @@ Generated / ignored, never edit: `dist/`, `.astro/`, `node_modules/`, `.idea/`.
 Mixed on purpose-by-accident: `Layout.astro` and `src/pages/index.astro` / `src/pages/en/index.astro`
 use **tabs**, everything else uses **4 spaces**. Match the file you are editing, do not reformat a
 whole file just to normalise it.
+
+### Comments
+
+**Never write comments in code.** No `//`, no `/* */`, no `<!-- -->`, no `{/* */}`, in any file type -
+`.astro` markup, frontmatter, `<script>` and `<style>` blocks, `.ts` files and `global.css` alike.
+This is absolute: it also covers explaining a workaround, labelling a section, marking where a
+third-party snippet starts and ends, or warning the next reader about a constraint.
+
+Write code that does not need them instead - a named constant, a named function, a clearer variable.
+Everything you would have put in a comment goes somewhere else: a constraint or a warning belongs in
+this file, the reason for a change belongs in the commit message.
+
+The only thing that may look like a comment is a directive the tooling actually reads, such as
+`// @ts-check` in `astro.config.mjs`. That is configuration, not a comment - leave it alone.
+
+When you edit a file, strip any comments you find in the parts you touch.
 
 ### i18n (this is the part that breaks most easily)
 
@@ -218,6 +234,14 @@ new markup.
 - **Do not change the analytics or consent plumbing**: the GTM id `GTM-W39KGBF4`, the counter.dev
   script id, the `rf-cookie-consent` localStorage key, or `CONSENT_VERSION` in `CookieBanner.astro`.
   Bumping the consent version re-prompts every visitor.
+- **Do not remove or reorder the Consent Mode v2 block in `Layout.astro`.** It defines every consent
+  signal as `denied` and must stay *above* the GTM snippet - GTM only honours a default that is
+  already on the `dataLayer` when it loads, so moving or dropping it lets tags fire before the
+  visitor has chosen. Its `parsed.version === 1` check must match `CONSENT_VERSION`.
+- **`ad_storage`, `ad_user_data` and `ad_personalization` stay `denied` for everyone**, because the
+  banner only asks about `necessary` and `analytics`. If ad or remarketing tags are ever added to
+  the GTM container, `CookieBanner.astro` needs a third category first - do not simply grant the
+  ad signals on "accept all".
 - **Do not edit legal copy** - the `privacy.*` and `terms.*` keys in `ui.ts` and the
   privacy-policy / terms-of-service pages - except on an explicit instruction.
 - **Do not add or upgrade dependencies**, and do not bump the Astro or Tailwind major version.
@@ -225,6 +249,8 @@ new markup.
 - **Do not add a key to only one language**, and do not rename an existing i18n key without updating
   every usage.
 - **Do not hardcode user-facing text** in a component, in either language.
+- **Do not write comments in code** - no `//`, `/* */`, `<!-- -->` or `{/* */}` anywhere. See
+  **Conventions > Comments**; tooling directives like `// @ts-check` are the one exception.
 - **Do not change `site`, `redirects` or the sitemap config in `astro.config.mjs`** - canonical URLs,
   hreflang, the sitemap, OG/Twitter image URLs and the JSON-LD `@id`s all derive from `site`, which
   is `https://rentfriends.app` (the production domain). It must stay the production domain even when

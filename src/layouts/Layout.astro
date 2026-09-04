@@ -80,13 +80,53 @@ const brandSchema = {
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<!-- Google Tag Manager -->
+	<script is:inline>
+		(() => {
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			window.gtag = gtag;
+
+			gtag('consent', 'default', {
+				'ad_storage': 'denied',
+				'ad_user_data': 'denied',
+				'ad_personalization': 'denied',
+				'analytics_storage': 'denied',
+				'personalization_storage': 'denied',
+				'functionality_storage': 'granted',
+				'security_storage': 'granted'
+			});
+			gtag('set', 'ads_data_redaction', true);
+
+			const hasAnalyticsConsent = () => {
+				try {
+					const raw = localStorage.getItem('rf-cookie-consent');
+					if (!raw) return false;
+					const parsed = JSON.parse(raw);
+					return Boolean(parsed && parsed.version === 1 && parsed.analytics);
+				} catch (error) {
+					return false;
+				}
+			};
+
+			const applyConsent = (analytics) => {
+				gtag('consent', 'update', {
+					'analytics_storage': analytics ? 'granted' : 'denied'
+				});
+			};
+
+			if (hasAnalyticsConsent()) applyConsent(true);
+
+			document.addEventListener('rf:cookie-consent', (event) => {
+				applyConsent(Boolean(event.detail && event.detail.analytics));
+			});
+		})();
+	</script>
+
 	<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-W39KGBF4');</script>
-	<!-- End Google Tag Manager -->
 
 	{heroPreload && (
 		<link
@@ -208,10 +248,8 @@ const brandSchema = {
 	</script>
 </head>
 <body class="bg-bg text-black dark:bg-black dark:text-bg font-sans antialiased min-h-screen transition-colors duration-300">
-	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W39KGBF4"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
 <slot />
 <CookieBanner />
 </body>
