@@ -14,9 +14,13 @@ import LandlordsMission from '../components/landlords/LandlordsMission.astro';
 import LandlordsCompare from '../components/landlords/LandlordsCompare.astro';
 import LandlordsFAQ from '../components/landlords/LandlordsFAQ.astro';
 import LandlordsCTA from '../components/landlords/LandlordsCTA.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Layout title="RentFriends - Dla właścicieli mieszkań">
+<Layout title="RentFriends - Dla właścicieli mieszkań" description={t('meta.landlords.description')}>
     <Navbar variant="landlords" />
 
     <main class="min-h-[calc(100vh-72px)] flex flex-col">

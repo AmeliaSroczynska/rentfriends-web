@@ -140,8 +140,13 @@ whole file just to normalise it.
   const t = useTranslations(lang);
   ```
   and is rendered as `{t('section.key')}`. Strings containing HTML use `set:html={t('...')}`.
-- Keys are dot-notation, grouped by section: `nav.*`, `hero.*`, `features.*`, `reviews.*`, `faq.*`,
-  `award.*`, `cta.*`, `footer.*`, `cookies.*`, `landlords.*`, `privacy.*`, `terms.*`, `page404.*`.
+- Keys are dot-notation, grouped by section: `meta.*`, `nav.*`, `hero.*`, `features.*`, `reviews.*`,
+  `faq.*`, `award.*`, `cta.*`, `footer.*`, `cookies.*`, `landlords.*`, `privacy.*`, `terms.*`,
+  `page404.*`.
+- `meta.*` holds the `<meta name="description">` copy for each page (`meta.home.description`,
+  `meta.landlords.description`, ...). Every indexable page passes its own
+  `description={t('meta.<page>.description')}` to `Layout` - the default in `Layout.astro` is only a
+  fallback, and leaving a page on it ships Polish copy to the English site.
 - **Always add a key to both `ui.pl` and `ui.en` in the same edit.** The counts must stay equal.
   A missing EN key silently falls back to Polish text on the English site.
 - Longer repeating content (FAQ entries) lives in `src/data/*.ts` keyed by language, not in `ui.ts`.

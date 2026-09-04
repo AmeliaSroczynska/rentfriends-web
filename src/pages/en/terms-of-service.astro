@@ -8,7 +8,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={`RentFriends | ${t('terms.title')}`}>
+<Layout title={`RentFriends | ${t('terms.title')}`} description={t('meta.terms.description')}>
     <Navbar />
 
     <main class="w-full bg-bg dark:bg-black font-sans pt-[120px] pb-[100px] px-6 lg:px-[100px] transition-colors duration-300">

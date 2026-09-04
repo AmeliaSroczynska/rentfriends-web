@@ -7,6 +7,11 @@ export const defaultLang = 'pl';
 
 export const ui = {
     pl: {
+        'meta.home.description': 'RentFriends pomaga znaleźć idealnego współlokatora i opanować domowe obowiązki bez stresu. Sprawdź naszą aplikację!',
+        'meta.landlords.description': 'Wynajmuj pokoje i mieszkania właściwym osobom. RentFriends pomaga właścicielom szybciej znaleźć dopasowanych lokatorów. Dodawanie ogłoszeń jest bezpłatne.',
+        'meta.privacy.description': 'Dowiedz się, jakie dane zbiera RentFriends, w jakim celu je przetwarza i jak możesz zarządzać swoją prywatnością oraz plikami cookie.',
+        'meta.terms.description': 'Zasady korzystania z aplikacji i serwisu RentFriends - prawa i obowiązki użytkowników, zakres usług oraz warunki ich świadczenia.',
+
         'nav.home': 'Strona główna',
         'nav.features': 'Funkcje',
         'nav.reviews': 'Opinie',
@@ -429,6 +434,11 @@ export const ui = {
         'cookies.manage': 'Ustawienia cookies'
     },
     en: {
+        'meta.home.description': 'RentFriends helps you find the right flatmate and stay on top of household chores without the stress. Take a look at our app!',
+        'meta.landlords.description': 'Rent your rooms and flats to the right people. RentFriends helps landlords find well-matched tenants faster. Publishing a listing is free.',
+        'meta.privacy.description': 'Find out what data RentFriends collects, why we process it, and how you can manage your privacy and your cookie preferences.',
+        'meta.terms.description': 'The rules for using the RentFriends app and website - user rights and obligations, the scope of our services and the terms we provide them on.',
+
         'nav.home': 'Home',
         'nav.features': 'Features',
         'nav.reviews': 'Reviews',

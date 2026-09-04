@@ -9,9 +9,13 @@ import CTA from "../../components/CTA.astro";
 import Footer from "../../components/Footer.astro";
 import Features from "../../components/Features.astro";
 import BeeCompanion from "../../components/BeeCompanion.astro";
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Layout title="RentFriends - find a roommate and manage your flat" preloadHero>
+<Layout title="RentFriends - find a roommate and manage your flat" description={t('meta.home.description')} preloadHero>
 	<Navbar />
 
 	<main class="min-h-[calc(100vh-72px)] flex flex-col">
