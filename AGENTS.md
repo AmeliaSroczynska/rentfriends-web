@@ -76,7 +76,6 @@ Verification after a change = `npm run build` must pass, plus a look at the page
 rentfriends-web/
 ├── public/                    # served as-is at the site root, referenced by URL
 │   ├── favicon.ico, favicon-96.png, apple-touch-icon.png, logo.png, og-image.jpg
-│   ├── bee.svg                # imported ?raw by BeeCompanion
 │   ├── facebook.svg, instagram.svg, tiktok.svg
 │   ├── robots.txt, llms.txt   # llms.txt = short site description for AI crawlers
 ├── src/
@@ -86,7 +85,6 @@ rentfriends-web/
 │   │   ├── Hero.astro         # homepage hero + SoftwareApplication JSON-LD
 │   │   ├── Features.astro, Reviews.astro, Award.astro, FAQ.astro, CTA.astro, Footer.astro
 │   │   ├── CookieBanner.astro # consent UI, writes localStorage `rf-cookie-consent`
-│   │   ├── BeeCompanion.astro # decorative cursor-following bee (pure CSS/JS, aria-hidden)
 │   │   └── landlords/         # sections used only by the /landlords page, all prefixed Landlords*
 │   ├── data/
 │   │   ├── faq.ts             # homepage FAQ items, { pl: {col1, col2}, en: {...} }
@@ -191,7 +189,7 @@ When you edit a file, strip any comments you find in the parts you touch.
   `<Image />` from `astro:assets` so they get optimised and responsive. Global defaults
   (`layout: 'constrained'`, `responsiveStyles: true`) come from `astro.config.mjs`.
 - `public/` is only for files that must be reachable by a fixed URL: favicons, `og-image.jpg`,
-  social icons, `robots.txt`, `llms.txt`, `bee.svg`.
+  social icons, `robots.txt`, `llms.txt`.
 - Decorative images get `alt=""` and `aria-hidden="true"`; meaningful ones get an i18n alt string.
 
 ### Client-side JavaScript
