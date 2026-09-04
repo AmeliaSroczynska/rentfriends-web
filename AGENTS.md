@@ -3,6 +3,29 @@
 Guidance for AI coding agents working in this repository.
 This file is the single source of truth; `CLAUDE.md` is a one-line import of it.
 
+## Keep this file up to date
+
+**After every change you make, check whether this file still describes the repo correctly, and
+update it in the same commit if it does not.** A stale `AGENTS.md` is worse than a missing one -
+the next agent trusts it and undoes your work or repeats a mistake you already fixed.
+
+Update it when you:
+
+- add, remove or rename a page, a component, a directory or a `src/data/*.ts` file - the tree in
+  **File structure** must match reality
+- change `astro.config.mjs`, `package.json` scripts, the Node version or a dependency
+- add a new i18n key group, or change how i18n / theming / consent / tracking works
+- introduce a new convention, or break an existing one on purpose
+- fix something this file currently documents as a known issue, or discover a new one worth warning
+  about - especially anything in **Do NOT do these without asking**
+
+Do not update it for ordinary content edits (copy, styling, a new i18n key inside an existing
+group) - those are already covered by the conventions below.
+
+Keep it instructions, not history. This file says how the repo works *now*; it is not a changelog.
+Do not add dated entries, "recently changed" notes or a record of what you did - that is what git
+history is for. Rewrite the affected lines in place and delete anything that is no longer true.
+
 ## Project
 
 **RentFriends Web** - the marketing landing page for the RentFriends mobile app
@@ -198,9 +221,10 @@ new markup.
   every usage.
 - **Do not hardcode user-facing text** in a component, in either language.
 - **Do not change `site`, `redirects` or the sitemap config in `astro.config.mjs`** - canonical URLs,
-  hreflang and the sitemap all derive from `site`. Note the known discrepancy: `site` is
-  `https://rentfriends-web.vercel.app` while production runs on `https://rentfriends.app`. Flag it,
-  do not silently "fix" it.
+  hreflang, the sitemap, OG/Twitter image URLs and the JSON-LD `@id`s all derive from `site`, which
+  is `https://rentfriends.app` (the production domain). It must stay the production domain even when
+  previewing on a `*.vercel.app` deployment - pointing it at a preview URL makes every canonical and
+  hreflang on production reference the preview domain.
 - **Do not edit `dist/`, `.astro/`, `node_modules/`, `package-lock.json` by hand, or `.idea/`.**
 - **Do not add a `tailwind.config.js`**, a linter, a formatter, tests, or CI config.
 - **Do not reformat files** you are not otherwise changing (tabs vs spaces, quote style, class order).

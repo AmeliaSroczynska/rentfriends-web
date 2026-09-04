@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://rentfriends-web.vercel.app',
+  site: 'https://rentfriends.app',
   redirects: {
     '/contact': '/',
     '/en/contact': '/en/'
