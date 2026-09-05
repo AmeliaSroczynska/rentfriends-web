@@ -7,7 +7,7 @@ export const defaultLang = 'pl';
 
 export const ui = {
     pl: {
-        'meta.home.description': 'RentFriends pomaga znaleźć idealnego współlokatora i opanować domowe obowiązki bez stresu. Sprawdź naszą aplikację!',
+        'meta.home.description': 'RentFriends pomaga znaleźć pokój, mieszkanie i współlokatora, z którym dobrze się mieszka. Dopasowujemy ludzi po stylu życia, budżecie i nawykach.',
         'meta.landlords.description': 'Wynajmuj pokoje i mieszkania właściwym osobom. RentFriends pomaga właścicielom szybciej znaleźć dopasowanych lokatorów. Dodawanie ogłoszeń jest bezpłatne.',
         'meta.privacy.description': 'Dowiedz się, jakie dane zbiera RentFriends, w jakim celu je przetwarza i jak możesz zarządzać swoją prywatnością oraz plikami cookie.',
         'meta.terms.description': 'Zasady korzystania z aplikacji i serwisu RentFriends - prawa i obowiązki użytkowników, zakres usług oraz warunki ich świadczenia.',
@@ -219,8 +219,8 @@ export const ui = {
         'reviews.title.part1': 'Co mówią',
         'reviews.title.part2': 'użytkownicy?',
         'reviews.1.text': 'Super pomysł, tego właśnie brakowało – nikt nie lubi szukać mieszkania przez olx albo przez Facebooka.',
-        'reviews.2.text': 'Prowadzę kilka mieszkań na pokoje dla studentów i ta apka uratowała mi sporo telefonów typu „zmywarka nie działa”. Dodałam zadania w stylu „Wyczyszczenie filtra zmywarki” i... nagle działa 😉 Prosta, czytelna, szybkie checklisty. Naprawdę polecam.',
-        'reviews.3.text': 'Świetny sposób na szybkie dzielenie obowiązków w mieszkaniu',
+        'reviews.2.text': 'znalazłem pokój w Krakowie, super apka, polecam!',
+        'reviews.3.text': 'super aplikacja bardzo pomocna i przejrzysta',
         'reviews.prev': 'Poprzednia opinia',
         'reviews.next': 'Następna opinia',
 
@@ -249,8 +249,6 @@ export const ui = {
         'features.step3.desc': 'Nasz algorytm łączy osoby o podobnym stylu życia, gwarantując mniej konfliktów w przyszłości.',
         'features.step4.title': 'Czatuj',
         'features.step4.desc': 'Zanim podpiszecie umowę, poznajcie się bliżej w naszym bezpiecznym, wbudowanym czacie.',
-        'features.step5.title': 'Zamieszkaj razem:<br />rozdziel dyżury i podziel wydatki',
-        'features.step5.desc': 'Rachunki, grafik sprzątania i zakupy w jednej aplikacji. Przejrzysty podział obowiązków to gwarancja spokoju w mieszkaniu.',
         'features.community.title': 'Dołącz do naszej społeczności',
         'features.stats.users': 'zadowolonych<br />użytkowników',
         'features.stats.rating': 'średnia ocen<br />na App Store',
@@ -434,7 +432,7 @@ export const ui = {
         'cookies.manage': 'Ustawienia cookies'
     },
     en: {
-        'meta.home.description': 'RentFriends helps you find the right flatmate and stay on top of household chores without the stress. Take a look at our app!',
+        'meta.home.description': 'RentFriends helps you find a room, a flat and a flatmate you\'ll actually enjoy living with. We match people by lifestyle, budget and habits.',
         'meta.landlords.description': 'Rent your rooms and flats to the right people. RentFriends helps landlords find well-matched tenants faster. Publishing a listing is free.',
         'meta.privacy.description': 'Find out what data RentFriends collects, why we process it, and how you can manage your privacy and your cookie preferences.',
         'meta.terms.description': 'The rules for using the RentFriends app and website - user rights and obligations, the scope of our services and the terms we provide them on.',
@@ -646,8 +644,8 @@ export const ui = {
         'reviews.title.part1': 'What do our',
         'reviews.title.part2': 'users say?',
         'reviews.1.text': 'Great idea, exactly what was missing – no one likes searching for a flat through OLX or Facebook.',
-        'reviews.2.text': 'I manage a few student rooms and this app saved me a lot of "the dishwasher is broken" calls. I added tasks like "Clean the dishwasher filter" and... suddenly it works 😉 Simple, clear, quick checklists. Highly recommend.',
-        'reviews.3.text': 'A great way to quickly divide chores in the apartment.',
+        'reviews.2.text': 'I found a room in Krakow, great app, highly recommend!',
+        'reviews.3.text': 'great app, really helpful and clear',
         'reviews.prev': 'Previous review',
         'reviews.next': 'Next review',
 
@@ -676,8 +674,6 @@ export const ui = {
         'features.step3.desc': 'Our algorithm connects people with similar lifestyles, ensuring fewer conflicts in the future.',
         'features.step4.title': 'Chat',
         'features.step4.desc': 'Before signing the lease, get to know each other better in our secure, built-in chat.',
-        'features.step5.title': 'Move in together:<br />divide chores and split expenses',
-        'features.step5.desc': 'Bills, cleaning schedules, and shopping in one app. A clear division of duties guarantees peace in the apartment.',
         'features.community.title': 'Join our community',
         'features.stats.users': 'happy<br />users',
         'features.stats.rating': 'average rating<br />on App Store',
