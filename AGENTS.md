@@ -89,7 +89,8 @@ rentfriends-web/
 │   ├── data/
 │   │   ├── faq.ts             # homepage FAQ items, { pl: {col1, col2}, en: {...} }
 │   │   ├── landlordFaq.ts     # landlords FAQ items, same shape
-│   │   └── heroImage.ts       # hero image + widths/sizes/format, shared by Hero and Layout preload
+│   │   ├── heroImage.ts       # hero image + widths/sizes/format, shared by Hero and Layout preload
+│   │   └── stats.ts           # headline numbers rendered in the Features stat tiles
 │   ├── i18n/
 │   │   ├── ui.ts              # ALL UI strings, `ui.pl` and `ui.en` (367 keys each), `as const`
 │   │   └── utils.ts           # getLangFromUrl, useTranslations, stripLocale, localizePath, getAlternateLinks
@@ -164,6 +165,11 @@ When you edit a file, strip any comments you find in the parts you touch.
 - **Always add a key to both `ui.pl` and `ui.en` in the same edit.** The counts must stay equal.
   A missing EN key silently falls back to Polish text on the English site.
 - Longer repeating content (FAQ entries) lives in `src/data/*.ts` keyed by language, not in `ui.ts`.
+- Numbers shown in the UI are not literals in the markup either. `src/data/stats.ts` owns the
+  headline figures. Each one is a pair: the raw value (`satisfiedUsers`, `appRating`) and its
+  compact form (`satisfiedUsersDisplay` via `formatCompactCount`, `appRatingDisplay`). It is deliberately
+  shaped so the raw counts can later come from an API without touching the component. Change a
+  number there, never in `Features.astro`, and add new figures as the same raw/display pair.
 - Every new page needs a PL file in `src/pages/` **and** an EN file in `src/pages/en/`.
 - Internal links are built as `isEn ? '/en/...' : '/...'` or with `localizePath()`. Do not hardcode
   a single-language path.

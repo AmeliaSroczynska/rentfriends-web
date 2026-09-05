@@ -204,8 +204,8 @@ export const ui = {
         'landlords.alt.s3.img': 'Profil kandydata na współlokatora w aplikacji RentFriends',
 
         'hero.subtitle': 'Wynajem bez niespodzianek',
-        'hero.title.part1': 'Znajdź<br class="block lg:hidden xl:block" /><span class="hidden lg:inline xl:hidden"> </span>współlokatora,<br />z którym',
-        'hero.title.part2': 'mieszkanie<br class="hidden lg:block xl:hidden" /><span class="inline lg:hidden xl:inline"> </span>będzie<br />przyjemnością!',
+        'hero.title.part1': 'Mieszkanie to nie tylko cztery ściany.',
+        'hero.title.part2': 'To ludzie, z którymi je dzielisz.',
         'hero.description': 'Inteligentne dopasowanie, zarządzanie mieszkaniem i spokój ducha – wszystko w jednej aplikacji.',
         'hero.download.google': 'Pobierz z',
         'hero.download.apple': 'Pobierz w',
@@ -252,7 +252,6 @@ export const ui = {
         'features.step5.desc': 'Rachunki, grafik sprzątania i zakupy w jednej aplikacji. Przejrzysty podział obowiązków to gwarancja spokoju w mieszkaniu.',
         'features.community.title': 'Dołącz do naszej społeczności',
         'features.stats.users': 'zadowolonych<br />użytkowników',
-        'features.stats.cities': 'miast<br />akademickich',
         'features.stats.rating': 'średnia ocen<br />na App Store',
         'features.stats.fees': 'opłat za<br />użytkowanie',
 
@@ -631,8 +630,8 @@ export const ui = {
         'landlords.alt.s3.img': 'A roommate candidate profile in the RentFriends app',
 
         'hero.subtitle': 'Renting without surprises',
-        'hero.title.part1': 'Find a<br class="block lg:hidden xl:block" /><span class="hidden lg:inline xl:hidden"> </span>roommate<br />you\'ll actually',
-        'hero.title.part2': 'enjoy<br class="hidden lg:block xl:hidden" /><span class="inline lg:hidden xl:inline"> </span>living<br />with!',
+        'hero.title.part1': 'A flat is not just four walls.',
+        'hero.title.part2': 'It\'s the people you share it with.',
         'hero.description': 'Smart matching, apartment management, and peace of mind – all in one app.',
         'hero.download.google': 'Get it on',
         'hero.download.apple': 'Download on the',
@@ -679,7 +678,6 @@ export const ui = {
         'features.step5.desc': 'Bills, cleaning schedules, and shopping in one app. A clear division of duties guarantees peace in the apartment.',
         'features.community.title': 'Join our community',
         'features.stats.users': 'happy<br />users',
-        'features.stats.cities': 'university<br />cities',
         'features.stats.rating': 'average rating<br />on App Store',
         'features.stats.fees': 'usage<br />fees',
 
