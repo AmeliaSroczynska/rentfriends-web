@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import TenantsHero from '../components/tenants/TenantsHero.astro';
+import Features from '../components/Features.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="RentFriends - Dla szukających mieszkań" description={t('meta.tenants.description')}>
+    <Navbar />
+
+    <main class="w-full flex flex-col">
+        <TenantsHero />
+
+        <div id="features" class="scroll-mt-[72px]">
+            <Features />
+        </div>
+
+        <Footer />
+    </main>
+</Layout>

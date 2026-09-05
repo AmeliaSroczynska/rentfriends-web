@@ -85,7 +85,8 @@ rentfriends-web/
 │   │   ├── Hero.astro         # homepage hero + SoftwareApplication JSON-LD
 │   │   ├── Features.astro, Reviews.astro, Award.astro, FAQ.astro, CTA.astro, Footer.astro
 │   │   ├── CookieBanner.astro # consent UI, writes localStorage `rf-cookie-consent`
-│   │   └── landlords/         # sections used only by the /landlords page, all prefixed Landlords*
+│   │   ├── landlords/         # sections used only by the /landlords page, all prefixed Landlords*
+│   │   └── tenants/           # sections used only by the /tenants page, all prefixed Tenants*
 │   ├── data/
 │   │   ├── faq.ts             # homepage FAQ items, { pl: {col1, col2}, en: {...} }
 │   │   ├── landlordFaq.ts     # landlords FAQ items, same shape
@@ -97,8 +98,8 @@ rentfriends-web/
 │   ├── layouts/Layout.astro   # <html> shell: meta, OG/Twitter, canonical, hreflang, JSON-LD brand
 │   │                          # schema, fonts, GTM, theme bootstrap, counter.dev loader, CookieBanner
 │   ├── pages/                 # file-based routing
-│   │   ├── index.astro, landlords.astro, privacy-policy.astro, terms-of-service.astro   # PL (default)
-│   │   ├── en/                # same four pages in English
+│   │   ├── index.astro, tenants.astro, landlords.astro, privacy-policy.astro, terms-of-service.astro   # PL (default)
+│   │   ├── en/                # same five pages in English
 │   │   ├── 404.astro
 │   │   └── dl.astro           # standalone app-store redirect page, does NOT use Layout
 │   └── styles/global.css      # Tailwind import, @theme design tokens, dark variant, focus styles
@@ -159,9 +160,13 @@ When you edit a file, strip any comments you find in the parts you touch.
   `faq.*`, `award.*`, `cta.*`, `footer.*`, `cookies.*`, `landlords.*`, `privacy.*`, `terms.*`,
   `page404.*`.
 - `meta.*` holds the `<meta name="description">` copy for each page (`meta.home.description`,
-  `meta.landlords.description`, ...). Every indexable page passes its own
+  `meta.tenants.description`, `meta.landlords.description`, ...). Every indexable page passes its own
   `description={t('meta.<page>.description')}` to `Layout` - the default in `Layout.astro` is only a
   fallback, and leaving a page on it ships Polish copy to the English site.
+- `useTranslations` runs every string through `bindSingleLetterWords`, which glues Polish one-letter
+  words (`a i o u w z`) to the next word with a non-breaking space, so no line ever ends on one. It
+  skips anything inside `<...>`, so strings carrying markup keep their attributes intact. Do not
+  hand-write `&nbsp;` in `ui.ts` - it is applied automatically, including to new copy.
 - **Always add a key to both `ui.pl` and `ui.en` in the same edit.** The counts must stay equal.
   A missing EN key silently falls back to Polish text on the English site.
 - Longer repeating content (FAQ entries) lives in `src/data/*.ts` keyed by language, not in `ui.ts`.
@@ -173,6 +178,13 @@ When you edit a file, strip any comments you find in the parts you touch.
 - Every new page needs a PL file in `src/pages/` **and** an EN file in `src/pages/en/`.
 - Internal links are built as `isEn ? '/en/...' : '/...'` or with `localizePath()`. Do not hardcode
   a single-language path.
+
+- The homepage `Navbar` links are `nav.home`, `nav.tenants`, `nav.landlords`. The horizontal nav
+  only appears from `xl`; below that everything moves into the hamburger menu. The Polish labels are
+  long, so a fourth link (or a longer label) will collide with the logo and the right-hand controls -
+  measure before adding one.
+- `Features.astro` ("Jak działa RentFriends?" plus the stat tiles) lives on `/tenants`, not on the
+  homepage. Footer's "Funkcje" link points at that page.
 
 ### Styling
 

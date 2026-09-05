@@ -21,6 +21,7 @@ const isLandlords = variant === 'landlords';
 
 const navLinks = [
     { href: `${base}/`, label: t('nav.home') },
+    { href: `${base}/tenants`, label: t('nav.tenants') },
     { href: `${base}/landlords`, label: t('nav.landlords') },
 ];
 
@@ -41,7 +42,7 @@ const ctaLabel = isLandlords ? t('nav.addListing') : t('nav.download');
             <span class="text-sm font-bold text-black dark:text-bg tracking-tight transition-colors">RentFriends</span>
         </a>
 
-        <nav class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-4 lg:gap-8">
+        <nav class="hidden xl:flex absolute left-1/2 -translate-x-1/2 items-center gap-4 lg:gap-8">
             {navLinks.map((link) => (
                 <a href={link.href} class="whitespace-nowrap text-sm text-gray dark:text-white/80 hover:text-black dark:hover:text-white font-regular transition-colors">{link.label}</a>
             ))}
@@ -62,11 +63,11 @@ const ctaLabel = isLandlords ? t('nav.addListing') : t('nav.download');
                 </svg>
             </button>
 
-            <a href={ctaHref} target={ctaExternal ? '_blank' : undefined} rel={ctaExternal ? 'noopener noreferrer' : undefined} class="hidden md:inline-flex whitespace-nowrap text-sm px-4 lg:px-6 py-2.5 bg-[image:var(--background-image-gradient)] text-bg font-semibold rounded-full hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all duration-300 ease-out">
+            <a href={ctaHref} target={ctaExternal ? '_blank' : undefined} rel={ctaExternal ? 'noopener noreferrer' : undefined} class="hidden xl:inline-flex whitespace-nowrap text-sm px-4 lg:px-6 py-2.5 bg-[image:var(--background-image-gradient)] text-bg font-semibold rounded-full hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all duration-300 ease-out">
                 {ctaLabel}
             </a>
 
-            <button id="mobile-menu-btn" type="button" aria-label={t('nav.menu')} class="md:hidden flex items-center justify-center p-2 text-gray dark:text-white/80 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 rounded-lg transition-colors cursor-pointer">
+            <button id="mobile-menu-btn" type="button" aria-label={t('nav.menu')} class="xl:hidden flex items-center justify-center p-2 text-gray dark:text-white/80 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 rounded-lg transition-colors cursor-pointer">
                 <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -78,7 +79,7 @@ const ctaLabel = isLandlords ? t('nav.addListing') : t('nav.download');
 
     </div>
 
-    <div id="mobile-menu" class="hidden absolute top-[72px] left-0 w-full bg-bg/95 dark:bg-black/95 backdrop-blur-md border-b border-gray/15 dark:border-white/15 flex-col items-center py-8 gap-6 shadow-xl md:hidden">
+    <div id="mobile-menu" class="hidden absolute top-[72px] left-0 w-full bg-bg/95 dark:bg-black/95 backdrop-blur-md border-b border-gray/15 dark:border-white/15 flex-col items-center py-8 gap-6 shadow-xl xl:hidden">
         {navLinks.map((link) => (
             <a href={link.href} class="mobile-link text-[17px] text-black dark:text-white font-semibold tracking-tight hover:text-purple-ink dark:hover:text-purple-ink-dark transition-colors">{link.label}</a>
         ))}

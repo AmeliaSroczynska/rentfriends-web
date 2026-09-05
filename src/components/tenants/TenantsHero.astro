@@ -1,0 +1,68 @@
+---
+import { Picture } from 'astro:assets';
+import heroGirlImg from '../../assets/hero-girl.png';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { satisfiedUsers } from '../../data/stats';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const points = [
+    t('tenants.hero.point1'),
+    t('tenants.hero.point2'),
+    `${satisfiedUsers} ${t('tenants.hero.point3')}`,
+    t('tenants.hero.point4')
+];
+---
+
+<section class="relative w-full overflow-hidden bg-bg dark:bg-black transition-colors duration-300 pt-6 pb-8 sm:pb-10 lg:pt-16 lg:pb-24">
+
+    <div class="glow-purple pointer-events-none absolute -top-[500px] -right-[420px] w-[1100px] h-[1100px] rounded-full opacity-15 dark:hidden z-0"></div>
+
+    <div class="relative z-10 mx-auto grid w-full max-w-[1240px] grid-cols-1 items-center gap-6 px-6 lg:grid-cols-2 lg:gap-16 lg:px-[60px]">
+
+        <div class="order-1 flex justify-center lg:justify-start">
+            <Picture
+                src={heroGirlImg}
+                layout="none"
+                width={1048}
+                height={1472}
+                formats={['avif']}
+                fallbackFormat="webp"
+                quality={90}
+                widths={[300, 360, 480, 720, 960]}
+                sizes="(min-width: 1024px) 480px, (min-width: 640px) 280px, 40vw"
+                loading="eager"
+                fetchpriority="high"
+                alt={t('tenants.hero.alt')}
+                pictureAttributes={{ class: 'contents' }}
+                class="w-[40vw] max-w-[190px] sm:w-[44vw] sm:max-w-[280px] lg:w-full lg:max-w-[480px] h-auto lg:-translate-y-[47px]"
+            />
+        </div>
+
+        <div class="order-2 flex flex-col">
+
+            <h1 class="text-black dark:text-bg font-sans font-[800] text-[29px] sm:text-[44px] lg:text-[56px] leading-[1.08] tracking-[-1.4px] lg:tracking-[-1.9px] transition-colors">
+                {t('tenants.hero.title.part1')}
+                <br />
+                <span class="bg-[linear-gradient(100deg,#234CE0_6.17%,#A247E3_50%,#E95BD2_93.83%)] bg-clip-text text-transparent inline-block pb-2">{t('tenants.hero.title.part2')}</span>
+            </h1>
+
+            <p class="mt-4 sm:mt-5 max-w-[520px] font-sans text-[14px] sm:text-[15px] lg:text-[17px] font-normal leading-[1.6] sm:leading-[1.65] text-gray dark:text-bg/80 transition-colors">
+                {t('tenants.hero.description')}
+            </p>
+
+            <ul class="mt-5 sm:mt-7 flex flex-col gap-2 sm:gap-3">
+                {points.map((point) => (
+                    <li class="flex items-start gap-2.5">
+                        <svg class="mt-[2px] sm:mt-[3px] size-[16px] sm:size-[18px] shrink-0 text-purple dark:text-purple-ink-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        <span class="font-sans text-[13.5px] sm:text-[15px] lg:text-[16px] leading-[1.5] text-black dark:text-bg transition-colors">{point}</span>
+                    </li>
+                ))}
+            </ul>
+
+        </div>
+    </div>
+</section>

@@ -9,6 +9,7 @@ export const ui = {
     pl: {
         'meta.home.description': 'RentFriends pomaga znaleźć pokój, mieszkanie i współlokatora, z którym dobrze się mieszka. Dopasowujemy ludzi po stylu życia, budżecie i nawykach.',
         'meta.landlords.description': 'Wynajmuj pokoje i mieszkania właściwym osobom. RentFriends pomaga właścicielom szybciej znaleźć dopasowanych lokatorów. Dodawanie ogłoszeń jest bezpłatne.',
+        'meta.tenants.description': 'Zobacz, jak działa RentFriends krok po kroku: załóż profil, przeglądaj pokoje i mieszkania i poznawaj współlokatorów dopasowanych do Twojego stylu życia.',
         'meta.privacy.description': 'Dowiedz się, jakie dane zbiera RentFriends, w jakim celu je przetwarza i jak możesz zarządzać swoją prywatnością oraz plikami cookie.',
         'meta.terms.description': 'Zasady korzystania z aplikacji i serwisu RentFriends - prawa i obowiązki użytkowników, zakres usług oraz warunki ich świadczenia.',
 
@@ -20,6 +21,16 @@ export const ui = {
         'nav.theme': 'Zmień motyw',
         'nav.menu': 'Menu',
         'nav.landlords': 'Dla właścicieli mieszkań',
+        'nav.tenants': 'Dla szukających mieszkań',
+
+        'tenants.hero.title.part1': 'Znajdź mieszkanie i współlokatora,',
+        'tenants.hero.title.part2': 'który do Ciebie pasuje.',
+        'tenants.hero.description': 'Nowoczesna platforma dla studentów i młodych ludzi - swipuj profile, dopasuj się algorytmem, znajdź miejsce, w którym naprawdę chcesz mieszkać.',
+        'tenants.hero.point1': 'Algorytm dopasowania - zarówno do mieszkań, jak i współlokatorów',
+        'tenants.hero.point2': 'Szybkie swipowanie zamiast przeszukiwania grup na Facebooku',
+        'tenants.hero.point3': 'użytkowników w miastach akademickich w całej Polsce',
+        'tenants.hero.point4': 'Wszystko dostępne całkowicie bezpłatnie',
+        'tenants.hero.alt': 'Aplikacja RentFriends z profilem osoby szukającej pokoju',
         'nav.addListing': 'Dodaj ogłoszenie',
 
         'landlords.hero.title.part1': 'Znajdź odpowiedniego najemcę,',
@@ -434,6 +445,7 @@ export const ui = {
     en: {
         'meta.home.description': 'RentFriends helps you find a room, a flat and a flatmate you\'ll actually enjoy living with. We match people by lifestyle, budget and habits.',
         'meta.landlords.description': 'Rent your rooms and flats to the right people. RentFriends helps landlords find well-matched tenants faster. Publishing a listing is free.',
+        'meta.tenants.description': 'See how RentFriends works step by step: create a profile, browse rooms and flats, and meet flatmates matched to your lifestyle.',
         'meta.privacy.description': 'Find out what data RentFriends collects, why we process it, and how you can manage your privacy and your cookie preferences.',
         'meta.terms.description': 'The rules for using the RentFriends app and website - user rights and obligations, the scope of our services and the terms we provide them on.',
 
@@ -445,6 +457,16 @@ export const ui = {
         'nav.theme': 'Toggle theme',
         'nav.menu': 'Menu',
         'nav.landlords': 'For landlords',
+        'nav.tenants': 'For flat seekers',
+
+        'tenants.hero.title.part1': 'Find a flat and a flatmate',
+        'tenants.hero.title.part2': 'who actually suits you.',
+        'tenants.hero.description': 'A modern platform for students and young people - swipe profiles, get matched by the algorithm, and find a place where you really want to live.',
+        'tenants.hero.point1': 'A matching algorithm - for flats and for flatmates alike',
+        'tenants.hero.point2': 'Quick swiping instead of digging through Facebook groups',
+        'tenants.hero.point3': 'users in university cities across Poland',
+        'tenants.hero.point4': 'Everything available completely free of charge',
+        'tenants.hero.alt': 'The RentFriends app showing the profile of someone looking for a room',
         'nav.addListing': 'Add a listing',
 
         'landlords.hero.title.part1': 'Find the right tenant,',
