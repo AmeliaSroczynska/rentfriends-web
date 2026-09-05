@@ -6,6 +6,7 @@ import { satisfiedUsers, appRatingDisplay } from '../data/stats';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const isEn = lang === 'en';
 
 const softwareSchema = {
     "@context": "https://schema.org",
@@ -37,11 +38,6 @@ const softwareSchema = {
 
         <div class="w-full lg:flex-1 lg:max-w-[672px] flex flex-col relative z-20 lg:pb-12">
 
-            <div class="flex items-center gap-2 mb-4">
-                <div class="w-2 h-2 rounded-full bg-purple"></div>
-                <span class="text-purple-ink dark:text-purple-ink-dark font-semibold text-[14px]">{t('hero.subtitle')}</span>
-            </div>
-
             <h1 class="text-black dark:text-bg font-sans font-[800] text-[36px] min-[500px]:text-[38px] min-[700px]:text-[44px] md:text-[48px] lg:text-[64px] xl:text-[72px] leading-[1.05] md:leading-[1.1] lg:leading-[67.2px] xl:leading-[75.6px] tracking-[-1.5px] lg:tracking-[-1.92px] xl:tracking-[-2.16px] mb-4 sm:mb-6 transition-colors max-w-[90vw] lg:max-w-none z-20 relative">
                 <span set:html={t('hero.title.part1')}></span>
                 <br />
@@ -53,6 +49,17 @@ const softwareSchema = {
                 <p class="text-gray dark:text-bg/80 font-sans text-[13px] sm:text-[15px] lg:text-[18px] font-[400] leading-[1.625] mb-6 lg:mb-8 transition-colors max-[639px]:max-w-[45vw]">
                     {t('hero.description')}
                 </p>
+
+                <div class="flex flex-row items-stretch gap-[clamp(3px,1vw,20px)] mb-6 lg:mb-8 w-full">
+                    <a href={isEn ? '/en/' : '/'}
+                       class="flex items-center justify-center whitespace-nowrap rounded-full border-[1.5px] border-transparent bg-[image:var(--background-image-gradient)] max-[379px]:px-[4px] px-[clamp(6px,1.4vw,28px)] py-[clamp(6px,1.6vw,18px)] font-sans max-[379px]:text-[7px] text-[clamp(8px,1.1vw,17px)] font-bold text-bg transition-all duration-300 ease-out hover:opacity-90 hover:scale-[1.02] active:scale-95">
+                        {t('hero.cta.tenant')}
+                    </a>
+                    <a href={isEn ? '/en/landlords' : '/landlords'}
+                       class="flex items-center justify-center whitespace-nowrap rounded-full border-[1.5px] border-black/22 dark:border-white/25 max-[379px]:px-[4px] px-[clamp(6px,1.4vw,28px)] py-[clamp(6px,1.6vw,18px)] font-sans max-[379px]:text-[7px] text-[clamp(8px,1.1vw,17px)] font-semibold text-black dark:text-bg transition-all duration-300 ease-out hover:border-black/40 dark:hover:border-white/40 hover:scale-[1.02] active:scale-95">
+                        {t('hero.cta.landlord')}
+                    </a>
+                </div>
 
                 <div class="flex flex-row items-center gap-[clamp(3px,1vw,20px)] mb-6 lg:mb-8 w-full">
 
