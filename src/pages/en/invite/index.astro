@@ -1,0 +1,44 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SharePageShell from '../../../components/share/SharePageShell.astro';
+import StoreButtons from '../../../components/share/StoreButtons.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t('share.invite.title')} description={t('share.invite.paragraph')} noindex>
+    <SharePageShell>
+        <div class="max-w-[640px] mx-auto text-center">
+            <h1 class="text-[32px] sm:text-[42px] font-extrabold leading-tight tracking-tight text-black dark:text-white mb-5">
+                {t('share.invite.heading')}
+            </h1>
+            <p class="text-[16px] sm:text-[17.5px] leading-relaxed text-gray dark:text-white/80 mb-8">
+                {t('share.invite.paragraph')}
+            </p>
+
+            <p data-invite-code class="hidden mb-8 text-[15px] text-gray dark:text-white/70">
+                {t('share.invite.code')}: <strong data-invite-code-value class="text-black dark:text-white tracking-[0.2em]"></strong>
+            </p>
+
+            <div class="flex justify-center">
+                <StoreButtons />
+            </div>
+        </div>
+    </SharePageShell>
+</Layout>
+
+<script>
+    // The code only ever lives in the query string, so it has to be read on the
+    // client: the page itself is prerendered and cached.
+    const code = new URLSearchParams(window.location.search).get('code');
+    if (code) {
+        const wrapper = document.querySelector('[data-invite-code]');
+        const value = document.querySelector('[data-invite-code-value]');
+        if (wrapper && value) {
+            value.textContent = code;
+            wrapper.classList.remove('hidden');
+        }
+    }
+</script>
