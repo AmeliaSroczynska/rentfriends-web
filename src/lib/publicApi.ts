@@ -17,6 +17,7 @@ export interface PublicListing {
     id: number;
     share_uuid: string;
     user_id: number;
+    owner_share_uuid?: string;
     card_type: 'apartment';
     city: string;
     district: string;
@@ -32,6 +33,7 @@ export interface PublicListing {
 
 export interface PublicLandlord {
     user_id: number;
+    share_uuid: string;
     name: string;
     photo: string | null;
     city: string;

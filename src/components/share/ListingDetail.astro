@@ -23,7 +23,9 @@ const t = useTranslations(lang);
 const photos = listingPhotos(listing);
 const price = formatPriceRange(listing, t('share.listing.perMonth'));
 const location = locationLabel(listing);
-const landlordHref = localizePath(`/w/${listing.user_id}`, lang);
+const landlordHref = listing.owner_share_uuid
+    ? localizePath(`/w/${listing.owner_share_uuid}`, lang)
+    : null;
 
 const roomTypeLabel = (roomType: string | null) => {
     if (!roomType) return null;
@@ -124,7 +126,7 @@ const roomTypeLabel = (roomType: string | null) => {
                         </p>
                         <strong class="text-[15px] text-black dark:text-white">{listing.owner_name}</strong>
                     </div>
-                    {showOwnerLink && (
+                    {showOwnerLink && landlordHref && (
                         <a href={landlordHref} class="shrink-0 text-[13px] font-semibold text-purple hover:opacity-80 transition-opacity">
                             {t('share.listing.otherListings')}
                         </a>
