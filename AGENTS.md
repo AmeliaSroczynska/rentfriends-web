@@ -80,10 +80,12 @@ rentfriends-web/
 │   ├── robots.txt, llms.txt   # llms.txt = short site description for AI crawlers
 ├── src/
 │   ├── assets/                # PNGs imported in components and optimised by <Image>
+│   │   └── press/             # media outlet logos used by Press.astro, one file per outlet
 │   ├── components/            # shared/homepage sections
 │   │   ├── Navbar.astro       # sticky header, lang toggle, theme toggle, mobile menu, variant prop
 │   │   ├── Hero.astro         # homepage hero + SoftwareApplication JSON-LD
 │   │   ├── Features.astro, Reviews.astro, Award.astro, FAQ.astro, CTA.astro, Footer.astro
+│   │   ├── Press.astro      # "Mówili o nas" media wall on the homepage, renders src/data/press.ts
 │   │   ├── CookieBanner.astro # consent UI, writes localStorage `rf-cookie-consent`
 │   │   ├── landlords/         # sections used only by the /landlords page, all prefixed Landlords*
 │   │   └── tenants/           # sections used only by the /tenants page, all prefixed Tenants*
@@ -91,6 +93,7 @@ rentfriends-web/
 │   │   ├── faq.ts             # homepage FAQ items, { pl: {col1, col2}, en: {...} }
 │   │   ├── landlordFaq.ts     # landlords FAQ items, same shape
 │   │   ├── heroImage.ts       # hero image + widths/sizes/format, shared by Hero and Layout preload
+│   │   ├── press.ts           # media mentions rendered by Press.astro, { name, url, type, logo? }
 │   │   └── stats.ts           # headline numbers rendered in the Features stat tiles
 │   ├── i18n/
 │   │   ├── ui.ts              # ALL UI strings, `ui.pl` and `ui.en` (367 keys each), `as const`
@@ -157,7 +160,7 @@ When you edit a file, strip any comments you find in the parts you touch.
   ```
   and is rendered as `{t('section.key')}`. Strings containing HTML use `set:html={t('...')}`.
 - Keys are dot-notation, grouped by section: `meta.*`, `nav.*`, `hero.*`, `features.*`, `reviews.*`,
-  `faq.*`, `award.*`, `cta.*`, `footer.*`, `cookies.*`, `landlords.*`, `privacy.*`, `terms.*`,
+  `faq.*`, `award.*`, `press.*`, `cta.*`, `footer.*`, `cookies.*`, `landlords.*`, `privacy.*`, `terms.*`,
   `page404.*`.
 - `meta.*` holds the `<meta name="description">` copy for each page (`meta.home.description`,
   `meta.tenants.description`, `meta.landlords.description`, ...). Every indexable page passes its own
@@ -170,6 +173,25 @@ When you edit a file, strip any comments you find in the parts you touch.
 - **Always add a key to both `ui.pl` and `ui.en` in the same edit.** The counts must stay equal.
   A missing EN key silently falls back to Polish text on the English site.
 - Longer repeating content (FAQ entries) lives in `src/data/*.ts` keyed by language, not in `ui.ts`.
+- The media outlets in the "Mówili o nas" wall live in `src/data/press.ts`, not in `ui.ts` - an
+  outlet name is a proper noun and stays identical in both languages. Only the section heading, the
+  lead-in and the `press.type.*` labels are translated. Outlet names are run through
+  `bindSingleLetterWords` by `Press.astro`, so Polish one-letter words behave there too.
+- Every outlet's logo lives in `src/assets/press/`, named after the outlet, and is imported in
+  `press.ts` as that entry's `logo`. `logo` is optional: an entry without one falls back to a
+  typographic wordmark, so a new outlet can be added before its logo is sourced. Adding a `type`
+  that `press.type.*` does not cover breaks the build, which is intended.
+- An SVG logo lifted out of an outlet's page usually carries class names but no `fill`, because the
+  colours live in that site's stylesheet. Standing alone it then renders as flat black shapes. Put
+  the real fills on the elements before committing it, and open the file on its own to check.
+- The logos are third-party marks shown in their own colours, so `Press.astro` renders them with
+  `<Image layout="none">`: the global `constrained` layout sets `width: 100%` on the image, which
+  collapses a logo that is taller than it is wide. Size them with `max-h-*` plus `max-w-full` and
+  keep `min-w-0` on the `<li>` - a fixed `max-w-*` in pixels makes a wide logo push its tile past
+  its flex basis and the wall drops from four tiles a row to two.
+- Press tiles stay white in dark mode, on purpose, and so does the text inside them. It is the one
+  place where colour utilities have no `dark:` counterpart: the logos are supplied as dark-ink
+  artwork and several of them vanish on a dark tile.
 - Numbers shown in the UI are not literals in the markup either. `src/data/stats.ts` owns the
   headline figures. Each one is a pair: the raw value (`satisfiedUsers`, `appRating`) and its
   compact form (`satisfiedUsersDisplay` via `formatCompactCount`, `appRatingDisplay`). It is deliberately

@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import { pressMentions } from '../data/press';
+import { bindSingleLetterWords, getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="w-full bg-bg dark:bg-black font-sans pt-[60px] pb-[80px] lg:pt-[90px] lg:pb-[110px] transition-colors duration-300">
+    <div class="w-full max-w-6xl mx-auto px-6 sm:px-10 text-center">
+        <h2 class="text-[32px] sm:text-[45px] lg:text-[52px] font-extrabold tracking-tight mb-[14px]">
+            <span class="text-black dark:text-bg transition-colors">{t('press.title.part1')}</span> <span class="text-transparent bg-clip-text bg-[image:var(--background-image-gradient)]">{t('press.title.part2')}</span>
+        </h2>
+
+        <p class="text-[16px] sm:text-[18px] text-gray dark:text-bg/70 font-medium max-w-2xl mx-auto mb-[40px] transition-colors">
+            {t('press.subtitle')}
+        </p>
+
+        <ul class="flex flex-wrap justify-center gap-3 sm:gap-4">
+            {pressMentions.map((mention) => (
+                <li class="min-w-0 shrink-0 grow-0 basis-[calc(50%-6px)] sm:basis-[calc(33.333%-11px)] lg:basis-[calc(25%-12px)]">
+                    <a
+                        href={mention.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${t('press.link.aria')} ${mention.name}`}
+                        class="group relative h-full min-h-[126px] sm:min-h-[138px] rounded-[18px] border border-black/10 dark:border-white/15 bg-white px-4 py-5 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-purple/50 hover:shadow-lg hover:shadow-purple/15"
+                    >
+                        <span class="text-[11px] font-semibold tracking-[0.06em] text-gray/70">
+                            {t(`press.type.${mention.type}`)}
+                        </span>
+
+                        <span class="w-full h-12 flex items-center justify-center">
+                            {mention.logo ? (
+                                <Image src={mention.logo} layout="none" alt="" aria-hidden="true" loading="lazy" decoding="async" class="max-h-12 max-w-full w-auto h-auto object-contain" />
+                            ) : (
+                                <span class="text-[15px] sm:text-[17px] leading-tight font-bold text-balance text-black">
+                                    {bindSingleLetterWords(mention.name)}
+                                </span>
+                            )}
+                        </span>
+
+                        <svg class="absolute top-3 right-3 w-3.5 h-3.5 text-gray/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9M17 7v8" />
+                        </svg>
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </div>
+</section>
