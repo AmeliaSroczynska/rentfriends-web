@@ -11,7 +11,7 @@ const t = useTranslations(lang);
 const slides = [phone1, phone2, phone3];
 ---
 
-<section class="relative w-full overflow-hidden bg-bg dark:bg-black border-b-2 border-gray/25 dark:border-white/20 transition-colors duration-300 pt-8 sm:pt-10 lg:pt-[44px] pb-2 lg:pb-3">
+<section class="relative w-full overflow-hidden bg-bg dark:bg-black border-b-2 border-gray/25 dark:border-white/20 transition-colors duration-300 pt-8 sm:pt-10 lg:pt-[44px] pb-10 lg:pb-12">
 
     <div class="glow-purple pointer-events-none absolute -top-[551px] lg:-top-[661px] right-[-210px] lg:right-[-420px] w-[920px] h-[920px] lg:w-[1440px] lg:h-[1440px] rounded-full opacity-15 dark:hidden z-0"></div>
 
@@ -38,14 +38,6 @@ const slides = [phone1, phone2, phone3];
                class="w-full sm:w-auto text-center text-balance sm:whitespace-nowrap rounded-full border-[1.5px] border-black/22 dark:border-white/25 px-5 sm:px-6 py-4 font-sans text-[15.5px] font-semibold text-black dark:text-bg transition-all duration-300 ease-out hover:border-black/40 dark:hover:border-white/40 hover:scale-[1.02] active:scale-95">
                 {t('landlords.hero.cta.secondary')}
             </a>
-        </div>
-
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-x-[14px] gap-y-2 font-sans text-[12.5px] font-medium text-gray dark:text-bg/70 transition-colors">
-            <span class="flex items-center gap-1.5"><span aria-hidden="true" class="text-[12px]">🆓</span>{t('landlords.hero.meta.free')}</span>
-            <span aria-hidden="true" class="hidden sm:block h-3 w-px bg-black/18 dark:bg-white/20"></span>
-            <span class="flex items-center gap-1.5"><span aria-hidden="true" class="text-[12px]">📍</span>{t('landlords.hero.meta.city')}</span>
-            <span aria-hidden="true" class="hidden sm:block h-3 w-px bg-black/18 dark:bg-white/20"></span>
-            <span class="flex items-center gap-1.5"><span aria-hidden="true" class="text-[12px]">🇵🇱</span>{t('landlords.hero.meta.startup')}</span>
         </div>
 
         <div class="mt-10 sm:mt-[52px] flex items-center justify-center gap-2">
@@ -95,6 +87,17 @@ const slides = [phone1, phone2, phone3];
                     <path d="M9 18l6-6-6-6" />
                 </svg>
             </button>
+        </div>
+
+        <div class="mx-auto mt-12 lg:mt-14 max-w-[1080px] text-center">
+            <p class="font-sans font-[800] text-[17px] sm:text-[19px] tracking-[-0.4px]">
+                <span class="bg-[linear-gradient(to_right,var(--color-blue),var(--color-purple),var(--color-pink))] bg-clip-text text-transparent">
+                    {t('landlords.free.title')}
+                </span>
+            </p>
+            <p class="mt-1.5 font-sans font-normal text-[14px] sm:text-[15px] leading-[1.6] text-gray dark:text-bg/75 transition-colors">
+                {t('landlords.free.text')}
+            </p>
         </div>
     </div>
 </section>

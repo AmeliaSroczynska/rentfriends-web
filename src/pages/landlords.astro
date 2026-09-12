@@ -12,6 +12,7 @@ import LandlordsMeet from '../components/landlords/LandlordsMeet.astro';
 import LandlordsWho from '../components/landlords/LandlordsWho.astro';
 import LandlordsMission from '../components/landlords/LandlordsMission.astro';
 import LandlordsCompare from '../components/landlords/LandlordsCompare.astro';
+import LandlordsOffer from '../components/landlords/LandlordsOffer.astro';
 import LandlordsFAQ from '../components/landlords/LandlordsFAQ.astro';
 import LandlordsCTA from '../components/landlords/LandlordsCTA.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
@@ -26,15 +27,15 @@ const t = useTranslations(lang);
     <main class="min-h-[calc(100vh-72px)] flex flex-col">
         <LandlordsHero />
         <LandlordsWhy />
-        <LandlordsFeatures />
-        <LandlordsGain />
-
         <LandlordsHow />
+        <LandlordsGain />
+        <LandlordsFeatures />
         <LandlordsOlx />
         <LandlordsMeet />
         <LandlordsWho />
         <LandlordsMission />
         <LandlordsCompare />
+        <LandlordsOffer />
         <LandlordsFAQ />
         <LandlordsCTA />
     </main>

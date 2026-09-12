@@ -96,7 +96,7 @@ rentfriends-web/
 │   │   ├── press.ts           # media mentions rendered by Press.astro, { name, url, type, logo? }
 │   │   └── stats.ts           # headline numbers rendered in the Features stat tiles
 │   ├── i18n/
-│   │   ├── ui.ts              # ALL UI strings, `ui.pl` and `ui.en` (367 keys each), `as const`
+│   │   ├── ui.ts              # ALL UI strings, `ui.pl` and `ui.en` (362 keys each), `as const`
 │   │   └── utils.ts           # getLangFromUrl, useTranslations, stripLocale, localizePath, getAlternateLinks
 │   ├── layouts/Layout.astro   # <html> shell: meta, OG/Twitter, canonical, hreflang, JSON-LD brand
 │   │                          # schema, fonts, GTM, theme bootstrap, counter.dev loader, CookieBanner
