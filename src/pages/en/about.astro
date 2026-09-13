@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import AboutHero from '../../components/about/AboutHero.astro';
+import AboutStory from '../../components/about/AboutStory.astro';
+import AboutPress from '../../components/about/AboutPress.astro';
+import AboutTeam from '../../components/about/AboutTeam.astro';
+import AboutSecurity from '../../components/about/AboutSecurity.astro';
+import AboutContact from '../../components/about/AboutContact.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="RentFriends - About us" description={t('meta.about.description')}>
+    <Navbar />
+
+    <main class="min-h-[calc(100vh-72px)] flex flex-col">
+        <AboutHero />
+        <AboutStory />
+        <AboutPress />
+        <AboutTeam />
+        <AboutSecurity />
+        <AboutContact />
+    </main>
+
+    <Footer />
+</Layout>

@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import { pressArticles } from '../../data/press';
+import { bindSingleLetterWords, getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="press" class="w-full scroll-mt-[72px] bg-bg dark:bg-black transition-colors duration-300 py-16 sm:py-20 lg:py-[110px] px-6 lg:px-[100px]">
+    <div class="mx-auto max-w-[1208px]">
+
+        <h2 class="font-sans font-[800] text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.14] tracking-[-1.1px] text-black dark:text-bg transition-colors">
+            {t('about.press.title')}
+        </h2>
+
+        <ul class="mt-10 lg:mt-[52px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+            {pressArticles.map((article) => (
+                <li class="min-w-0">
+                    <a
+                        href={article.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${t('about.press.link')} ${article.outlet}`}
+                        class="group flex h-full flex-col overflow-hidden rounded-[22px] border border-black/10 dark:border-white/12 bg-white dark:bg-white/[0.04] transition-all duration-300 hover:-translate-y-1 hover:border-purple/45 hover:shadow-xl hover:shadow-purple/10"
+                    >
+                        <div class="relative aspect-[16/9] w-full overflow-hidden bg-purple/10">
+                            {article.image ? (
+                                <Image
+                                    src={article.image}
+                                    layout="none"
+                                    alt=""
+                                    aria-hidden="true"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                                />
+                            ) : (
+                                <span class="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_30%_20%,color-mix(in_srgb,var(--color-purple)_12%,white),white_78%)] px-8">
+                                    {article.logo && (
+                                        <Image
+                                            src={article.logo}
+                                            layout="none"
+                                            alt=""
+                                            aria-hidden="true"
+                                            loading="lazy"
+                                            decoding="async"
+                                            class="max-h-[52px] max-w-full w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+                                        />
+                                    )}
+                                </span>
+                            )}
+                        </div>
+
+                        <div class="flex flex-1 flex-col gap-2.5 px-5 py-5 lg:px-6 lg:py-6">
+                            <span class="font-sans text-[12px] font-semibold tracking-[0.04em] text-purple">
+                                {bindSingleLetterWords(article.outlet)}
+                            </span>
+                            <h3 class="font-sans font-semibold text-[15px] lg:text-[16px] leading-[1.45] text-black dark:text-bg transition-colors">
+                                {bindSingleLetterWords(article.title)}
+                            </h3>
+                            <span aria-hidden="true" class="mt-auto inline-flex items-center gap-1.5 pt-2 font-sans text-[13px] font-semibold text-gray dark:text-bg/60 transition-colors group-hover:text-purple">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9M17 7v8" />
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </div>
+</section>

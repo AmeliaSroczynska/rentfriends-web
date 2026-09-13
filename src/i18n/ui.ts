@@ -7,13 +7,30 @@ export const defaultLang = 'pl';
 
 export const ui = {
     pl: {
+        'meta.about.description': 'Poznaj zespół RentFriends i historię aplikacji, która pomaga znaleźć mieszkanie i dopasowanego współlokatora. Zobacz, co napisały o nas media.',
         'meta.home.description': 'RentFriends pomaga znaleźć pokój, mieszkanie i współlokatora, z którym dobrze się mieszka. Dopasowujemy ludzi po stylu życia, budżecie i nawykach.',
         'meta.landlords.description': 'Wynajmuj pokoje i mieszkania właściwym osobom. RentFriends pomaga właścicielom szybciej znaleźć dopasowanych lokatorów. Pierwsze 20 ogłoszeń za darmo.',
         'meta.tenants.description': 'Zobacz, jak działa RentFriends krok po kroku: załóż profil, przeglądaj pokoje i mieszkania i poznawaj współlokatorów dopasowanych do Twojego stylu życia.',
         'meta.privacy.description': 'Dowiedz się, jakie dane zbiera RentFriends, w jakim celu je przetwarza i jak możesz zarządzać swoją prywatnością oraz plikami cookie.',
         'meta.terms.description': 'Zasady korzystania z aplikacji i serwisu RentFriends - prawa i obowiązki użytkowników, zakres usług oraz warunki ich świadczenia.',
 
+        'about.hero.title.part1': 'Mieszkanie to nie tylko cztery ściany.',
+        'about.hero.title.part2': 'To ludzie, z którymi je dzielisz.',
+        'about.story.title': 'Zaczęło się od naszego własnego problemu',
+        'about.story.text': 'Jesteśmy rozwijającym się startupem, a pomysł zrodził się z realnych problemów założycieli. Studiując, zazwyczaj mieszkaliśmy z osobami niekoniecznie do nas dopasowanymi, co rodziło konflikty. Z drugiej strony zależało nam na współlokatorach, z którymi dzielenie wspólnej przestrzeni nie będzie problemem. Zadaliśmy sobie pytanie: ale skąd wziąć takie osoby? Obecnie jedyną opcją są grupy na Facebooku, gdzie można natrafić na ogłoszenia o poszukiwaniu współlokatora, jednak ich przeglądanie jest nieefektywne, bo takie posty rozproszone są po dziesiątkach grup, co znacznie utrudnia znalezienie kogoś, kto szuka mieszkania spełniającego podobne wymagania do naszych.',
+        'about.press.title': 'Napisali o nas',
+        'about.press.link': 'Zobacz materiał o RentFriends -',
+        'about.team.title': 'Ludzie, którzy budują RentFriends',
+        'about.team.linkedin': 'Profil na LinkedIn -',
+        'about.team.photoAlt': 'Zdjęcie -',
+        'about.security.title': 'Twoje dane zostają u nas',
+        'about.security.text': 'Nie udostępniamy danych osobom trzecim, ani nie przekazujemy danych reklamodawcom. Bezpieczeństwo jest dla nas ważne i dbamy o nie na każdym etapie tworzenia naszego serwisu.',
+        'about.contact.title': 'Napisz do nas',
+        'about.contact.text': 'Masz pytanie, pomysł na współpracę albo piszesz o nas artykuł? Odezwij się.',
+        'about.contact.social': 'Znajdziesz nas też tutaj',
+
         'nav.home': 'Strona główna',
+        'nav.about': 'O nas',
         'nav.features': 'Funkcje',
         'nav.reviews': 'Opinie',
         'nav.faq': 'FAQ',
@@ -103,8 +120,6 @@ export const ui = {
         'landlords.how.card.matchLabel': 'Dopasowanie',
         'landlords.how.card.olxTitle': 'ogłoszenie z OLX',
         'landlords.how.card.olxMeta': 'zaimportowano',
-
-        'landlords.olx.eyebrow': 'Import ogłoszenia z OLX',
         'landlords.olx.title': 'Dodaj ogłoszenie w kilkadziesiąt sekund',
         'landlords.olx.text': 'Masz już ogłoszenie na OLX? Nie musisz tworzyć go od nowa. Wklej link, a RentFriends automatycznie uzupełni dane.',
         'landlords.olx.placeholder': 'olx.pl/d/oferta/...',
@@ -149,8 +164,6 @@ export const ui = {
         'landlords.who.firms.r2badge': '8 zgłoszeń',
         'landlords.who.firms.r3': 'Krzyki 21 · 2 pokoje',
         'landlords.who.firms.r3badge': '5 zgłoszeń',
-
-        'landlords.mission.badge': 'Nasza misja',
         'landlords.mission.title1': 'Większość portali pomaga znaleźć pierwszego chętnego.',
         'landlords.mission.title2': 'My chcemy pomóc znaleźć odpowiednią osobę.',
         'landlords.mission.text': 'Wierzymy, że lepsze dopasowanie najemców oznacza mniej problemów, mniej rotacji i lepsze doświadczenie zarówno dla właścicieli, jak i lokatorów.',
@@ -429,13 +442,30 @@ export const ui = {
         'cookies.manage': 'Ustawienia cookies'
     },
     en: {
+        'meta.about.description': 'Meet the RentFriends team and the story behind the app that helps you find a flat and a well-matched flatmate. See what the media wrote about us.',
         'meta.home.description': 'RentFriends helps you find a room, a flat and a flatmate you\'ll actually enjoy living with. We match people by lifestyle, budget and habits.',
         'meta.landlords.description': 'Rent your rooms and flats to the right people. RentFriends helps landlords find well-matched tenants faster. Your first 20 listings are free.',
         'meta.tenants.description': 'See how RentFriends works step by step: create a profile, browse rooms and flats, and meet flatmates matched to your lifestyle.',
         'meta.privacy.description': 'Find out what data RentFriends collects, why we process it, and how you can manage your privacy and your cookie preferences.',
         'meta.terms.description': 'The rules for using the RentFriends app and website - user rights and obligations, the scope of our services and the terms we provide them on.',
 
+        'about.hero.title.part1': 'A flat is not just four walls.',
+        'about.hero.title.part2': 'It is the people you share it with.',
+        'about.story.title': 'It started with a problem of our own',
+        'about.story.text': 'We are a growing startup, and the idea came out of problems the founders lived through. As students we usually shared flats with people we were not a good match for, which led to conflict. At the same time we wanted flatmates with whom sharing a space simply works. So we asked ourselves: where do you actually find those people? Right now the only option is Facebook groups, where you can come across posts from people looking for a flatmate, but going through them is inefficient, because the posts are scattered across dozens of groups, which makes it much harder to find someone looking for a flat with requirements similar to your own.',
+        'about.press.title': 'What the press wrote',
+        'about.press.link': 'See the RentFriends story -',
+        'about.team.title': 'The people building RentFriends',
+        'about.team.linkedin': 'LinkedIn profile -',
+        'about.team.photoAlt': 'Photo -',
+        'about.security.title': 'Your data stays with us',
+        'about.security.text': 'We do not share your data with third parties, and we do not pass it on to advertisers. Security matters to us and we take care of it at every stage of building our service.',
+        'about.contact.title': 'Get in touch',
+        'about.contact.text': 'Got a question, an idea for working together, or are you writing about us? Drop us a line.',
+        'about.contact.social': 'You will also find us here',
+
         'nav.home': 'Home',
+        'nav.about': 'About us',
         'nav.features': 'Features',
         'nav.reviews': 'Reviews',
         'nav.faq': 'FAQ',
@@ -525,8 +555,6 @@ export const ui = {
         'landlords.how.card.matchLabel': 'Match',
         'landlords.how.card.olxTitle': 'listing from OLX',
         'landlords.how.card.olxMeta': 'imported',
-
-        'landlords.olx.eyebrow': 'Import a listing from OLX',
         'landlords.olx.title': 'Add a listing in under a minute',
         'landlords.olx.text': 'Already have a listing on OLX? You do not need to create it again. Paste the link and RentFriends fills in the details automatically.',
         'landlords.olx.placeholder': 'olx.pl/d/oferta/...',
@@ -571,8 +599,6 @@ export const ui = {
         'landlords.who.firms.r2badge': '8 enquiries',
         'landlords.who.firms.r3': 'Krzyki 21 · 2 rooms',
         'landlords.who.firms.r3badge': '5 enquiries',
-
-        'landlords.mission.badge': 'Our mission',
         'landlords.mission.title1': 'Most listing sites help you find the first person who replies.',
         'landlords.mission.title2': 'We want to help you find the right person.',
         'landlords.mission.text': 'We believe that a better tenant match means fewer problems, less turnover and a better experience for landlords and tenants alike.',

@@ -80,29 +80,32 @@ rentfriends-web/
 │   ├── robots.txt, llms.txt   # llms.txt = short site description for AI crawlers
 ├── src/
 │   ├── assets/                # PNGs imported in components and optimised by <Image>
-│   │   └── press/             # media outlet logos used by Press.astro, one file per outlet
+│   │   ├── press/             # media outlet logos used by Press.astro, one file per outlet
+│   │   └── press-articles/    # article thumbnails used by the /about press grid
 │   ├── components/            # shared/homepage sections
 │   │   ├── Navbar.astro       # sticky header, lang toggle, theme toggle, mobile menu, variant prop
 │   │   ├── Hero.astro         # homepage hero + SoftwareApplication JSON-LD
 │   │   ├── Features.astro, Reviews.astro, Award.astro, FAQ.astro, CTA.astro, Footer.astro
 │   │   ├── Press.astro      # "Mówili o nas" media wall on the homepage, renders src/data/press.ts
 │   │   ├── CookieBanner.astro # consent UI, writes localStorage `rf-cookie-consent`
+│   │   ├── about/             # sections used only by the /about page, all prefixed About*
 │   │   ├── landlords/         # sections used only by the /landlords page, all prefixed Landlords*
 │   │   └── tenants/           # sections used only by the /tenants page, all prefixed Tenants*
 │   ├── data/
 │   │   ├── faq.ts             # homepage FAQ items, { pl: {col1, col2}, en: {...} }
 │   │   ├── landlordFaq.ts     # landlords FAQ items, same shape
 │   │   ├── heroImage.ts       # hero image + widths/sizes/format, shared by Hero and Layout preload
-│   │   ├── press.ts           # media mentions rendered by Press.astro, { name, url, type, logo? }
+│   │   ├── press.ts           # pressMentions = homepage logo wall; pressArticles = /about article grid
+│   │   ├── team.ts            # founders shown on /about, { name, role, linkedin, photo? }
 │   │   └── stats.ts           # headline numbers rendered in the Features stat tiles
 │   ├── i18n/
-│   │   ├── ui.ts              # ALL UI strings, `ui.pl` and `ui.en` (362 keys each), `as const`
+│   │   ├── ui.ts              # ALL UI strings, `ui.pl` and `ui.en` (376 keys each), `as const`
 │   │   └── utils.ts           # getLangFromUrl, useTranslations, stripLocale, localizePath, getAlternateLinks
 │   ├── layouts/Layout.astro   # <html> shell: meta, OG/Twitter, canonical, hreflang, JSON-LD brand
 │   │                          # schema, fonts, GTM, theme bootstrap, counter.dev loader, CookieBanner
 │   ├── pages/                 # file-based routing
-│   │   ├── index.astro, tenants.astro, landlords.astro, privacy-policy.astro, terms-of-service.astro   # PL (default)
-│   │   ├── en/                # same five pages in English
+│   │   ├── index.astro, about.astro, tenants.astro, landlords.astro, privacy-policy.astro, terms-of-service.astro   # PL (default)
+│   │   ├── en/                # same six pages in English
 │   │   ├── 404.astro
 │   │   └── dl.astro           # standalone app-store redirect page, does NOT use Layout
 │   └── styles/global.css      # Tailwind import, @theme design tokens, dark variant, focus styles
@@ -160,7 +163,8 @@ When you edit a file, strip any comments you find in the parts you touch.
   ```
   and is rendered as `{t('section.key')}`. Strings containing HTML use `set:html={t('...')}`.
 - Keys are dot-notation, grouped by section: `meta.*`, `nav.*`, `hero.*`, `features.*`, `reviews.*`,
-  `faq.*`, `award.*`, `press.*`, `cta.*`, `footer.*`, `cookies.*`, `landlords.*`, `privacy.*`, `terms.*`,
+  `faq.*`, `award.*`, `press.*`, `about.*`, `cta.*`, `footer.*`, `cookies.*`, `landlords.*`, `privacy.*`,
+  `terms.*`,
   `page404.*`.
 - `meta.*` holds the `<meta name="description">` copy for each page (`meta.home.description`,
   `meta.tenants.description`, `meta.landlords.description`, ...). Every indexable page passes its own
@@ -192,6 +196,13 @@ When you edit a file, strip any comments you find in the parts you touch.
 - Press tiles stay white in dark mode, on purpose, and so does the text inside them. It is the one
   place where colour utilities have no `dark:` counterpart: the logos are supplied as dark-ink
   artwork and several of them vanish on a dark tile.
+- `press.ts` holds two lists. `pressMentions` is the homepage logo wall; `pressArticles` is the
+  /about grid and carries an article thumbnail plus the outlet's headline. An article without an
+  `image` falls back to its `logo` on a near-white plate, which is why that plate stays light in
+  dark mode too. Article headlines and outlet names live in the data file, never in `ui.ts` - they
+  are Polish-language article titles and stay identical on the English page.
+- `src/data/team.ts` drives the /about team cards. `photo` is optional: a member without one gets a
+  gradient tile with their initials, so a founder can be listed before a portrait exists.
 - Numbers shown in the UI are not literals in the markup either. `src/data/stats.ts` owns the
   headline figures. Each one is a pair: the raw value (`satisfiedUsers`, `appRating`) and its
   compact form (`satisfiedUsersDisplay` via `formatCompactCount`, `appRatingDisplay`). It is deliberately
@@ -201,10 +212,12 @@ When you edit a file, strip any comments you find in the parts you touch.
 - Internal links are built as `isEn ? '/en/...' : '/...'` or with `localizePath()`. Do not hardcode
   a single-language path.
 
-- The homepage `Navbar` links are `nav.home`, `nav.tenants`, `nav.landlords`. The horizontal nav
-  only appears from `xl`; below that everything moves into the hamburger menu. The Polish labels are
-  long, so a fourth link (or a longer label) will collide with the logo and the right-hand controls -
-  measure before adding one.
+- The `Navbar` links are `nav.home`, `nav.tenants`, `nav.landlords`, `nav.about`, and the footer's
+  app column lists the same pages in the same order. The horizontal nav only appears from `xl`;
+  below that everything moves into the hamburger menu. The Polish labels are long and the row is
+  centre-anchored, so at the `xl` breakpoint there is only ~45px left between the last link and the
+  theme toggle on `/landlords`. A fifth link, or a longer label, will collide - measure at 1280px
+  before adding one.
 - `Features.astro` ("Jak działa RentFriends?" plus the stat tiles) lives on `/tenants`, not on the
   homepage. Footer's "Funkcje" link points at that page.
 
