@@ -1,7 +1,31 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
+
+/**
+ * Serves the app-association files from functions so they carry an explicit
+ * `application/json` header. They live under src/ (not public/) because the
+ * Vercel adapter emits a Build Output API bundle, which ignores vercel.json.
+ */
+function wellKnownRoutes() {
+  return {
+    name: 'rentfriends-well-known',
+    hooks: {
+      'astro:config:setup': ({ injectRoute }) => {
+        injectRoute({
+          pattern: '/.well-known/apple-app-site-association',
+          entrypoint: './src/well-known/aasa-route.ts',
+        });
+        injectRoute({
+          pattern: '/.well-known/assetlinks.json',
+          entrypoint: './src/well-known/assetlinks-route.ts',
+        });
+      },
+    },
+  };
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,9 +34,15 @@ export default defineConfig({
     '/contact': '/',
     '/en/contact': '/en/'
   },
+  // Everything is still prerendered by default; only the share pages
+  // (/o/[id], /w/[id]) opt out via `export const prerender = false`, because
+  // they read live listing data from the API on every request.
+  adapter: vercel(),
   integrations: [
+    wellKnownRoutes(),
     sitemap({
-      filter: (page) => !/\/dl\/?$/.test(new URL(page).pathname),
+      // Exclude deep-link landing + per-user share/invite pages (noindex).
+      filter: (page) => !/\/(dl|o|w|invite)(\/|$)/.test(new URL(page).pathname),
       i18n: {
         defaultLocale: 'pl',
         locales: {

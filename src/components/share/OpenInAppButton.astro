@@ -1,0 +1,65 @@
+---
+/**
+ * Tries to hand the current share URL to the installed app.
+ * Android: https intent into package app.dyzury.
+ * iOS: custom scheme rentfriends:// (Universal Links won't re-open from
+ * the same Safari tab). Falls back to the store if the app isn't installed.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const path = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '') || '/';
+const search = Astro.url.search;
+const httpsHostPath = `rentfriends.app${path}${search}`;
+const customUrl = `rentfriends://${httpsHostPath}`;
+const playStore =
+    'https://play.google.com/store/apps/details?id=app.dyzury&pcampaignid=web_share';
+const appStore =
+    'https://apps.apple.com/gr/app/rentfriends-rent-rooms/id6502833411';
+const intentUrl =
+    `intent://${httpsHostPath}#Intent;scheme=https;package=app.dyzury;` +
+    `S.browser_fallback_url=${encodeURIComponent(playStore)};end`;
+---
+
+<a
+    id="open-in-app"
+    href={customUrl}
+    class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-[14px] bg-purple px-5 py-3.5 text-[15px] font-bold text-white hover:opacity-90 hover:scale-[1.01] transition-all cursor-pointer"
+    data-intent-url={intentUrl}
+    data-custom-url={customUrl}
+    data-ios-store={appStore}
+    data-android-store={playStore}
+>
+    {t('share.openInApp')}
+</a>
+
+<script is:inline>
+    (function () {
+        const btn = document.getElementById('open-in-app');
+        if (!btn) return;
+
+        btn.addEventListener('click', function (event) {
+            const ua = navigator.userAgent || '';
+            const isAndroid = /android/i.test(ua);
+            const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+            if (isAndroid) {
+                event.preventDefault();
+                window.location.href = btn.getAttribute('data-intent-url');
+                return;
+            }
+
+            if (isIOS) {
+                event.preventDefault();
+                const started = Date.now();
+                window.location.href = btn.getAttribute('data-custom-url');
+                setTimeout(function () {
+                    if (document.hidden || Date.now() - started > 2500) return;
+                    window.location.href = btn.getAttribute('data-ios-store');
+                }, 1600);
+            }
+        });
+    })();
+</script>

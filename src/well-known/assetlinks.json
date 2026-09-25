@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.dyzury",
+      "sha256_cert_fingerprints": [
+        "F8:39:1F:50:52:25:71:BA:75:E4:A0:1B:41:3F:DF:85:9C:97:D8:2B:79:6B:7D:B2:66:F5:9D:9A:7E:D5:3F:43"
+      ]
+    }
+  }
+]

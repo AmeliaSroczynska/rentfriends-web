@@ -1,0 +1,77 @@
+---
+export const prerender = false;
+
+import Layout from '../../../layouts/Layout.astro';
+import SharePageShell from '../../../components/share/SharePageShell.astro';
+import ListingSummaryCard from '../../../components/share/ListingSummaryCard.astro';
+import StoreButtons from '../../../components/share/StoreButtons.astro';
+import OpenInAppButton from '../../../components/share/OpenInAppButton.astro';
+import NotFound from '../../../components/share/NotFound.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { fetchLandlord, listingPhotos } from '../../../lib/publicApi';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const landlord = await fetchLandlord(Astro.params.id!);
+
+if (!landlord) {
+    Astro.response.status = 404;
+}
+
+const title = landlord
+    ? `${t('share.landlord.title')} ${landlord.name}`.trim()
+    : t('page404.title');
+const description = landlord
+    ? t('share.landlord.fallbackDescription')
+    : t('page404.description');
+const image = landlord
+    ? (landlord.photo ?? listingPhotos(landlord.listings[0])[0])
+    : undefined;
+const appPath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '') || '/';
+const appArgument = landlord
+    ? `https://rentfriends.app${appPath}${Astro.url.search}`
+    : undefined;
+---
+
+<Layout title={title} description={description} image={image} noindex appArgument={appArgument}>
+    <SharePageShell>
+        {landlord ? (
+            <>
+                <header class="flex items-center gap-4 mb-8">
+                    {landlord.photo ? (
+                        <img src={landlord.photo} alt="" class="w-16 h-16 rounded-full object-cover" />
+                    ) : (
+                        <div class="w-16 h-16 rounded-full bg-purple/20 flex items-center justify-center text-[24px] font-bold text-black dark:text-white">
+                            {landlord.name?.charAt(0) ?? '?'}
+                        </div>
+                    )}
+                    <div>
+                        <h1 class="text-[26px] sm:text-[32px] font-extrabold leading-tight tracking-tight text-black dark:text-white">
+                            {landlord.name}
+                        </h1>
+                        <p class="text-[14px] text-gray dark:text-white/70">
+                            {t('share.landlord.count')}: {landlord.listings.length}
+                        </p>
+                    </div>
+                </header>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    {landlord.listings.map((listing) => (
+                        <ListingSummaryCard listing={listing} />
+                    ))}
+                </div>
+
+                <section class="mt-10 rounded-[24px] bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 sm:p-8">
+                    <div class="mb-4">
+                        <OpenInAppButton />
+                    </div>
+                    <p class="text-[15px] text-gray dark:text-white/70 mb-4">{t('share.storesLead')}</p>
+                    <StoreButtons />
+                </section>
+            </>
+        ) : (
+            <NotFound />
+        )}
+    </SharePageShell>
+</Layout>

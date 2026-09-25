@@ -11,6 +11,8 @@ export interface Props {
 	image?: string;
 	noindex?: boolean;
 	preloadHero?: boolean;
+	/** When set, iOS Smart App Banner opens this URL in the app. */
+	appArgument?: string;
 }
 
 const {
@@ -18,7 +20,8 @@ const {
 	description = "RentFriends pomaga znaleźć idealnego współlokatora i opanować domowe obowiązki bez stresu. Sprawdź naszą aplikację!",
 	image = "/og-image.jpg",
 	noindex = false,
-	preloadHero = false
+	preloadHero = false,
+	appArgument,
 } = Astro.props;
 
 const heroPreload = preloadHero
@@ -131,7 +134,9 @@ const brandSchema = {
 		]}
 	/>
 
-	<meta name="apple-itunes-app" content="app-id=6502833411">
+	<meta name="apple-itunes-app" content={appArgument
+		? `app-id=6502833411, app-argument=${appArgument}`
+		: 'app-id=6502833411'}>
 
 	<script type="application/ld+json" set:html={JSON.stringify(brandSchema)} />
 

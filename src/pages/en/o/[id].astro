@@ -1,0 +1,45 @@
+---
+export const prerender = false;
+
+import Layout from '../../../layouts/Layout.astro';
+import SharePageShell from '../../../components/share/SharePageShell.astro';
+import ListingDetail from '../../../components/share/ListingDetail.astro';
+import NotFound from '../../../components/share/NotFound.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import {
+    fetchListing,
+    formatPriceRange,
+    listingPhotos,
+    locationLabel,
+} from '../../../lib/publicApi';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const listing = await fetchListing(Astro.params.id!);
+
+if (!listing) {
+    Astro.response.status = 404;
+}
+
+const location = listing ? locationLabel(listing) : '';
+const price = listing ? formatPriceRange(listing, t('share.listing.perMonth')) : null;
+
+const title = listing
+    ? [t('share.listing.metaTitle'), location, price].filter(Boolean).join(' · ')
+    : t('page404.title');
+const description = listing
+    ? listing.bio?.trim() || t('share.listing.fallbackDescription')
+    : t('page404.description');
+const image = listing ? listingPhotos(listing)[0] : undefined;
+const appPath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '') || '/';
+const appArgument = listing
+    ? `https://rentfriends.app${appPath}${Astro.url.search}`
+    : undefined;
+---
+
+<Layout title={title} description={description} image={image} noindex appArgument={appArgument}>
+    <SharePageShell>
+        {listing ? <ListingDetail listing={listing} /> : <NotFound />}
+    </SharePageShell>
+</Layout>
