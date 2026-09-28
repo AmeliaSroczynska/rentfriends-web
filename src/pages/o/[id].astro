@@ -9,6 +9,7 @@ import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import {
     fetchListing,
     formatPriceRange,
+    isEntireListing,
     listingPhotos,
     locationLabel,
 } from '../../lib/publicApi';
@@ -26,9 +27,12 @@ if (!listing) {
 
 const location = listing ? locationLabel(listing) : '';
 const price = listing ? formatPriceRange(listing, t('share.listing.perMonth')) : null;
+const metaTitle = listing
+    ? t(isEntireListing(listing) ? 'share.listing.metaTitleEntire' : 'share.listing.metaTitle')
+    : null;
 
 const title = listing
-    ? [t('share.listing.metaTitle'), location, price].filter(Boolean).join(' · ')
+    ? [metaTitle, location, price].filter(Boolean).join(' · ')
     : t('page404.title');
 const description = listing
     ? listing.bio?.trim() || t('share.listing.fallbackDescription')
