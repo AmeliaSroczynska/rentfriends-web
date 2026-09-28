@@ -13,12 +13,16 @@ export interface PublicRoom {
     photos: { id: number; photo: string | null; order: number }[];
 }
 
+export type ListingKind = 'room' | 'entire';
+
 export interface PublicListing {
     id: number;
     share_uuid: string;
     user_id: number;
     owner_share_uuid?: string;
     card_type: 'apartment';
+    /** `'entire'` = whole flat; `'room'` (or missing) = individual rooms. */
+    listing_kind?: ListingKind;
     city: string;
     district: string;
     occupants_count: number;
@@ -29,6 +33,10 @@ export interface PublicListing {
     owner_name: string;
     owner_photo: string | null;
     created_at: string;
+}
+
+export function isEntireListing(listing: PublicListing): boolean {
+    return listing.listing_kind === 'entire';
 }
 
 export interface PublicLandlord {
@@ -88,6 +96,18 @@ export function formatPriceRange(listing: PublicListing, suffix: string): string
 
 export function locationLabel(listing: PublicListing): string {
     return [listing.city, listing.district].filter(Boolean).join(', ');
+}
+
+function calendarDayUtc(date: Date): number {
+    return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+/** True when `available_from` is today or earlier (already free). */
+export function isAvailableNow(raw: string | null): boolean {
+    if (!raw) return false;
+    const date = new Date(raw);
+    if (Number.isNaN(date.getTime())) return false;
+    return calendarDayUtc(date) <= calendarDayUtc(new Date());
 }
 
 export function formatDate(raw: string | null, lang: string): string | null {
