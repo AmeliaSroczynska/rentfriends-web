@@ -1,0 +1,134 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const benefits = [
+    t('landlords.crm.b1'),
+    t('landlords.crm.b2'),
+    t('landlords.crm.b3'),
+    t('landlords.crm.b4'),
+];
+---
+
+<section id="crm-integration" class="relative isolate w-full scroll-mt-[72px] bg-bg dark:bg-black transition-colors duration-300 pt-12 sm:pt-16 lg:pt-[90px] pb-14 sm:pb-16 lg:pb-[80px] px-6 lg:px-[115px]">
+    <span aria-hidden="true" class="pointer-events-none absolute top-0 right-[8%] -z-10 size-[340px] rounded-full bg-purple/15 dark:bg-purple/25 blur-[120px]"></span>
+    <span aria-hidden="true" class="pointer-events-none absolute top-[30%] right-[30%] -z-10 size-[240px] rounded-full bg-blue/10 dark:bg-blue/20 blur-[110px]"></span>
+
+    <div class="mx-auto max-w-[1209px]">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-14">
+            <div class="lg:max-w-[580px] lg:shrink-0">
+                <h2 class="font-sans font-[800] text-[28px] sm:text-[34px] lg:text-[40px] leading-[1.18] tracking-[-0.8px] lg:tracking-[-1.1px] text-black dark:text-bg transition-colors">
+                    {t('landlords.crm.title')}
+                </h2>
+
+                <p class="mt-4 max-w-[540px] font-sans text-[15px] lg:text-[16px] leading-[1.65] text-gray dark:text-bg/70 transition-colors">
+                    {t('landlords.crm.text')}
+                </p>
+            </div>
+
+            <div aria-hidden="true" class="w-full lg:flex-1 flex items-center justify-center gap-3 sm:gap-4">
+                <div class="flex flex-col items-center gap-2.5 shrink-0">
+                    <span class="flex size-[68px] sm:size-[80px] items-center justify-center rounded-full border-2 border-black/10 dark:border-white/15 bg-white dark:bg-white/5 text-black dark:text-bg shadow-[0_8px_24px_rgba(15,15,15,0.08)] transition-colors">
+                        <svg class="size-7 sm:size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5.5" rx="7.5" ry="2.8" />
+                            <path d="M4.5 5.5v6.5c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8V5.5" />
+                            <path d="M4.5 12v6.5c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8V12" />
+                        </svg>
+                    </span>
+                    <span class="font-sans text-[13px] font-bold text-gray dark:text-bg/70 transition-colors">CRM</span>
+                </div>
+
+                <div class="relative flex-1 max-w-[240px] -mt-8">
+                    <div class="crm-line h-[2px] w-full rounded-full"></div>
+                    <span class="crm-dot"></span>
+                    <span class="crm-dot crm-dot--late"></span>
+                    <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-[999px] bg-black dark:bg-bg px-3.5 py-1.5 font-sans text-[12px] font-bold text-bg dark:text-black transition-colors">
+                        Otodom XML
+                    </span>
+                </div>
+
+                <div class="flex flex-col items-center gap-2.5 shrink-0">
+                    <span class="flex size-[68px] sm:size-[80px] items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--color-blue),var(--color-purple),var(--color-pink))] text-bg shadow-[0_10px_28px_rgba(162,71,227,0.4)]">
+                        <svg class="size-7 sm:size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3.5 10.5 12 4l8.5 6.5" />
+                            <path d="M5.5 9v10.5h13V9" />
+                            <path d="M9.5 19.5v-5h5v5" />
+                        </svg>
+                    </span>
+                    <span class="font-sans text-[13px] font-bold text-gray dark:text-bg/70 transition-colors">RentFriends</span>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-14 lg:mt-16 font-sans font-[800] text-[18px] lg:text-[20px] leading-[1.3] text-black dark:text-bg transition-colors">
+            {t('landlords.crm.benefitsTitle')}
+        </h3>
+
+        <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
+            {benefits.map((item, i) => (
+                <li class="relative pt-5">
+                    <span aria-hidden="true" class="absolute left-0 right-0 top-0 h-[3px] rounded-full bg-[image:var(--background-image-gradient)] opacity-80"></span>
+                    <span aria-hidden="true" class="block bg-[image:var(--background-image-gradient)] bg-clip-text font-sans text-[32px] font-[800] leading-[1.1] tracking-[-0.8px] text-transparent tabular-nums">
+                        {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <p class="mt-2.5 font-sans text-[15px] lg:text-[16px] leading-[1.5] text-black dark:text-bg transition-colors">
+                        {item}
+                    </p>
+                </li>
+            ))}
+        </ul>
+
+        <div class="mt-12 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            <p class="font-sans text-[15px] lg:text-[16px] leading-[1.5] text-gray dark:text-bg/70 transition-colors">
+                {t('landlords.crm.contact')}
+            </p>
+            <a
+                href="mailto:kontakt@rentfriends.pl"
+                class="inline-flex min-h-[46px] shrink-0 self-start sm:self-auto items-center gap-2.5 rounded-[999px] bg-[image:var(--background-image-gradient)] px-6 py-3 font-sans text-[14px] lg:text-[15px] font-bold text-bg transition-all duration-300 ease-out hover:opacity-90 hover:scale-[1.02] active:scale-95 cursor-pointer"
+            >
+                <svg class="size-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="14" rx="2.5" />
+                    <path d="m4 7 8 6 8-6" />
+                </svg>
+                {t('landlords.crm.button')}
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .crm-line {
+        background-image: linear-gradient(to right, color-mix(in srgb, var(--color-purple) 55%, transparent) 50%, transparent 50%);
+        background-size: 10px 2px;
+    }
+
+    .crm-dot {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        margin-top: -4px;
+        border-radius: 999px;
+        background: var(--color-pink);
+        box-shadow: 0 0 12px var(--color-pink);
+        animation: crm-flow 2.4s linear infinite;
+    }
+
+    .crm-dot--late {
+        animation-delay: 1.2s;
+    }
+
+    @keyframes crm-flow {
+        0% { left: 0; opacity: 0; }
+        12% { opacity: 1; }
+        88% { opacity: 1; }
+        100% { left: calc(100% - 8px); opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .crm-dot { animation: none; display: none; }
+    }
+</style>

@@ -37,7 +37,7 @@ const t = useTranslations(lang);
                                 />
                             ) : (
                                 <span class="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_30%_20%,color-mix(in_srgb,var(--color-purple)_12%,white),white_78%)] px-8">
-                                    {article.logo && (
+                                    {article.logo ? (
                                         <Image
                                             src={article.logo}
                                             layout="none"
@@ -47,6 +47,10 @@ const t = useTranslations(lang);
                                             decoding="async"
                                             class="max-h-[52px] max-w-full w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
                                         />
+                                    ) : (
+                                        <span aria-hidden="true" class="text-center font-sans font-[800] text-[22px] lg:text-[24px] leading-[1.15] tracking-[-0.6px] text-black transition-transform duration-500 group-hover:scale-[1.04]">
+                                            {article.outlet}
+                                        </span>
                                     )}
                                 </span>
                             )}

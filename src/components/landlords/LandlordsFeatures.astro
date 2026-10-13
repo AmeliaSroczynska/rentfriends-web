@@ -3,6 +3,7 @@ import { Picture } from 'astro:assets';
 import feature1Img from '../../assets/features1.png';
 import feature2Img from '../../assets/features2.png';
 import feature3Img from '../../assets/features3.png';
+import feature4Img from '../../assets/features4.png';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -12,7 +13,7 @@ const items = [
     { title: t('landlords.alt.s1.title'), image: feature1Img, alt: t('landlords.alt.s1.img') },
     { title: t('landlords.alt.s2.title'), image: feature2Img, alt: t('landlords.alt.s2.img') },
     { title: t('landlords.alt.s3.title'), image: feature3Img, alt: t('landlords.alt.s3.img') },
-    { title: t('landlords.alt.s4.title'), image: null, alt: '' },
+    { title: t('landlords.alt.s4.title'), image: feature4Img, alt: t('landlords.alt.s4.img') },
 ];
 ---
 
@@ -57,7 +58,7 @@ const items = [
                                     pictureAttributes={{ class: 'contents' }}
                                     class:list={[
                                         'w-[130px] lg:w-[150px] h-auto drop-shadow-[0_22px_44px_rgba(9,20,50,0.22)]',
-                                        i % 2 === 0 ? 'rotate-[5deg]' : '-rotate-[5deg]',
+                                        i % 4 === 0 || i % 4 === 3 ? 'rotate-[5deg]' : '-rotate-[5deg]',
                                     ]}
                                 />
                             </div>

@@ -13,12 +13,30 @@ import tvp3Logo from '../assets/press/tvp3.svg';
 import wnpLogo from '../assets/press/wnp.svg';
 import wroclawskieFaktyLogo from '../assets/press/wroclawskiefakty.svg';
 import wrocLifeLogo from '../assets/press/wroclife.png';
-import rentFriendsLogo from '../assets/logo.png';
+import tvpInfoLogo from '../assets/press/tvpinfo.png';
+import teleexpressLogo from '../assets/press/teleexpress.png';
+import polsatLogo from '../assets/press/polsat.png';
+import wyborczaLogo from '../assets/press/wyborcza.png';
+import witLogo from '../assets/press/wit.png';
+import dswLogo from '../assets/press/dsw.png';
 import faktArticleImage from '../assets/press-articles/fakt.jpg';
 import gazetaPrawnaArticleImage from '../assets/press-articles/gazetaprawna.webp';
 import pwrArticleImage from '../assets/press-articles/pwr.jpg';
 import radioWroclawArticleImage from '../assets/press-articles/radiowroclaw.jpg';
 import wrocLifeArticleImage from '../assets/press-articles/wroclife.jpg';
+import dswArticleImage from '../assets/press-articles/dsw.jpg';
+import polsatArticleImage from '../assets/press-articles/polsat.jpg';
+import wyborczaArticleImage from '../assets/press-articles/wyborcza-photo.jpg';
+import innPolandArticleImage from '../assets/press-articles/innpoland-photo.jpg';
+import naukaWPolsceArticleImage from '../assets/press-articles/naukawpolsce-photo.jpg';
+import bankierArticleImage from '../assets/press-articles/bankier-photo.jpg';
+import tvp3ArticleImage from '../assets/press-articles/tvp3.jpg';
+import dziennikNaukowyArticleImage from '../assets/press-articles/dzienniknaukowy-photo.jpg';
+import witArticleImage from '../assets/press-articles/wit-photo.jpg';
+import wroclawskieFaktyArticleImage from '../assets/press-articles/wroclawskiefakty-photo.jpg';
+import mniswArticleImage from '../assets/press-articles/mnisw.jpg';
+import tvpInfoArticleImage from '../assets/press-articles/tvpinfo.jpg';
+import teleexpressArticleImage from '../assets/press-articles/teleexpress.jpg';
 
 export type PressOutletType = 'tv' | 'radio' | 'press' | 'portal' | 'university' | 'institution';
 
@@ -32,9 +50,27 @@ export interface PressMention {
 export const pressMentions: PressMention[] = [
     {
         name: 'TVP3 Wrocław',
-        url: 'https://fb.watch/I-YF2Q7lKr/',
+        url: 'https://wroclaw.tvp.pl/94784210/sierpien-to-miesiac-w-ktorym-studenci-juz-szukaja-zakwaterowania',
         type: 'tv',
         logo: tvp3Logo,
+    },
+    {
+        name: 'TVP Info',
+        url: 'https://fb.watch/I-YIaMNbI9/',
+        type: 'tv',
+        logo: tvpInfoLogo,
+    },
+    {
+        name: 'Teleexpress Extra',
+        url: 'https://fb.watch/I-YJQEax2-/',
+        type: 'tv',
+        logo: teleexpressLogo,
+    },
+    {
+        name: 'Polsat',
+        url: 'https://www.instagram.com/reel/DdOceYaof1U/',
+        type: 'tv',
+        logo: polsatLogo,
     },
     {
         name: 'Fakt',
@@ -47,6 +83,12 @@ export const pressMentions: PressMention[] = [
         url: 'https://www.gazetaprawna.pl/nowe-technologie/ai/artykuly/11279670,rentfriends-aplikacja-do-szukania-wspollokatorow-mieszkan-pwr-dsw-2026.html',
         type: 'press',
         logo: gazetaPrawnaLogo,
+    },
+    {
+        name: 'Gazeta Wyborcza Wrocław',
+        url: 'https://wroclaw.wyborcza.pl/wroclaw/7,35771,32986280,chcesz-ze-mna-zamieszkac-zainspirowani-aplikacjami-randkowymi.html',
+        type: 'press',
+        logo: wyborczaLogo,
     },
     {
         name: 'Radio Wrocław',
@@ -91,6 +133,18 @@ export const pressMentions: PressMention[] = [
         logo: pwrLogo,
     },
     {
+        name: 'Wydział Informatyki i Telekomunikacji PWr',
+        url: 'https://wit.pwr.edu.pl/aktualnosci/aplikacja-wspoltworzona-przez-absolwenta-wit-pomaga-znalezc-wspollokatora-i-mieszkanie-606.html',
+        type: 'university',
+        logo: witLogo,
+    },
+    {
+        name: 'Uniwersytet DSW',
+        url: 'https://www.facebook.com/Uniwersytet.DSW.Ideis.Wroclaw/posts/pfbid02ETVaGYWpmJYjW7wkRJ9owJq1HUedvwZqHtf56bTXwH7YrsBaEbdrkA5AHi4gYph5l?locale=pl_PL',
+        type: 'university',
+        logo: dswLogo,
+    },
+    {
         name: 'Wrocławskie Fakty',
         url: 'https://wroclawskiefakty.pl/szukasz-mieszkania-we-wroclawiu-ta-aplikacja-ma-rozwiazac-problem-wyboru-wspollokatora/',
         type: 'portal',
@@ -98,7 +152,7 @@ export const pressMentions: PressMention[] = [
     },
     {
         name: 'wroclife',
-        url: 'https://wroclife.pl/artykul/8354/wroclawscy-studenci-stworzyli-aplikacje-ktora-pomaga-znalezc-mieszkanie-i-wspollokatora/',
+        url: 'https://wroclife.pl/amp/artykul/8354/wroclawscy-studenci-stworzyli-aplikacje-ktora-pomaga-znalezc-mieszkanie-i-wspollokatora',
         type: 'portal',
         logo: wrocLifeLogo,
     },
@@ -126,28 +180,22 @@ export interface PressArticle {
 
 export const pressArticles: PressArticle[] = [
     {
-        outlet: 'RentFriends',
+        outlet: 'TVP Info',
         title: 'Chcemy ułatwić studentom wynajem i stworzyć przestrzeń, w której spotkasz osobę do dzielenia metrów',
         url: 'https://fb.watch/I-YIaMNbI9/',
-        logo: rentFriendsLogo,
+        image: tvpInfoArticleImage,
     },
     {
-        outlet: 'TVP3 Wrocław',
-        title: 'Pomaga znaleźć współlokatorów i mieszkanie pasujące do budżetu, lokalizacji i stylu życia',
-        url: 'https://fb.watch/I-YF2Q7lKr/',
-        logo: tvp3Logo,
-    },
-    {
-        outlet: 'RentFriends',
+        outlet: 'Teleexpress Extra',
         title: 'Nowy rok akademicki, nowe mieszkanie - a Ty już znalazłeś współlokatora?',
         url: 'https://fb.watch/I-YJQEax2-/',
-        logo: rentFriendsLogo,
+        image: teleexpressArticleImage,
     },
     {
         outlet: 'Ministerstwo Nauki i Szkolnictwa Wyższego',
         title: 'Znaleźć mieszkanie i współlokatora idealnie dopasowanego do stylu życia? Pomoże aplikacja studentów z Wrocławia',
         url: 'https://www.facebook.com/photo?fbid=1339506008351457&set=a.101319708836766',
-        logo: mniswLogo,
+        image: mniswArticleImage,
     },
     {
         outlet: 'Radio Wrocław',
@@ -163,26 +211,80 @@ export const pressArticles: PressArticle[] = [
     },
     {
         outlet: 'Politechnika Wrocławska',
-        title: 'RentFriends - znajdź idealnego współlokatora dzięki AI',
+        title: 'Aplikacja studentów PWr pomoże w znalezieniu idealnych współlokatorów i mieszkania',
         url: 'https://pwr.edu.pl/uczelnia/aktualnosci/aplikacja-studentow-pwr-pomoze-w-znalezieniu-idealnych-wspollokatorow-oraz-mieszkania-14250.html',
         image: pwrArticleImage,
     },
     {
-        outlet: 'Fakt',
-        title: 'Studenci stworzyli aplikację RentFriends do kojarzenia współlokatorów',
-        url: 'https://www.fakt.pl/pieniadze/aplikacja-rentfriends-laczy-studentow-i-mieszkania-tworcy-inspiruja-sie-tinderem/z7wl3hv',
-        image: faktArticleImage,
-    },
-    {
         outlet: 'Wrocławskie Fakty',
         title: 'Szukasz mieszkania we Wrocławiu? Ta aplikacja ma rozwiązać problem wyboru współlokatora',
-        url: 'https://www.facebook.com/photo/?fbid=1460105562801999&set=a.150851773727391',
-        logo: wroclawskieFaktyLogo,
+        url: 'https://wroclawskiefakty.pl/szukasz-mieszkania-we-wroclawiu-ta-aplikacja-ma-rozwiazac-problem-wyboru-wspollokatora/',
+        image: wroclawskieFaktyArticleImage,
     },
     {
         outlet: 'Wroclife',
         title: 'Wrocławscy studenci stworzyli aplikację, która pomaga znaleźć mieszkanie i współlokatora',
         url: 'https://wroclife.pl/amp/artykul/8354/wroclawscy-studenci-stworzyli-aplikacje-ktora-pomaga-znalezc-mieszkanie-i-wspollokatora',
         image: wrocLifeArticleImage,
+    },
+    {
+        outlet: 'Dziennik Naukowy',
+        title: 'Studenci stworzyli aplikację pomagającą znaleźć współlokatora i mieszkanie',
+        url: 'https://dzienniknaukowy.pl/studenci-stworzyli-aplikacje-pomagajaca-znalezc-wspollokatora-i-mieszkanie',
+        image: dziennikNaukowyArticleImage,
+    },
+    {
+        outlet: 'Fakt',
+        title: 'Aplikacja RentFriends łączy studentów i mieszkania. Twórcy inspirują się Tinderem',
+        url: 'https://www.fakt.pl/pieniadze/aplikacja-rentfriends-laczy-studentow-i-mieszkania-tworcy-inspiruja-sie-tinderem/z7wl3hv',
+        image: faktArticleImage,
+    },
+    {
+        outlet: 'TVP3 Wrocław',
+        title: '„Sierpień to miesiąc, w którym studenci już szukają zakwaterowania”',
+        url: 'https://wroclaw.tvp.pl/94784210/sierpien-to-miesiac-w-ktorym-studenci-juz-szukaja-zakwaterowania',
+        image: tvp3ArticleImage,
+    },
+    {
+        outlet: 'Bankier.pl',
+        title: '„Tinder” dla szukających mieszkania. Wrocławska aplikacja zrewolucjonizuje studencki wynajem',
+        url: 'https://www.bankier.pl/wiadomosc/Tinder-dla-szukajacych-mieszkania-Wroclawska-aplikacja-zrewolucjonizuje-studencki-wynajem-9172447.html',
+        image: bankierArticleImage,
+    },
+    {
+        outlet: 'Nauka w Polsce',
+        title: 'Studenci stworzyli aplikację pomagającą znaleźć współlokatora i mieszkanie',
+        url: 'https://naukawpolsce.pl/aktualnosci/news%2C114097%2Cstudenci-stworzyli-aplikacje-pomagajaca-znalezc-wspollokatora-i-mieszkanie',
+        image: naukaWPolsceArticleImage,
+    },
+    {
+        outlet: 'Uniwersytet DSW',
+        title: 'RentFriends - znajdź idealny wynajem dla siebie',
+        url: 'https://www.facebook.com/Uniwersytet.DSW.Ideis.Wroclaw/posts/pfbid02ETVaGYWpmJYjW7wkRJ9owJq1HUedvwZqHtf56bTXwH7YrsBaEbdrkA5AHi4gYph5l?locale=pl_PL',
+        image: dswArticleImage,
+    },
+    {
+        outlet: 'Polsat',
+        title: 'RentFriends w Polsacie',
+        url: 'https://www.instagram.com/reel/DdOceYaof1U/',
+        image: polsatArticleImage,
+    },
+    {
+        outlet: 'INNPoland',
+        title: 'Studenci z Wrocławia stworzyli apkę RentFriends. To „Tinder” dla współlokatorów',
+        url: 'https://innpoland.pl/231151,aplikacja-studenci-rentfriends',
+        image: innPolandArticleImage,
+    },
+    {
+        outlet: 'Wydział Informatyki i Telekomunikacji PWr',
+        title: 'Aplikacja współtworzona przez absolwenta WIT pomoże znaleźć współlokatora i mieszkanie',
+        url: 'https://wit.pwr.edu.pl/aktualnosci/aplikacja-wspoltworzona-przez-absolwenta-wit-pomaga-znalezc-wspollokatora-i-mieszkanie-606.html',
+        image: witArticleImage,
+    },
+    {
+        outlet: 'Gazeta Wyborcza Wrocław',
+        title: 'RentFriends. Wrocławscy twórcy uruchomili aplikację do szukania mieszkań',
+        url: 'https://wroclaw.wyborcza.pl/wroclaw/7,35771,32986280,chcesz-ze-mna-zamieszkac-zainspirowani-aplikacjami-randkowymi.html',
+        image: wyborczaArticleImage,
     },
 ];

@@ -1,4 +1,4 @@
-export const satisfiedUsers = 4000;
+export const satisfiedUsers = 5000;
 export const appRating = 4.5;
 
 export function formatCompactCount(value: number): string {
