@@ -22,98 +22,89 @@ const tags = [
 <section id="why" class="w-full scroll-mt-[72px] bg-bg dark:bg-black transition-colors duration-300 py-16 sm:py-20 lg:py-[100px] px-6 lg:px-[115px]">
     <div class="mx-auto max-w-[1223px]">
 
-        <h2 class="font-sans font-[800] text-[28px] sm:text-[36px] lg:text-[44px] tracking-[-0.8px] lg:tracking-[-1.3px] text-black dark:text-bg transition-colors">
-            {t('landlords.why.title.part1')}<span class="bg-[linear-gradient(166deg,var(--color-blue)_6.17%,var(--color-purple)_50%,var(--color-pink)_93.83%)] bg-clip-text text-transparent">{t('landlords.why.title.brand')}</span>{t('landlords.why.title.part2')}
-        </h2>
+        <div class="text-center">
+            <h2 class="font-sans font-[800] text-[30px] sm:text-[36px] lg:text-[44px] tracking-[-0.8px] lg:tracking-[-1.3px] text-black dark:text-bg transition-colors">
+                {t('landlords.why.title.part1')}<span class="bg-[linear-gradient(166deg,var(--color-blue)_6.17%,var(--color-purple)_50%,var(--color-pink)_93.83%)] bg-clip-text text-transparent">{t('landlords.why.title.brand')}</span>{t('landlords.why.title.part2')}
+            </h2>
 
-        <p class="mt-2.5 font-sans font-medium text-[16px] sm:text-[18px] lg:text-[21px] text-gray dark:text-bg/70 transition-colors">
-            {t('landlords.why.subtitle')}
-        </p>
+            <p class="mt-3 font-sans font-medium text-[17px] sm:text-[18px] lg:text-[21px] text-gray dark:text-bg/70 transition-colors">
+                {t('landlords.why.subtitle')}
+            </p>
+        </div>
 
-        <div class="mt-10 lg:mt-[52px] grid grid-cols-1 lg:grid-cols-2 items-end gap-8 lg:gap-4">
+        <div class="relative mt-10 lg:mt-[56px] grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-[28px] border border-black/8 dark:border-white/12 shadow-[0_20px_60px_rgba(0,0,0,0.08)] dark:shadow-none transition-colors">
+            <span aria-hidden="true" class="hidden md:flex absolute left-1/2 top-[150px] z-10 -translate-x-1/2 size-[46px] items-center justify-center rounded-full border border-black/8 dark:border-white/15 bg-white dark:bg-black font-sans text-[13px] font-[800] text-gray dark:text-bg/70 shadow-sm transition-colors">vs</span>
 
-            <article class="rounded-[26px] border border-gray/40 dark:border-white/15 bg-gray/5 dark:bg-white/5 p-6 sm:p-8 lg:p-[34px] transition-colors">
-                <div class="flex items-center gap-4">
-                    <div class="min-w-0">
-                        <h3 class="font-sans font-[800] text-[16px] lg:text-[18px] text-gray dark:text-bg/70 transition-colors">{t('landlords.why.old.title')}</h3>
-                        <p class="mt-1 font-sans text-[12.5px] leading-[1.5] text-gray dark:text-bg/60 transition-colors">{t('landlords.why.old.lead')}</p>
+            <article class="flex flex-col p-6 sm:p-8 lg:p-10 bg-[#F7F6F4] dark:bg-white/[0.03] transition-colors">
+                <h3 class="font-sans font-[800] text-[19px] lg:text-[21px] text-gray dark:text-bg/70 transition-colors">{t('landlords.why.old.title')}</h3>
+                <p class="mt-1.5 font-sans text-[15px] leading-[1.55] text-gray dark:text-bg/60 transition-colors">{t('landlords.why.old.lead')}</p>
+
+                <p class="mt-7 font-sans text-[13px] font-semibold text-gray/80 dark:text-bg/50 transition-colors">{t('landlords.why.old.intro')}</p>
+
+                <div class="mt-3 flex min-h-[150px] items-center">
+                    <div class="w-full max-w-[400px] rounded-[20px] rounded-bl-[6px] bg-black/[0.06] dark:bg-white/[0.06] px-5 py-4 transition-colors">
+                        <p class="font-sans font-medium text-[15px] leading-[1.5] text-gray dark:text-bg/70 transition-colors">{t('landlords.why.old.message')}</p>
+                        <p class="mt-2 font-sans text-[12px] text-gray/70 dark:text-bg/40 transition-colors">{t('landlords.why.old.messageMeta')}</p>
                     </div>
                 </div>
 
-                <p class="mt-6 font-sans text-[14px] lg:text-[14.7px] leading-[1.6] text-gray dark:text-bg/70 transition-colors">
-                    {t('landlords.why.old.intro')}
-                </p>
-
-                <div class="mt-3.5 w-full max-w-[440px] rounded-[15px] rounded-bl-[5px] border border-gray/40 dark:border-white/15 bg-black/6 dark:bg-white/5 px-4 py-3.5 transition-colors">
-                    <p class="font-sans font-medium text-[13.5px] leading-[1.5] text-gray dark:text-bg/70 transition-colors">{t('landlords.why.old.message')}</p>
-                    <p class="mt-1.5 font-sans text-[10.5px] text-gray/70 dark:text-bg/40 transition-colors">{t('landlords.why.old.messageMeta')}</p>
-                </div>
-
-                <ul class="mt-5 flex flex-col gap-2">
-                    {[t('landlords.why.q1'), t('landlords.why.q2'), t('landlords.why.q3')].map((q) => (
-                        <li class="flex items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 py-2 transition-colors">
-                            <span class="font-sans text-[13px] text-gray dark:text-bg/70 transition-colors">{q}</span>
-                            <span class="flex size-[25px] shrink-0 items-center justify-center rounded-full bg-black/5 dark:bg-white/10 transition-colors" aria-hidden="true">
-                                <svg class="size-3 text-gray dark:text-bg/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                                    <path d="M6 6l12 12M18 6L6 18" />
-                                </svg>
+                <ul class="mt-6 flex flex-col">
+                    {questions.map((row) => (
+                        <li class="flex items-center justify-between gap-4 border-b border-black/8 dark:border-white/10 py-3.5 transition-colors">
+                            <span class="font-sans text-[15px] text-gray dark:text-bg/70 transition-colors">{row.q}</span>
+                            <span class="flex size-[28px] shrink-0 items-center justify-center rounded-full bg-black/6 dark:bg-white/10 transition-colors" aria-hidden="true">
+                                <svg class="size-3 text-gray dark:text-bg/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
                             </span>
                         </li>
                     ))}
                 </ul>
 
-                <p class="mt-5 font-sans font-bold text-[14px] leading-[1.5] text-gray dark:text-bg/70 transition-colors">
+                <p class="mt-auto pt-6 font-sans font-bold text-[16px] leading-[1.5] text-gray dark:text-bg/60 transition-colors">
                     {t('landlords.why.old.footer')}
                 </p>
             </article>
 
-            <article class="rounded-[28px] border border-purple bg-bg dark:bg-white/5 p-6 sm:p-8 lg:px-9 lg:py-10 shadow-[0_20px_52px_0_rgba(0,0,0,0.14)] dark:shadow-none transition-colors">
-                <div class="flex items-center gap-4">
-                    <div class="min-w-0">
-                        <h3 class="font-sans font-[800] text-[17px] lg:text-[19px] text-black dark:text-bg transition-colors">{t('landlords.why.new.title')}</h3>
-                        <p class="mt-1 font-sans text-[13.5px] leading-[1.5] text-gray dark:text-bg/70 transition-colors">{t('landlords.why.new.lead')}</p>
-                    </div>
-                </div>
+            <article class="flex flex-col p-6 sm:p-8 lg:p-10 bg-[#F1E6FA] dark:bg-[#2E2139] transition-colors">
+                <h3 class="self-start font-sans font-[800] text-[19px] lg:text-[21px] bg-[linear-gradient(to_right,var(--color-blue),var(--color-purple),var(--color-pink))] bg-clip-text text-transparent">{t('landlords.why.new.title')}</h3>
+                <p class="mt-1.5 font-sans text-[15px] leading-[1.55] text-black/80 dark:text-bg/80 transition-colors">{t('landlords.why.new.lead')}</p>
 
-                <p class="mt-6 font-sans text-[15px] lg:text-[15.5px] leading-[1.6] text-gray dark:text-bg/70 transition-colors">
-                    {t('landlords.why.new.intro')}
-                </p>
+                <p class="mt-7 font-sans text-[13px] font-semibold text-purple-ink dark:text-purple-ink-dark transition-colors">{t('landlords.why.new.intro')}</p>
 
-                <div class="mt-3.5 rounded-[20px] bg-purple/10 p-4 transition-colors">
-                    <div class="flex items-center gap-3">
-                        <Image src={avatarImg} alt="" aria-hidden="true" class="size-10 shrink-0 rounded-full object-cover" />
-                        <div class="min-w-0">
-                            <p class="font-sans font-[800] text-[14.5px] text-black dark:text-bg transition-colors">{t('landlords.why.new.profileName')}</p>
-                            <p class="mt-0.5 font-sans text-[11.5px] text-gray dark:text-bg/70 transition-colors">{t('landlords.why.new.profileMeta')}</p>
+                <div class="mt-3 flex min-h-[150px] items-center">
+                    <div class="w-full rounded-[20px] bg-white dark:bg-black/40 p-4 sm:p-5 shadow-[0_8px_24px_rgba(15,15,15,0.08)] dark:shadow-none transition-colors">
+                        <div class="flex items-center gap-3">
+                            <Image src={avatarImg} alt="" aria-hidden="true" class="size-12 shrink-0 rounded-full object-cover ring-2 ring-purple ring-offset-2 ring-offset-white dark:ring-offset-black" />
+                            <div class="min-w-0">
+                                <p class="font-sans font-[800] text-[16px] text-black dark:text-bg transition-colors">{t('landlords.why.new.profileName')}</p>
+                                <p class="mt-0.5 font-sans text-[13px] text-gray dark:text-bg/70 transition-colors">{t('landlords.why.new.profileMeta')}</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            {tags.map((tag) => (
+                                <span class="flex items-center gap-1.5 rounded-full bg-purple/10 dark:bg-purple/25 px-3 py-1.5 font-sans text-[13px] font-semibold text-black dark:text-bg transition-colors">
+                                    <span aria-hidden="true" class="font-normal">{tag.emoji}</span>{tag.label}
+                                </span>
+                            ))}
                         </div>
                     </div>
-
-                    <div class="mt-3 flex flex-wrap gap-[7px]">
-                        {tags.map((tag) => (
-                            <span class="flex items-center gap-1.5 rounded-full bg-bg dark:bg-black/40 pl-2.5 pr-[11px] py-1.5 font-sans text-[11px] font-semibold text-black dark:text-bg transition-colors">
-                                <span aria-hidden="true" class="font-normal">{tag.emoji}</span>{tag.label}
-                            </span>
-                        ))}
-                    </div>
                 </div>
 
-                <ul class="mt-5 flex flex-col gap-2.5">
+                <ul class="mt-6 flex flex-col">
                     {questions.map((row) => (
-                        <li class="flex items-center justify-between gap-2 sm:gap-4 border-b border-black/8 dark:border-white/10 py-2.5 transition-colors">
-                            <span class="min-w-0 flex-1 font-sans text-[14px] text-gray dark:text-bg/70 transition-colors">{row.q}</span>
-                            <span class="flex min-w-0 items-center gap-2 sm:gap-2.5">
-                                <span class="font-sans font-semibold text-[13.5px] text-right text-black dark:text-bg transition-colors">{row.a}</span>
-                                <span class="flex size-[26px] shrink-0 items-center justify-center rounded-full bg-purple" aria-hidden="true">
-                                    <svg class="size-[13px] text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M5 13l4 4L19 7" />
-                                    </svg>
+                        <li class="flex items-center justify-between gap-3 sm:gap-4 border-b border-purple/20 dark:border-white/10 py-3.5 transition-colors">
+                            <span class="min-w-0 flex-1 font-sans text-[15px] text-black/70 dark:text-bg/70 transition-colors">{row.q}</span>
+                            <span class="flex min-w-0 items-center gap-2.5">
+                                <span class="font-sans font-semibold text-[15px] text-right text-black dark:text-bg transition-colors">{row.a}</span>
+                                <span class="flex size-[28px] shrink-0 items-center justify-center rounded-full bg-purple" aria-hidden="true">
+                                    <svg class="size-[13px] text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7" /></svg>
                                 </span>
                             </span>
                         </li>
                     ))}
                 </ul>
 
-                <p class="mt-5 font-sans font-bold text-[15px] leading-[1.5] text-black dark:text-bg transition-colors">
+                <p class="mt-auto pt-6 font-sans font-[800] text-[17px] leading-[1.5] text-purple-ink dark:text-purple-ink-dark transition-colors">
                     {t('landlords.why.new.footer')}
                 </p>
             </article>

@@ -1,5 +1,5 @@
-export const satisfiedUsers = 5000;
-export const appRating = 4.5;
+export const satisfiedUsers = 6000;
+export const appRating = 4.4;
 
 export function formatCompactCount(value: number): string {
     if (value < 1000) return String(value);

@@ -26,6 +26,10 @@ const navLinks = [
     { href: `${base}/about`, label: t('nav.about') },
 ];
 
+const normalizePath = (path: string) => path.replace(/\/+$/, '') || '/';
+const currentPath = normalizePath(pathname);
+const isActive = (href: string) => normalizePath(href) === currentPath;
+
 const ADD_LISTING_URL = 'https://ogloszenia.rentfriends.app/';
 
 const ctaHref = isLandlords ? ADD_LISTING_URL : (isEn ? '/en/#download' : '#download');
@@ -45,7 +49,16 @@ const ctaLabel = isLandlords ? t('nav.addListing') : t('nav.download');
 
         <nav class="hidden xl:flex absolute left-1/2 -translate-x-1/2 items-center gap-4 lg:gap-8">
             {navLinks.map((link) => (
-                <a href={link.href} class="whitespace-nowrap text-sm text-gray dark:text-white/80 hover:text-black dark:hover:text-white font-regular transition-colors">{link.label}</a>
+                <a
+                    href={link.href}
+                    aria-current={isActive(link.href) ? 'page' : undefined}
+                    class:list={[
+                        'relative whitespace-nowrap text-sm transition-colors py-1',
+                        isActive(link.href)
+                            ? 'text-black dark:text-white font-bold after:absolute after:left-0 after:right-0 after:-bottom-[6px] after:h-[3px] after:rounded-full after:bg-[image:var(--background-image-gradient)]'
+                            : 'text-gray dark:text-white/80 hover:text-black dark:hover:text-white font-regular',
+                    ]}
+                >{link.label}</a>
             ))}
         </nav>
 
@@ -80,9 +93,18 @@ const ctaLabel = isLandlords ? t('nav.addListing') : t('nav.download');
 
     </div>
 
-    <div id="mobile-menu" class="hidden absolute top-[72px] left-0 w-full bg-bg/95 dark:bg-black/95 backdrop-blur-md border-b border-gray/15 dark:border-white/15 flex-col items-center py-8 gap-6 shadow-xl xl:hidden">
+    <div id="mobile-menu" class="hidden absolute top-[72px] left-0 w-full bg-bg/95 dark:bg-black/95 backdrop-blur-md border-b border-gray/15 dark:border-white/15 flex-col items-center py-8 gap-4 shadow-xl xl:hidden">
         {navLinks.map((link) => (
-            <a href={link.href} class="mobile-link text-[17px] text-black dark:text-white font-semibold tracking-tight hover:text-purple-ink dark:hover:text-purple-ink-dark transition-colors">{link.label}</a>
+            <a
+                href={link.href}
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                class:list={[
+                    'mobile-link text-[18px] font-semibold tracking-tight transition-colors px-5 py-2 rounded-full',
+                    isActive(link.href)
+                        ? 'text-purple-ink dark:text-purple-ink-dark bg-purple/12 dark:bg-purple/25'
+                        : 'text-black dark:text-white hover:text-purple-ink dark:hover:text-purple-ink-dark',
+                ]}
+            >{link.label}</a>
         ))}
 
         <a href={ctaHref} target={ctaExternal ? '_blank' : undefined} rel={ctaExternal ? 'noopener noreferrer' : undefined} class="mobile-link mt-4 text-[17px] px-8 py-3 bg-[image:var(--background-image-gradient)] text-bg font-semibold rounded-full hover:opacity-90 transition-all duration-300 ease-out whitespace-nowrap">

@@ -19,6 +19,8 @@ import polsatLogo from '../assets/press/polsat.png';
 import wyborczaLogo from '../assets/press/wyborcza.png';
 import witLogo from '../assets/press/wit.png';
 import dswLogo from '../assets/press/dsw.png';
+import pytanieNaSniadanieLogo from '../assets/press/pytanienasniadanie.png';
+import dzienDobryTvnLogo from '../assets/press/dziendobrytvn.png';
 import faktArticleImage from '../assets/press-articles/fakt.jpg';
 import gazetaPrawnaArticleImage from '../assets/press-articles/gazetaprawna.webp';
 import pwrArticleImage from '../assets/press-articles/pwr.jpg';
@@ -37,6 +39,9 @@ import wroclawskieFaktyArticleImage from '../assets/press-articles/wroclawskiefa
 import mniswArticleImage from '../assets/press-articles/mnisw.jpg';
 import tvpInfoArticleImage from '../assets/press-articles/tvpinfo.jpg';
 import teleexpressArticleImage from '../assets/press-articles/teleexpress.jpg';
+import dzienDobryTvnArticleImage from '../assets/press-articles/dziendobrytvn.jpg';
+import tvp3PrzyszloscArticleImage from '../assets/press-articles/tvp3-przyszlosc.jpg';
+import pytanieNaSniadanieArticleImage from '../assets/press-articles/pytanienasniadanie.jpg';
 
 export type PressOutletType = 'tv' | 'radio' | 'press' | 'portal' | 'university' | 'institution';
 
@@ -48,6 +53,18 @@ export interface PressMention {
 }
 
 export const pressMentions: PressMention[] = [
+    {
+        name: 'Pytanie na śniadanie',
+        url: 'https://www.instagram.com/rentfriends.app/reel/Ddg_Mz2IMXH/',
+        type: 'tv',
+        logo: pytanieNaSniadanieLogo,
+    },
+    {
+        name: 'Dzień dobry TVN',
+        url: 'https://www.instagram.com/rentfriends.app/reel/DeHktoPIX_2/',
+        type: 'tv',
+        logo: dzienDobryTvnLogo,
+    },
     {
         name: 'TVP3 Wrocław',
         url: 'https://wroclaw.tvp.pl/94784210/sierpien-to-miesiac-w-ktorym-studenci-juz-szukaja-zakwaterowania',
@@ -180,6 +197,18 @@ export interface PressArticle {
 
 export const pressArticles: PressArticle[] = [
     {
+        outlet: 'Pytanie na śniadanie',
+        title: 'RentFriends w Pytaniu na śniadanie',
+        url: 'https://www.instagram.com/rentfriends.app/reel/Ddg_Mz2IMXH/',
+        image: pytanieNaSniadanieArticleImage,
+    },
+    {
+        outlet: 'Dzień dobry TVN',
+        title: 'RentFriends w Dzień dobry TVN',
+        url: 'https://www.instagram.com/rentfriends.app/reel/DeHktoPIX_2/',
+        image: dzienDobryTvnArticleImage,
+    },
+    {
         outlet: 'TVP Info',
         title: 'Chcemy ułatwić studentom wynajem i stworzyć przestrzeń, w której spotkasz osobę do dzielenia metrów',
         url: 'https://fb.watch/I-YIaMNbI9/',
@@ -286,5 +315,11 @@ export const pressArticles: PressArticle[] = [
         title: 'RentFriends. Wrocławscy twórcy uruchomili aplikację do szukania mieszkań',
         url: 'https://wroclaw.wyborcza.pl/wroclaw/7,35771,32986280,chcesz-ze-mna-zamieszkac-zainspirowani-aplikacjami-randkowymi.html',
         image: wyborczaArticleImage,
+    },
+    {
+        outlet: 'TVP3 Wrocław - Przyszłość jest teraz',
+        title: 'RentFriends w programie Przyszłość jest teraz',
+        url: 'https://www.instagram.com/rentfriends.app/reel/DeZc_pBOhjg/',
+        image: tvp3PrzyszloscArticleImage,
     },
 ];

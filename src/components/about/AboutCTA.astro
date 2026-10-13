@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import StoreButtons from '../StoreButtons.astro';
+import { teamMembers } from '../../data/team';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="download" class="w-full bg-bg dark:bg-black transition-colors duration-300 scroll-mt-[72px] pt-5 pb-16 sm:pb-20 lg:pb-[110px] px-6 lg:px-[100px]">
+    <div class="mx-auto max-w-[1208px]">
+
+        <div class="rounded-[28px] bg-[#F1E6FA] dark:bg-[#2E2139] px-7 py-10 sm:px-10 sm:py-12 lg:px-[56px] lg:py-[56px] transition-colors">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-[60px]">
+
+                <div class="lg:max-w-[600px]">
+                    <p class="font-sans font-bold text-[16px] lg:text-[18px] text-purple-ink dark:text-purple-ink-dark mb-3 transition-colors">
+                        {t('cta.eyebrow')}
+                    </p>
+
+                    <h2 class="font-sans font-[800] text-[28px] sm:text-[34px] lg:text-[40px] leading-[1.15] tracking-[-0.7px] lg:tracking-[-1.1px] text-black dark:text-bg transition-colors">
+                        {t('about.cta.title')}
+                    </h2>
+
+                    <p class="mt-4 font-sans text-[16px] lg:text-[17px] leading-[1.65] text-gray dark:text-bg/75 transition-colors">
+                        {t('about.cta.text')}
+                    </p>
+
+                    <StoreButtons class="mt-8" />
+                </div>
+
+                <div class="flex flex-col items-start lg:items-center gap-4 lg:shrink-0">
+                    <div class="flex">
+                        {teamMembers.filter((member) => member.photo).map((member, index) => (
+                            <Image
+                                src={member.photo!}
+                                alt={member.name}
+                                width={176}
+                                height={176}
+                                densities={[1, 2]}
+                                loading="lazy"
+                                decoding="async"
+                                class:list={[
+                                    'size-[96px] lg:size-[132px] rounded-full object-cover ring-[3px] ring-purple ring-offset-[4px] ring-offset-[#F1E6FA] dark:ring-offset-[#2E2139]',
+                                    index > 0 && '-ml-5 lg:-ml-7',
+                                ]}
+                            />
+                        ))}
+                    </div>
+                    <p class="font-sans text-[15px] font-semibold text-black/75 dark:text-bg/80 transition-colors">
+                        {t('about.cta.founders')}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

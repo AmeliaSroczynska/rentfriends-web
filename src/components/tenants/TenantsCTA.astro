@@ -1,0 +1,33 @@
+---
+import StoreButtons from '../StoreButtons.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="download" class="w-full bg-bg dark:bg-black transition-colors duration-300 scroll-mt-[72px] pt-5 pb-16 sm:pb-20 lg:pb-[110px] px-6 lg:px-[100px]">
+    <div class="mx-auto max-w-[1208px]">
+
+        <div class="relative overflow-hidden rounded-[28px] bg-[linear-gradient(135deg,var(--color-blue),var(--color-purple),var(--color-pink))] px-7 py-12 sm:px-10 sm:py-14 lg:px-[56px] lg:py-[64px] text-center shadow-xl">
+            <div aria-hidden="true" class="pointer-events-none absolute -top-24 -right-24 size-[260px] rounded-full bg-white/10"></div>
+            <div aria-hidden="true" class="pointer-events-none absolute -bottom-28 -left-20 size-[220px] rounded-full bg-white/10"></div>
+
+            <div class="relative mx-auto max-w-[720px] flex flex-col items-center">
+                <p class="font-sans font-bold text-[16px] lg:text-[18px] text-white/90 mb-3">
+                    {t('cta.eyebrow')}
+                </p>
+
+                <h2 class="font-sans font-[800] text-[28px] sm:text-[34px] lg:text-[42px] leading-[1.15] tracking-[-0.7px] lg:tracking-[-1.1px] text-white">
+                    {t('tenants.cta.title1')} {t('tenants.cta.title2')}
+                </h2>
+
+                <p class="mt-4 font-sans text-[16px] lg:text-[17px] leading-[1.65] text-white/90">
+                    {t('tenants.cta.text')}
+                </p>
+
+                <StoreButtons class="mt-8 justify-center" />
+            </div>
+        </div>
+    </div>
+</section>
