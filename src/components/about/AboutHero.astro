@@ -1,0 +1,19 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="relative w-full overflow-hidden bg-bg dark:bg-black transition-colors duration-300 pt-14 pb-16 sm:pt-20 sm:pb-20 lg:pt-[110px] lg:pb-[120px] px-6 lg:px-[100px]">
+
+    <div class="glow-purple pointer-events-none absolute -top-[520px] left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] lg:w-[1400px] lg:h-[1400px] rounded-full opacity-15 dark:opacity-25 z-0"></div>
+
+    <div class="relative z-10 mx-auto max-w-[1100px] text-center">
+        <h1 class="font-sans font-[800] leading-[1.08] tracking-[-1.2px] sm:tracking-[-2px] lg:tracking-[-2.6px] text-[36px] sm:text-[50px] lg:text-[68px]">
+            <span class="text-black dark:text-bg transition-colors">{t('about.hero.title.part1')}</span>
+            <br />
+            <span class="bg-[linear-gradient(100deg,var(--color-blue)_6.17%,var(--color-purple)_50%,var(--color-pink)_93.83%)] bg-clip-text text-transparent">{t('about.hero.title.part2')}</span>
+        </h1>
+    </div>
+</section>

@@ -1,0 +1,42 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const icons = {
+    flag: '<path d="M5.5 21V4.2" /><path d="M5.5 5.1h11.9a1 1 0 0 1 .82 1.57l-2.1 3a1 1 0 0 0 0 1.15l2.1 3A1 1 0 0 1 17.4 15.4H5.5" />',
+    spark: '<path d="M12 3.5 13.9 9 19.5 11l-5.6 2L12 18.5 10.1 13 4.5 11l5.6-2z" /><path d="M18.5 16.5 19.2 18.4 21 19.1 19.2 19.8 18.5 21.6 17.8 19.8 16 19.1 17.8 18.4z" />',
+    free: '<circle cx="12" cy="12" r="8.5" /><path d="M9.6 9.2h4.2M9.6 12.1h4.2M11.2 15.6V8.6" />',
+    shield: '<path d="M12 3.5 19 6.2v5.1c0 4.2-2.8 7.6-7 9.2-4.2-1.6-7-5-7-9.2V6.2z" /><path d="m9.2 12 2 2 3.6-3.9" />',
+};
+
+const points = [
+    { icon: icons.flag, text: t('landlords.offer.p1') },
+    { icon: icons.spark, text: t('landlords.offer.p2') },
+    { icon: icons.free, text: t('landlords.offer.p3') },
+    { icon: icons.shield, text: t('landlords.offer.p4') },
+];
+---
+
+<section class="w-full bg-bg dark:bg-black transition-colors duration-300 pt-10 pb-16 sm:pt-12 sm:pb-20 lg:pt-[30px] lg:pb-[100px] px-6 lg:px-[100px]">
+    <div class="mx-auto max-w-[1208px]">
+
+        <h2 class="font-sans font-[800] text-[28px] sm:text-[36px] lg:text-[44px] tracking-[-0.8px] lg:tracking-[-1.3px] text-black dark:text-bg transition-colors">
+            {t('landlords.offer.title')}
+        </h2>
+
+        <ul class="mt-10 lg:mt-[52px] grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
+            {points.map((point) => (
+                <li class="flex items-center gap-5 rounded-[24px] border border-black/8 dark:border-white/12 bg-purple/8 px-6 py-6 lg:px-8 lg:py-7 transition-colors">
+                    <span class="flex size-[50px] shrink-0 items-center justify-center rounded-[16px] bg-purple/15 text-purple transition-colors" aria-hidden="true">
+                        <svg class="size-[24px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={point.icon} />
+                    </span>
+                    <p class="font-sans font-normal text-[16px] lg:text-[18px] leading-[1.45] tracking-[-0.1px] text-black dark:text-bg transition-colors">
+                        {point.text}
+                    </p>
+                </li>
+            ))}
+        </ul>
+    </div>
+</section>

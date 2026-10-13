@@ -1,0 +1,62 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const socials = [
+    { href: 'https://www.facebook.com/rentfriendsapp', icon: '/facebook.svg', label: 'Facebook', size: 'w-[17px] h-[17px]' },
+    { href: 'https://www.instagram.com/rentfriends.app?igsh=MWw3MWV4MzY0N3Bqag==', icon: '/instagram.svg', label: 'Instagram', size: 'w-[19px] h-[19px]' },
+    { href: 'https://www.tiktok.com/@rentfriends.app?_r=1&_t=ZN-98H0NjQmnTC', icon: '/tiktok.svg', label: 'TikTok', size: 'w-[19px] h-[19px]' },
+];
+---
+
+<section id="contact" class="w-full scroll-mt-[72px] bg-bg dark:bg-black transition-colors duration-300 pb-20 sm:pb-24 lg:pb-[130px] px-6 lg:px-[100px]">
+    <div class="mx-auto max-w-[1208px]">
+        <div class="border-t border-black/12 dark:border-white/15 pt-12 sm:pt-14 lg:pt-[70px] transition-colors">
+
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-16">
+
+                <div class="min-w-0 lg:flex-1">
+                    <h2 class="font-sans font-[800] text-[28px] sm:text-[36px] lg:text-[44px] leading-[1.14] tracking-[-1.1px] text-black dark:text-bg transition-colors">
+                        {t('about.contact.title')}
+                    </h2>
+                    <p class="mt-4 max-w-[540px] font-sans font-normal text-[15px] lg:text-[16px] leading-[1.7] text-gray dark:text-bg/75 transition-colors">
+                        {t('about.contact.text')}
+                    </p>
+
+                    <a
+                        href="mailto:kontakt@rentfriends.app"
+                        class="group mt-8 inline-flex items-center gap-3 font-sans font-[800] text-[22px] sm:text-[30px] lg:text-[38px] leading-[1.2] tracking-[-1px] break-all"
+                    >
+                        <span class="bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent">kontakt@rentfriends.app</span>
+                        <span aria-hidden="true" class="shrink-0 text-purple transition-transform duration-300 group-hover:translate-x-1">
+                            <svg class="w-[22px] h-[22px] sm:w-7 sm:h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 12h15M13 6l6 6-6 6" />
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="shrink-0 lg:pt-3">
+                    <p class="font-sans text-[13px] font-medium text-gray dark:text-bg/70 transition-colors">
+                        {t('about.contact.social')}
+                    </p>
+                    <div class="mt-4 flex items-center gap-3">
+                        {socials.map((social) => (
+                            <a
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={social.label}
+                                class="flex size-[48px] items-center justify-center rounded-full border border-black/12 dark:border-white/20 bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-purple/60 hover:shadow-md hover:shadow-purple/15"
+                            >
+                                <img src={social.icon} width="19" height="19" loading="lazy" decoding="async" alt="" aria-hidden="true" class:list={[social.size, 'object-contain']} />
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

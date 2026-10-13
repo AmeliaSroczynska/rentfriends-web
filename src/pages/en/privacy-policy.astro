@@ -2,13 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
+import CTA from '../../components/CTA.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={t('privacy.title')}>
+<Layout title={t('privacy.title')} description={t('meta.privacy.description')}>
     <Navbar />
 
     <main class="w-full bg-bg dark:bg-black font-sans pt-[120px] pb-[100px] px-6 lg:px-[100px] transition-colors duration-300">
@@ -194,6 +195,10 @@ const t = useTranslations(lang);
             </div>
         </div>
     </main>
+
+    <div id="download" class="scroll-mt-[72px]">
+        <CTA />
+    </div>
 
     <Footer />
 </Layout>

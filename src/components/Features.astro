@@ -6,8 +6,8 @@ import step1DarkImg from '../assets/step-1-dark.png';
 import step2Img from '../assets/step-2.png';
 import step3Img from '../assets/step-3.png';
 import step4Img from '../assets/step-4.png';
-import step5Img from '../assets/step-5.png';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { satisfiedUsersDisplay, appRatingDisplay } from '../data/stats';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -138,22 +138,6 @@ const stepPicture = {
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 items-center w-full relative">
-                        <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 w-[42px] h-[42px] rounded-full border-[10px] border-black dark:border-white bg-bg dark:bg-black z-20 transition-colors" style="left: calc(-50vw + 50% + 114px);"></div>
-
-                        <div class="w-full flex justify-center lg:justify-start lg:pl-[130px]">
-                            <Picture src={step5Img} {...stepPicture} widths={stepWidths(step5Img)} sizes={stepSizes} alt={t('features.step5.title')} class="w-1/2 h-auto object-contain drop-shadow-xl" />
-                        </div>
-
-                        <div class="w-full mt-6 lg:mt-0">
-                            <h3 class="text-black dark:text-white text-[36px] font-[800] leading-[45px] tracking-[-1.44px] mb-4 transition-colors" set:html={t('features.step5.title')}>
-                            </h3>
-                            <p class="text-gray dark:text-white/80 text-[20px] font-[500] leading-snug lg:pr-10 transition-colors">
-                                {t('features.step5.desc')}
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
@@ -165,43 +149,33 @@ const stepPicture = {
                     </h3>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 lg:gap-6 bg-bg dark:bg-black lg:translate-x-[60px] transition-colors">
-                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg dark:bg-white/[0.03] border border-transparent dark:border-white/10 rounded-[50px] rounded-br-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] dark:shadow-[0_0_33.5px_0_rgba(255,255,255,0.03)] flex p-[19px] transition-colors">
+                <div class="grid w-full max-w-[336px] sm:max-w-[388px] lg:max-w-[396px] grid-cols-2 gap-4 lg:gap-6 bg-bg dark:bg-black lg:translate-x-[60px] transition-colors">
+                    <div class="w-full h-[160px] sm:h-[189px] bg-bg dark:bg-white/[0.03] border border-transparent dark:border-white/10 rounded-[50px] rounded-br-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] dark:shadow-[0_0_33.5px_0_rgba(255,255,255,0.03)] flex p-[19px] transition-colors">
                         <div class="flex flex-col items-end justify-start w-full h-full text-right">
                             <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
-                                3k
+                                {satisfiedUsersDisplay}
                             </span>
-                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors" set:html={t('features.stats.users')}>
+                            <span class="text-gray dark:text-white/70 text-[14px] font-[500] leading-tight mt-2 transition-colors" set:html={t('features.stats.users')}>
                             </span>
                         </div>
                     </div>
 
-                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg dark:bg-white/[0.03] border border-transparent dark:border-white/10 rounded-[50px] rounded-bl-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] dark:shadow-[0_0_33.5px_0_rgba(255,255,255,0.03)] flex p-[19px] transition-colors">
+                    <div class="w-full h-[160px] sm:h-[189px] bg-bg dark:bg-white/[0.03] border border-transparent dark:border-white/10 rounded-[50px] rounded-bl-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] dark:shadow-[0_0_33.5px_0_rgba(255,255,255,0.03)] flex p-[19px] transition-colors">
                         <div class="flex flex-col items-start justify-start w-full h-full text-left">
                             <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
-                                5
+                                {appRatingDisplay}
                             </span>
-                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors" set:html={t('features.stats.cities')}>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg dark:bg-white/[0.03] border border-transparent dark:border-white/10 rounded-[50px] rounded-tr-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] dark:shadow-[0_0_33.5px_0_rgba(255,255,255,0.03)] flex p-[19px] transition-colors">
-                        <div class="flex flex-col items-end justify-start w-full h-full text-right">
-                            <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
-                                4.6
-                            </span>
-                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors" set:html={t('features.stats.rating')}>
+                            <span class="text-gray dark:text-white/70 text-[14px] font-[500] leading-tight mt-2 transition-colors" set:html={t('features.stats.rating')}>
                             </span>
                         </div>
                     </div>
 
-                    <div class="w-[160px] h-[160px] sm:w-[186px] sm:h-[189px] bg-bg dark:bg-white/[0.03] border border-transparent dark:border-white/10 rounded-[50px] rounded-tl-none shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] dark:shadow-[0_0_33.5px_0_rgba(255,255,255,0.03)] flex p-[19px] transition-colors">
-                        <div class="flex flex-col items-start justify-start w-full h-full text-left">
+                    <div class="col-span-2 w-full h-[160px] sm:h-[189px] bg-bg dark:bg-white/[0.03] border border-transparent dark:border-white/10 rounded-[50px] shadow-[0_0_33.5px_0_rgba(0,0,0,0.25)] dark:shadow-[0_0_33.5px_0_rgba(255,255,255,0.03)] flex p-[19px] transition-colors">
+                        <div class="flex flex-col items-center justify-center w-full h-full text-center">
                             <span class="text-[60px] sm:text-[85px] font-[700] leading-none bg-[image:var(--background-image-gradient)] bg-clip-text text-transparent inline-block">
                                 0zł
                             </span>
-                            <span class="text-gray dark:text-white/70 text-[12px] sm:text-[14px] font-[500] leading-tight mt-2 transition-colors" set:html={t('features.stats.fees')}>
+                            <span class="text-gray dark:text-white/70 text-[14px] font-[500] leading-tight mt-2 transition-colors" set:html={t('features.stats.fees')}>
                             </span>
                         </div>
                     </div>

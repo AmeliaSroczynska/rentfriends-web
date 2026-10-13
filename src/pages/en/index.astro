@@ -2,31 +2,29 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Hero from '../../components/Hero.astro';
+import Press from "../../components/Press.astro";
 import Reviews from "../../components/Reviews.astro";
-import Award from "../../components/Award.astro";
 import FAQ from "../../components/FAQ.astro";
 import CTA from "../../components/CTA.astro";
 import Footer from "../../components/Footer.astro";
-import Features from "../../components/Features.astro";
-import BeeCompanion from "../../components/BeeCompanion.astro";
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Layout title="RentFriends - find a roommate and manage your flat" preloadHero>
+<Layout title="RentFriends - find a roommate and manage your flat" description={t('meta.home.description')} preloadHero>
 	<Navbar />
 
 	<main class="min-h-[calc(100vh-72px)] flex flex-col">
 		<Hero />
 
-		<div id="features" class="scroll-mt-[72px]">
-			<Features />
+		<div id="press" class="scroll-mt-[72px]">
+			<Press />
 		</div>
 
 		<div id="reviews" class="scroll-mt-[72px]">
 			<Reviews />
-		</div>
-
-		<div id="award" class="scroll-mt-[72px]">
-			<Award />
 		</div>
 
 		<div id="faq" class="scroll-mt-[72px]">
@@ -39,6 +37,4 @@ import BeeCompanion from "../../components/BeeCompanion.astro";
 
 		<Footer />
 	</main>
-
-	<BeeCompanion />
 </Layout>

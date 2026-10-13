@@ -10,9 +10,18 @@ export function getLangFromUrl(url: URL) {
     return defaultLang;
 }
 
+const singleLetterWordBeforeSpace = /(?<=^|[\s(„"'])([aiouwzAIOUWZ]) +/g;
+
+export function bindSingleLetterWords(text: string) {
+    return text
+        .split(/(<[^>]*>)/)
+        .map((part) => (part.startsWith('<') ? part : part.replace(singleLetterWordBeforeSpace, '$1\u00A0')))
+        .join('');
+}
+
 export function useTranslations(lang: Lang) {
     return function t(key: keyof typeof ui[typeof defaultLang]) {
-        return ui[lang][key] || ui[defaultLang][key];
+        return bindSingleLetterWords(ui[lang][key] || ui[defaultLang][key]);
     }
 }
 
