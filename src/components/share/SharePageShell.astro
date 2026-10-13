@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import purpleGradientImg from '../../assets/purple-gradient.png';
+---
+
+<Navbar />
+
+<main class="w-full flex flex-col overflow-x-hidden bg-bg dark:bg-black transition-colors duration-300">
+    <section class="relative w-full overflow-x-clip -mt-[72px] pt-[112px] pb-[80px]">
+        <Image
+            src={purpleGradientImg}
+            loading="eager"
+            fetchpriority="high"
+            alt=""
+            aria-hidden="true"
+            class="absolute -top-[50px] -left-[800px] sm:-left-[1000px] lg:-top-[70px] lg:-left-[1200px] w-[500px] sm:w-[600px] lg:w-[764px] h-auto lg:h-[556px] -z-10 max-w-none pointer-events-none opacity-90 lg:opacity-100"
+        />
+
+        <div class="w-full px-4 sm:px-6 mx-auto max-w-[1000px] z-10">
+            <slot />
+        </div>
+    </section>
+
+    <Footer />
+</main>

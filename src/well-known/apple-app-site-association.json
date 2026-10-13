@@ -1,0 +1,29 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["B2N5TD87UM.app.dyzury"],
+        "appID": "B2N5TD87UM.app.dyzury",
+        "components": [
+          { "/": "/o/*", "comment": "Ogłoszenie" },
+          { "/": "/w/*", "comment": "Profil wynajmującego" },
+          { "/": "/invite/*", "comment": "Zaproszenie do domu" },
+          { "/": "/en/o/*", "comment": "Listing" },
+          { "/": "/en/w/*", "comment": "Landlord profile" },
+          { "/": "/en/invite/*", "comment": "House invite" }
+        ],
+        "paths": [
+          "/o/*",
+          "/w/*",
+          "/invite/*",
+          "/en/o/*",
+          "/en/w/*",
+          "/en/invite/*"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["B2N5TD87UM.app.dyzury"]
+  }
+}

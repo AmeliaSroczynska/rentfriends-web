@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+import {
+    formatPriceRange,
+    listingPhotos,
+    locationLabel,
+    type PublicListing,
+} from '../../lib/publicApi';
+
+interface Props {
+    listing: PublicListing;
+}
+
+const { listing } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const photo = listingPhotos(listing)[0] ?? null;
+const price = formatPriceRange(listing, t('share.listing.perMonth'));
+const location = locationLabel(listing);
+const href = localizePath(`/o/${listing.share_uuid}`, lang);
+---
+
+<a
+    href={href}
+    class="block rounded-[20px] overflow-hidden bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:scale-[1.01] transition-transform"
+>
+    {photo ? (
+        <img src={photo} alt={location} loading="lazy" class="w-full aspect-video object-cover" />
+    ) : (
+        <div class="w-full aspect-video flex items-center justify-center bg-[linear-gradient(135deg,#2d3d8a,#8654d9)] text-white text-[15px] font-semibold">
+            {t('share.listing.noPhoto')}
+        </div>
+    )}
+
+    <div class="p-4">
+        <p class="text-[12px] font-semibold uppercase tracking-wide text-gray dark:text-white/60">
+            {location || '—'}
+        </p>
+        <p class="mt-1 text-[20px] font-extrabold leading-tight text-black dark:text-white">
+            {price ?? '—'}
+        </p>
+        {listing.bio && (
+            <p class="mt-2 text-[13px] leading-snug text-gray dark:text-white/70 line-clamp-2">
+                {listing.bio}
+            </p>
+        )}
+    </div>
+</a>

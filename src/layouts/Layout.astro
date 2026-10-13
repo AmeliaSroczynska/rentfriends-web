@@ -11,6 +11,7 @@ export interface Props {
 	image?: string;
 	noindex?: boolean;
 	preloadHero?: boolean;
+	appArgument?: string;
 }
 
 const {
@@ -18,7 +19,8 @@ const {
 	description = "RentFriends pomaga znaleźć pokój, mieszkanie i współlokatora, z którym dobrze się mieszka. Dopasowujemy ludzi po stylu życia, budżecie i nawykach.",
 	image = "/og-image.jpg",
 	noindex = false,
-	preloadHero = false
+	preloadHero = false,
+	appArgument,
 } = Astro.props;
 
 const heroPreload = preloadHero
@@ -176,13 +178,13 @@ const brandSchema = {
 		cssVariable="--font-plus-jakarta"
 		preload={[
 			{ weight: 400, subset: 'latin' },
-			{ weight: 400, subset: 'latin-ext' },
-			{ weight: 800, subset: 'latin' },
-			{ weight: 800, subset: 'latin-ext' }
+			{ weight: 400, subset: 'latin-ext' }
 		]}
 	/>
 
-	<meta name="apple-itunes-app" content="app-id=6502833411">
+	<meta name="apple-itunes-app" content={appArgument
+		? `app-id=6502833411, app-argument=${appArgument}`
+		: 'app-id=6502833411'}>
 
 	<script type="application/ld+json" set:html={JSON.stringify(brandSchema)} />
 
